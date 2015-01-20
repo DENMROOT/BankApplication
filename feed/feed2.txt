@@ -1,0 +1,2 @@
+accounttype=s;accountid=0000000007;balance=200;overdraft=0;name=Masha Petrova;gender=f;email=Masha@ukr.net;phone=0903214;city=Zhmerinka;
+accounttype=c;accountid=0000000008;balance=0;overdraft=700;name=Masha Petrova;gender=f;email=Masha@ukr.net;phone=0903214;city=Zhmerinka;

@@ -1,0 +1,6 @@
+accounttype=s;accountid=0000000001;balance=500;overdraft=0;name=Makarov Denis;gender=m;email=denm@ukr.net;phone=1233444;city=Dnepropetrovsk;
+accounttype=c;accountid=0000000002;balance=0;overdraft=1000;name=Makarov Denis;gender=m;email=denm@ukr.net;phone=1233444;city=Dnepropetrovsk;
+accounttype=s;accountid=0000000003;balance=400;overdraft=0;name=Igor Pupkin;gender=m;email=igor@ukr.net;phone=3214444;city=kyiv;
+accounttype=c;accountid=0000000004;balance=0;overdraft=900;name=Igor Pupkin;gender=m;email=igor@ukr.net;phone=3214444;city=kyiv;
+accounttype=s;accountid=0000000005;balance=300;overdraft=0;name=Vasya Ivanov;gender=m;email=Vasya@ukr.net;phone=6663214;city=kyiv;
+accounttype=c;accountid=0000000006;balance=0;overdraft=800;name=Vasya Ivanov;gender=m;email=Vasya@ukr.net;phone=6663214;city=kyiv;
