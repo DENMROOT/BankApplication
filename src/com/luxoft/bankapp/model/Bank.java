@@ -6,7 +6,7 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 /**
- * Created by SCJP on 14.01.2015.
+ * Created by Makarov Denis on 14.01.2015.
  */
 public class Bank implements Report {
 

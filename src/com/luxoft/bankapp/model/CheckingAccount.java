@@ -17,7 +17,7 @@ public class CheckingAccount extends AbstractAccount{
 
     @Override
     public float getBalance() {
-        return balance;
+        return balance-getTotalAccountOverdraft();
     }
 
     public float getOverdraft() {
@@ -31,19 +31,25 @@ public class CheckingAccount extends AbstractAccount{
 
     @Override
     public float withdraw(float x) throws NotEnoughFundsException, OverDraftLimitExceededException {
-        //System.out.println("Баланс=" + balance + " Овердрафт=" + overdraft);
-        if (x > overdraft) throw new OverDraftLimitExceededException(this, getAvailableMoney());
-        if (x >(balance+overdraft)) throw new NotEnoughFundsException(balance+overdraft);
+
+        if (x > overdraft) {
+            throw new OverDraftLimitExceededException(this, getAvailableMoney());
+        }
+        if (x >(balance+overdraft)) {
+            throw new NotEnoughFundsException(balance+overdraft);
+        }
         if (x > balance) {
-            balance=0;
             overdraft-=x-balance;
+            balance=0;
         }
         return 0;
     }
 
     @Override
     public float getTotalAccountOverdraft() {
-        if (initialOverdraft == overdraft) return 0;
+        if (initialOverdraft == overdraft) {
+            return 0;
+        }
         return initialOverdraft - overdraft;
     }
 
@@ -54,5 +60,13 @@ public class CheckingAccount extends AbstractAccount{
     @Override
     public void printReport() {
 
+    }
+
+    @Override
+    public String toString() {
+        return "Checking Account{" +
+                "balance=" + balance +
+                ", overdraft=" + overdraft +
+                '}';
     }
 }

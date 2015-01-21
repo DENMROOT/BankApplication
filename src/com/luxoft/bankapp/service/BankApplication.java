@@ -7,13 +7,10 @@ import java.io.IOException;
 import java.util.*;
 
 /**
- * Created by SCJP on 14.01.2015.
+ * Created by Makarov Denis on 14.01.2015.
  */
 public class BankApplication {
     public static void main (String [] args){
-
-
-
         BankServiceImpl myBankService = new BankServiceImpl();
 
         List<ClientRegistrationListener> listeners = new ArrayList<ClientRegistrationListener>();
@@ -38,6 +35,10 @@ public class BankApplication {
         BankFeedService myBankFeedService = new BankFeedService(bank);
         myBankFeedService.loadFeeds("E:/Denis Makarov/IntellijIDEA/Projects/BankApplication/feed");
 
+        /*
+        тестовая сериализация
+         */
+        /*
         try {
             Client tempSaveClient;
             myBankService.saveClient(tempSaveClient = myBankService.getClientByName(bank, "Vasya Ivanov"));
@@ -55,9 +56,12 @@ public class BankApplication {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        */
 
-
+        /* тестовое получение данных по клиенту, используя его имя
         System.out.println("Клиент получен по Map из банка :" + myBankService.getClientByName(bank, "Makarov Denis"));
+        */
+
         /* Вывод данных клиента по toString()
         System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
         System.out.println(myClient1);

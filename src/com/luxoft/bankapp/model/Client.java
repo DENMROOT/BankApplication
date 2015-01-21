@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.*;
 
 /**
- * Created by SCJP on 14.01.2015.
+ * Created by Makarov Denis on 14.01.2015.
  */
 public class Client implements Report, Comparable <Client>, Serializable{
 
@@ -12,7 +12,7 @@ public class Client implements Report, Comparable <Client>, Serializable{
     private String name;
     private float initialOverdraft;
     private Set<Account> accounts = new HashSet<Account>();
-    Account activeAccount;
+    private Account activeAccount;
     Gender gender;
     private String city;
     private String email;
@@ -33,11 +33,19 @@ public class Client implements Report, Comparable <Client>, Serializable{
         //System.out.println("изначальный объект" + this.getName());
         //System.out.println("сравниваемый объект" + equalsClient.getName());
 
-        if (this == obj) return true;
-        if (obj == null) return false;
-        if(this.getClass() != obj.getClass()) return false;
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if(this.getClass() != obj.getClass()) {
+            return false;
+        }
 
-        if (this.getName().equals(equalsClient.getName()) && this.gender == equalsClient.gender) return true;
+        if (this.getName().equals(equalsClient.getName()) && this.gender == equalsClient.gender) {
+            return true;
+        }
 
         return false;
     }
@@ -68,7 +76,7 @@ public class Client implements Report, Comparable <Client>, Serializable{
             System.out.println(" Balance="+accountItem.getBalance()+" Overdraft="+accountItem.getOverdraft());
         }
 
-        System.out.println("Активный счет :" + " Balance="+activeAccount.getBalance()+" Overdraft="+activeAccount.getOverdraft());
+        System.out.println("Активный счет :" + " Balance="+ getActiveAccount().getBalance()+" Overdraft="+ getActiveAccount().getOverdraft());
     }
 
     public String getName() {
@@ -81,6 +89,7 @@ public class Client implements Report, Comparable <Client>, Serializable{
 
     public void addAccount(Account account) {
         accounts.add(account);
+        setActiveAccount(account);
     }
 
     public void setActiveAccount(Account account) {
@@ -165,5 +174,17 @@ public class Client implements Report, Comparable <Client>, Serializable{
 
     public void setInitialOverdraft(float initialOverdraft) {
         this.initialOverdraft = initialOverdraft;
+    }
+
+    public float getClientBalance(Client client) {
+        float overallBalance = 0.0f;
+        for (Account accountIterator : accounts){
+            overallBalance += accountIterator.getBalance();
+        }
+        return overallBalance;
+    }
+
+    public Account getActiveAccount() {
+        return activeAccount;
     }
 }

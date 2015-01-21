@@ -1,4 +1,7 @@
-package com.luxoft.bankapp.service;
+package com.luxoft.bankapp.service.commanderCommands;
+
+import com.luxoft.bankapp.service.BankCommander;
+import com.luxoft.bankapp.service.Command;
 
 import java.util.Scanner;
 

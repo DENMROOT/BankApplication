@@ -21,4 +21,9 @@ public class OverDraftLimitExceededException extends NotEnoughFundsException {
         return exceptionAccount;
     }
 
+    @Override
+    public String getMessage(){
+        return "Сумма списания превышает доступный овердрафт";
+    }
+
 }

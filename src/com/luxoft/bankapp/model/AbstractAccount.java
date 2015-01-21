@@ -14,12 +14,18 @@ public abstract class AbstractAccount implements Account, Serializable{
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof AbstractAccount)) return false;
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof AbstractAccount)) {
+            return false;
+        }
 
         AbstractAccount that = (AbstractAccount) o;
 
-        if (Float.compare(that.accountId, accountId) != 0) return false;
+        if (Float.compare(that.accountId, accountId) != 0) {
+            return false;
+        }
 
         return true;
     }
@@ -30,13 +36,7 @@ public abstract class AbstractAccount implements Account, Serializable{
         return (int) accountId;
     }
 
-    @Override
-    public String toString() {
-        return "AbstractAccount{" +
-                "balance=" + balance +
-                ", overdraft=" + overdraft +
-                '}';
-    }
+
 
     @Override
     public void parseFeed(Map<String, String> feed) {

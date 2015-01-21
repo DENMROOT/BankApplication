@@ -2,6 +2,7 @@ package com.luxoft.bankapp.service;
 
 import com.luxoft.bankapp.model.Bank;
 import com.luxoft.bankapp.model.Client;
+import com.luxoft.bankapp.service.commanderCommands.*;
 
 import java.util.Map;
 import java.util.Scanner;
@@ -20,14 +21,14 @@ public class BankCommander{
     public static Map<String, Command> commandsMap = new TreeMap<String, Command>();
 
     static Command[] commands = {
-            new FindClientCommand(), // 1
-            new GetAccountsCommand(), // 2
-            new WithdrawCommand(), // 3
-            new DepositCommand(), // 4
-            new TransferCommand(), // 5
-            new AddClientCommand(), // 6
-            new ShowHelpCommand(), //7
-            new Command() { // 8 - Exit Command
+            new FindClientCommand(), // 0
+            new GetAccountsCommand(), // 1
+            new WithdrawCommand(), // 2
+            new DepositCommand(), // 3
+            new TransferCommand(), // 4
+            new AddClientCommand(), // 5
+            new ShowHelpCommand(), //6
+            new Command() { // 7 - Exit Command
                 public void execute() {
                     System.exit(0);
                 }

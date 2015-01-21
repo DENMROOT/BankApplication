@@ -92,4 +92,8 @@ public class BankServiceImpl implements BankService {
         }
         return client;
     }
+
+    public float getClientBalance(Bank bank, Client client) {
+        return client.getClientBalance(client);
+    }
 }

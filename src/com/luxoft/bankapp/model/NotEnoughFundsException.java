@@ -13,4 +13,9 @@ public class NotEnoughFundsException extends BankException {
     public NotEnoughFundsException() {
         this.amount=0.0f;
     }
+
+    @Override
+    public String getMessage(){
+        return "Попытка списания недостаточных средств";
+    }
 }

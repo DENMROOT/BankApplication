@@ -1,6 +1,8 @@
-package com.luxoft.bankapp.service;
+package com.luxoft.bankapp.service.commanderCommands;
 
 import com.luxoft.bankapp.model.Account;
+import com.luxoft.bankapp.service.BankCommander;
+import com.luxoft.bankapp.service.Command;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -15,7 +17,7 @@ public class GetAccountsCommand implements Command {
     public void execute() {
         Set<Account> clientAccounts = new HashSet<Account>();
 
-        clientAccounts=BankCommander.myBankService.getClientAccounts(BankCommander.currentClient);
+        clientAccounts= BankCommander.myBankService.getClientAccounts(BankCommander.currentClient);
 
         for (Account accountIterator : clientAccounts) {
             System.out.println(accountIterator.toString());

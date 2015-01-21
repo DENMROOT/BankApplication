@@ -1,9 +1,11 @@
-package com.luxoft.bankapp.service;
+package com.luxoft.bankapp.service.commanderCommands;
+
+import com.luxoft.bankapp.service.Command;
 
 /**
  * Created by Makarov Denis on 15.01.2015.
  */
-public class AddClientCommand implements Command {
+public class TransferCommand implements Command {
     @Override
     public void execute() {
 
