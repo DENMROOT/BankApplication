@@ -18,9 +18,7 @@ public class Bank implements Report {
 
     public Bank(List<ClientRegistrationListener> listenersList){
         this();
-        this.listeners.add(listenersList.get(0));
-        this.listeners.add(listenersList.get(1));
-
+        this.listeners.addAll(listenersList);
     }
 
     public Bank(){
@@ -62,8 +60,6 @@ public class Bank implements Report {
         }
     }
 
-
-
     @Override
     public void printReport() {
         for (Client listItem : clients) {
@@ -90,7 +86,7 @@ public class Bank implements Report {
 
     public void addClient(Client client) throws ClientExcistsException {
 
-        if (clientAllreadyExcists(client)) {
+        if (containsClientAllready(client)) {
             throw new ClientExcistsException();
         }
 
@@ -101,14 +97,8 @@ public class Bank implements Report {
         }
     }
 
-    public Boolean clientAllreadyExcists(Client client) {
-
-        Boolean hasClient=false;
-
-        for (Client clientIterator : clients) {
-            if (clientIterator.equals(client)) hasClient=true;
-        }
-        return hasClient;
+    public Boolean containsClientAllready(Client client) {
+        return clients.contains(client);
     }
 
     public Client findClient (String clientName){

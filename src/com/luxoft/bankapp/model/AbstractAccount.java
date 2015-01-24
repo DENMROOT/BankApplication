@@ -36,7 +36,10 @@ public abstract class AbstractAccount implements Account, Serializable{
         return (int) accountId;
     }
 
-
+    @Override
+    public float getBalance() {
+        return balance;
+    }
 
     @Override
     public void parseFeed(Map<String, String> feed) {

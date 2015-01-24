@@ -33,7 +33,7 @@ public class BankApplication {
     public static void Initialize(Bank bank,BankServiceImpl myBankService ){
         //инициализация с помощью feed файлов
         BankFeedService myBankFeedService = new BankFeedService(bank);
-        myBankFeedService.loadFeeds("E:/Denis Makarov/IntellijIDEA/Projects/BankApplication/feed");
+        myBankFeedService.loadFeeds("D:\\PROGRAMMING\\IntellijIDEA\\Projects\\BankApplication\\feed");
 
         /*
         тестовая сериализация
@@ -81,6 +81,7 @@ public class BankApplication {
         Тестовое списание с 1 счета 1 клиента банка
          */
         /*
+
         for (Iterator<Client> it = bankClients.iterator(); it.hasNext(); ) {
             Client f = it.next();
             Client myTempClient = new Client(Gender.MALE);
@@ -99,6 +100,7 @@ public class BankApplication {
         Тестовое списание с 2 счета 1 клиента банка
          */
         /*
+
         for (Iterator<Client> it = bankClients.iterator(); it.hasNext(); ) {
             Client f = it.next();
             Client myTempClient = new Client(Gender.MALE);
@@ -113,7 +115,8 @@ public class BankApplication {
                     System.out.println("Попытка списания недостаточных средств");
                 }
         }
-        */
+       */
+
     }
 
     private static void printBankReport(Bank bank){

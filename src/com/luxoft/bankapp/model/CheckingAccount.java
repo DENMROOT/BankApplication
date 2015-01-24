@@ -13,12 +13,12 @@ public class CheckingAccount extends AbstractAccount{
         overdraft=x;
     }
 
-
-
+    /*
     @Override
     public float getBalance() {
         return balance-getTotalAccountOverdraft();
     }
+    */
 
     public float getOverdraft() {
         return overdraft;

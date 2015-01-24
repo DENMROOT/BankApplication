@@ -13,11 +13,6 @@ public class SavingAccount extends AbstractAccount {
     }
 
 
-    @Override
-    public float getBalance() {
-        return balance;
-    }
-
     public float getOverdraft() {
         return overdraft;
     }
