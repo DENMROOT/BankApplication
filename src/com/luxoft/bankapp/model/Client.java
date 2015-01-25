@@ -2,6 +2,8 @@ package com.luxoft.bankapp.model;
 
 import java.io.Serializable;
 import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Created by Makarov Denis on 14.01.2015.
@@ -84,7 +86,11 @@ public class Client implements Report, Comparable <Client>, Serializable{
     }
 
     public void setName(String name) {
-        this.name = name;
+        Pattern p = Pattern.compile("^[a-zA-Z ]+$");
+        Matcher m = p.matcher(name);
+        if (m.matches()) {this.name = name;}
+        else throw new IllegalArgumentException("Имя пользователя задано неверно");
+
     }
 
     public void addAccount(Account account) {
@@ -118,15 +124,18 @@ public class Client implements Report, Comparable <Client>, Serializable{
     }
 
     public void setCity(String city) {
-        this.city = city;
+        Pattern p = Pattern.compile("^[a-zA-Z]+$");
+        Matcher m = p.matcher(city);
+        if (m.matches()) {this.city = city;}
+        else throw new IllegalArgumentException("Город задан неверно");
     }
 
-    public Account createAccount(String type, String valueBalance, String valueOverdraft){
+    public Account createAccount(String accounttype, String accountID, String valueBalance, String valueOverdraft){
         Account account;
-        switch(type){
-            case "c" : account = new CheckingAccount(Float.valueOf(valueOverdraft));
+        switch(accounttype){
+            case "c" : account = new CheckingAccount(Long.valueOf(accountID),Float.valueOf(valueBalance),Float.valueOf(valueOverdraft));
                 break;
-            case "s" : account = new SavingAccount(Float.valueOf(valueBalance));
+            case "s" : account = new SavingAccount(Long.valueOf(accountID),Float.valueOf(valueBalance));
                 break;
             default : throw new IllegalArgumentException();
         }
@@ -146,7 +155,7 @@ public class Client implements Report, Comparable <Client>, Serializable{
         СОздаем и делаем текушим активным новый счет по клиенту
          */
         setInitialOverdraft(Float.parseFloat(feed.get("overdraft")));
-        Account account = createAccount(feed.get("accounttype"), feed.get("balance"), feed.get("overdraft") );
+        Account account = createAccount(feed.get("accounttype"), feed.get("accountid"),feed.get("balance"), feed.get("overdraft") );
         account.parseFeed(feed);
         setActiveAccount(account);
         addAccount(account);
@@ -157,7 +166,11 @@ public class Client implements Report, Comparable <Client>, Serializable{
     }
 
     public void setEmail(String email) {
-        this.email = email;
+        Pattern p = Pattern.compile("^([a-z0-9_\\.-]+)@([a-z0-9_\\.-]+)\\.([a-z\\.]{2,6})$");
+        Matcher m = p.matcher(email);
+        if (m.matches()) {this.email = email;}
+        else throw new IllegalArgumentException("Email задан неверно");
+
     }
 
     public String getPhone() {
@@ -165,7 +178,11 @@ public class Client implements Report, Comparable <Client>, Serializable{
     }
 
     public void setPhone(String phone) {
-        this.phone = phone;
+        Pattern p = Pattern.compile("^\\([0-9]{3}\\)[0-9]{7}$");
+        Matcher m = p.matcher(phone);
+        if (m.matches()) {this.phone = phone;}
+        else throw new IllegalArgumentException("Телефон задан неверно");
+
     }
 
     public float getInitialOverdraft() {
@@ -186,5 +203,18 @@ public class Client implements Report, Comparable <Client>, Serializable{
 
     public Account getActiveAccount() {
         return activeAccount;
+    }
+
+    public Account getAccountById(Long accountID) {
+        for (Account accountIterator : accounts) {
+            if (accountIterator.getAccountId()==accountID) {
+                return accountIterator;
+            }
+        }
+        return null;
+    }
+
+    public void depositToAccount(Account account, float depositSum) {
+        account.deposit(depositSum);
     }
 }

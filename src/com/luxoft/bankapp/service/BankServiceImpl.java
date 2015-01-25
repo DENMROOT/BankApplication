@@ -37,6 +37,20 @@ public class BankServiceImpl implements BankService {
     }
 
     @Override
+    public void depositToAccount(Client client, Account account, float depositSum) {
+        client.depositToAccount(account, depositSum);
+    }
+
+    public Account findAccountByID(Client client, Long accountID) {
+        return client.getAccountById(accountID);
+    }
+
+    @Override
+    public void deleteClient(Bank bank, Client client) {
+        bank.deleteClient(client);
+    }
+
+    @Override
     public Client findClient(Bank bank, String clientName) {
         Client findedClient = new Client();
         findedClient=bank.findClient(clientName);

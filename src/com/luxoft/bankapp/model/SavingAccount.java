@@ -5,11 +5,12 @@ package com.luxoft.bankapp.model;
  */
 public class SavingAccount extends AbstractAccount {
 
-    public SavingAccount(float x) {
+    public SavingAccount(long accountId, float x) {
         if (x<0) {
             throw new IllegalArgumentException();
         }
-        balance=x;
+        this.setAccountId(accountId);
+        this.balance=x;
     }
 
 
@@ -18,21 +19,17 @@ public class SavingAccount extends AbstractAccount {
     }
 
     @Override
-    public float deposit(float x) {
+    public void deposit(float x) {
         balance+=x;
-        return 0;
     }
 
     @Override
-    public float withdraw(float x) throws NotEnoughFundsException {
-        if (x>balance) {
+    public void withdraw(float x) throws NotEnoughFundsException {
+        if (balance >= x) {
+            balance -= x;
+        } else {
             throw new NotEnoughFundsException(balance);
         }
-        if (x <= balance) {
-            balance-=x;
-            overdraft=0;
-        }
-        return 0;
     }
 
     @Override
@@ -48,7 +45,8 @@ public class SavingAccount extends AbstractAccount {
     @Override
     public String toString() {
         return "Saving Account{" +
-                "balance=" + balance +
+                "Account ID=" + getAccountId() +
+                ",balance=" + balance +
                 ", overdraft=" + overdraft +
                 '}';
     }

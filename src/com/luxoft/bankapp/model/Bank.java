@@ -4,6 +4,8 @@ import com.luxoft.bankapp.service.ClientRegistrationListener;
 
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Created by Makarov Denis on 14.01.2015.
@@ -97,6 +99,11 @@ public class Bank implements Report {
         }
     }
 
+    public void deleteClient (Client client){
+        clients.remove(client);
+        clientsMap.remove(client.getName());
+    }
+
     public Boolean containsClientAllready(Client client) {
         return clients.contains(client);
     }
@@ -119,24 +126,31 @@ public class Bank implements Report {
 
     public void parseFeed (Map<String,String> feed) {
         String name = feed.get("name"); // client name
-        // try to find client by his name
-        Client client = findClient(name);
-        if (client == null) { // if no client then create it
-            switch (feed.get("gender")) {
-                case "m" : client = new Client(Gender.MALE); break;
-                case "f" : client = new Client(Gender.FEMALE); break;
-                default :  System.out.println("Некорректно задан пол клиента");
+            // try to find client by his name
+            Client client = findClient(name);
+            if (client == null) { // if no client then create it
+                switch (feed.get("gender")) {
+                    case "m":
+                        client = new Client(Gender.MALE);
+                        break;
+                    case "f":
+                        client = new Client(Gender.FEMALE);
+                        break;
+                    default:
+                        System.out.println("Некорректно задан пол клиента");
 
+                }
+                try {client.setName(name);}
+                catch (IllegalArgumentException e) {
+                    System.out.println(e.getMessage());
+                }
+                try {
+                    addClient(client);
+                } catch (ClientExcistsException e) {
+                    System.out.println("Ошибка создания клиента при парсинге");
+                    ;
+                }
             }
-            client.setName(name);
-            try {
-                addClient(client);
-            } catch (ClientExcistsException e) {
-                System.out.println("Ошибка создания клиента при парсинге");;
-            }
-        }
-
-        client.parseFeed(feed);
+            client.parseFeed(feed);
     }
-
 }

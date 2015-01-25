@@ -1,9 +1,13 @@
 package com.luxoft.bankapp.service.commanderCommands;
 
 import com.luxoft.bankapp.model.Account;
+import com.luxoft.bankapp.model.Bank;
 import com.luxoft.bankapp.service.BankCommander;
 import com.luxoft.bankapp.service.Command;
 
+import java.io.DataOutputStream;
+import java.io.OutputStream;
+import java.net.Socket;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -25,7 +29,12 @@ public class GetAccountsCommand implements Command {
     }
 
     @Override
-    public void printCommandInfo() {
+    public void execute_server(OutputStream out, Socket server, Bank bank, String[] clientCommandArg) {
 
+    }
+
+    @Override
+    public void printCommandInfo() {
+        System.out.println("Get all client accounts command");
     }
 }

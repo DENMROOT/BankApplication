@@ -53,10 +53,12 @@ public abstract class AbstractAccount implements Account, Serializable{
         return Math.round(balance+overdraft);
     }
 
+    @Override
     public long getAccountId() {
         return accountId;
     }
 
+    @Override
     public void setAccountId(long accountId) {
         this.accountId = accountId;
     }

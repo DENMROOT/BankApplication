@@ -7,11 +7,13 @@ import java.util.Map;
  */
 public interface Account extends Report {
 
-    float getBalance();
-    float getOverdraft();
-    float deposit(float x);
-    float withdraw(float x) throws NotEnoughFundsException;
-    float decimalValue();
-    float getTotalAccountOverdraft();
+    public float getBalance();
+    public float getOverdraft();
+    public void deposit(float x);
+    public void withdraw(float x) throws NotEnoughFundsException;
+    public float decimalValue();
+    public float getTotalAccountOverdraft();
     public void parseFeed(Map<String, String> feed);
+    public long getAccountId();
+    public void setAccountId(long accountId);
 }

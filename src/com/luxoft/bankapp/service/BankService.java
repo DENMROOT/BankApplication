@@ -14,7 +14,8 @@ public interface BankService {
     public void removeClient(Bank bank,Client client);
     public void addAccount(Client client, Account account);
     public void setActiveAccount(Client client, Account account);
-    public void withdrawFromAccount(Client client, Account account, float withdrowalSum) throws NotEnoughFundsException;
+    public void withdrawFromAccount(Client client, Account account, float withdrawalSum) throws NotEnoughFundsException;
+    public void depositToAccount(Client client, Account account, float depositSum);
     public Client findClient(Bank bank, String clientName);
     public Set<Client> getClients(Bank bank);
     public Set<Account> getClientAccounts(Client client);
@@ -22,4 +23,6 @@ public interface BankService {
     public Client getClientByName(Bank bank, String clientName);
     public void saveClient(Client client) throws IOException;
     public Client loadClient() throws ClassNotFoundException, IOException;
+    public Account findAccountByID(Client client, Long accountID);
+    public void deleteClient (Bank bank, Client client);
 }

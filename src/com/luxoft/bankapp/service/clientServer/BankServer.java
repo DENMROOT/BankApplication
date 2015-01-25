@@ -5,13 +5,10 @@ import com.luxoft.bankapp.model.Client;
 import com.luxoft.bankapp.service.BankApplication;
 import com.luxoft.bankapp.service.BankServiceImpl;
 import com.luxoft.bankapp.service.ClientRegistrationListener;
-import com.luxoft.bankapp.service.clientServer.serverCommands.ServerCommand;
-import com.luxoft.bankapp.service.clientServer.serverCommands.SocketServerGetClientBalance;
-import com.luxoft.bankapp.service.clientServer.serverCommands.SosketServerWithdrawBalance;
+import com.luxoft.bankapp.service.Command;
+import com.luxoft.bankapp.service.commanderCommands.*;
 
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
+import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.SocketTimeoutException;
@@ -32,9 +29,12 @@ public class BankServer extends Thread {
 
 
     private ServerSocket serverSocket;
-    static ServerCommand[] commands = {
-            new SocketServerGetClientBalance(), // 0
-            new SosketServerWithdrawBalance() // 1
+    static Command[] commands = {
+            new GetClientBalance(), // 0
+            new WithdrawCommand(), // 1
+            new AddClientCommand(), //2
+            new DeleteClientCommand(), //3
+            new GetBankReportCommand() //4
     };
 
     public BankServer(int port) throws IOException
@@ -63,23 +63,37 @@ public class BankServer extends Thread {
                 DataInputStream in =
                         new DataInputStream(server.getInputStream());
                 String clientCommand="";
-                String [] clientCommandArgs={"",""};
+                String [] clientCommandArgs={"","",};
 
                 while (!clientCommandArgs[0].equals("EXIT")) {
                     clientCommand = in.readUTF();
                     clientCommandArgs = clientCommand.split("&");
                     //System.out.println(clientCommand);
-                    DataOutputStream out =
-                            new DataOutputStream(server.getOutputStream());
+
                     switch (clientCommandArgs[0]) {
                         case "BankClient Get balance command": {
                             System.out.println("Get balance command received for client: " + clientCommandArgs[1]);
-                            commands[0].execute(out, server, myBank,  clientCommandArgs[1]);
+                            commands[0].execute_server(server.getOutputStream(), server, myBank, clientCommandArgs);
                             break;
                         }
                         case "BankClient Withdrawal command": {
                             System.out.println("Withdrawal command received for client: " + clientCommandArgs[1]);
-                            commands[1].execute(out, server, myBank, clientCommandArgs[1]);
+                            commands[1].execute_server(server.getOutputStream(), server, myBank, clientCommandArgs);
+                            break;
+                        }
+                        case "BankRemoteOffice add client command": {
+                            System.out.println("Add client command received for client: " + clientCommandArgs[1]);
+                            commands[2].execute_server(server.getOutputStream(), server, myBank, clientCommandArgs);
+                            break;
+                        }
+                        case "BankRemoteOffice delete client command": {
+                            System.out.println("Delete client command received for client: " + clientCommandArgs[1]);
+                            commands[3].execute_server(server.getOutputStream(), server, myBank, clientCommandArgs);
+                            break;
+                        }
+                        case "BankRemoteOffice get bank report command": {
+                            System.out.println("Get Bank report command received: ");
+                            commands[4].execute_server(server.getOutputStream(), server, myBank, clientCommandArgs);
                             break;
                         }
                         default : break;

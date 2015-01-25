@@ -1,30 +1,42 @@
-package com.luxoft.bankapp.service.clientServer.serverCommands;
+package com.luxoft.bankapp.service.commanderCommands;
 
 import com.luxoft.bankapp.model.Bank;
 import com.luxoft.bankapp.model.Client;
 import com.luxoft.bankapp.service.BankServiceImpl;
+import com.luxoft.bankapp.service.Command;
 import com.luxoft.bankapp.service.clientServer.BankServer;
-
 import java.io.DataOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.net.Socket;
 
 /**
  * Created by Makarov Denis on 21.01.2015.
  */
-public class SocketServerGetClientBalance implements ServerCommand {
+public class GetClientBalance implements Command {
+
     @Override
-    public void execute(DataOutputStream out, Socket server, Bank bank, String clientCommandArg) {
+    public void execute() {
+
+    }
+
+    @Override
+    public void execute_server(OutputStream out, Socket server, Bank bank, String[] clientCommandArg) {
+        DataOutputStream outData = new DataOutputStream(out);
         Client client = null;
         try {
             BankServiceImpl myBankService = new BankServiceImpl();
-            client = myBankService.getClientByName(bank, clientCommandArg);
+            client = myBankService.getClientByName(bank, clientCommandArg[1]);
             BankServer.currentClient = client;
             System.out.println("Активный клиент установлен: ");
             System.out.println(BankServer.currentClient);
-            out.writeUTF(clientCommandArg.toString() + " overall balance : " + myBankService.getClientBalance(bank,client));
+            outData.writeUTF(clientCommandArg[1].toString() + " overall balance : " + myBankService.getClientBalance(bank,client));
         } catch (IOException e) {
-            e.printStackTrace();
+            try {
+                outData.writeUTF(e.getMessage());
+            } catch (IOException e1) {
+                e1.getMessage();
+            }
         }
     }
 

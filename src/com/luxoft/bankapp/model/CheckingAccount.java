@@ -5,12 +5,14 @@ package com.luxoft.bankapp.model;
  */
 public class CheckingAccount extends AbstractAccount{
 
-    public CheckingAccount (float x) {
-        if (x<0) {
+    public CheckingAccount (long accountId, float balance, float overdraft) {
+        if (overdraft<0) {
             throw new IllegalArgumentException();
         }
-        initialOverdraft=x;
-        overdraft=x;
+        this.setAccountId(accountId);
+        this.initialOverdraft=overdraft;
+        this.balance=balance;
+        this.overdraft=overdraft;
     }
 
     /*
@@ -25,35 +27,25 @@ public class CheckingAccount extends AbstractAccount{
     }
 
     @Override
-    public float deposit(float x) {
-        return 0;
+    public void deposit(float x) {
+        balance+=x;
     }
 
     @Override
-    public float withdraw(float x) throws NotEnoughFundsException, OverDraftLimitExceededException {
-
-        if (x > overdraft) {
+    public void withdraw(float x) throws NotEnoughFundsException {
+        if (balance + overdraft >= x) {
+            balance -= x;
+        } else {
             throw new OverDraftLimitExceededException(this, getAvailableMoney());
         }
-        if (x >(balance+overdraft)) {
-            throw new NotEnoughFundsException(balance+overdraft);
-        }
-        if (x > balance) {
-            overdraft-=x-balance;
-            balance=0;
-        }
-        return 0;
     }
 
     @Override
     public float getTotalAccountOverdraft() {
-        if (initialOverdraft == overdraft) {
-            return 0;
-        }
-        return initialOverdraft - overdraft;
+        return balance>0?0:balance;
     }
 
-    private Float getAvailableMoney() {
+    private float getAvailableMoney() {
         return balance+overdraft;
     }
 
@@ -65,7 +57,8 @@ public class CheckingAccount extends AbstractAccount{
     @Override
     public String toString() {
         return "Checking Account{" +
-                "balance=" + balance +
+                "Account ID=" + getAccountId() +
+                ",balance=" + balance +
                 ", overdraft=" + overdraft +
                 '}';
     }

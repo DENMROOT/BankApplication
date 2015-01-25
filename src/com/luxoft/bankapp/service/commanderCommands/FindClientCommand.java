@@ -1,8 +1,12 @@
 package com.luxoft.bankapp.service.commanderCommands;
 
+import com.luxoft.bankapp.model.Bank;
 import com.luxoft.bankapp.service.BankCommander;
 import com.luxoft.bankapp.service.Command;
 
+import java.io.DataOutputStream;
+import java.io.OutputStream;
+import java.net.Socket;
 import java.util.Scanner;
 
 /**
@@ -26,7 +30,12 @@ public class FindClientCommand implements Command {
     }
 
     @Override
-    public void printCommandInfo() {
+    public void execute_server(OutputStream out, Socket server, Bank bank, String[] clientCommandArg) {
 
+    }
+
+    @Override
+    public void printCommandInfo() {
+        System.out.println("Find client by name command");
     }
 }

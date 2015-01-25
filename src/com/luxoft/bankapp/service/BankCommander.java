@@ -4,6 +4,9 @@ import com.luxoft.bankapp.model.Bank;
 import com.luxoft.bankapp.model.Client;
 import com.luxoft.bankapp.service.commanderCommands.*;
 
+import java.io.DataOutputStream;
+import java.io.OutputStream;
+import java.net.Socket;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.TreeMap;
@@ -31,6 +34,11 @@ public class BankCommander{
             new Command() { // 7 - Exit Command
                 public void execute() {
                     System.exit(0);
+                }
+
+                @Override
+                public void execute_server(OutputStream out, Socket server, Bank bank, String[] clientCommandArg) {
+
                 }
 
                 public void printCommandInfo() {
