@@ -16,6 +16,7 @@ public class BankServiceImpl implements BankService {
         bank.addClient(client);
     }
 
+    @Deprecated
     @Override
     public void removeClient(Bank bank, Client client) {
         bank.removeClient(client);

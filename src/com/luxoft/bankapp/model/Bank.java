@@ -120,8 +120,9 @@ public class Bank implements Report {
         return null;
     }
 
+    @Deprecated
     public void removeClient(Client client) {
-        clients.remove(client);
+        deleteClient(client);
     }
 
     public void parseFeed (Map<String,String> feed) {

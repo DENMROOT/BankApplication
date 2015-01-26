@@ -33,7 +33,7 @@ public class BankApplication {
     public static void Initialize(Bank bank,BankServiceImpl myBankService ){
         //инициализация с помощью feed файлов
         BankFeedService myBankFeedService = new BankFeedService(bank);
-        myBankFeedService.loadFeeds("D:\\PROGRAMMING\\IntellijIDEA\\Projects\\BankApplication\\feed");
+        myBankFeedService.loadFeeds("E:\\Denis Makarov\\IntellijIDEA\\Projects\\BankApplication\\feed");
 
         /*
         тестовая сериализация
