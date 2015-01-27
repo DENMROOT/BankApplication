@@ -17,7 +17,7 @@ public class BankApplication {
         listeners.add(new Bank.PrintClientListener());
         listeners.add(new Bank.EmailNotificationListener());
         Bank myBank = new Bank(listeners);
-        myBank.setName("Мой тестовый банк номер 1");
+        myBank.setName("My Bank");
 
         System.out.println("Working");
         System.out.println("Инициализация данных");

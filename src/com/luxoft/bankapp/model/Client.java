@@ -1,5 +1,8 @@
 package com.luxoft.bankapp.model;
 
+import com.luxoft.bankapp.service.NotEnoughFundsException;
+import com.luxoft.bankapp.service.OverDraftLimitExceededException;
+
 import java.io.Serializable;
 import java.util.*;
 import java.util.regex.Matcher;
@@ -9,19 +12,18 @@ import java.util.regex.Pattern;
  * Created by Makarov Denis on 14.01.2015.
  */
 public class Client implements Report, Comparable <Client>, Serializable{
-
-
+    private long clientID;
     private String name;
     private float initialOverdraft;
     private Set<Account> accounts = new HashSet<Account>();
     private Account activeAccount;
-    Gender gender;
+    private Gender gender;
     private String city;
     private String email;
     private String phone;
 
     public Client (Gender gender) {
-        this.gender=gender;
+        this.setGender(gender);
     }
 
     public Client() {
@@ -45,7 +47,7 @@ public class Client implements Report, Comparable <Client>, Serializable{
             return false;
         }
 
-        if (this.getName().equals(equalsClient.getName()) && this.gender == equalsClient.gender) {
+        if (this.getName().equals(equalsClient.getName()) && this.getGender() == equalsClient.getGender()) {
             return true;
         }
 
@@ -68,7 +70,7 @@ public class Client implements Report, Comparable <Client>, Serializable{
     @Override
     public int hashCode() {
         int result = name.hashCode();
-        result = 31 * result + gender.hashCode();
+        result = 31 * result + getGender().hashCode();
         return result;
     }
 
@@ -86,7 +88,7 @@ public class Client implements Report, Comparable <Client>, Serializable{
     }
 
     public void setName(String name) {
-        Pattern p = Pattern.compile("^[a-zA-Z ]+$");
+        Pattern p = Pattern.compile("^[a-zA-Zа-яА-Я ]+$");
         Matcher m = p.matcher(name);
         if (m.matches()) {this.name = name;}
         else throw new IllegalArgumentException("Имя пользователя задано неверно");
@@ -103,10 +105,10 @@ public class Client implements Report, Comparable <Client>, Serializable{
     }
 
     public String getClientSalutation() {
-        return this.gender.getSalutation();
+        return this.getGender().getSalutation();
     }
 
-    public void withdrawFromAccount (Account account, float withdrowalSum) throws NotEnoughFundsException, OverDraftLimitExceededException{
+    public void withdrawFromAccount (Account account, float withdrowalSum) throws NotEnoughFundsException, OverDraftLimitExceededException {
         account.withdraw(withdrowalSum);
     }
 
@@ -124,7 +126,7 @@ public class Client implements Report, Comparable <Client>, Serializable{
     }
 
     public void setCity(String city) {
-        Pattern p = Pattern.compile("^[a-zA-Z]+$");
+        Pattern p = Pattern.compile("^[a-zA-Zа-яА-Я]+$");
         Matcher m = p.matcher(city);
         if (m.matches()) {this.city = city;}
         else throw new IllegalArgumentException("Город задан неверно");
@@ -216,5 +218,28 @@ public class Client implements Report, Comparable <Client>, Serializable{
 
     public void depositToAccount(Account account, float depositSum) {
         account.deposit(depositSum);
+    }
+
+    public long getClientID() {
+        return clientID;
+    }
+
+    public void setClientID(long clientID) {
+        this.clientID = clientID;
+    }
+
+    public Gender getGender() {
+        /*
+        switch (gender){
+            case MALE: return "m";
+            case FEMALE: return "f";
+            default : return "Пол не задан";
+        }
+        */
+        return gender;
+    }
+
+    public void setGender(Gender gender) {
+        this.gender = gender;
     }
 }

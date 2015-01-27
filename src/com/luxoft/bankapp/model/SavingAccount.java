@@ -1,5 +1,7 @@
 package com.luxoft.bankapp.model;
 
+import com.luxoft.bankapp.service.NotEnoughFundsException;
+
 /**
  * Created by Makarov Denis on 14.01.2015.
  */

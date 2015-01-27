@@ -2,6 +2,8 @@ package com.luxoft.bankapp.service;
 
 import com.luxoft.bankapp.model.Bank;
 import com.luxoft.bankapp.model.Client;
+import com.luxoft.bankapp.service.DAO.BankDAO;
+import com.luxoft.bankapp.service.DAO.BankDAOImpl;
 import com.luxoft.bankapp.service.commanderCommands.*;
 
 import java.io.DataOutputStream;
@@ -18,8 +20,8 @@ public class BankCommander{
 
     public static BankApplication myBankApplication = new BankApplication ();
     public static BankServiceImpl myBankService = new BankServiceImpl();
-
-    public static Bank currentBank = new Bank();
+    public static String bankName = "My Bank";
+    public static Bank currentBank;
     public static Client currentClient;
     public static Map<String, Command> commandsMap = new TreeMap<String, Command>();
 
@@ -30,8 +32,9 @@ public class BankCommander{
             new DepositCommand(), // 3
             new TransferCommand(), // 4
             new AddClientCommand(), // 5
-            new ShowHelpCommand(), //6
-            new Command() { // 7 - Exit Command
+            new RemoveClientCommand(), // 6
+            new ShowHelpCommand(), //7
+            new Command() { // 8 - Exit Command
                 public void execute() {
                     System.exit(0);
                 }
@@ -56,8 +59,12 @@ public class BankCommander{
     }
 
     public static void main(String args[]) {
+        BankDAOImpl bankDao = new BankDAOImpl();
+        //currentBank.setName(bankName);
+        currentBank = bankDao.getBankByName(bankName);
 
-        myBankApplication.Initialize(currentBank,myBankService);
+        System.out.println("Bank ID:" + currentBank.getBankID() + " Bank Name: " + currentBank.getName());
+        //myBankApplication.Initialize(currentBank,myBankService);
 
         while (true) {
             for (int i=0;i<commands.length;i++) { // show menu

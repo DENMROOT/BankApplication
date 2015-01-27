@@ -1,5 +1,8 @@
 package com.luxoft.bankapp.model;
 
+import com.luxoft.bankapp.service.NotEnoughFundsException;
+import com.luxoft.bankapp.service.OverDraftLimitExceededException;
+
 /**
  * Created by Makarov Denis on 14.01.2015.
  */

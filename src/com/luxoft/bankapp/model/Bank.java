@@ -11,7 +11,7 @@ import java.util.regex.Pattern;
  * Created by Makarov Denis on 14.01.2015.
  */
 public class Bank implements Report {
-
+    private long bankID;
     private String name;
     // старая реализация private ArrayList<Client> clients = new ArrayList<Client>();
     private Set<Client> clients = new HashSet<Client>();
@@ -42,6 +42,14 @@ public class Bank implements Report {
     public Client getClient(String clientName) {
 
         return clientsMap.get(clientName);
+    }
+
+    public long getBankID() {
+        return bankID;
+    }
+
+    public void setBankID(long bankID) {
+        this.bankID = bankID;
     }
 
 

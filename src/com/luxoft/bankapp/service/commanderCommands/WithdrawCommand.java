@@ -3,7 +3,8 @@ package com.luxoft.bankapp.service.commanderCommands;
 import com.luxoft.bankapp.model.Account;
 import com.luxoft.bankapp.model.Bank;
 import com.luxoft.bankapp.model.Client;
-import com.luxoft.bankapp.model.NotEnoughFundsException;
+import com.luxoft.bankapp.service.DAO.AccountDAOImpl;
+import com.luxoft.bankapp.service.NotEnoughFundsException;
 import com.luxoft.bankapp.service.BankCommander;
 import com.luxoft.bankapp.service.BankServiceImpl;
 import com.luxoft.bankapp.service.Command;
@@ -25,9 +26,11 @@ public class WithdrawCommand implements Command {
         Scanner paramScan = new Scanner(System.in);
         String param=paramScan.nextLine(); // initialize command with commandString
         Float withdrawalAmount = Float.valueOf(param);
+        AccountDAOImpl accountDAO = new AccountDAOImpl();
 
         try {
             BankCommander.myBankService.withdrawFromAccount(BankCommander.currentClient,BankCommander.currentClient.getActiveAccount(), withdrawalAmount);
+            accountDAO.save(BankCommander.currentClient.getActiveAccount());
             System.out.println("Новый баланс по счету" + BankCommander.currentClient.getActiveAccount());
         } catch (NotEnoughFundsException e) {
             System.out.println("Ошибка при списании средств" + e.getMessage());

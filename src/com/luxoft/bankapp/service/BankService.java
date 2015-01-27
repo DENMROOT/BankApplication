@@ -3,7 +3,6 @@ package com.luxoft.bankapp.service;
 import com.luxoft.bankapp.model.*;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Set;
 
 /**

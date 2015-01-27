@@ -1,6 +1,8 @@
 package com.luxoft.bankapp.service;
 
 import com.luxoft.bankapp.model.*;
+import com.luxoft.bankapp.service.DAO.ClientDAO;
+import com.luxoft.bankapp.service.DAO.ClientDAOImpl;
 
 import java.io.*;
 import java.util.HashSet;
@@ -53,9 +55,21 @@ public class BankServiceImpl implements BankService {
 
     @Override
     public Client findClient(Bank bank, String clientName) {
+        /* устаревшее поиск клиента в структуре банка
         Client findedClient = new Client();
         findedClient=bank.findClient(clientName);
         return findedClient;
+        */
+
+        ClientDAO clientDAO = new ClientDAOImpl();
+        try {
+            Client client = clientDAO.findClientByName(bank, clientName);
+            return client;
+        } catch (ClientNotFoundException e) {
+            e.getMessage();
+        }
+
+        return null;
     }
 
     @Override

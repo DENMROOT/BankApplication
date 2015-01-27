@@ -1,0 +1,2120 @@
+01-22 16:17:36 jdbc[3]: null
+org.h2.message.DbException: The connection was not closed by the application and is garbage collected [90018-185]
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.message.DbException.get(DbException.java:144)
+	at org.h2.jdbc.JdbcConnection.closeOld(JdbcConnection.java:174)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:119)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:92)
+	at org.h2.Driver.connect(Driver.java:72)
+	at org.h2.server.web.WebServer.getConnection(WebServer.java:750)
+	at org.h2.server.web.WebApp.login(WebApp.java:957)
+	at org.h2.server.web.WebApp.process(WebApp.java:211)
+	at org.h2.server.web.WebApp.processRequest(WebApp.java:170)
+	at org.h2.server.web.WebThread.process(WebThread.java:137)
+	at org.h2.server.web.WebThread.run(WebThread.java:93)
+	at java.lang.Thread.run(Thread.java:722)
+Caused by: org.h2.jdbc.JdbcSQLException: The connection was not closed by the application and is garbage collected [90018-185]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	... 14 more
+01-22 16:26:59 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "ACCOUNTS" not found; SQL statement:
+CREATE TABLE CLIENTS( 
+    ID INT PRIMARY KEY, 
+    BANK_ID INT,
+    NAME VARCHAR(255),
+    EMAIL VARCHAR(255),
+    PHONE VARCHAR(255),
+    CITY VARCHAR(255),
+    ACTIVE_ACCOUNT_ID INT,
+    FOREIGN KEY(BANK_ID) 
+	REFERENCES BANK(ID),
+    FOREIGN KEY(ACTIVE_ACCOUNT_ID) 
+	REFERENCES ACCOUNTS(ID)
+) [42102-185]
+01-22 17:15:43 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "UPDATE
+    ACCOUNTS A
+    JOIN[*] CLIENTS C ON A.CLIENT_ID=C.ID
+SET
+    BALANCE=1100
+WHERE A.NAME='Денис Макаров' AND A.ACCOUNT_TYPE='S'"; expected "SET"; SQL statement:
+UPDATE
+    ACCOUNTS A
+    JOIN CLIENTS C ON A.CLIENT_ID=C.ID
+SET
+    BALANCE=1100
+WHERE A.NAME='Денис Макаров' AND A.ACCOUNT_TYPE='S' [42001-185]
+01-22 17:19:09 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "UPDATE
+    ACCOUNTS A
+   JOIN[*] CLIENTS C ON A.CLIENT_ID=C.ID
+SET
+    BALANCE=1100
+WHERE A.NAME='Денис Макаров' AND A.ACCOUNT_TYPE='S'"; expected "SET"; SQL statement:
+UPDATE
+    ACCOUNTS A
+   JOIN CLIENTS C ON A.CLIENT_ID=C.ID
+SET
+    BALANCE=1100
+WHERE A.NAME='Денис Макаров' AND A.ACCOUNT_TYPE='S' [42001-185]
+01-22 17:20:40 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "UPDATE
+    ACCOUNTS A
+   JOIN[*] CLIENTS C ON A.CLIENT_ID=C.ID
+SET
+    BALANCE=1100
+WHERE C.NAME='Денис Макаров' AND A.ACCOUNT_TYPE='S'"; expected "SET"; SQL statement:
+UPDATE
+    ACCOUNTS A
+   JOIN CLIENTS C ON A.CLIENT_ID=C.ID
+SET
+    BALANCE=1100
+WHERE C.NAME='Денис Макаров' AND A.ACCOUNT_TYPE='S' [42001-185]
+01-22 17:20:48 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "UPDATE
+    ACCOUNTS A
+   JOIN[*] CLIENTS C ON A.CLIENT_ID=C.ID
+SET
+    A.BALANCE=1100
+WHERE C.NAME='Денис Макаров' AND A.ACCOUNT_TYPE='S'"; expected "SET"; SQL statement:
+UPDATE
+    ACCOUNTS A
+   JOIN CLIENTS C ON A.CLIENT_ID=C.ID
+SET
+    A.BALANCE=1100
+WHERE C.NAME='Денис Макаров' AND A.ACCOUNT_TYPE='S' [42001-185]
+01-22 17:21:35 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "UPDATE
+    ACCOUNTS A
+   JOIN[*] CLIENTS C ON A.CLIENT_ID=C.ID
+SET
+    A.BALANCE=1100
+WHERE C.NAME='Денис Макаров' AND A.ACCOUNT_TYPE='S'"; expected "SET"; SQL statement:
+UPDATE
+    ACCOUNTS A
+   JOIN CLIENTS C ON A.CLIENT_ID=C.ID
+SET
+    A.BALANCE=1100
+WHERE C.NAME='Денис Макаров' AND A.ACCOUNT_TYPE='S' [42001-185]
+01-22 17:31:56 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "UPDATE
+    ACCOUNTS A
+   JOIN[*] CLIENTS C ON A.CLIENT_ID=C.ID
+SET
+    A.BALANCE=1100
+WHERE C.NAME='Денис Макаров' AND A.ACCOUNT_TYPE='S'"; expected "SET"; SQL statement:
+UPDATE
+    ACCOUNTS A
+   JOIN CLIENTS C ON A.CLIENT_ID=C.ID
+SET
+    A.BALANCE=1100
+WHERE C.NAME='Денис Макаров' AND A.ACCOUNT_TYPE='S' [42001-185]
+01-22 17:47:15 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "SELECT * 
+FROM 
+    ACCOUNTS A
+WHERE A.ACCOUNT_TYPE='S'
+
+
+UPDATE[*] 
+    ACCOUNTS A
+SET 
+    A.BALANCE=700
+WHERE A.ID=1"; SQL statement:
+SELECT * 
+FROM 
+    ACCOUNTS A
+WHERE A.ACCOUNT_TYPE='S'
+
+
+UPDATE 
+    ACCOUNTS A
+SET 
+    A.BALANCE=700
+WHERE A.ID=1 [42000-185]
+01-22 18:05:51 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "ALTER TABLE ACCOUNTS ADD CONSTRAINT CLIENT_ID CLIENTS[*](ID)"; expected "., COMMENT, PRIMARY, INDEX, KEY, CHECK, UNIQUE, FOREIGN"; SQL statement:
+ALTER TABLE ACCOUNTS ADD CONSTRAINT CLIENT_ID CLIENTS(ID) [42001-185]
+01-22 18:06:14 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "ALTER TABLE ACCOUNTS A[*] ADD CONSTRAINT A.CLIENT_ID CLIENTS(ID)"; expected "., ADD, SET, RENAME, DROP, CHANGE, MODIFY, ALTER"; SQL statement:
+ALTER TABLE ACCOUNTS A ADD CONSTRAINT A.CLIENT_ID CLIENTS(ID) [42001-185]
+01-22 18:25:02 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "SELECT 
+    C.NAME,  
+    A.BALANCE,
+SUM(BALANCE)
+FROM 
+    ACCOUNTS A
+    JOIN CLIENTS C ON A.CLIENT_ID=C.ID
+GROUP BY C.ID
+WHERE[*] A.BALANCE>1000"; SQL statement:
+SELECT 
+    C.NAME,  
+    A.BALANCE,
+SUM(BALANCE)
+FROM 
+    ACCOUNTS A
+    JOIN CLIENTS C ON A.CLIENT_ID=C.ID
+GROUP BY C.ID
+WHERE A.BALANCE>1000 [42000-185]
+01-22 18:25:05 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Column "A.BALANCE" must be in the GROUP BY list; SQL statement:
+SELECT 
+    C.NAME,  
+    A.BALANCE,
+SUM(BALANCE)
+FROM 
+    ACCOUNTS A
+    JOIN CLIENTS C ON A.CLIENT_ID=C.ID
+GROUP BY C.ID [90016-185]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.expression.ExpressionColumn.updateAggregate(ExpressionColumn.java:169)
+	at org.h2.command.dml.Select.queryGroup(Select.java:355)
+	at org.h2.command.dml.Select.queryWithoutCache(Select.java:639)
+	at org.h2.command.dml.Query.query(Query.java:322)
+	at org.h2.command.dml.Query.query(Query.java:290)
+	at org.h2.command.dml.Query.query(Query.java:36)
+	at org.h2.command.CommandContainer.query(CommandContainer.java:90)
+	at org.h2.command.Command.executeQuery(Command.java:197)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:179)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:158)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1390)
+	at org.h2.server.web.WebApp.query(WebApp.java:1063)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1025)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1012)
+	at org.h2.server.web.WebThread.process(WebThread.java:168)
+	at org.h2.server.web.WebThread.run(WebThread.java:93)
+	at java.lang.Thread.run(Thread.java:722)
+01-22 18:25:15 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Column "A.BALANCE" must be in the GROUP BY list; SQL statement:
+SELECT 
+    C.NAME,  
+    A.BALANCE,
+    SUM(A.BALANCE)
+FROM 
+    ACCOUNTS A
+    JOIN CLIENTS C ON A.CLIENT_ID=C.ID
+GROUP BY C.ID [90016-185]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.expression.ExpressionColumn.updateAggregate(ExpressionColumn.java:169)
+	at org.h2.command.dml.Select.queryGroup(Select.java:355)
+	at org.h2.command.dml.Select.queryWithoutCache(Select.java:639)
+	at org.h2.command.dml.Query.query(Query.java:322)
+	at org.h2.command.dml.Query.query(Query.java:290)
+	at org.h2.command.dml.Query.query(Query.java:36)
+	at org.h2.command.CommandContainer.query(CommandContainer.java:90)
+	at org.h2.command.Command.executeQuery(Command.java:197)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:179)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:158)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1390)
+	at org.h2.server.web.WebApp.query(WebApp.java:1063)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1025)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1012)
+	at org.h2.server.web.WebThread.process(WebThread.java:168)
+	at org.h2.server.web.WebThread.run(WebThread.java:93)
+	at java.lang.Thread.run(Thread.java:722)
+01-22 18:25:50 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Column "A.BALANCE" must be in the GROUP BY list; SQL statement:
+SELECT 
+    C.NAME,  
+    A.BALANCE,
+    SUM(A.BALANCE)
+FROM 
+    ACCOUNTS A
+    JOIN CLIENTS C ON A.CLIENT_ID=C.ID
+GROUP BY A.CLIENT_ID [90016-185]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.expression.ExpressionColumn.updateAggregate(ExpressionColumn.java:169)
+	at org.h2.command.dml.Select.queryGroupSorted(Select.java:191)
+	at org.h2.command.dml.Select.queryWithoutCache(Select.java:637)
+	at org.h2.command.dml.Query.query(Query.java:322)
+	at org.h2.command.dml.Query.query(Query.java:290)
+	at org.h2.command.dml.Query.query(Query.java:36)
+	at org.h2.command.CommandContainer.query(CommandContainer.java:90)
+	at org.h2.command.Command.executeQuery(Command.java:197)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:179)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:158)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1390)
+	at org.h2.server.web.WebApp.query(WebApp.java:1063)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1025)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1012)
+	at org.h2.server.web.WebThread.process(WebThread.java:168)
+	at org.h2.server.web.WebThread.run(WebThread.java:93)
+	at java.lang.Thread.run(Thread.java:722)
+01-22 18:27:45 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "SELECT 
+    C.NAME,  
+    SUM(A.BALANCE) AS TOTAL_BALANCE
+FROM 
+    ACCOUNTS A
+    JOIN CLIENTS C ON A.CLIENT_ID=C.ID
+GROUP BY A.CLIENT_ID 
+WHERE[*] TOTAL_BALANCE>500"; SQL statement:
+SELECT 
+    C.NAME,  
+    SUM(A.BALANCE) AS TOTAL_BALANCE
+FROM 
+    ACCOUNTS A
+    JOIN CLIENTS C ON A.CLIENT_ID=C.ID
+GROUP BY A.CLIENT_ID 
+WHERE TOTAL_BALANCE>500 [42000-185]
+01-27 14:16:08 database: flush
+org.h2.message.DbException: General error: "java.lang.IllegalStateException: The file is locked: nio:E:/Denis Makarov/IntellijIDEA/Projects/BankApplication/db/BankApplication.mv.db [1.4.185/7]" [50000-185]
+	at org.h2.message.DbException.get(DbException.java:168)
+	at org.h2.message.DbException.convert(DbException.java:295)
+	at org.h2.mvstore.db.MVTableEngine$1.uncaughtException(MVTableEngine.java:93)
+	at org.h2.mvstore.MVStore.panic(MVStore.java:377)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:360)
+	at org.h2.mvstore.MVStore$Builder.open(MVStore.java:2769)
+	at org.h2.mvstore.db.MVTableEngine$Store.<init>(MVTableEngine.java:162)
+	at org.h2.mvstore.db.MVTableEngine.init(MVTableEngine.java:98)
+	at org.h2.engine.Database.getPageStore(Database.java:2379)
+	at org.h2.engine.Database.open(Database.java:666)
+	at org.h2.engine.Database.openDatabase(Database.java:266)
+	at org.h2.engine.Database.<init>(Database.java:260)
+	at org.h2.engine.Engine.openSession(Engine.java:60)
+	at org.h2.engine.Engine.openSession(Engine.java:167)
+	at org.h2.engine.Engine.createSessionAndValidate(Engine.java:145)
+	at org.h2.engine.Engine.createSession(Engine.java:128)
+	at org.h2.engine.Engine.createSession(Engine.java:26)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:347)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:108)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:92)
+	at org.h2.Driver.connect(Driver.java:72)
+	at java.sql.DriverManager.getConnection(DriverManager.java:579)
+	at java.sql.DriverManager.getConnection(DriverManager.java:221)
+	at com.luxoft.bankapp.service.DAO.BaseDAOImpl.openConnection(BaseDAOImpl.java:19)
+	at com.luxoft.bankapp.service.DAO.BankDAOImpl.getBankByName(BankDAOImpl.java:18)
+	at com.luxoft.bankapp.service.BankCommander.main(BankCommander.java:63)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:601)
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:134)
+Caused by: org.h2.jdbc.JdbcSQLException: General error: "java.lang.IllegalStateException: The file is locked: nio:E:/Denis Makarov/IntellijIDEA/Projects/BankApplication/db/BankApplication.mv.db [1.4.185/7]" [50000-185]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	... 31 more
+Caused by: java.lang.IllegalStateException: The file is locked: nio:E:/Denis Makarov/IntellijIDEA/Projects/BankApplication/db/BankApplication.mv.db [1.4.185/7]
+	at org.h2.mvstore.DataUtils.newIllegalStateException(DataUtils.java:773)
+	at org.h2.mvstore.FileStore.open(FileStore.java:170)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:346)
+	... 26 more
+01-27 14:39:29 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Column "Макаров Денис" not found; SQL statement:
+SELECT 
+    C.ID AS ID,
+    C.NAME AS NAME,
+    C.EMAIL AS EMAIL,
+    C.PHONE AS PHONE,
+    C.CITY AS CITY,
+    C.ACTIVE_ACCOUNT_ID AS ACTIVEACCOUNTID
+FROM
+    CLIENTS C
+WHERE 
+    BANK_ID = 1 
+AND
+    C.NAME = "Макаров Денис" [42122-185]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.expression.ExpressionColumn.optimize(ExpressionColumn.java:147)
+	at org.h2.expression.Comparison.optimize(Comparison.java:180)
+	at org.h2.expression.ConditionAndOr.optimize(ConditionAndOr.java:131)
+	at org.h2.command.dml.Select.prepare(Select.java:837)
+	at org.h2.command.Parser.prepareCommand(Parser.java:247)
+	at org.h2.engine.Session.prepareLocal(Session.java:446)
+	at org.h2.engine.Session.prepareCommand(Session.java:388)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1189)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:170)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:158)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1390)
+	at org.h2.server.web.WebApp.query(WebApp.java:1063)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1025)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1012)
+	at org.h2.server.web.WebThread.process(WebThread.java:168)
+	at org.h2.server.web.WebThread.run(WebThread.java:93)
+	at java.lang.Thread.run(Unknown Source)
+01-27 14:39:36 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "SELECT 
+    C.ID AS ID,
+    C.NAME AS NAME,
+    C.EMAIL AS EMAIL,
+    C.PHONE AS PHONE,
+    C.CITY AS CITY,
+    C.ACTIVE_ACCOUNT_ID AS ACTIVEACCOUNTID
+FROM
+    CLIENTS C
+WHERE 
+    BANK_ID = 1 
+AND
+    C.NAME = МАКАРОВ ДЕНИС[*] "; SQL statement:
+SELECT 
+    C.ID AS ID,
+    C.NAME AS NAME,
+    C.EMAIL AS EMAIL,
+    C.PHONE AS PHONE,
+    C.CITY AS CITY,
+    C.ACTIVE_ACCOUNT_ID AS ACTIVEACCOUNTID
+FROM
+    CLIENTS C
+WHERE 
+    BANK_ID = 1 
+AND
+    C.NAME = Макаров Денис [42000-185]
+01-27 14:39:37 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "SELECT 
+    C.ID AS ID,
+    C.NAME AS NAME,
+    C.EMAIL AS EMAIL,
+    C.PHONE AS PHONE,
+    C.CITY AS CITY,
+    C.ACTIVE_ACCOUNT_ID AS ACTIVEACCOUNTID
+FROM
+    CLIENTS C
+WHERE 
+    BANK_ID = 1 
+AND
+    C.NAME = МАКАРОВ ДЕНИС[*] "; SQL statement:
+SELECT 
+    C.ID AS ID,
+    C.NAME AS NAME,
+    C.EMAIL AS EMAIL,
+    C.PHONE AS PHONE,
+    C.CITY AS CITY,
+    C.ACTIVE_ACCOUNT_ID AS ACTIVEACCOUNTID
+FROM
+    CLIENTS C
+WHERE 
+    BANK_ID = 1 
+AND
+    C.NAME = Макаров Денис [42000-185]
+01-27 14:40:13 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "SELECT 
+    C.ID AS ID,
+    C.NAME AS NAME,
+    C.EMAIL AS EMAIL,
+    C.PHONE AS PHONE,
+    C.CITY AS CITY,
+    C.ACTIVE_ACCOUNT_ID AS ACTIVEACCOUNTID
+FROM
+    CLIENTS C
+WHERE 
+    С.BANK_ID = 1 ,[*] C.NAME = МАКАРОВ ДЕНИС "; SQL statement:
+SELECT 
+    C.ID AS ID,
+    C.NAME AS NAME,
+    C.EMAIL AS EMAIL,
+    C.PHONE AS PHONE,
+    C.CITY AS CITY,
+    C.ACTIVE_ACCOUNT_ID AS ACTIVEACCOUNTID
+FROM
+    CLIENTS C
+WHERE 
+    С.BANK_ID = 1 , C.NAME = Макаров Денис [42000-185]
+01-27 14:40:23 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "SELECT 
+    C.ID AS ID,
+    C.NAME AS NAME,
+    C.EMAIL AS EMAIL,
+    C.PHONE AS PHONE,
+    C.CITY AS CITY,
+    C.ACTIVE_ACCOUNT_ID AS ACTIVEACCOUNTID
+FROM
+    CLIENTS C
+WHERE 
+    С.BANK_ID = 1 ,[*] C.NAME = 'Макаров Денис'"; SQL statement:
+SELECT 
+    C.ID AS ID,
+    C.NAME AS NAME,
+    C.EMAIL AS EMAIL,
+    C.PHONE AS PHONE,
+    C.CITY AS CITY,
+    C.ACTIVE_ACCOUNT_ID AS ACTIVEACCOUNTID
+FROM
+    CLIENTS C
+WHERE 
+    С.BANK_ID = 1 , C.NAME = 'Макаров Денис' [42000-185]
+01-27 14:40:30 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "SELECT 
+    C.ID AS ID,
+    C.NAME AS NAME,
+    C.EMAIL AS EMAIL,
+    C.PHONE AS PHONE,
+    C.CITY AS CITY,
+    C.ACTIVE_ACCOUNT_ID AS ACTIVEACCOUNTID
+FROM
+    CLIENTS C
+WHERE 
+    С.BANK_ID = 1 ,[*] C.NAME = ""Макаров Денис"""; SQL statement:
+SELECT 
+    C.ID AS ID,
+    C.NAME AS NAME,
+    C.EMAIL AS EMAIL,
+    C.PHONE AS PHONE,
+    C.CITY AS CITY,
+    C.ACTIVE_ACCOUNT_ID AS ACTIVEACCOUNTID
+FROM
+    CLIENTS C
+WHERE 
+    С.BANK_ID = 1 , C.NAME = "Макаров Денис" [42000-185]
+01-27 14:40:33 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "SELECT 
+    C.ID AS ID,
+    C.NAME AS NAME,
+    C.EMAIL AS EMAIL,
+    C.PHONE AS PHONE,
+    C.CITY AS CITY,
+    C.ACTIVE_ACCOUNT_ID AS ACTIVEACCOUNTID
+FROM
+    CLIENTS C
+WHERE 
+    С.BANK_ID = 1 ,[*] C.NAME = ""Макаров Денис"""; SQL statement:
+SELECT 
+    C.ID AS ID,
+    C.NAME AS NAME,
+    C.EMAIL AS EMAIL,
+    C.PHONE AS PHONE,
+    C.CITY AS CITY,
+    C.ACTIVE_ACCOUNT_ID AS ACTIVEACCOUNTID
+FROM
+    CLIENTS C
+WHERE 
+    С.BANK_ID = 1 , C.NAME = "Макаров Денис" [42000-185]
+01-27 14:40:38 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Column "С.BANK_ID" not found; SQL statement:
+SELECT 
+    C.ID AS ID,
+    C.NAME AS NAME,
+    C.EMAIL AS EMAIL,
+    C.PHONE AS PHONE,
+    C.CITY AS CITY,
+    C.ACTIVE_ACCOUNT_ID AS ACTIVEACCOUNTID
+FROM
+    CLIENTS C
+WHERE 
+    С.BANK_ID = 1 [42122-185]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.expression.ExpressionColumn.optimize(ExpressionColumn.java:147)
+	at org.h2.expression.Comparison.optimize(Comparison.java:178)
+	at org.h2.command.dml.Select.prepare(Select.java:837)
+	at org.h2.command.Parser.prepareCommand(Parser.java:247)
+	at org.h2.engine.Session.prepareLocal(Session.java:446)
+	at org.h2.engine.Session.prepareCommand(Session.java:388)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1189)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:170)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:158)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1390)
+	at org.h2.server.web.WebApp.query(WebApp.java:1063)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1025)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1012)
+	at org.h2.server.web.WebThread.process(WebThread.java:168)
+	at org.h2.server.web.WebThread.run(WebThread.java:93)
+	at java.lang.Thread.run(Unknown Source)
+01-27 14:41:05 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Column "Макаров Денис" not found; SQL statement:
+SELECT 
+    C.ID AS ID,
+    C.NAME AS NAME,
+    C.EMAIL AS EMAIL,
+    C.PHONE AS PHONE,
+    C.CITY AS CITY,
+    C.ACTIVE_ACCOUNT_ID AS ACTIVEACCOUNTID
+FROM
+    CLIENTS C
+WHERE 
+    BANK_ID = 1
+AND 
+    NAME = "Макаров Денис" [42122-185]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.expression.ExpressionColumn.optimize(ExpressionColumn.java:147)
+	at org.h2.expression.Comparison.optimize(Comparison.java:180)
+	at org.h2.expression.ConditionAndOr.optimize(ConditionAndOr.java:131)
+	at org.h2.command.dml.Select.prepare(Select.java:837)
+	at org.h2.command.Parser.prepareCommand(Parser.java:247)
+	at org.h2.engine.Session.prepareLocal(Session.java:446)
+	at org.h2.engine.Session.prepareCommand(Session.java:388)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1189)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:170)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:158)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1390)
+	at org.h2.server.web.WebApp.query(WebApp.java:1063)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1025)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1012)
+	at org.h2.server.web.WebThread.process(WebThread.java:168)
+	at org.h2.server.web.WebThread.run(WebThread.java:93)
+	at java.lang.Thread.run(Unknown Source)
+01-27 14:46:21 database: flush
+org.h2.message.DbException: General error: "java.lang.IllegalStateException: The file is locked: nio:E:/Denis Makarov/IntellijIDEA/Projects/BankApplication/db/BankApplication.mv.db [1.4.185/7]" [50000-185]
+	at org.h2.message.DbException.get(DbException.java:168)
+	at org.h2.message.DbException.convert(DbException.java:295)
+	at org.h2.mvstore.db.MVTableEngine$1.uncaughtException(MVTableEngine.java:93)
+	at org.h2.mvstore.MVStore.panic(MVStore.java:377)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:360)
+	at org.h2.mvstore.MVStore$Builder.open(MVStore.java:2769)
+	at org.h2.mvstore.db.MVTableEngine$Store.<init>(MVTableEngine.java:162)
+	at org.h2.mvstore.db.MVTableEngine.init(MVTableEngine.java:98)
+	at org.h2.engine.Database.getPageStore(Database.java:2379)
+	at org.h2.engine.Database.open(Database.java:666)
+	at org.h2.engine.Database.openDatabase(Database.java:266)
+	at org.h2.engine.Database.<init>(Database.java:260)
+	at org.h2.engine.Engine.openSession(Engine.java:60)
+	at org.h2.engine.Engine.openSession(Engine.java:167)
+	at org.h2.engine.Engine.createSessionAndValidate(Engine.java:145)
+	at org.h2.engine.Engine.createSession(Engine.java:128)
+	at org.h2.engine.Engine.createSession(Engine.java:26)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:347)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:108)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:92)
+	at org.h2.Driver.connect(Driver.java:72)
+	at java.sql.DriverManager.getConnection(DriverManager.java:579)
+	at java.sql.DriverManager.getConnection(DriverManager.java:221)
+	at com.luxoft.bankapp.service.DAO.BaseDAOImpl.openConnection(BaseDAOImpl.java:19)
+	at com.luxoft.bankapp.service.DAO.BankDAOImpl.getBankByName(BankDAOImpl.java:18)
+	at com.luxoft.bankapp.service.BankCommander.main(BankCommander.java:63)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:601)
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:134)
+Caused by: org.h2.jdbc.JdbcSQLException: General error: "java.lang.IllegalStateException: The file is locked: nio:E:/Denis Makarov/IntellijIDEA/Projects/BankApplication/db/BankApplication.mv.db [1.4.185/7]" [50000-185]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	... 31 more
+Caused by: java.lang.IllegalStateException: The file is locked: nio:E:/Denis Makarov/IntellijIDEA/Projects/BankApplication/db/BankApplication.mv.db [1.4.185/7]
+	at org.h2.mvstore.DataUtils.newIllegalStateException(DataUtils.java:773)
+	at org.h2.mvstore.FileStore.open(FileStore.java:170)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:346)
+	... 26 more
+01-27 14:46:56 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Invalid value "2" for parameter "parameterIndex" [90008-185]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.getInvalidValueException(DbException.java:228)
+	at org.h2.jdbc.JdbcPreparedStatement.setParameter(JdbcPreparedStatement.java:1382)
+	at org.h2.jdbc.JdbcPreparedStatement.setString(JdbcPreparedStatement.java:352)
+	at com.luxoft.bankapp.service.DAO.ClientDAOImpl.findClientByName(ClientDAOImpl.java:37)
+	at com.luxoft.bankapp.service.BankServiceImpl.findClient(BankServiceImpl.java:65)
+	at com.luxoft.bankapp.service.commanderCommands.FindClientCommand.execute(FindClientCommand.java:24)
+	at com.luxoft.bankapp.service.BankCommander.main(BankCommander.java:76)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:601)
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:134)
+01-27 14:51:43 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Invalid value "2" for parameter "parameterIndex" [90008-185]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.getInvalidValueException(DbException.java:228)
+	at org.h2.jdbc.JdbcPreparedStatement.setParameter(JdbcPreparedStatement.java:1382)
+	at org.h2.jdbc.JdbcPreparedStatement.setString(JdbcPreparedStatement.java:352)
+	at com.luxoft.bankapp.service.DAO.ClientDAOImpl.findClientByName(ClientDAOImpl.java:37)
+	at com.luxoft.bankapp.service.BankServiceImpl.findClient(BankServiceImpl.java:66)
+	at com.luxoft.bankapp.service.commanderCommands.FindClientCommand.execute(FindClientCommand.java:24)
+	at com.luxoft.bankapp.service.BankCommander.main(BankCommander.java:76)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:601)
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:134)
+01-27 14:52:28 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Invalid value "2" for parameter "parameterIndex" [90008-185]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.getInvalidValueException(DbException.java:228)
+	at org.h2.jdbc.JdbcPreparedStatement.setParameter(JdbcPreparedStatement.java:1382)
+	at org.h2.jdbc.JdbcPreparedStatement.setString(JdbcPreparedStatement.java:352)
+	at com.luxoft.bankapp.service.DAO.ClientDAOImpl.findClientByName(ClientDAOImpl.java:38)
+	at com.luxoft.bankapp.service.BankServiceImpl.findClient(BankServiceImpl.java:66)
+	at com.luxoft.bankapp.service.commanderCommands.FindClientCommand.execute(FindClientCommand.java:24)
+	at com.luxoft.bankapp.service.BankCommander.main(BankCommander.java:76)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:601)
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:134)
+01-27 14:53:13 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Invalid value "2" for parameter "parameterIndex" [90008-185]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.getInvalidValueException(DbException.java:228)
+	at org.h2.jdbc.JdbcPreparedStatement.setParameter(JdbcPreparedStatement.java:1382)
+	at org.h2.jdbc.JdbcPreparedStatement.setString(JdbcPreparedStatement.java:352)
+	at com.luxoft.bankapp.service.DAO.ClientDAOImpl.findClientByName(ClientDAOImpl.java:38)
+	at com.luxoft.bankapp.service.BankServiceImpl.findClient(BankServiceImpl.java:66)
+	at com.luxoft.bankapp.service.commanderCommands.FindClientCommand.execute(FindClientCommand.java:24)
+	at com.luxoft.bankapp.service.BankCommander.main(BankCommander.java:76)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:601)
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:134)
+01-27 14:58:08 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "DELETE *[*] FROM CLIENTS"; expected "identifier"; SQL statement:
+DELETE * FROM CLIENTS [42001-185]
+01-27 15:00:15 database: flush
+org.h2.message.DbException: General error: "java.lang.IllegalStateException: The file is locked: nio:E:/Denis Makarov/IntellijIDEA/Projects/BankApplication/db/BankApplication.mv.db [1.4.185/7]" [50000-185]
+	at org.h2.message.DbException.get(DbException.java:168)
+	at org.h2.message.DbException.convert(DbException.java:295)
+	at org.h2.mvstore.db.MVTableEngine$1.uncaughtException(MVTableEngine.java:93)
+	at org.h2.mvstore.MVStore.panic(MVStore.java:377)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:360)
+	at org.h2.mvstore.MVStore$Builder.open(MVStore.java:2769)
+	at org.h2.mvstore.db.MVTableEngine$Store.<init>(MVTableEngine.java:162)
+	at org.h2.mvstore.db.MVTableEngine.init(MVTableEngine.java:98)
+	at org.h2.engine.Database.getPageStore(Database.java:2379)
+	at org.h2.engine.Database.open(Database.java:666)
+	at org.h2.engine.Database.openDatabase(Database.java:266)
+	at org.h2.engine.Database.<init>(Database.java:260)
+	at org.h2.engine.Engine.openSession(Engine.java:60)
+	at org.h2.engine.Engine.openSession(Engine.java:167)
+	at org.h2.engine.Engine.createSessionAndValidate(Engine.java:145)
+	at org.h2.engine.Engine.createSession(Engine.java:128)
+	at org.h2.engine.Engine.createSession(Engine.java:26)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:347)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:108)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:92)
+	at org.h2.Driver.connect(Driver.java:72)
+	at java.sql.DriverManager.getConnection(DriverManager.java:579)
+	at java.sql.DriverManager.getConnection(DriverManager.java:221)
+	at com.luxoft.bankapp.service.DAO.BaseDAOImpl.openConnection(BaseDAOImpl.java:19)
+	at com.luxoft.bankapp.service.DAO.BankDAOImpl.getBankByName(BankDAOImpl.java:18)
+	at com.luxoft.bankapp.service.BankCommander.main(BankCommander.java:63)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:601)
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:134)
+Caused by: org.h2.jdbc.JdbcSQLException: General error: "java.lang.IllegalStateException: The file is locked: nio:E:/Denis Makarov/IntellijIDEA/Projects/BankApplication/db/BankApplication.mv.db [1.4.185/7]" [50000-185]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	... 31 more
+Caused by: java.lang.IllegalStateException: The file is locked: nio:E:/Denis Makarov/IntellijIDEA/Projects/BankApplication/db/BankApplication.mv.db [1.4.185/7]
+	at org.h2.mvstore.DataUtils.newIllegalStateException(DataUtils.java:773)
+	at org.h2.mvstore.FileStore.open(FileStore.java:170)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:346)
+	... 26 more
+01-27 15:02:08 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "DROP CLIENTS[*]"; expected "TABLE, INDEX, USER, SEQUENCE, CONSTANT, TRIGGER, VIEW, ROLE, ALIAS, SCHEMA, ALL, DOMAIN, TYPE, DATATYPE, AGGREGATE"; SQL statement:
+DROP CLIENTS [42001-185]
+01-27 15:03:38 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Column count does not match; SQL statement:
+INSERT INTO CLIENTS VALUES(1,1, 'Денис Макаров', 'denm2000@ukr.net','(067)1231212','Киев',Null) [21002-185]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.message.DbException.get(DbException.java:144)
+	at org.h2.command.dml.Insert.prepare(Insert.java:265)
+	at org.h2.command.Parser.prepareCommand(Parser.java:247)
+	at org.h2.engine.Session.prepareLocal(Session.java:446)
+	at org.h2.engine.Session.prepareCommand(Session.java:388)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1189)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:170)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:158)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1390)
+	at org.h2.server.web.WebApp.query(WebApp.java:1063)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1025)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1012)
+	at org.h2.server.web.WebThread.process(WebThread.java:168)
+	at org.h2.server.web.WebThread.run(WebThread.java:93)
+	at java.lang.Thread.run(Unknown Source)
+01-27 15:03:38 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Column count does not match; SQL statement:
+INSERT INTO CLIENTS VALUES(2,1, 'Вася Петров', 'vasya@ukr.net','(067)4321212','Киев',Null) [21002-185]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.message.DbException.get(DbException.java:144)
+	at org.h2.command.dml.Insert.prepare(Insert.java:265)
+	at org.h2.command.Parser.prepareCommand(Parser.java:247)
+	at org.h2.engine.Session.prepareLocal(Session.java:446)
+	at org.h2.engine.Session.prepareCommand(Session.java:388)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1189)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:170)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:158)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1390)
+	at org.h2.server.web.WebApp.query(WebApp.java:1063)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1025)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1012)
+	at org.h2.server.web.WebThread.process(WebThread.java:168)
+	at org.h2.server.web.WebThread.run(WebThread.java:93)
+	at java.lang.Thread.run(Unknown Source)
+01-27 15:03:38 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Column count does not match; SQL statement:
+INSERT INTO CLIENTS VALUES(3,1, 'Юра Иванов', 'yuri@ukr.net','(096)7771212','Днепропетровск',Null) [21002-185]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.message.DbException.get(DbException.java:144)
+	at org.h2.command.dml.Insert.prepare(Insert.java:265)
+	at org.h2.command.Parser.prepareCommand(Parser.java:247)
+	at org.h2.engine.Session.prepareLocal(Session.java:446)
+	at org.h2.engine.Session.prepareCommand(Session.java:388)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1189)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:170)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:158)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1390)
+	at org.h2.server.web.WebApp.query(WebApp.java:1063)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1025)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1012)
+	at org.h2.server.web.WebThread.process(WebThread.java:168)
+	at org.h2.server.web.WebThread.run(WebThread.java:93)
+	at java.lang.Thread.run(Unknown Source)
+01-27 15:03:38 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Column count does not match; SQL statement:
+INSERT INTO CLIENTS VALUES(4,1, 'Оля Сербина', 'olya@ukr.net','(068)2221212','Жмеринка',Null) [21002-185]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.message.DbException.get(DbException.java:144)
+	at org.h2.command.dml.Insert.prepare(Insert.java:265)
+	at org.h2.command.Parser.prepareCommand(Parser.java:247)
+	at org.h2.engine.Session.prepareLocal(Session.java:446)
+	at org.h2.engine.Session.prepareCommand(Session.java:388)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1189)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:170)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:158)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1390)
+	at org.h2.server.web.WebApp.query(WebApp.java:1063)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1025)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1012)
+	at org.h2.server.web.WebThread.process(WebThread.java:168)
+	at org.h2.server.web.WebThread.run(WebThread.java:93)
+	at java.lang.Thread.run(Unknown Source)
+01-27 15:04:56 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Column count does not match; SQL statement:
+INSERT INTO CLIENTS VALUES(1,1, 'Денис Макаров', 'denm2000@ukr.net','(067)1231212','Киев',Null) [21002-185]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.message.DbException.get(DbException.java:144)
+	at org.h2.command.dml.Insert.prepare(Insert.java:265)
+	at org.h2.command.Parser.prepareCommand(Parser.java:247)
+	at org.h2.engine.Session.prepareLocal(Session.java:446)
+	at org.h2.engine.Session.prepareCommand(Session.java:388)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1189)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:170)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:158)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1390)
+	at org.h2.server.web.WebApp.query(WebApp.java:1063)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1025)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1012)
+	at org.h2.server.web.WebThread.process(WebThread.java:168)
+	at org.h2.server.web.WebThread.run(WebThread.java:93)
+	at java.lang.Thread.run(Unknown Source)
+01-27 15:04:56 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Column count does not match; SQL statement:
+INSERT INTO CLIENTS VALUES(2,1, 'Вася Петров', 'vasya@ukr.net','(067)4321212','Киев',Null) [21002-185]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.message.DbException.get(DbException.java:144)
+	at org.h2.command.dml.Insert.prepare(Insert.java:265)
+	at org.h2.command.Parser.prepareCommand(Parser.java:247)
+	at org.h2.engine.Session.prepareLocal(Session.java:446)
+	at org.h2.engine.Session.prepareCommand(Session.java:388)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1189)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:170)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:158)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1390)
+	at org.h2.server.web.WebApp.query(WebApp.java:1063)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1025)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1012)
+	at org.h2.server.web.WebThread.process(WebThread.java:168)
+	at org.h2.server.web.WebThread.run(WebThread.java:93)
+	at java.lang.Thread.run(Unknown Source)
+01-27 15:04:56 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Column count does not match; SQL statement:
+INSERT INTO CLIENTS VALUES(3,1, 'Юра Иванов', 'yuri@ukr.net','(096)7771212','Днепропетровск',Null) [21002-185]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.message.DbException.get(DbException.java:144)
+	at org.h2.command.dml.Insert.prepare(Insert.java:265)
+	at org.h2.command.Parser.prepareCommand(Parser.java:247)
+	at org.h2.engine.Session.prepareLocal(Session.java:446)
+	at org.h2.engine.Session.prepareCommand(Session.java:388)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1189)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:170)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:158)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1390)
+	at org.h2.server.web.WebApp.query(WebApp.java:1063)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1025)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1012)
+	at org.h2.server.web.WebThread.process(WebThread.java:168)
+	at org.h2.server.web.WebThread.run(WebThread.java:93)
+	at java.lang.Thread.run(Unknown Source)
+01-27 15:04:56 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Column count does not match; SQL statement:
+INSERT INTO CLIENTS VALUES(4,1, 'Оля Сербина', 'olya@ukr.net','(068)2221212','Жмеринка',Null) [21002-185]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.message.DbException.get(DbException.java:144)
+	at org.h2.command.dml.Insert.prepare(Insert.java:265)
+	at org.h2.command.Parser.prepareCommand(Parser.java:247)
+	at org.h2.engine.Session.prepareLocal(Session.java:446)
+	at org.h2.engine.Session.prepareCommand(Session.java:388)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1189)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:170)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:158)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1390)
+	at org.h2.server.web.WebApp.query(WebApp.java:1063)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1025)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1012)
+	at org.h2.server.web.WebThread.process(WebThread.java:168)
+	at org.h2.server.web.WebThread.run(WebThread.java:93)
+	at java.lang.Thread.run(Unknown Source)
+01-27 15:05:48 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Column count does not match; SQL statement:
+INSERT INTO CLIENTS VALUES(1,1, 'Денис Макаров', 'denm2000@ukr.net','(067)1231212','Киев',Null) [21002-185]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.message.DbException.get(DbException.java:144)
+	at org.h2.command.dml.Insert.prepare(Insert.java:265)
+	at org.h2.command.Parser.prepareCommand(Parser.java:247)
+	at org.h2.engine.Session.prepareLocal(Session.java:446)
+	at org.h2.engine.Session.prepareCommand(Session.java:388)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1189)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:170)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:158)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1390)
+	at org.h2.server.web.WebApp.query(WebApp.java:1063)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1025)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1012)
+	at org.h2.server.web.WebThread.process(WebThread.java:168)
+	at org.h2.server.web.WebThread.run(WebThread.java:93)
+	at java.lang.Thread.run(Unknown Source)
+01-27 15:05:48 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Column count does not match; SQL statement:
+INSERT INTO CLIENTS VALUES(2,1, 'Вася Петров', 'vasya@ukr.net','(067)4321212','Киев',Null) [21002-185]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.message.DbException.get(DbException.java:144)
+	at org.h2.command.dml.Insert.prepare(Insert.java:265)
+	at org.h2.command.Parser.prepareCommand(Parser.java:247)
+	at org.h2.engine.Session.prepareLocal(Session.java:446)
+	at org.h2.engine.Session.prepareCommand(Session.java:388)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1189)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:170)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:158)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1390)
+	at org.h2.server.web.WebApp.query(WebApp.java:1063)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1025)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1012)
+	at org.h2.server.web.WebThread.process(WebThread.java:168)
+	at org.h2.server.web.WebThread.run(WebThread.java:93)
+	at java.lang.Thread.run(Unknown Source)
+01-27 15:05:48 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Column count does not match; SQL statement:
+INSERT INTO CLIENTS VALUES(3,1, 'Юра Иванов', 'yuri@ukr.net','(096)7771212','Днепропетровск',Null) [21002-185]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.message.DbException.get(DbException.java:144)
+	at org.h2.command.dml.Insert.prepare(Insert.java:265)
+	at org.h2.command.Parser.prepareCommand(Parser.java:247)
+	at org.h2.engine.Session.prepareLocal(Session.java:446)
+	at org.h2.engine.Session.prepareCommand(Session.java:388)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1189)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:170)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:158)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1390)
+	at org.h2.server.web.WebApp.query(WebApp.java:1063)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1025)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1012)
+	at org.h2.server.web.WebThread.process(WebThread.java:168)
+	at org.h2.server.web.WebThread.run(WebThread.java:93)
+	at java.lang.Thread.run(Unknown Source)
+01-27 15:05:48 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Column count does not match; SQL statement:
+INSERT INTO CLIENTS VALUES(4,1, 'Оля Сербина', 'olya@ukr.net','(068)2221212','Жмеринка',Null) [21002-185]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.message.DbException.get(DbException.java:144)
+	at org.h2.command.dml.Insert.prepare(Insert.java:265)
+	at org.h2.command.Parser.prepareCommand(Parser.java:247)
+	at org.h2.engine.Session.prepareLocal(Session.java:446)
+	at org.h2.engine.Session.prepareCommand(Session.java:388)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1189)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:170)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:158)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1390)
+	at org.h2.server.web.WebApp.query(WebApp.java:1063)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1025)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1012)
+	at org.h2.server.web.WebThread.process(WebThread.java:168)
+	at org.h2.server.web.WebThread.run(WebThread.java:93)
+	at java.lang.Thread.run(Unknown Source)
+01-27 15:06:03 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Column count does not match; SQL statement:
+INSERT INTO CLIENTS VALUES(1,1, 'Денис Макаров', 'denm2000@ukr.net','(067)1231212','Киев',Null) [21002-185]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.message.DbException.get(DbException.java:144)
+	at org.h2.command.dml.Insert.prepare(Insert.java:265)
+	at org.h2.command.Parser.prepareCommand(Parser.java:247)
+	at org.h2.engine.Session.prepareLocal(Session.java:446)
+	at org.h2.engine.Session.prepareCommand(Session.java:388)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1189)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:170)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:158)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1390)
+	at org.h2.server.web.WebApp.query(WebApp.java:1063)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1025)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1012)
+	at org.h2.server.web.WebThread.process(WebThread.java:168)
+	at org.h2.server.web.WebThread.run(WebThread.java:93)
+	at java.lang.Thread.run(Unknown Source)
+01-27 15:06:03 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Column count does not match; SQL statement:
+INSERT INTO CLIENTS VALUES(2,1, 'Вася Петров', 'vasya@ukr.net','(067)4321212','Киев',Null) [21002-185]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.message.DbException.get(DbException.java:144)
+	at org.h2.command.dml.Insert.prepare(Insert.java:265)
+	at org.h2.command.Parser.prepareCommand(Parser.java:247)
+	at org.h2.engine.Session.prepareLocal(Session.java:446)
+	at org.h2.engine.Session.prepareCommand(Session.java:388)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1189)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:170)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:158)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1390)
+	at org.h2.server.web.WebApp.query(WebApp.java:1063)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1025)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1012)
+	at org.h2.server.web.WebThread.process(WebThread.java:168)
+	at org.h2.server.web.WebThread.run(WebThread.java:93)
+	at java.lang.Thread.run(Unknown Source)
+01-27 15:06:03 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Column count does not match; SQL statement:
+INSERT INTO CLIENTS VALUES(3,1, 'Юра Иванов', 'yuri@ukr.net','(096)7771212','Днепропетровск',Null) [21002-185]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.message.DbException.get(DbException.java:144)
+	at org.h2.command.dml.Insert.prepare(Insert.java:265)
+	at org.h2.command.Parser.prepareCommand(Parser.java:247)
+	at org.h2.engine.Session.prepareLocal(Session.java:446)
+	at org.h2.engine.Session.prepareCommand(Session.java:388)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1189)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:170)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:158)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1390)
+	at org.h2.server.web.WebApp.query(WebApp.java:1063)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1025)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1012)
+	at org.h2.server.web.WebThread.process(WebThread.java:168)
+	at org.h2.server.web.WebThread.run(WebThread.java:93)
+	at java.lang.Thread.run(Unknown Source)
+01-27 15:06:03 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Column count does not match; SQL statement:
+INSERT INTO CLIENTS VALUES(4,1, 'Оля Сербина', 'olya@ukr.net','(068)2221212','Жмеринка',Null) [21002-185]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.message.DbException.get(DbException.java:144)
+	at org.h2.command.dml.Insert.prepare(Insert.java:265)
+	at org.h2.command.Parser.prepareCommand(Parser.java:247)
+	at org.h2.engine.Session.prepareLocal(Session.java:446)
+	at org.h2.engine.Session.prepareCommand(Session.java:388)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1189)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:170)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:158)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1390)
+	at org.h2.server.web.WebApp.query(WebApp.java:1063)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1025)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1012)
+	at org.h2.server.web.WebThread.process(WebThread.java:168)
+	at org.h2.server.web.WebThread.run(WebThread.java:93)
+	at java.lang.Thread.run(Unknown Source)
+01-27 15:08:22 database: flush
+org.h2.message.DbException: General error: "java.lang.IllegalStateException: The file is locked: nio:E:/Denis Makarov/IntellijIDEA/Projects/BankApplication/db/BankApplication.mv.db [1.4.185/7]" [50000-185]
+	at org.h2.message.DbException.get(DbException.java:168)
+	at org.h2.message.DbException.convert(DbException.java:295)
+	at org.h2.mvstore.db.MVTableEngine$1.uncaughtException(MVTableEngine.java:93)
+	at org.h2.mvstore.MVStore.panic(MVStore.java:377)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:360)
+	at org.h2.mvstore.MVStore$Builder.open(MVStore.java:2769)
+	at org.h2.mvstore.db.MVTableEngine$Store.<init>(MVTableEngine.java:162)
+	at org.h2.mvstore.db.MVTableEngine.init(MVTableEngine.java:98)
+	at org.h2.engine.Database.getPageStore(Database.java:2379)
+	at org.h2.engine.Database.open(Database.java:666)
+	at org.h2.engine.Database.openDatabase(Database.java:266)
+	at org.h2.engine.Database.<init>(Database.java:260)
+	at org.h2.engine.Engine.openSession(Engine.java:60)
+	at org.h2.engine.Engine.openSession(Engine.java:167)
+	at org.h2.engine.Engine.createSessionAndValidate(Engine.java:145)
+	at org.h2.engine.Engine.createSession(Engine.java:128)
+	at org.h2.engine.Engine.createSession(Engine.java:26)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:347)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:108)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:92)
+	at org.h2.Driver.connect(Driver.java:72)
+	at java.sql.DriverManager.getConnection(DriverManager.java:579)
+	at java.sql.DriverManager.getConnection(DriverManager.java:221)
+	at com.luxoft.bankapp.service.DAO.BaseDAOImpl.openConnection(BaseDAOImpl.java:19)
+	at com.luxoft.bankapp.service.DAO.BankDAOImpl.getBankByName(BankDAOImpl.java:18)
+	at com.luxoft.bankapp.service.BankCommander.main(BankCommander.java:63)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:601)
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:134)
+Caused by: org.h2.jdbc.JdbcSQLException: General error: "java.lang.IllegalStateException: The file is locked: nio:E:/Denis Makarov/IntellijIDEA/Projects/BankApplication/db/BankApplication.mv.db [1.4.185/7]" [50000-185]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	... 31 more
+Caused by: java.lang.IllegalStateException: The file is locked: nio:E:/Denis Makarov/IntellijIDEA/Projects/BankApplication/db/BankApplication.mv.db [1.4.185/7]
+	at org.h2.mvstore.DataUtils.newIllegalStateException(DataUtils.java:773)
+	at org.h2.mvstore.FileStore.open(FileStore.java:170)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:346)
+	... 26 more
+01-27 15:38:58 database: flush
+org.h2.message.DbException: General error: "java.lang.IllegalStateException: The file is locked: nio:E:/Denis Makarov/IntellijIDEA/Projects/BankApplication/db/BankApplication.mv.db [1.4.185/7]" [50000-185]
+	at org.h2.message.DbException.get(DbException.java:168)
+	at org.h2.message.DbException.convert(DbException.java:295)
+	at org.h2.mvstore.db.MVTableEngine$1.uncaughtException(MVTableEngine.java:93)
+	at org.h2.mvstore.MVStore.panic(MVStore.java:377)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:360)
+	at org.h2.mvstore.MVStore$Builder.open(MVStore.java:2769)
+	at org.h2.mvstore.db.MVTableEngine$Store.<init>(MVTableEngine.java:162)
+	at org.h2.mvstore.db.MVTableEngine.init(MVTableEngine.java:98)
+	at org.h2.engine.Database.getPageStore(Database.java:2379)
+	at org.h2.engine.Database.open(Database.java:666)
+	at org.h2.engine.Database.openDatabase(Database.java:266)
+	at org.h2.engine.Database.<init>(Database.java:260)
+	at org.h2.engine.Engine.openSession(Engine.java:60)
+	at org.h2.engine.Engine.openSession(Engine.java:167)
+	at org.h2.engine.Engine.createSessionAndValidate(Engine.java:145)
+	at org.h2.engine.Engine.createSession(Engine.java:128)
+	at org.h2.engine.Engine.createSession(Engine.java:26)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:347)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:108)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:92)
+	at org.h2.Driver.connect(Driver.java:72)
+	at java.sql.DriverManager.getConnection(DriverManager.java:579)
+	at java.sql.DriverManager.getConnection(DriverManager.java:221)
+	at com.luxoft.bankapp.service.DAO.BaseDAOImpl.openConnection(BaseDAOImpl.java:19)
+	at com.luxoft.bankapp.service.DAO.BankDAOImpl.getBankByName(BankDAOImpl.java:18)
+	at com.luxoft.bankapp.service.BankCommander.main(BankCommander.java:63)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:601)
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:134)
+Caused by: org.h2.jdbc.JdbcSQLException: General error: "java.lang.IllegalStateException: The file is locked: nio:E:/Denis Makarov/IntellijIDEA/Projects/BankApplication/db/BankApplication.mv.db [1.4.185/7]" [50000-185]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	... 31 more
+Caused by: java.lang.IllegalStateException: The file is locked: nio:E:/Denis Makarov/IntellijIDEA/Projects/BankApplication/db/BankApplication.mv.db [1.4.185/7]
+	at org.h2.mvstore.DataUtils.newIllegalStateException(DataUtils.java:773)
+	at org.h2.mvstore.FileStore.open(FileStore.java:170)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:346)
+	... 26 more
+01-27 16:12:17 database: flush
+org.h2.message.DbException: General error: "java.lang.IllegalStateException: The file is locked: nio:E:/Denis Makarov/IntellijIDEA/Projects/BankApplication/db/BankApplication.mv.db [1.4.185/7]" [50000-185]
+	at org.h2.message.DbException.get(DbException.java:168)
+	at org.h2.message.DbException.convert(DbException.java:295)
+	at org.h2.mvstore.db.MVTableEngine$1.uncaughtException(MVTableEngine.java:93)
+	at org.h2.mvstore.MVStore.panic(MVStore.java:377)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:360)
+	at org.h2.mvstore.MVStore$Builder.open(MVStore.java:2769)
+	at org.h2.mvstore.db.MVTableEngine$Store.<init>(MVTableEngine.java:162)
+	at org.h2.mvstore.db.MVTableEngine.init(MVTableEngine.java:98)
+	at org.h2.engine.Database.getPageStore(Database.java:2379)
+	at org.h2.engine.Database.open(Database.java:666)
+	at org.h2.engine.Database.openDatabase(Database.java:266)
+	at org.h2.engine.Database.<init>(Database.java:260)
+	at org.h2.engine.Engine.openSession(Engine.java:60)
+	at org.h2.engine.Engine.openSession(Engine.java:167)
+	at org.h2.engine.Engine.createSessionAndValidate(Engine.java:145)
+	at org.h2.engine.Engine.createSession(Engine.java:128)
+	at org.h2.engine.Engine.createSession(Engine.java:26)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:347)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:108)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:92)
+	at org.h2.Driver.connect(Driver.java:72)
+	at java.sql.DriverManager.getConnection(DriverManager.java:579)
+	at java.sql.DriverManager.getConnection(DriverManager.java:221)
+	at com.luxoft.bankapp.service.DAO.BaseDAOImpl.openConnection(BaseDAOImpl.java:18)
+	at com.luxoft.bankapp.service.DAO.BankDAOImpl.getBankByName(BankDAOImpl.java:18)
+	at com.luxoft.bankapp.service.BankCommander.main(BankCommander.java:63)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:601)
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:134)
+Caused by: org.h2.jdbc.JdbcSQLException: General error: "java.lang.IllegalStateException: The file is locked: nio:E:/Denis Makarov/IntellijIDEA/Projects/BankApplication/db/BankApplication.mv.db [1.4.185/7]" [50000-185]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	... 31 more
+Caused by: java.lang.IllegalStateException: The file is locked: nio:E:/Denis Makarov/IntellijIDEA/Projects/BankApplication/db/BankApplication.mv.db [1.4.185/7]
+	at org.h2.mvstore.DataUtils.newIllegalStateException(DataUtils.java:773)
+	at org.h2.mvstore.FileStore.open(FileStore.java:170)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:346)
+	... 26 more
+01-27 17:02:43 database: flush
+org.h2.message.DbException: General error: "java.lang.IllegalStateException: The file is locked: nio:E:/Denis Makarov/IntellijIDEA/Projects/BankApplication/db/BankApplication.mv.db [1.4.185/7]" [50000-185]
+	at org.h2.message.DbException.get(DbException.java:168)
+	at org.h2.message.DbException.convert(DbException.java:295)
+	at org.h2.mvstore.db.MVTableEngine$1.uncaughtException(MVTableEngine.java:93)
+	at org.h2.mvstore.MVStore.panic(MVStore.java:377)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:360)
+	at org.h2.mvstore.MVStore$Builder.open(MVStore.java:2769)
+	at org.h2.mvstore.db.MVTableEngine$Store.<init>(MVTableEngine.java:162)
+	at org.h2.mvstore.db.MVTableEngine.init(MVTableEngine.java:98)
+	at org.h2.engine.Database.getPageStore(Database.java:2379)
+	at org.h2.engine.Database.open(Database.java:666)
+	at org.h2.engine.Database.openDatabase(Database.java:266)
+	at org.h2.engine.Database.<init>(Database.java:260)
+	at org.h2.engine.Engine.openSession(Engine.java:60)
+	at org.h2.engine.Engine.openSession(Engine.java:167)
+	at org.h2.engine.Engine.createSessionAndValidate(Engine.java:145)
+	at org.h2.engine.Engine.createSession(Engine.java:128)
+	at org.h2.engine.Engine.createSession(Engine.java:26)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:347)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:108)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:92)
+	at org.h2.Driver.connect(Driver.java:72)
+	at java.sql.DriverManager.getConnection(DriverManager.java:579)
+	at java.sql.DriverManager.getConnection(DriverManager.java:221)
+	at com.luxoft.bankapp.service.DAO.BaseDAOImpl.openConnection(BaseDAOImpl.java:18)
+	at com.luxoft.bankapp.service.DAO.BankDAOImpl.getBankByName(BankDAOImpl.java:18)
+	at com.luxoft.bankapp.service.BankCommander.main(BankCommander.java:64)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:601)
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:134)
+Caused by: org.h2.jdbc.JdbcSQLException: General error: "java.lang.IllegalStateException: The file is locked: nio:E:/Denis Makarov/IntellijIDEA/Projects/BankApplication/db/BankApplication.mv.db [1.4.185/7]" [50000-185]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	... 31 more
+Caused by: java.lang.IllegalStateException: The file is locked: nio:E:/Denis Makarov/IntellijIDEA/Projects/BankApplication/db/BankApplication.mv.db [1.4.185/7]
+	at org.h2.mvstore.DataUtils.newIllegalStateException(DataUtils.java:773)
+	at org.h2.mvstore.FileStore.open(FileStore.java:170)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:346)
+	... 26 more
+01-27 17:03:12 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Method is only allowed for a query. Use execute or executeUpdate instead of executeQuery; SQL statement:
+DELETE 
+FROM 
+    ACCOUNTS 
+WHERE 
+    CLIENT_ID=? [90002-185]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.message.DbException.get(DbException.java:144)
+	at org.h2.command.Prepared.query(Prepared.java:212)
+	at org.h2.command.CommandContainer.query(CommandContainer.java:90)
+	at org.h2.command.Command.executeQuery(Command.java:197)
+	at org.h2.jdbc.JdbcPreparedStatement.executeQuery(JdbcPreparedStatement.java:108)
+	at com.luxoft.bankapp.service.DAO.AccountDAOImpl.removeByClientId(AccountDAOImpl.java:39)
+	at com.luxoft.bankapp.service.DAO.ClientDAOImpl.remove(ClientDAOImpl.java:244)
+	at com.luxoft.bankapp.service.commanderCommands.RemoveClientCommand.execute(RemoveClientCommand.java:26)
+	at com.luxoft.bankapp.service.BankCommander.main(BankCommander.java:77)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:601)
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:134)
+01-27 17:03:12 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Method is only allowed for a query. Use execute or executeUpdate instead of executeQuery; SQL statement:
+DELETE 
+FROM 
+    CLIENTS
+WHERE 
+    ID=? [90002-185]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.message.DbException.get(DbException.java:144)
+	at org.h2.command.Prepared.query(Prepared.java:212)
+	at org.h2.command.CommandContainer.query(CommandContainer.java:90)
+	at org.h2.command.Command.executeQuery(Command.java:197)
+	at org.h2.jdbc.JdbcPreparedStatement.executeQuery(JdbcPreparedStatement.java:108)
+	at com.luxoft.bankapp.service.DAO.ClientDAOImpl.remove(ClientDAOImpl.java:260)
+	at com.luxoft.bankapp.service.commanderCommands.RemoveClientCommand.execute(RemoveClientCommand.java:26)
+	at com.luxoft.bankapp.service.BankCommander.main(BankCommander.java:77)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:601)
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:134)
+01-27 17:03:16 database: flush
+org.h2.message.DbException: General error: "java.lang.IllegalStateException: The file is locked: nio:E:/Denis Makarov/IntellijIDEA/Projects/BankApplication/db/BankApplication.mv.db [1.4.185/7]" [50000-185]
+	at org.h2.message.DbException.get(DbException.java:168)
+	at org.h2.message.DbException.convert(DbException.java:295)
+	at org.h2.mvstore.db.MVTableEngine$1.uncaughtException(MVTableEngine.java:93)
+	at org.h2.mvstore.MVStore.panic(MVStore.java:377)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:360)
+	at org.h2.mvstore.MVStore$Builder.open(MVStore.java:2769)
+	at org.h2.mvstore.db.MVTableEngine$Store.<init>(MVTableEngine.java:162)
+	at org.h2.mvstore.db.MVTableEngine.init(MVTableEngine.java:98)
+	at org.h2.engine.Database.getPageStore(Database.java:2379)
+	at org.h2.engine.Database.open(Database.java:666)
+	at org.h2.engine.Database.openDatabase(Database.java:266)
+	at org.h2.engine.Database.<init>(Database.java:260)
+	at org.h2.engine.Engine.openSession(Engine.java:60)
+	at org.h2.engine.Engine.openSession(Engine.java:167)
+	at org.h2.engine.Engine.createSessionAndValidate(Engine.java:145)
+	at org.h2.engine.Engine.createSession(Engine.java:128)
+	at org.h2.engine.Engine.createSession(Engine.java:26)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:347)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:108)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:92)
+	at org.h2.Driver.connect(Driver.java:72)
+	at org.h2.server.web.WebServer.getConnection(WebServer.java:750)
+	at org.h2.server.web.WebApp.login(WebApp.java:957)
+	at org.h2.server.web.WebApp.process(WebApp.java:211)
+	at org.h2.server.web.WebApp.processRequest(WebApp.java:170)
+	at org.h2.server.web.WebThread.process(WebThread.java:137)
+	at org.h2.server.web.WebThread.run(WebThread.java:93)
+	at java.lang.Thread.run(Unknown Source)
+Caused by: org.h2.jdbc.JdbcSQLException: General error: "java.lang.IllegalStateException: The file is locked: nio:E:/Denis Makarov/IntellijIDEA/Projects/BankApplication/db/BankApplication.mv.db [1.4.185/7]" [50000-185]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	... 28 more
+Caused by: java.lang.IllegalStateException: The file is locked: nio:E:/Denis Makarov/IntellijIDEA/Projects/BankApplication/db/BankApplication.mv.db [1.4.185/7]
+	at org.h2.mvstore.DataUtils.newIllegalStateException(DataUtils.java:773)
+	at org.h2.mvstore.FileStore.open(FileStore.java:170)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:346)
+	... 23 more
+01-27 17:03:19 database: flush
+org.h2.message.DbException: General error: "java.lang.IllegalStateException: The file is locked: nio:E:/Denis Makarov/IntellijIDEA/Projects/BankApplication/db/BankApplication.mv.db [1.4.185/7]" [50000-185]
+	at org.h2.message.DbException.get(DbException.java:168)
+	at org.h2.message.DbException.convert(DbException.java:295)
+	at org.h2.mvstore.db.MVTableEngine$1.uncaughtException(MVTableEngine.java:93)
+	at org.h2.mvstore.MVStore.panic(MVStore.java:377)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:360)
+	at org.h2.mvstore.MVStore$Builder.open(MVStore.java:2769)
+	at org.h2.mvstore.db.MVTableEngine$Store.<init>(MVTableEngine.java:162)
+	at org.h2.mvstore.db.MVTableEngine.init(MVTableEngine.java:98)
+	at org.h2.engine.Database.getPageStore(Database.java:2379)
+	at org.h2.engine.Database.open(Database.java:666)
+	at org.h2.engine.Database.openDatabase(Database.java:266)
+	at org.h2.engine.Database.<init>(Database.java:260)
+	at org.h2.engine.Engine.openSession(Engine.java:60)
+	at org.h2.engine.Engine.openSession(Engine.java:167)
+	at org.h2.engine.Engine.createSessionAndValidate(Engine.java:145)
+	at org.h2.engine.Engine.createSession(Engine.java:128)
+	at org.h2.engine.Engine.createSession(Engine.java:26)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:347)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:108)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:92)
+	at org.h2.Driver.connect(Driver.java:72)
+	at org.h2.server.web.WebServer.getConnection(WebServer.java:750)
+	at org.h2.server.web.WebApp.login(WebApp.java:957)
+	at org.h2.server.web.WebApp.process(WebApp.java:211)
+	at org.h2.server.web.WebApp.processRequest(WebApp.java:170)
+	at org.h2.server.web.WebThread.process(WebThread.java:137)
+	at org.h2.server.web.WebThread.run(WebThread.java:93)
+	at java.lang.Thread.run(Unknown Source)
+Caused by: org.h2.jdbc.JdbcSQLException: General error: "java.lang.IllegalStateException: The file is locked: nio:E:/Denis Makarov/IntellijIDEA/Projects/BankApplication/db/BankApplication.mv.db [1.4.185/7]" [50000-185]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	... 28 more
+Caused by: java.lang.IllegalStateException: The file is locked: nio:E:/Denis Makarov/IntellijIDEA/Projects/BankApplication/db/BankApplication.mv.db [1.4.185/7]
+	at org.h2.mvstore.DataUtils.newIllegalStateException(DataUtils.java:773)
+	at org.h2.mvstore.FileStore.open(FileStore.java:170)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:346)
+	... 23 more
+01-27 17:07:01 database: flush
+org.h2.message.DbException: General error: "java.lang.IllegalStateException: The file is locked: nio:E:/Denis Makarov/IntellijIDEA/Projects/BankApplication/db/BankApplication.mv.db [1.4.185/7]" [50000-185]
+	at org.h2.message.DbException.get(DbException.java:168)
+	at org.h2.message.DbException.convert(DbException.java:295)
+	at org.h2.mvstore.db.MVTableEngine$1.uncaughtException(MVTableEngine.java:93)
+	at org.h2.mvstore.MVStore.panic(MVStore.java:377)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:360)
+	at org.h2.mvstore.MVStore$Builder.open(MVStore.java:2769)
+	at org.h2.mvstore.db.MVTableEngine$Store.<init>(MVTableEngine.java:162)
+	at org.h2.mvstore.db.MVTableEngine.init(MVTableEngine.java:98)
+	at org.h2.engine.Database.getPageStore(Database.java:2379)
+	at org.h2.engine.Database.open(Database.java:666)
+	at org.h2.engine.Database.openDatabase(Database.java:266)
+	at org.h2.engine.Database.<init>(Database.java:260)
+	at org.h2.engine.Engine.openSession(Engine.java:60)
+	at org.h2.engine.Engine.openSession(Engine.java:167)
+	at org.h2.engine.Engine.createSessionAndValidate(Engine.java:145)
+	at org.h2.engine.Engine.createSession(Engine.java:128)
+	at org.h2.engine.Engine.createSession(Engine.java:26)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:347)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:108)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:92)
+	at org.h2.Driver.connect(Driver.java:72)
+	at java.sql.DriverManager.getConnection(DriverManager.java:579)
+	at java.sql.DriverManager.getConnection(DriverManager.java:221)
+	at com.luxoft.bankapp.service.DAO.BaseDAOImpl.openConnection(BaseDAOImpl.java:18)
+	at com.luxoft.bankapp.service.DAO.BankDAOImpl.getBankByName(BankDAOImpl.java:18)
+	at com.luxoft.bankapp.service.BankCommander.main(BankCommander.java:64)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:601)
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:134)
+Caused by: org.h2.jdbc.JdbcSQLException: General error: "java.lang.IllegalStateException: The file is locked: nio:E:/Denis Makarov/IntellijIDEA/Projects/BankApplication/db/BankApplication.mv.db [1.4.185/7]" [50000-185]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	... 31 more
+Caused by: java.lang.IllegalStateException: The file is locked: nio:E:/Denis Makarov/IntellijIDEA/Projects/BankApplication/db/BankApplication.mv.db [1.4.185/7]
+	at org.h2.mvstore.DataUtils.newIllegalStateException(DataUtils.java:773)
+	at org.h2.mvstore.FileStore.open(FileStore.java:170)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:346)
+	... 26 more
+01-27 17:07:20 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Method is only allowed for a query. Use execute or executeUpdate instead of executeQuery; SQL statement:
+DELETE 
+FROM 
+    ACCOUNTS 
+WHERE 
+    CLIENT_ID=? [90002-185]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.message.DbException.get(DbException.java:144)
+	at org.h2.command.Prepared.query(Prepared.java:212)
+	at org.h2.command.CommandContainer.query(CommandContainer.java:90)
+	at org.h2.command.Command.executeQuery(Command.java:197)
+	at org.h2.jdbc.JdbcPreparedStatement.executeQuery(JdbcPreparedStatement.java:108)
+	at com.luxoft.bankapp.service.DAO.AccountDAOImpl.removeByClientId(AccountDAOImpl.java:39)
+	at com.luxoft.bankapp.service.DAO.ClientDAOImpl.remove(ClientDAOImpl.java:244)
+	at com.luxoft.bankapp.service.commanderCommands.RemoveClientCommand.execute(RemoveClientCommand.java:26)
+	at com.luxoft.bankapp.service.BankCommander.main(BankCommander.java:77)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:601)
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:134)
+01-27 17:07:20 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Method is only allowed for a query. Use execute or executeUpdate instead of executeQuery; SQL statement:
+DELETE 
+FROM 
+    CLIENTS
+WHERE 
+    ID=? [90002-185]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.message.DbException.get(DbException.java:144)
+	at org.h2.command.Prepared.query(Prepared.java:212)
+	at org.h2.command.CommandContainer.query(CommandContainer.java:90)
+	at org.h2.command.Command.executeQuery(Command.java:197)
+	at org.h2.jdbc.JdbcPreparedStatement.executeQuery(JdbcPreparedStatement.java:108)
+	at com.luxoft.bankapp.service.DAO.ClientDAOImpl.remove(ClientDAOImpl.java:260)
+	at com.luxoft.bankapp.service.commanderCommands.RemoveClientCommand.execute(RemoveClientCommand.java:26)
+	at com.luxoft.bankapp.service.BankCommander.main(BankCommander.java:77)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:601)
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:134)
+01-27 17:09:03 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Method is only allowed for a query. Use execute or executeUpdate instead of executeQuery; SQL statement:
+DELETE 
+FROM 
+    ACCOUNTS 
+WHERE 
+    CLIENT_ID=? [90002-185]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.message.DbException.get(DbException.java:144)
+	at org.h2.command.Prepared.query(Prepared.java:212)
+	at org.h2.command.CommandContainer.query(CommandContainer.java:90)
+	at org.h2.command.Command.executeQuery(Command.java:197)
+	at org.h2.jdbc.JdbcPreparedStatement.executeQuery(JdbcPreparedStatement.java:108)
+	at com.luxoft.bankapp.service.DAO.AccountDAOImpl.removeByClientId(AccountDAOImpl.java:40)
+	at com.luxoft.bankapp.service.DAO.ClientDAOImpl.remove(ClientDAOImpl.java:245)
+	at com.luxoft.bankapp.service.commanderCommands.RemoveClientCommand.execute(RemoveClientCommand.java:27)
+	at com.luxoft.bankapp.service.BankCommander.main(BankCommander.java:77)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:601)
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:134)
+01-27 17:09:03 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Method is only allowed for a query. Use execute or executeUpdate instead of executeQuery; SQL statement:
+DELETE 
+FROM 
+    CLIENTS
+WHERE 
+    ID=? [90002-185]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.message.DbException.get(DbException.java:144)
+	at org.h2.command.Prepared.query(Prepared.java:212)
+	at org.h2.command.CommandContainer.query(CommandContainer.java:90)
+	at org.h2.command.Command.executeQuery(Command.java:197)
+	at org.h2.jdbc.JdbcPreparedStatement.executeQuery(JdbcPreparedStatement.java:108)
+	at com.luxoft.bankapp.service.DAO.ClientDAOImpl.remove(ClientDAOImpl.java:261)
+	at com.luxoft.bankapp.service.commanderCommands.RemoveClientCommand.execute(RemoveClientCommand.java:27)
+	at com.luxoft.bankapp.service.BankCommander.main(BankCommander.java:77)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:601)
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:134)
+01-27 17:10:50 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Method is only allowed for a query. Use execute or executeUpdate instead of executeQuery; SQL statement:
+DELETE 
+FROM 
+    ACCOUNTS 
+WHERE 
+    CLIENT_ID=? [90002-185]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.message.DbException.get(DbException.java:144)
+	at org.h2.command.Prepared.query(Prepared.java:212)
+	at org.h2.command.CommandContainer.query(CommandContainer.java:90)
+	at org.h2.command.Command.executeQuery(Command.java:197)
+	at org.h2.jdbc.JdbcPreparedStatement.executeQuery(JdbcPreparedStatement.java:108)
+	at com.luxoft.bankapp.service.DAO.AccountDAOImpl.removeByClientId(AccountDAOImpl.java:40)
+	at com.luxoft.bankapp.service.DAO.ClientDAOImpl.remove(ClientDAOImpl.java:245)
+	at com.luxoft.bankapp.service.commanderCommands.RemoveClientCommand.execute(RemoveClientCommand.java:27)
+	at com.luxoft.bankapp.service.BankCommander.main(BankCommander.java:77)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:601)
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:134)
+01-27 17:10:50 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Method is only allowed for a query. Use execute or executeUpdate instead of executeQuery; SQL statement:
+DELETE 
+FROM 
+    CLIENTS
+WHERE 
+    ID=? [90002-185]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.message.DbException.get(DbException.java:144)
+	at org.h2.command.Prepared.query(Prepared.java:212)
+	at org.h2.command.CommandContainer.query(CommandContainer.java:90)
+	at org.h2.command.Command.executeQuery(Command.java:197)
+	at org.h2.jdbc.JdbcPreparedStatement.executeQuery(JdbcPreparedStatement.java:108)
+	at com.luxoft.bankapp.service.DAO.ClientDAOImpl.remove(ClientDAOImpl.java:262)
+	at com.luxoft.bankapp.service.commanderCommands.RemoveClientCommand.execute(RemoveClientCommand.java:27)
+	at com.luxoft.bankapp.service.BankCommander.main(BankCommander.java:77)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:601)
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:134)
+01-27 17:13:15 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Method is only allowed for a query. Use execute or executeUpdate instead of executeQuery; SQL statement:
+DELETE 
+FROM 
+    ACCOUNTS 
+WHERE 
+    CLIENT_ID=? [90002-185]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.message.DbException.get(DbException.java:144)
+	at org.h2.command.Prepared.query(Prepared.java:212)
+	at org.h2.command.CommandContainer.query(CommandContainer.java:90)
+	at org.h2.command.Command.executeQuery(Command.java:197)
+	at org.h2.jdbc.JdbcPreparedStatement.executeQuery(JdbcPreparedStatement.java:108)
+	at com.luxoft.bankapp.service.DAO.AccountDAOImpl.removeByClientId(AccountDAOImpl.java:40)
+	at com.luxoft.bankapp.service.DAO.ClientDAOImpl.remove(ClientDAOImpl.java:245)
+	at com.luxoft.bankapp.service.commanderCommands.RemoveClientCommand.execute(RemoveClientCommand.java:26)
+	at com.luxoft.bankapp.service.BankCommander.main(BankCommander.java:77)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:601)
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:134)
+01-27 17:13:15 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Method is only allowed for a query. Use execute or executeUpdate instead of executeQuery; SQL statement:
+DELETE 
+FROM 
+    CLIENTS
+WHERE 
+    ID=? [90002-185]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.message.DbException.get(DbException.java:144)
+	at org.h2.command.Prepared.query(Prepared.java:212)
+	at org.h2.command.CommandContainer.query(CommandContainer.java:90)
+	at org.h2.command.Command.executeQuery(Command.java:197)
+	at org.h2.jdbc.JdbcPreparedStatement.executeQuery(JdbcPreparedStatement.java:108)
+	at com.luxoft.bankapp.service.DAO.ClientDAOImpl.remove(ClientDAOImpl.java:262)
+	at com.luxoft.bankapp.service.commanderCommands.RemoveClientCommand.execute(RemoveClientCommand.java:26)
+	at com.luxoft.bankapp.service.BankCommander.main(BankCommander.java:77)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:601)
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:134)
+01-27 17:14:09 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Method is only allowed for a query. Use execute or executeUpdate instead of executeQuery; SQL statement:
+DELETE 
+FROM 
+    ACCOUNTS 
+WHERE 
+    CLIENT_ID=? [90002-185]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.message.DbException.get(DbException.java:144)
+	at org.h2.command.Prepared.query(Prepared.java:212)
+	at org.h2.command.CommandContainer.query(CommandContainer.java:90)
+	at org.h2.command.Command.executeQuery(Command.java:197)
+	at org.h2.jdbc.JdbcPreparedStatement.executeQuery(JdbcPreparedStatement.java:108)
+	at com.luxoft.bankapp.service.DAO.AccountDAOImpl.removeByClientId(AccountDAOImpl.java:41)
+	at com.luxoft.bankapp.service.DAO.ClientDAOImpl.remove(ClientDAOImpl.java:245)
+	at com.luxoft.bankapp.service.commanderCommands.RemoveClientCommand.execute(RemoveClientCommand.java:26)
+	at com.luxoft.bankapp.service.BankCommander.main(BankCommander.java:77)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:601)
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:134)
+01-27 17:14:09 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Method is only allowed for a query. Use execute or executeUpdate instead of executeQuery; SQL statement:
+DELETE 
+FROM 
+    CLIENTS
+WHERE 
+    ID=? [90002-185]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.message.DbException.get(DbException.java:144)
+	at org.h2.command.Prepared.query(Prepared.java:212)
+	at org.h2.command.CommandContainer.query(CommandContainer.java:90)
+	at org.h2.command.Command.executeQuery(Command.java:197)
+	at org.h2.jdbc.JdbcPreparedStatement.executeQuery(JdbcPreparedStatement.java:108)
+	at com.luxoft.bankapp.service.DAO.ClientDAOImpl.remove(ClientDAOImpl.java:262)
+	at com.luxoft.bankapp.service.commanderCommands.RemoveClientCommand.execute(RemoveClientCommand.java:26)
+	at com.luxoft.bankapp.service.BankCommander.main(BankCommander.java:77)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:601)
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:134)
+01-27 17:16:17 database: flush
+org.h2.message.DbException: General error: "java.lang.IllegalStateException: The file is locked: nio:E:/Denis Makarov/IntellijIDEA/Projects/BankApplication/db/BankApplication.mv.db [1.4.185/7]" [50000-185]
+	at org.h2.message.DbException.get(DbException.java:168)
+	at org.h2.message.DbException.convert(DbException.java:295)
+	at org.h2.mvstore.db.MVTableEngine$1.uncaughtException(MVTableEngine.java:93)
+	at org.h2.mvstore.MVStore.panic(MVStore.java:377)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:360)
+	at org.h2.mvstore.MVStore$Builder.open(MVStore.java:2769)
+	at org.h2.mvstore.db.MVTableEngine$Store.<init>(MVTableEngine.java:162)
+	at org.h2.mvstore.db.MVTableEngine.init(MVTableEngine.java:98)
+	at org.h2.engine.Database.getPageStore(Database.java:2379)
+	at org.h2.engine.Database.open(Database.java:666)
+	at org.h2.engine.Database.openDatabase(Database.java:266)
+	at org.h2.engine.Database.<init>(Database.java:260)
+	at org.h2.engine.Engine.openSession(Engine.java:60)
+	at org.h2.engine.Engine.openSession(Engine.java:167)
+	at org.h2.engine.Engine.createSessionAndValidate(Engine.java:145)
+	at org.h2.engine.Engine.createSession(Engine.java:128)
+	at org.h2.engine.Engine.createSession(Engine.java:26)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:347)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:108)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:92)
+	at org.h2.Driver.connect(Driver.java:72)
+	at java.sql.DriverManager.getConnection(DriverManager.java:579)
+	at java.sql.DriverManager.getConnection(DriverManager.java:221)
+	at com.luxoft.bankapp.service.DAO.BaseDAOImpl.openConnection(BaseDAOImpl.java:18)
+	at com.luxoft.bankapp.service.DAO.BankDAOImpl.getBankByName(BankDAOImpl.java:18)
+	at com.luxoft.bankapp.service.BankCommander.main(BankCommander.java:64)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:601)
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:134)
+Caused by: org.h2.jdbc.JdbcSQLException: General error: "java.lang.IllegalStateException: The file is locked: nio:E:/Denis Makarov/IntellijIDEA/Projects/BankApplication/db/BankApplication.mv.db [1.4.185/7]" [50000-185]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	... 31 more
+Caused by: java.lang.IllegalStateException: The file is locked: nio:E:/Denis Makarov/IntellijIDEA/Projects/BankApplication/db/BankApplication.mv.db [1.4.185/7]
+	at org.h2.mvstore.DataUtils.newIllegalStateException(DataUtils.java:773)
+	at org.h2.mvstore.FileStore.open(FileStore.java:170)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:346)
+	... 26 more
+01-27 17:16:28 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Method is only allowed for a query. Use execute or executeUpdate instead of executeQuery; SQL statement:
+DELETE 
+FROM 
+    ACCOUNTS 
+WHERE 
+    CLIENT_ID=? [90002-185]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.message.DbException.get(DbException.java:144)
+	at org.h2.command.Prepared.query(Prepared.java:212)
+	at org.h2.command.CommandContainer.query(CommandContainer.java:90)
+	at org.h2.command.Command.executeQuery(Command.java:197)
+	at org.h2.jdbc.JdbcPreparedStatement.executeQuery(JdbcPreparedStatement.java:108)
+	at com.luxoft.bankapp.service.DAO.AccountDAOImpl.removeByClientId(AccountDAOImpl.java:41)
+	at com.luxoft.bankapp.service.DAO.ClientDAOImpl.remove(ClientDAOImpl.java:245)
+	at com.luxoft.bankapp.service.commanderCommands.RemoveClientCommand.execute(RemoveClientCommand.java:26)
+	at com.luxoft.bankapp.service.BankCommander.main(BankCommander.java:77)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:601)
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:134)
+01-27 17:16:28 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Method is only allowed for a query. Use execute or executeUpdate instead of executeQuery; SQL statement:
+DELETE 
+FROM 
+    CLIENTS
+WHERE 
+    ID=? [90002-185]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.message.DbException.get(DbException.java:144)
+	at org.h2.command.Prepared.query(Prepared.java:212)
+	at org.h2.command.CommandContainer.query(CommandContainer.java:90)
+	at org.h2.command.Command.executeQuery(Command.java:197)
+	at org.h2.jdbc.JdbcPreparedStatement.executeQuery(JdbcPreparedStatement.java:108)
+	at com.luxoft.bankapp.service.DAO.ClientDAOImpl.remove(ClientDAOImpl.java:262)
+	at com.luxoft.bankapp.service.commanderCommands.RemoveClientCommand.execute(RemoveClientCommand.java:26)
+	at com.luxoft.bankapp.service.BankCommander.main(BankCommander.java:77)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:601)
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:134)
+01-27 17:17:50 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Method is only allowed for a query. Use execute or executeUpdate instead of executeQuery; SQL statement:
+DELETE 
+FROM 
+    CLIENTS
+WHERE 
+    ID=? [90002-185]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.message.DbException.get(DbException.java:144)
+	at org.h2.command.Prepared.query(Prepared.java:212)
+	at org.h2.command.CommandContainer.query(CommandContainer.java:90)
+	at org.h2.command.Command.executeQuery(Command.java:197)
+	at org.h2.jdbc.JdbcPreparedStatement.executeQuery(JdbcPreparedStatement.java:108)
+	at com.luxoft.bankapp.service.DAO.ClientDAOImpl.remove(ClientDAOImpl.java:262)
+	at com.luxoft.bankapp.service.commanderCommands.RemoveClientCommand.execute(RemoveClientCommand.java:26)
+	at com.luxoft.bankapp.service.BankCommander.main(BankCommander.java:77)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:601)
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:134)
+01-27 17:36:36 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "UPDATE 
+    ACCOUNTS 
+SET 
+    BALANCE=123,
+    OVERDRAFT=123,
+WHERE[*] ID=1"; expected "identifier"; SQL statement:
+UPDATE 
+    ACCOUNTS 
+SET 
+    BALANCE=123,
+    OVERDRAFT=123,
+WHERE ID=1 [42001-185]
+01-27 18:11:07 database: flush
+org.h2.message.DbException: General error: "java.lang.IllegalStateException: The file is locked: nio:E:/Denis Makarov/IntellijIDEA/Projects/BankApplication/db/BankApplication.mv.db [1.4.185/7]" [50000-185]
+	at org.h2.message.DbException.get(DbException.java:168)
+	at org.h2.message.DbException.convert(DbException.java:295)
+	at org.h2.mvstore.db.MVTableEngine$1.uncaughtException(MVTableEngine.java:93)
+	at org.h2.mvstore.MVStore.panic(MVStore.java:377)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:360)
+	at org.h2.mvstore.MVStore$Builder.open(MVStore.java:2769)
+	at org.h2.mvstore.db.MVTableEngine$Store.<init>(MVTableEngine.java:162)
+	at org.h2.mvstore.db.MVTableEngine.init(MVTableEngine.java:98)
+	at org.h2.engine.Database.getPageStore(Database.java:2379)
+	at org.h2.engine.Database.open(Database.java:666)
+	at org.h2.engine.Database.openDatabase(Database.java:266)
+	at org.h2.engine.Database.<init>(Database.java:260)
+	at org.h2.engine.Engine.openSession(Engine.java:60)
+	at org.h2.engine.Engine.openSession(Engine.java:167)
+	at org.h2.engine.Engine.createSessionAndValidate(Engine.java:145)
+	at org.h2.engine.Engine.createSession(Engine.java:128)
+	at org.h2.engine.Engine.createSession(Engine.java:26)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:347)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:108)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:92)
+	at org.h2.Driver.connect(Driver.java:72)
+	at java.sql.DriverManager.getConnection(DriverManager.java:579)
+	at java.sql.DriverManager.getConnection(DriverManager.java:221)
+	at com.luxoft.bankapp.service.DAO.BaseDAOImpl.openConnection(BaseDAOImpl.java:18)
+	at com.luxoft.bankapp.service.DAO.BankDAOImpl.getBankByName(BankDAOImpl.java:18)
+	at com.luxoft.bankapp.service.BankCommander.main(BankCommander.java:64)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:601)
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:134)
+Caused by: org.h2.jdbc.JdbcSQLException: General error: "java.lang.IllegalStateException: The file is locked: nio:E:/Denis Makarov/IntellijIDEA/Projects/BankApplication/db/BankApplication.mv.db [1.4.185/7]" [50000-185]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	... 31 more
+Caused by: java.lang.IllegalStateException: The file is locked: nio:E:/Denis Makarov/IntellijIDEA/Projects/BankApplication/db/BankApplication.mv.db [1.4.185/7]
+	at org.h2.mvstore.DataUtils.newIllegalStateException(DataUtils.java:773)
+	at org.h2.mvstore.FileStore.open(FileStore.java:170)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:346)
+	... 26 more
+01-27 18:12:07 database: flush
+org.h2.message.DbException: General error: "java.lang.IllegalStateException: The file is locked: nio:E:/Denis Makarov/IntellijIDEA/Projects/BankApplication/db/BankApplication.mv.db [1.4.185/7]" [50000-185]
+	at org.h2.message.DbException.get(DbException.java:168)
+	at org.h2.message.DbException.convert(DbException.java:295)
+	at org.h2.mvstore.db.MVTableEngine$1.uncaughtException(MVTableEngine.java:93)
+	at org.h2.mvstore.MVStore.panic(MVStore.java:377)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:360)
+	at org.h2.mvstore.MVStore$Builder.open(MVStore.java:2769)
+	at org.h2.mvstore.db.MVTableEngine$Store.<init>(MVTableEngine.java:162)
+	at org.h2.mvstore.db.MVTableEngine.init(MVTableEngine.java:98)
+	at org.h2.engine.Database.getPageStore(Database.java:2379)
+	at org.h2.engine.Database.open(Database.java:666)
+	at org.h2.engine.Database.openDatabase(Database.java:266)
+	at org.h2.engine.Database.<init>(Database.java:260)
+	at org.h2.engine.Engine.openSession(Engine.java:60)
+	at org.h2.engine.Engine.openSession(Engine.java:167)
+	at org.h2.engine.Engine.createSessionAndValidate(Engine.java:145)
+	at org.h2.engine.Engine.createSession(Engine.java:128)
+	at org.h2.engine.Engine.createSession(Engine.java:26)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:347)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:108)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:92)
+	at org.h2.Driver.connect(Driver.java:72)
+	at java.sql.DriverManager.getConnection(DriverManager.java:579)
+	at java.sql.DriverManager.getConnection(DriverManager.java:221)
+	at com.luxoft.bankapp.service.DAO.BaseDAOImpl.openConnection(BaseDAOImpl.java:18)
+	at com.luxoft.bankapp.service.DAO.ClientDAOImpl.findClientByName(ClientDAOImpl.java:20)
+	at com.luxoft.bankapp.service.BankServiceImpl.findClient(BankServiceImpl.java:66)
+	at com.luxoft.bankapp.service.commanderCommands.FindClientCommand.execute(FindClientCommand.java:24)
+	at com.luxoft.bankapp.service.BankCommander.main(BankCommander.java:77)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:601)
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:134)
+Caused by: org.h2.jdbc.JdbcSQLException: General error: "java.lang.IllegalStateException: The file is locked: nio:E:/Denis Makarov/IntellijIDEA/Projects/BankApplication/db/BankApplication.mv.db [1.4.185/7]" [50000-185]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	... 33 more
+Caused by: java.lang.IllegalStateException: The file is locked: nio:E:/Denis Makarov/IntellijIDEA/Projects/BankApplication/db/BankApplication.mv.db [1.4.185/7]
+	at org.h2.mvstore.DataUtils.newIllegalStateException(DataUtils.java:773)
+	at org.h2.mvstore.FileStore.open(FileStore.java:170)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:346)
+	... 28 more
+01-27 18:18:02 database: flush
+org.h2.message.DbException: General error: "java.lang.IllegalStateException: The file is locked: nio:E:/Denis Makarov/IntellijIDEA/Projects/BankApplication/db/BankApplication.mv.db [1.4.185/7]" [50000-185]
+	at org.h2.message.DbException.get(DbException.java:168)
+	at org.h2.message.DbException.convert(DbException.java:295)
+	at org.h2.mvstore.db.MVTableEngine$1.uncaughtException(MVTableEngine.java:93)
+	at org.h2.mvstore.MVStore.panic(MVStore.java:377)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:360)
+	at org.h2.mvstore.MVStore$Builder.open(MVStore.java:2769)
+	at org.h2.mvstore.db.MVTableEngine$Store.<init>(MVTableEngine.java:162)
+	at org.h2.mvstore.db.MVTableEngine.init(MVTableEngine.java:98)
+	at org.h2.engine.Database.getPageStore(Database.java:2379)
+	at org.h2.engine.Database.open(Database.java:666)
+	at org.h2.engine.Database.openDatabase(Database.java:266)
+	at org.h2.engine.Database.<init>(Database.java:260)
+	at org.h2.engine.Engine.openSession(Engine.java:60)
+	at org.h2.engine.Engine.openSession(Engine.java:167)
+	at org.h2.engine.Engine.createSessionAndValidate(Engine.java:145)
+	at org.h2.engine.Engine.createSession(Engine.java:128)
+	at org.h2.engine.Engine.createSession(Engine.java:26)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:347)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:108)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:92)
+	at org.h2.Driver.connect(Driver.java:72)
+	at java.sql.DriverManager.getConnection(DriverManager.java:579)
+	at java.sql.DriverManager.getConnection(DriverManager.java:221)
+	at com.luxoft.bankapp.service.DAO.BaseDAOImpl.openConnection(BaseDAOImpl.java:18)
+	at com.luxoft.bankapp.service.DAO.BankDAOImpl.getBankByName(BankDAOImpl.java:18)
+	at com.luxoft.bankapp.service.BankCommander.main(BankCommander.java:64)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:601)
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:134)
+Caused by: org.h2.jdbc.JdbcSQLException: General error: "java.lang.IllegalStateException: The file is locked: nio:E:/Denis Makarov/IntellijIDEA/Projects/BankApplication/db/BankApplication.mv.db [1.4.185/7]" [50000-185]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	... 31 more
+Caused by: java.lang.IllegalStateException: The file is locked: nio:E:/Denis Makarov/IntellijIDEA/Projects/BankApplication/db/BankApplication.mv.db [1.4.185/7]
+	at org.h2.mvstore.DataUtils.newIllegalStateException(DataUtils.java:773)
+	at org.h2.mvstore.FileStore.open(FileStore.java:170)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:346)
+	... 26 more
+01-27 18:37:43 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "CLIENT" not found; SQL statement:
+INSERT INTO CLIENT (BANK_ID,NAME,GENDER,EMAIL,PHONE,CITY,ACTIVEACCOUNT_ID) VALUES (?,?,?,?,?,?,?) [42102-185]
+01-27 18:39:53 database: flush
+org.h2.message.DbException: General error: "java.lang.IllegalStateException: The file is locked: nio:E:/Denis Makarov/IntellijIDEA/Projects/BankApplication/db/BankApplication.mv.db [1.4.185/7]" [50000-185]
+	at org.h2.message.DbException.get(DbException.java:168)
+	at org.h2.message.DbException.convert(DbException.java:295)
+	at org.h2.mvstore.db.MVTableEngine$1.uncaughtException(MVTableEngine.java:93)
+	at org.h2.mvstore.MVStore.panic(MVStore.java:377)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:360)
+	at org.h2.mvstore.MVStore$Builder.open(MVStore.java:2769)
+	at org.h2.mvstore.db.MVTableEngine$Store.<init>(MVTableEngine.java:162)
+	at org.h2.mvstore.db.MVTableEngine.init(MVTableEngine.java:98)
+	at org.h2.engine.Database.getPageStore(Database.java:2379)
+	at org.h2.engine.Database.open(Database.java:666)
+	at org.h2.engine.Database.openDatabase(Database.java:266)
+	at org.h2.engine.Database.<init>(Database.java:260)
+	at org.h2.engine.Engine.openSession(Engine.java:60)
+	at org.h2.engine.Engine.openSession(Engine.java:167)
+	at org.h2.engine.Engine.createSessionAndValidate(Engine.java:145)
+	at org.h2.engine.Engine.createSession(Engine.java:128)
+	at org.h2.engine.Engine.createSession(Engine.java:26)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:347)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:108)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:92)
+	at org.h2.Driver.connect(Driver.java:72)
+	at java.sql.DriverManager.getConnection(DriverManager.java:579)
+	at java.sql.DriverManager.getConnection(DriverManager.java:221)
+	at com.luxoft.bankapp.service.DAO.BaseDAOImpl.openConnection(BaseDAOImpl.java:18)
+	at com.luxoft.bankapp.service.DAO.BankDAOImpl.getBankByName(BankDAOImpl.java:18)
+	at com.luxoft.bankapp.service.BankCommander.main(BankCommander.java:64)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:601)
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:134)
+Caused by: org.h2.jdbc.JdbcSQLException: General error: "java.lang.IllegalStateException: The file is locked: nio:E:/Denis Makarov/IntellijIDEA/Projects/BankApplication/db/BankApplication.mv.db [1.4.185/7]" [50000-185]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	... 31 more
+Caused by: java.lang.IllegalStateException: The file is locked: nio:E:/Denis Makarov/IntellijIDEA/Projects/BankApplication/db/BankApplication.mv.db [1.4.185/7]
+	at org.h2.mvstore.DataUtils.newIllegalStateException(DataUtils.java:773)
+	at org.h2.mvstore.FileStore.open(FileStore.java:170)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:346)
+	... 26 more
+01-27 18:40:10 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "CLIENT" not found; SQL statement:
+INSERT INTO CLIENT (BANK_ID,NAME,GENDER,EMAIL,PHONE,CITY,ACTIVEACCOUNT_ID) VALUES (?,?,?,?,?,?,?) [42102-185]
+01-27 18:42:30 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "CLIENT" not found; SQL statement:
+INSERT INTO CLIENT (BANK_ID,NAME,GENDER,EMAIL,PHONE,CITY,ACTIVEACCOUNT_ID) VALUES (?,?,?,?,?,?,?) [42102-185]
+01-27 18:43:06 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Column "ACTIVEACCOUNT_ID" not found; SQL statement:
+INSERT INTO CLIENTS (BANK_ID,NAME,GENDER,EMAIL,PHONE,CITY,ACTIVEACCOUNT_ID) VALUES (?,?,?,?,?,?,?) [42122-185]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.table.Table.getColumn(Table.java:648)
+	at org.h2.command.Parser.parseColumn(Parser.java:856)
+	at org.h2.command.Parser.parseColumnList(Parser.java:840)
+	at org.h2.command.Parser.parseInsert(Parser.java:1040)
+	at org.h2.command.Parser.parsePrepared(Parser.java:401)
+	at org.h2.command.Parser.parse(Parser.java:305)
+	at org.h2.command.Parser.parse(Parser.java:277)
+	at org.h2.command.Parser.prepareCommand(Parser.java:242)
+	at org.h2.engine.Session.prepareLocal(Session.java:446)
+	at org.h2.engine.Session.prepareCommand(Session.java:388)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1189)
+	at org.h2.jdbc.JdbcPreparedStatement.<init>(JdbcPreparedStatement.java:72)
+	at org.h2.jdbc.JdbcConnection.prepareStatement(JdbcConnection.java:277)
+	at com.luxoft.bankapp.service.DAO.ClientDAOImpl.insert(ClientDAOImpl.java:292)
+	at com.luxoft.bankapp.service.commanderCommands.AddClientCommand.execute(AddClientCommand.java:40)
+	at com.luxoft.bankapp.service.BankCommander.main(BankCommander.java:77)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:601)
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:134)
+01-27 18:44:14 database: flush
+org.h2.message.DbException: General error: "java.lang.IllegalStateException: The file is locked: nio:E:/Denis Makarov/IntellijIDEA/Projects/BankApplication/db/BankApplication.mv.db [1.4.185/7]" [50000-185]
+	at org.h2.message.DbException.get(DbException.java:168)
+	at org.h2.message.DbException.convert(DbException.java:295)
+	at org.h2.mvstore.db.MVTableEngine$1.uncaughtException(MVTableEngine.java:93)
+	at org.h2.mvstore.MVStore.panic(MVStore.java:377)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:360)
+	at org.h2.mvstore.MVStore$Builder.open(MVStore.java:2769)
+	at org.h2.mvstore.db.MVTableEngine$Store.<init>(MVTableEngine.java:162)
+	at org.h2.mvstore.db.MVTableEngine.init(MVTableEngine.java:98)
+	at org.h2.engine.Database.getPageStore(Database.java:2379)
+	at org.h2.engine.Database.open(Database.java:666)
+	at org.h2.engine.Database.openDatabase(Database.java:266)
+	at org.h2.engine.Database.<init>(Database.java:260)
+	at org.h2.engine.Engine.openSession(Engine.java:60)
+	at org.h2.engine.Engine.openSession(Engine.java:167)
+	at org.h2.engine.Engine.createSessionAndValidate(Engine.java:145)
+	at org.h2.engine.Engine.createSession(Engine.java:128)
+	at org.h2.engine.Engine.createSession(Engine.java:26)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:347)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:108)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:92)
+	at org.h2.Driver.connect(Driver.java:72)
+	at java.sql.DriverManager.getConnection(DriverManager.java:579)
+	at java.sql.DriverManager.getConnection(DriverManager.java:221)
+	at com.luxoft.bankapp.service.DAO.BaseDAOImpl.openConnection(BaseDAOImpl.java:18)
+	at com.luxoft.bankapp.service.DAO.BankDAOImpl.getBankByName(BankDAOImpl.java:18)
+	at com.luxoft.bankapp.service.BankCommander.main(BankCommander.java:64)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:601)
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:134)
+Caused by: org.h2.jdbc.JdbcSQLException: General error: "java.lang.IllegalStateException: The file is locked: nio:E:/Denis Makarov/IntellijIDEA/Projects/BankApplication/db/BankApplication.mv.db [1.4.185/7]" [50000-185]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	... 31 more
+Caused by: java.lang.IllegalStateException: The file is locked: nio:E:/Denis Makarov/IntellijIDEA/Projects/BankApplication/db/BankApplication.mv.db [1.4.185/7]
+	at org.h2.mvstore.DataUtils.newIllegalStateException(DataUtils.java:773)
+	at org.h2.mvstore.FileStore.open(FileStore.java:170)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:346)
+	... 26 more
+01-27 18:44:26 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Data conversion error converting "'null' (CLIENTS: ACTIVE_ACCOUNT_ID INT)"; SQL statement:
+INSERT INTO CLIENTS (BANK_ID,NAME,GENDER,EMAIL,PHONE,CITY,ACTIVE_ACCOUNT_ID) VALUES (?,?,?,?,?,?,?) -- (?1, ?2, ?3, ?4, ?5, ?6, ?7) [22018-185]
+01-27 18:46:17 database: flush
+org.h2.message.DbException: General error: "java.lang.IllegalStateException: The file is locked: nio:E:/Denis Makarov/IntellijIDEA/Projects/BankApplication/db/BankApplication.mv.db [1.4.185/7]" [50000-185]
+	at org.h2.message.DbException.get(DbException.java:168)
+	at org.h2.message.DbException.convert(DbException.java:295)
+	at org.h2.mvstore.db.MVTableEngine$1.uncaughtException(MVTableEngine.java:93)
+	at org.h2.mvstore.MVStore.panic(MVStore.java:377)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:360)
+	at org.h2.mvstore.MVStore$Builder.open(MVStore.java:2769)
+	at org.h2.mvstore.db.MVTableEngine$Store.<init>(MVTableEngine.java:162)
+	at org.h2.mvstore.db.MVTableEngine.init(MVTableEngine.java:98)
+	at org.h2.engine.Database.getPageStore(Database.java:2379)
+	at org.h2.engine.Database.open(Database.java:666)
+	at org.h2.engine.Database.openDatabase(Database.java:266)
+	at org.h2.engine.Database.<init>(Database.java:260)
+	at org.h2.engine.Engine.openSession(Engine.java:60)
+	at org.h2.engine.Engine.openSession(Engine.java:167)
+	at org.h2.engine.Engine.createSessionAndValidate(Engine.java:145)
+	at org.h2.engine.Engine.createSession(Engine.java:128)
+	at org.h2.engine.Engine.createSession(Engine.java:26)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:347)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:108)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:92)
+	at org.h2.Driver.connect(Driver.java:72)
+	at java.sql.DriverManager.getConnection(DriverManager.java:579)
+	at java.sql.DriverManager.getConnection(DriverManager.java:221)
+	at com.luxoft.bankapp.service.DAO.BaseDAOImpl.openConnection(BaseDAOImpl.java:18)
+	at com.luxoft.bankapp.service.DAO.BankDAOImpl.getBankByName(BankDAOImpl.java:18)
+	at com.luxoft.bankapp.service.BankCommander.main(BankCommander.java:64)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:601)
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:134)
+Caused by: org.h2.jdbc.JdbcSQLException: General error: "java.lang.IllegalStateException: The file is locked: nio:E:/Denis Makarov/IntellijIDEA/Projects/BankApplication/db/BankApplication.mv.db [1.4.185/7]" [50000-185]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	... 31 more
+Caused by: java.lang.IllegalStateException: The file is locked: nio:E:/Denis Makarov/IntellijIDEA/Projects/BankApplication/db/BankApplication.mv.db [1.4.185/7]
+	at org.h2.mvstore.DataUtils.newIllegalStateException(DataUtils.java:773)
+	at org.h2.mvstore.FileStore.open(FileStore.java:170)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:346)
+	... 26 more
+01-27 18:46:30 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Data conversion error converting "'null' (CLIENTS: ACTIVE_ACCOUNT_ID INT)"; SQL statement:
+INSERT INTO CLIENTS (BANK_ID,NAME,GENDER,EMAIL,PHONE,CITY,ACTIVE_ACCOUNT_ID) VALUES (?,?,?,?,?,?,?) -- (?1, ?2, ?3, ?4, ?5, ?6, ?7) [22018-185]
+01-27 18:49:41 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "ALTER TABLE ACCOUNTS
+ADD FOREIGN KEY (CLIENT_ID) 
+REFERENCES CLIENTS(ID)
+
+INSERT[*] INTO CLIENTS (BANK_ID,NAME,GENDER,EMAIL,PHONE,CITY,ACTIVE_ACCOUNT_ID) VALUES (1,'Денис Макаров','m','denm@ukr.net','(078)2332211','Киев',1)"; SQL statement:
+ALTER TABLE ACCOUNTS
+ADD FOREIGN KEY (CLIENT_ID) 
+REFERENCES CLIENTS(ID)
+
+INSERT INTO CLIENTS (BANK_ID,NAME,GENDER,EMAIL,PHONE,CITY,ACTIVE_ACCOUNT_ID) VALUES (1,'Денис Макаров','m','denm@ukr.net','(078)2332211','Киев',1) [42000-185]
+01-27 18:51:01 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Data conversion error converting "'null' (CLIENTS: ACTIVE_ACCOUNT_ID INT)"; SQL statement:
+INSERT INTO CLIENTS (BANK_ID,NAME,GENDER,EMAIL,PHONE,CITY,ACTIVE_ACCOUNT_ID) VALUES (?,?,?,?,?,?,?) -- (?1, ?2, ?3, ?4, ?5, ?6, ?7) [22018-185]
+01-27 18:52:48 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Data conversion error converting "'null' (CLIENTS: ACTIVE_ACCOUNT_ID INT)"; SQL statement:
+INSERT INTO CLIENTS (BANK_ID,NAME,GENDER,EMAIL,PHONE,CITY,ACTIVE_ACCOUNT_ID) VALUES (1,'Коля Иванов','m','kolya@ukr.net','(098)1234455','Киев','null') -- (1, STRINGDECODE('\u041a\u043e\u043b\u044f \u0418\u0432\u0430\u043d\u043e\u0432'), 'm', 'kolya@ukr.net', '(098)1234455', STRINGDECODE('\u041a\u0438\u0435\u0432'), 'null') [22018-185]
+01-27 18:53:52 database: flush
+org.h2.message.DbException: General error: "java.lang.IllegalStateException: The file is locked: nio:E:/Denis Makarov/IntellijIDEA/Projects/BankApplication/db/BankApplication.mv.db [1.4.185/7]" [50000-185]
+	at org.h2.message.DbException.get(DbException.java:168)
+	at org.h2.message.DbException.convert(DbException.java:295)
+	at org.h2.mvstore.db.MVTableEngine$1.uncaughtException(MVTableEngine.java:93)
+	at org.h2.mvstore.MVStore.panic(MVStore.java:377)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:360)
+	at org.h2.mvstore.MVStore$Builder.open(MVStore.java:2769)
+	at org.h2.mvstore.db.MVTableEngine$Store.<init>(MVTableEngine.java:162)
+	at org.h2.mvstore.db.MVTableEngine.init(MVTableEngine.java:98)
+	at org.h2.engine.Database.getPageStore(Database.java:2379)
+	at org.h2.engine.Database.open(Database.java:666)
+	at org.h2.engine.Database.openDatabase(Database.java:266)
+	at org.h2.engine.Database.<init>(Database.java:260)
+	at org.h2.engine.Engine.openSession(Engine.java:60)
+	at org.h2.engine.Engine.openSession(Engine.java:167)
+	at org.h2.engine.Engine.createSessionAndValidate(Engine.java:145)
+	at org.h2.engine.Engine.createSession(Engine.java:128)
+	at org.h2.engine.Engine.createSession(Engine.java:26)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:347)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:108)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:92)
+	at org.h2.Driver.connect(Driver.java:72)
+	at java.sql.DriverManager.getConnection(DriverManager.java:579)
+	at java.sql.DriverManager.getConnection(DriverManager.java:221)
+	at com.luxoft.bankapp.service.DAO.BaseDAOImpl.openConnection(BaseDAOImpl.java:18)
+	at com.luxoft.bankapp.service.DAO.BankDAOImpl.getBankByName(BankDAOImpl.java:18)
+	at com.luxoft.bankapp.service.BankCommander.main(BankCommander.java:64)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:601)
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:134)
+Caused by: org.h2.jdbc.JdbcSQLException: General error: "java.lang.IllegalStateException: The file is locked: nio:E:/Denis Makarov/IntellijIDEA/Projects/BankApplication/db/BankApplication.mv.db [1.4.185/7]" [50000-185]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	... 31 more
+Caused by: java.lang.IllegalStateException: The file is locked: nio:E:/Denis Makarov/IntellijIDEA/Projects/BankApplication/db/BankApplication.mv.db [1.4.185/7]
+	at org.h2.mvstore.DataUtils.newIllegalStateException(DataUtils.java:773)
+	at org.h2.mvstore.FileStore.open(FileStore.java:170)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:346)
+	... 26 more
+01-27 18:54:03 database: flush
+org.h2.message.DbException: General error: "java.lang.IllegalStateException: The file is locked: nio:E:/Denis Makarov/IntellijIDEA/Projects/BankApplication/db/BankApplication.mv.db [1.4.185/7]" [50000-185]
+	at org.h2.message.DbException.get(DbException.java:168)
+	at org.h2.message.DbException.convert(DbException.java:295)
+	at org.h2.mvstore.db.MVTableEngine$1.uncaughtException(MVTableEngine.java:93)
+	at org.h2.mvstore.MVStore.panic(MVStore.java:377)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:360)
+	at org.h2.mvstore.MVStore$Builder.open(MVStore.java:2769)
+	at org.h2.mvstore.db.MVTableEngine$Store.<init>(MVTableEngine.java:162)
+	at org.h2.mvstore.db.MVTableEngine.init(MVTableEngine.java:98)
+	at org.h2.engine.Database.getPageStore(Database.java:2379)
+	at org.h2.engine.Database.open(Database.java:666)
+	at org.h2.engine.Database.openDatabase(Database.java:266)
+	at org.h2.engine.Database.<init>(Database.java:260)
+	at org.h2.engine.Engine.openSession(Engine.java:60)
+	at org.h2.engine.Engine.openSession(Engine.java:167)
+	at org.h2.engine.Engine.createSessionAndValidate(Engine.java:145)
+	at org.h2.engine.Engine.createSession(Engine.java:128)
+	at org.h2.engine.Engine.createSession(Engine.java:26)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:347)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:108)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:92)
+	at org.h2.Driver.connect(Driver.java:72)
+	at java.sql.DriverManager.getConnection(DriverManager.java:579)
+	at java.sql.DriverManager.getConnection(DriverManager.java:221)
+	at com.luxoft.bankapp.service.DAO.BaseDAOImpl.openConnection(BaseDAOImpl.java:18)
+	at com.luxoft.bankapp.service.DAO.BankDAOImpl.getBankByName(BankDAOImpl.java:18)
+	at com.luxoft.bankapp.service.BankCommander.main(BankCommander.java:64)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:601)
+	at com.intellij.rt.execution.application.AppMain.main(AppMain.java:134)
+Caused by: org.h2.jdbc.JdbcSQLException: General error: "java.lang.IllegalStateException: The file is locked: nio:E:/Denis Makarov/IntellijIDEA/Projects/BankApplication/db/BankApplication.mv.db [1.4.185/7]" [50000-185]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	... 31 more
+Caused by: java.lang.IllegalStateException: The file is locked: nio:E:/Denis Makarov/IntellijIDEA/Projects/BankApplication/db/BankApplication.mv.db [1.4.185/7]
+	at org.h2.mvstore.DataUtils.newIllegalStateException(DataUtils.java:773)
+	at org.h2.mvstore.FileStore.open(FileStore.java:170)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:346)
+	... 26 more

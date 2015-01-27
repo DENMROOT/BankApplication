@@ -4,12 +4,15 @@ import com.luxoft.bankapp.model.*;
 import com.luxoft.bankapp.service.BankCommander;
 import com.luxoft.bankapp.service.BankServiceImpl;
 import com.luxoft.bankapp.service.Command;
+import com.luxoft.bankapp.service.DAO.ClientDAOImpl;
+import com.luxoft.bankapp.service.DAO.DAOException;
 import com.luxoft.bankapp.service.clientServer.BankServer;
 
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.net.Socket;
+import java.sql.SQLException;
 import java.util.Scanner;
 
 /**
@@ -26,6 +29,19 @@ public class AddClientCommand implements Command {
         paramScan = new Scanner(System.in);
         String gender=paramScan.nextLine(); // initialize command with commandString
         Client client = null;
+        ClientDAOImpl clientDao = new ClientDAOImpl();
+
+        System.out.println("Введите email клиента (X..X@X..X.XXX)");
+        paramScan = new Scanner(System.in);
+        String email=paramScan.nextLine(); // initialize command with commandString
+
+        System.out.println("Введите телефон клиента ((XXX)XXXXXXX)");
+        paramScan = new Scanner(System.in);
+        String phone=paramScan.nextLine(); // initialize command with commandString
+
+        System.out.println("Введите город клиента");
+        paramScan = new Scanner(System.in);
+        String city=paramScan.nextLine(); // initialize command with commandString
 
         switch (gender) {
             case "m":
@@ -33,8 +49,16 @@ public class AddClientCommand implements Command {
                 client.setName(clientName);
                 try {
                     BankCommander.myBankService.addClient(BankCommander.currentBank, client);
+                    client.setEmail(email);
+                    client.setPhone(phone);
+                    client.setCity(city);
+                    clientDao.insert(client);
                 } catch (ClientExcistsException e) {
                     System.out.println(e.getMessage());
+                } catch (SQLException e) {
+                    e.getMessage();
+                } catch (DAOException e) {
+                    e.getMessage();
                 }
                 break;
             case "f":
@@ -42,8 +66,16 @@ public class AddClientCommand implements Command {
                 client.setName(clientName);
                 try {
                     BankCommander.myBankService.addClient(BankCommander.currentBank, client);
+                    client.setEmail(email);
+                    client.setPhone(phone);
+                    client.setCity(city);
+                    clientDao.insert(client);
                 } catch (ClientExcistsException e) {
                     System.out.println(e.getMessage());
+                } catch (SQLException e) {
+                    e.getMessage();
+                } catch (DAOException e) {
+                    e.getMessage();
                 }
                 break;
             default:
