@@ -2,10 +2,8 @@ package com.luxoft.bankapp.service.commanderCommands;
 
 import com.luxoft.bankapp.model.Account;
 import com.luxoft.bankapp.model.Bank;
-import com.luxoft.bankapp.service.DAO.AccountDAOImpl;
-import com.luxoft.bankapp.service.NotEnoughFundsException;
-import com.luxoft.bankapp.service.BankCommander;
-import com.luxoft.bankapp.service.Command;
+import com.luxoft.bankapp.service.exceptions.NotEnoughFundsException;
+import com.luxoft.bankapp.main.BankCommander;
 
 import java.io.OutputStream;
 import java.net.Socket;
@@ -17,30 +15,29 @@ import java.util.Scanner;
 public class TransferCommand implements Command {
     @Override
     public void execute() {
-        System.out.println("Введите сумму перевода");
+        System.out.println("Введите имя клиента получателя");
         Scanner paramScan = new Scanner(System.in);
         String param=paramScan.nextLine(); // initialize command with commandString
-        Float transitAmount = Float.valueOf(param);
+        String recClientName = param;
 
-        System.out.println("Введите ID счета источника");
+        System.out.println("Введите сумму перевода");
         param=paramScan.nextLine(); // initialize command with commandString
-        long accountFromID = Long.valueOf(param);
+        Float transitAmount = Float.valueOf(param);
 
         System.out.println("Введите ID счета получателя");
         param=paramScan.nextLine(); // initialize command with commandString
         long accountToID = Long.valueOf(param);
 
-        Account accountFrom = BankCommander.myBankService.findAccountByID(BankCommander.currentClient, accountFromID);
-        Account accountTo = BankCommander.myBankService.findAccountByID(BankCommander.currentClient, accountToID);
-        AccountDAOImpl accountDAO = new AccountDAOImpl();
+
+        Account accountFrom = BankCommander.currentClient.getActiveAccount();
+        Account accountTo = BankCommander.myAccountService.findAccountByID(
+                BankCommander.myClientService.findClientByName(BankCommander.currentBank, recClientName), accountToID);
 
         try {
-            BankCommander.myBankService.withdrawFromAccount(BankCommander.currentClient, accountFrom, transitAmount);
-            BankCommander.myBankService.depositToAccount(BankCommander.currentClient, accountTo, transitAmount);
-            accountDAO.save(accountFrom);
-            accountDAO.save(accountTo);
-            System.out.println("Новый баланс по счету: " + accountFrom);
-            System.out.println("Новый баланс по счету: " + accountTo);
+            BankCommander.myAccountService.transferFunds(accountFrom, accountTo, transitAmount);
+            System.out.println("Новый баланс по счету: " + BankCommander.currentClient);
+            System.out.println("Новый баланс по счету: " + BankCommander.myClientService.findClientByName(
+                    BankCommander.currentBank, recClientName));
         } catch (NotEnoughFundsException e) {
             System.out.println("Ошибка при списании средств" + e.getMessage());
         }

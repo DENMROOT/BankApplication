@@ -43,9 +43,7 @@ public abstract class AbstractAccount implements Account, Serializable{
 
     @Override
     public void parseFeed(Map<String, String> feed) {
-        this.setAccountId(Long.parseLong(feed.get("accountid")));
-        //this.setOverdraft(Float.parseFloat(feed.get("overdraft")));
-        //this.setBalance(Float.parseFloat(feed.get("balance")));
+        this.accountId = Long.parseLong(feed.get("accountid"));
     }
 
     @Override

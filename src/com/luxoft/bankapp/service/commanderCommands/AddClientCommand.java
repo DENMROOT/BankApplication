@@ -1,18 +1,13 @@
 package com.luxoft.bankapp.service.commanderCommands;
 
 import com.luxoft.bankapp.model.*;
-import com.luxoft.bankapp.service.BankCommander;
-import com.luxoft.bankapp.service.BankServiceImpl;
-import com.luxoft.bankapp.service.Command;
-import com.luxoft.bankapp.service.DAO.ClientDAOImpl;
-import com.luxoft.bankapp.service.DAO.DAOException;
-import com.luxoft.bankapp.service.clientServer.BankServer;
+import com.luxoft.bankapp.main.BankCommander;
+import com.luxoft.bankapp.service.exceptions.ClientExcistsException;
 
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.net.Socket;
-import java.sql.SQLException;
 import java.util.Scanner;
 
 /**
@@ -29,7 +24,6 @@ public class AddClientCommand implements Command {
         paramScan = new Scanner(System.in);
         String gender=paramScan.nextLine(); // initialize command with commandString
         Client client = null;
-        ClientDAOImpl clientDao = new ClientDAOImpl();
 
         System.out.println("Введите email клиента (X..X@X..X.XXX)");
         paramScan = new Scanner(System.in);
@@ -43,43 +37,29 @@ public class AddClientCommand implements Command {
         paramScan = new Scanner(System.in);
         String city=paramScan.nextLine(); // initialize command with commandString
 
+        System.out.println("Введите начальный овердрафт");
+        paramScan = new Scanner(System.in);
+        float initialOverdraft= Float.valueOf(paramScan.nextLine()); // initialize command with commandString
+
         switch (gender) {
             case "m":
                 client = new Client(Gender.MALE);
-                client.setName(clientName);
-                try {
-                    BankCommander.myBankService.addClient(BankCommander.currentBank, client);
-                    client.setEmail(email);
-                    client.setPhone(phone);
-                    client.setCity(city);
-                    clientDao.insert(client);
-                } catch (ClientExcistsException e) {
-                    System.out.println(e.getMessage());
-                } catch (SQLException e) {
-                    e.getMessage();
-                } catch (DAOException e) {
-                    e.getMessage();
-                }
                 break;
             case "f":
                 client = new Client(Gender.FEMALE);
-                client.setName(clientName);
-                try {
-                    BankCommander.myBankService.addClient(BankCommander.currentBank, client);
-                    client.setEmail(email);
-                    client.setPhone(phone);
-                    client.setCity(city);
-                    clientDao.insert(client);
-                } catch (ClientExcistsException e) {
-                    System.out.println(e.getMessage());
-                } catch (SQLException e) {
-                    e.getMessage();
-                } catch (DAOException e) {
-                    e.getMessage();
-                }
                 break;
             default:
                 System.out.println("Некорректно задан пол клиента");
+        }
+        client.setName(clientName);
+        client.setEmail(email);
+        client.setPhone(phone);
+        client.setCity(city);
+        client.setInitialOverdraft(initialOverdraft);
+        try {
+            BankCommander.myClientService.addClient(BankCommander.currentBank, client);
+        } catch (ClientExcistsException e) {
+            System.out.println(e.getMessage());
         }
     }
 
@@ -91,65 +71,40 @@ public class AddClientCommand implements Command {
             switch (clientCommandArg[2]) {
                 case "m":
                     client = new Client(Gender.MALE);
-                    try {
-                        client.setName(clientCommandArg[1]);
-                    } catch (IllegalArgumentException e){
-                        try {
-                            outData.writeUTF(e.getMessage());
-                        } catch (IOException e1) {
-                            e1.getMessage();
-                        }
-                    }
-                    try {
-                        BankCommander.myBankService.addClient(BankCommander.currentBank, client);
-                        client.setCity(clientCommandArg[2]);
-                        client.setEmail(clientCommandArg[3]);
-                        client.setPhone(clientCommandArg[4]);
-                        outData.writeUTF("Client added" + clientCommandArg[1].toString());
-                    } catch (ClientExcistsException e) {
-                        System.out.println(e.getMessage());
-                        try {
-                            outData.writeUTF(e.getMessage());
-                        } catch (IOException e1) {
-                            e1.getMessage();
-                        }
-                    }catch (IOException ee) {
-                        System.out.println(ee.getMessage());
-                        try {
-                            outData.writeUTF(ee.getMessage());
-                        } catch (IOException e1) {
-                            e1.getMessage();
-                        }
-                    }
                     break;
                 case "f":
                     client = new Client(Gender.FEMALE);
-                    client.setName(clientCommandArg[1]);
-                    try {
-                        BankCommander.myBankService.addClient(BankCommander.currentBank, client);
-                        client.setCity(clientCommandArg[2]);
-                        client.setEmail(clientCommandArg[3]);
-                        client.setPhone(clientCommandArg[4]);
-                        outData.writeUTF("Client added" + clientCommandArg[1].toString());
-                    } catch (ClientExcistsException e) {
-                        System.out.println(e.getMessage());
-                        try {
-                            outData.writeUTF(e.getMessage());
-                        } catch (IOException e1) {
-                            e1.getMessage();
-                        }
-                    }catch (IOException ee) {
-                        System.out.println(ee.getMessage());
-                        try {
-                            outData.writeUTF(ee.getMessage());
-                        } catch (IOException e1) {
-                            e1.getMessage();
-                        }
-                    }
                     break;
                 default:
                     System.out.println("Некорректно задан пол клиента");
             }
+        try {
+            client.setName(clientCommandArg[1]);
+            client.setCity(clientCommandArg[3]);
+            client.setEmail(clientCommandArg[4]);
+            client.setPhone(clientCommandArg[5]);
+            client.setInitialOverdraft(Float.valueOf(clientCommandArg[6]));
+            BankCommander.myClientService.addClient(BankCommander.currentBank, client);
+            try {
+                outData.writeUTF("Client added" + clientCommandArg[1].toString());
+            } catch (IOException e1) {
+                try {
+                    outData.writeUTF(e1.getMessage());
+                } catch (IOException e2) {
+                    System.out.println(e2.getMessage());
+                }
+            }
+        } catch (ClientExcistsException e) {
+            System.out.println(e.getMessage());
+            try {
+                outData.writeUTF(e.getMessage());
+            } catch (IOException e1) {
+                e1.getMessage();
+            }
+
+
+
+        }
     }
 
     @Override

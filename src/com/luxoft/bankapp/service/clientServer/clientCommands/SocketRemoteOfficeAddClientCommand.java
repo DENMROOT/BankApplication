@@ -36,12 +36,17 @@ public class SocketRemoteOfficeAddClientCommand  implements ClientCommand {
             paramScan = new Scanner(System.in);
             String phone=paramScan.nextLine(); // initialize command with commandString
 
+            System.out.println("Введите начальный овердрафт");
+            paramScan = new Scanner(System.in);
+            String initialOverdraft = paramScan.nextLine(); // initialize command with commandString
+
             out.writeUTF("BankRemoteOffice add client command" +
                     "&" + clientName +
                     "&" + gender +
                     "&" + city +
                     "&" + email +
-                    "&" + phone);
+                    "&" + phone +
+                    "&" + initialOverdraft);
 
         } catch (IOException e) {
             e.printStackTrace();

@@ -1,9 +1,7 @@
 package com.luxoft.bankapp.service.commanderCommands;
 
 import com.luxoft.bankapp.model.Bank;
-import com.luxoft.bankapp.service.Command;
 
-import java.io.DataOutputStream;
 import java.io.OutputStream;
 import java.net.Socket;
 

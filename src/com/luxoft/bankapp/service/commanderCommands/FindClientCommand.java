@@ -1,10 +1,8 @@
 package com.luxoft.bankapp.service.commanderCommands;
 
 import com.luxoft.bankapp.model.Bank;
-import com.luxoft.bankapp.service.BankCommander;
-import com.luxoft.bankapp.service.Command;
+import com.luxoft.bankapp.main.BankCommander;
 
-import java.io.DataOutputStream;
 import java.io.OutputStream;
 import java.net.Socket;
 import java.util.Scanner;
@@ -21,7 +19,7 @@ public class FindClientCommand implements Command {
         Scanner paramScan = new Scanner(System.in);
         String clientName=paramScan.nextLine(); // initialize command with commandString
 
-            BankCommander.currentClient=BankCommander.myBankService.findClient(BankCommander.currentBank, clientName);
+            BankCommander.currentClient=BankCommander.myClientService.findClientByName(BankCommander.currentBank, clientName);
             if (BankCommander.currentClient!=null) {
                 System.out.println("Клиент найден");
                 System.out.println("Текущий клиент установлен: " + "\n" + BankCommander.currentClient.toString());

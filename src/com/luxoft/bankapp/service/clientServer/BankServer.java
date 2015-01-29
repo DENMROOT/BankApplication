@@ -1,12 +1,13 @@
 package com.luxoft.bankapp.service.clientServer;
 
+import com.luxoft.bankapp.main.BankApplication;
+import com.luxoft.bankapp.main.BankCommander;
 import com.luxoft.bankapp.model.Bank;
 import com.luxoft.bankapp.model.Client;
-import com.luxoft.bankapp.service.BankApplication;
-import com.luxoft.bankapp.service.BankServiceImpl;
-import com.luxoft.bankapp.service.ClientRegistrationListener;
-import com.luxoft.bankapp.service.Command;
+import com.luxoft.bankapp.model.ClientRegistrationListener;
+import com.luxoft.bankapp.service.DAO.BankDAOImpl;
 import com.luxoft.bankapp.service.commanderCommands.*;
+import com.luxoft.bankapp.service.services.BankServiceImpl;
 
 import java.io.*;
 import java.net.ServerSocket;
@@ -33,7 +34,7 @@ public class BankServer extends Thread {
             new GetClientBalance(), // 0
             new WithdrawCommand(), // 1
             new AddClientCommand(), //2
-            new DeleteClientCommand(), //3
+            new RemoveClientCommand(), //3
             new GetBankReportCommand() //4
     };
 
@@ -45,13 +46,16 @@ public class BankServer extends Thread {
     }
 
     public void run() {
-        listeners.add(new Bank.PrintClientListener());
-        listeners.add(new Bank.EmailNotificationListener());
-        Bank myBank = new Bank(listeners);
-        myBank.setName("Мой тестовый банк номер 1");
-        currentBank = myBank;
+        String bankName = "My Bank";
+        BankDAOImpl bankDao = new BankDAOImpl();
+        //currentBank.setName(bankName);
+        currentBank = bankDao.getBankByName(bankName);
+        BankCommander.currentBank = currentBank;
 
-        myBankApplication.Initialize(currentBank,myBankService);
+        System.out.println("Bank ID:" + currentBank.getBankID() + " Bank Name: " + currentBank.getName());
+        //myBankApplication.Initialize(currentBank,myBankService);
+
+        //myBankApplication.Initialize(currentBank,myBankService);
 
         while (true) {
             try {
@@ -73,27 +77,27 @@ public class BankServer extends Thread {
                     switch (clientCommandArgs[0]) {
                         case "BankClient Get balance command": {
                             System.out.println("Get balance command received for client: " + clientCommandArgs[1]);
-                            commands[0].execute_server(server.getOutputStream(), server, myBank, clientCommandArgs);
+                            commands[0].execute_server(server.getOutputStream(), server, currentBank, clientCommandArgs);
                             break;
                         }
                         case "BankClient Withdrawal command": {
                             System.out.println("Withdrawal command received for client: " + clientCommandArgs[1]);
-                            commands[1].execute_server(server.getOutputStream(), server, myBank, clientCommandArgs);
+                            commands[1].execute_server(server.getOutputStream(), server, currentBank, clientCommandArgs);
                             break;
                         }
                         case "BankRemoteOffice add client command": {
                             System.out.println("Add client command received for client: " + clientCommandArgs[1]);
-                            commands[2].execute_server(server.getOutputStream(), server, myBank, clientCommandArgs);
+                            commands[2].execute_server(server.getOutputStream(), server, currentBank, clientCommandArgs);
                             break;
                         }
                         case "BankRemoteOffice delete client command": {
                             System.out.println("Delete client command received for client: " + clientCommandArgs[1]);
-                            commands[3].execute_server(server.getOutputStream(), server, myBank, clientCommandArgs);
+                            commands[3].execute_server(server.getOutputStream(), server, currentBank, clientCommandArgs);
                             break;
                         }
                         case "BankRemoteOffice get bank report command": {
                             System.out.println("Get Bank report command received: ");
-                            commands[4].execute_server(server.getOutputStream(), server, myBank, clientCommandArgs);
+                            commands[4].execute_server(server.getOutputStream(), server, currentBank, clientCommandArgs);
                             break;
                         }
                         default : break;

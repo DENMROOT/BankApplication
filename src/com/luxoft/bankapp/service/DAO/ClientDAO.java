@@ -2,7 +2,8 @@ package com.luxoft.bankapp.service.DAO;
 
 import com.luxoft.bankapp.model.Bank;
 import com.luxoft.bankapp.model.Client;
-import com.luxoft.bankapp.service.ClientNotFoundException;
+import com.luxoft.bankapp.service.exceptions.ClientNotFoundException;
+import com.luxoft.bankapp.service.exceptions.DAOException;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -40,6 +41,7 @@ public interface ClientDAO {
          * or update client in database (if id!=null)
          * @param client
          */
+
         void save(Client client);
 
         /**

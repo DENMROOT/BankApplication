@@ -1,6 +1,7 @@
 package com.luxoft.bankapp.service.DAO;
 
 import com.luxoft.bankapp.model.Bank;
+import com.luxoft.bankapp.model.BankInfo;
 
 /**
  * Created by Makarov Denis on 27.01.2015.
@@ -12,5 +13,10 @@ public interface BankDAO {
      * @param name
      * @return
      */
-    Bank getBankByName(String name);
+    public Bank getBankByName(String name);
+
+    /**
+     * Should fill the BankInfo
+     */
+    public BankInfo getBankInfo(Bank bank);
 }

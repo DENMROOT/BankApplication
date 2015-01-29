@@ -1,7 +1,7 @@
 package com.luxoft.bankapp.model;
 
-import com.luxoft.bankapp.service.NotEnoughFundsException;
-import com.luxoft.bankapp.service.OverDraftLimitExceededException;
+import com.luxoft.bankapp.service.exceptions.NotEnoughFundsException;
+import com.luxoft.bankapp.service.exceptions.OverDraftLimitExceededException;
 
 import java.io.Serializable;
 import java.util.*;
@@ -121,6 +121,10 @@ public class Client implements Report, Comparable <Client>, Serializable{
         return this.name.compareTo(o.name);
     }
 
+    public void depositToAccount(Account account, float depositSum) {
+        account.deposit(depositSum);
+    }
+
     public String getCity() {
         return city;
     }
@@ -195,29 +199,8 @@ public class Client implements Report, Comparable <Client>, Serializable{
         this.initialOverdraft = initialOverdraft;
     }
 
-    public float getClientBalance(Client client) {
-        float overallBalance = 0.0f;
-        for (Account accountIterator : accounts){
-            overallBalance += accountIterator.getBalance();
-        }
-        return overallBalance;
-    }
-
     public Account getActiveAccount() {
         return activeAccount;
-    }
-
-    public Account getAccountById(Long accountID) {
-        for (Account accountIterator : accounts) {
-            if (accountIterator.getAccountId()==accountID) {
-                return accountIterator;
-            }
-        }
-        return null;
-    }
-
-    public void depositToAccount(Account account, float depositSum) {
-        account.deposit(depositSum);
     }
 
     public long getClientID() {

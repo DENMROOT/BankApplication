@@ -1,6 +1,6 @@
 package com.luxoft.bankapp.model;
 
-import com.luxoft.bankapp.service.NotEnoughFundsException;
+import com.luxoft.bankapp.service.exceptions.NotEnoughFundsException;
 
 /**
  * Created by Makarov Denis on 14.01.2015.
@@ -41,7 +41,11 @@ public class SavingAccount extends AbstractAccount {
 
     @Override
     public void printReport() {
-        //TODO вывести тип счета и баланс
+        System.out.println("Saving Account{" +
+            "Account ID=" + getAccountId() +
+            ",balance=" + balance +
+            ", overdraft=" + overdraft +
+            '}');
     }
 
     @Override

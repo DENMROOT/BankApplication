@@ -1,9 +1,9 @@
 package com.luxoft.bankapp.service.commanderCommands;
 
+import com.luxoft.bankapp.main.BankCommander;
 import com.luxoft.bankapp.model.Bank;
 import com.luxoft.bankapp.model.Client;
-import com.luxoft.bankapp.service.BankServiceImpl;
-import com.luxoft.bankapp.service.Command;
+import com.luxoft.bankapp.service.services.BankServiceImpl;
 import com.luxoft.bankapp.service.clientServer.BankServer;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -25,12 +25,11 @@ public class GetClientBalance implements Command {
         DataOutputStream outData = new DataOutputStream(out);
         Client client = null;
         try {
-            BankServiceImpl myBankService = new BankServiceImpl();
-            client = myBankService.getClientByName(bank, clientCommandArg[1]);
-            BankServer.currentClient = client;
+            client = BankCommander.myClientService.findClientByName(bank, clientCommandArg[1]);
+            BankCommander.currentClient=client;
             System.out.println("Активный клиент установлен: ");
-            System.out.println(BankServer.currentClient);
-            outData.writeUTF(clientCommandArg[1].toString() + " overall balance : " + myBankService.getClientBalance(bank,client));
+            System.out.println(BankCommander.currentClient);
+            outData.writeUTF(clientCommandArg[1].toString() + " overall balance : " +  BankCommander.myClientService.getClientBalance(bank,client));
         } catch (IOException e) {
             try {
                 outData.writeUTF(e.getMessage());

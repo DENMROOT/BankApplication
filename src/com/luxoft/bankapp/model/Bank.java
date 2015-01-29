@@ -1,11 +1,9 @@
 package com.luxoft.bankapp.model;
 
-import com.luxoft.bankapp.service.ClientRegistrationListener;
+import com.luxoft.bankapp.service.exceptions.ClientExcistsException;
 
 import java.text.SimpleDateFormat;
 import java.util.*;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 /**
  * Created by Makarov Denis on 14.01.2015.
@@ -13,7 +11,6 @@ import java.util.regex.Pattern;
 public class Bank implements Report {
     private long bankID;
     private String name;
-    // старая реализация private ArrayList<Client> clients = new ArrayList<Client>();
     private Set<Client> clients = new HashSet<Client>();
     List<ClientRegistrationListener> listeners = new ArrayList<ClientRegistrationListener>();
     Map <String, Client> clientsMap = new HashMap<String, Client>();
@@ -24,12 +21,9 @@ public class Bank implements Report {
     }
 
     public Bank(){
-        //listeners.add(new PrintClientListener());
-        //listeners.add(new EmailNotificationListener());
         listeners.add(new ClientRegistrationListener(){
             @Override
             public void onClientAdded(Client client) {
-                //long curTime = System.currentTimeMillis();
                 Date curDate = new Date();
                 String curStringDate = new SimpleDateFormat("HH:mm:ss").format(curDate);
                 System.out.println(client.getName()+" время - " + curStringDate);
@@ -112,7 +106,7 @@ public class Bank implements Report {
         clientsMap.remove(client.getName());
     }
 
-    public Boolean containsClientAllready(Client client) {
+    public boolean containsClientAllready(Client client) {
         return clients.contains(client);
     }
 
@@ -126,11 +120,6 @@ public class Bank implements Report {
         }
 
         return null;
-    }
-
-    @Deprecated
-    public void removeClient(Client client) {
-        deleteClient(client);
     }
 
     public void parseFeed (Map<String,String> feed) {

@@ -1,6 +1,6 @@
 package com.luxoft.bankapp.model;
 
-import com.luxoft.bankapp.service.NotEnoughFundsException;
+import com.luxoft.bankapp.service.exceptions.NotEnoughFundsException;
 
 import java.util.Map;
 

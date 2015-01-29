@@ -1,9 +1,11 @@
 package com.luxoft.bankapp.service.commanderCommands;
 
 import com.luxoft.bankapp.model.Bank;
-import com.luxoft.bankapp.service.BankReport;
-import com.luxoft.bankapp.service.BankReportContainer;
-import com.luxoft.bankapp.service.Command;
+import com.luxoft.bankapp.model.BankInfo;
+import com.luxoft.bankapp.main.BankCommander;
+import com.luxoft.bankapp.model.BankReport;
+import com.luxoft.bankapp.model.BankReportContainer;
+import com.luxoft.bankapp.service.DAO.BankDAOImpl;
 import com.luxoft.bankapp.service.clientServer.BankServer;
 
 import java.io.IOException;
@@ -17,6 +19,13 @@ import java.net.Socket;
 public class GetBankReportCommand implements Command {
     @Override
     public void execute() {
+        BankInfo myBankInfo = new BankInfo();
+        BankDAOImpl myBankDao = new BankDAOImpl();
+        myBankInfo = myBankDao.getBankInfo(BankCommander.currentBank);
+
+        System.out.println("Количество клиентов: " + myBankInfo.getNumberOfClients());
+        System.out.println("Суммарный баланс по всем счетам: " + myBankInfo.getTotalAccountSum());
+        System.out.println("Клиенты по городам: " + myBankInfo.getClientsByCity());
 
     }
 
@@ -26,11 +35,11 @@ public class GetBankReportCommand implements Command {
         try {
             BankReport bankReport = new BankReport();
             BankReportContainer bankReportContainer = new BankReportContainer();
-            bankReportContainer.setNumberOfClients(bankReport.getNumberOfClients(BankServer.currentBank));
-            bankReportContainer.setAccountsNumber(bankReport.getAccountsNumber(BankServer.currentBank));
-            bankReportContainer.setClientsSorted(bankReport.getClientsSorted(BankServer.currentBank));
-            bankReportContainer.setBankCreditSum(bankReport.getBankCreditSum(BankServer.currentBank));
-            bankReportContainer.setClientsByCity(bankReport.getClientsByCity(BankServer.currentBank));
+            bankReportContainer.setNumberOfClients(bankReport.getNumberOfClients(bank));
+            bankReportContainer.setAccountsNumber(bankReport.getAccountsNumber(bank));
+            bankReportContainer.setClientsSorted(bankReport.getClientsSorted(bank));
+            bankReportContainer.setBankCreditSum(bankReport.getBankCreditSum(bank));
+            bankReportContainer.setClientsByCity(bankReport.getClientsByCity(bank));
 
             ObjectOutputStream outObj = new ObjectOutputStream(out);
             outObj.writeObject(bankReportContainer);
@@ -41,7 +50,5 @@ public class GetBankReportCommand implements Command {
     }
 
     @Override
-    public void printCommandInfo() {
-
-    }
+    public void printCommandInfo() { System.out.println("Get BankInfo report command"); }
 }

@@ -42,8 +42,6 @@ public class AccountDAOImpl extends BaseDAOImpl implements AccountDAO {
         } catch(SQLException e) {
             e.getMessage();
         }
-
-
     }
 
     @Override
@@ -127,6 +125,66 @@ public class AccountDAOImpl extends BaseDAOImpl implements AccountDAO {
             e.getMessage();
         }
         return null;
+    }
+
+    @Override
+    public void transferFunds(Account accountFrom, Account accountTo, float amount) {
+        Connection myConnection = openConnection();
+
+        try {
+            myConnection.setAutoCommit(false);
+            // 1) Create Preparedstatement
+            PreparedStatement prepStatementFrom = myConnection.prepareStatement("UPDATE \n" +
+                    "    ACCOUNTS \n" +
+                    "SET \n" +
+                    "    BALANCE=?,\n" +
+                    "    OVERDRAFT=?\n" +
+                    "WHERE ID=?;\n");
+
+            PreparedStatement prepStatementTo = myConnection.prepareStatement("UPDATE \n" +
+                    "    ACCOUNTS \n" +
+                    "SET \n" +
+                    "    BALANCE=?,\n" +
+                    "    OVERDRAFT=?\n" +
+                    "WHERE ID=?;\n");
+
+            // 2) Set PreparedStatement param
+
+            prepStatementFrom.setFloat(1, accountFrom.getBalance());
+            prepStatementFrom.setFloat(2, accountFrom.getOverdraft());
+            prepStatementFrom.setLong(3, accountFrom.getAccountId());
+
+            prepStatementTo.setFloat(1, accountTo.getBalance());
+            prepStatementTo.setFloat(2, accountTo.getOverdraft());
+            prepStatementTo.setLong(3, accountTo.getAccountId());
+
+            // 3) Execute query and get the ResultSet
+            prepStatementFrom.executeUpdate();
+            prepStatementTo.executeUpdate();
+
+            myConnection.commit();
+
+            int count = prepStatementFrom.getUpdateCount();
+            System.out.println("Количество затронутых записей счетов:" + count);
+
+
+
+        } catch(SQLException e) {
+            try {
+                myConnection.rollback();
+                closeConnection();
+            } catch (SQLException e1) {
+                System.out.println(e1.getErrorCode());
+            }
+            System.out.println(e.getErrorCode());
+        } finally {
+            try {
+                myConnection.setAutoCommit(true);
+                closeConnection();
+            } catch (SQLException e) {
+                System.out.println(e.getErrorCode());
+            }
+        }
     }
 
 }

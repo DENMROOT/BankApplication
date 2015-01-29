@@ -4,8 +4,9 @@ import com.luxoft.bankapp.model.Account;
 import com.luxoft.bankapp.model.Bank;
 import com.luxoft.bankapp.model.Client;
 import com.luxoft.bankapp.model.Gender;
-import com.luxoft.bankapp.service.BankCommander;
-import com.luxoft.bankapp.service.ClientNotFoundException;
+import com.luxoft.bankapp.main.BankCommander;
+import com.luxoft.bankapp.service.exceptions.ClientNotFoundException;
+import com.luxoft.bankapp.service.exceptions.DAOException;
 
 import java.sql.*;
 import java.util.ArrayList;

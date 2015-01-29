@@ -1,7 +1,6 @@
 package com.luxoft.bankapp.model;
 
-import com.luxoft.bankapp.service.ClientRegistrationListener;
-import com.luxoft.bankapp.service.OverDraftLimitExceededException;
+import com.luxoft.bankapp.service.exceptions.OverDraftLimitExceededException;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

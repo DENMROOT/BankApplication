@@ -1,7 +1,7 @@
 package com.luxoft.bankapp.model;
 
-import com.luxoft.bankapp.service.NotEnoughFundsException;
-import com.luxoft.bankapp.service.OverDraftLimitExceededException;
+import com.luxoft.bankapp.service.exceptions.NotEnoughFundsException;
+import com.luxoft.bankapp.service.exceptions.OverDraftLimitExceededException;
 
 /**
  * Created by Makarov Denis on 14.01.2015.
@@ -12,7 +12,7 @@ public class CheckingAccount extends AbstractAccount{
         if (overdraft<0) {
             throw new IllegalArgumentException();
         }
-        this.setAccountId(accountId);
+        setAccountId(accountId);
         this.initialOverdraft=overdraft;
         this.balance=balance;
         this.overdraft=overdraft;
@@ -54,7 +54,11 @@ public class CheckingAccount extends AbstractAccount{
 
     @Override
     public void printReport() {
-
+        System.out.println("Checking Account{" +
+                "Account ID=" + getAccountId() +
+                ",balance=" + balance +
+                ", overdraft=" + overdraft +
+                '}');
     }
 
     @Override

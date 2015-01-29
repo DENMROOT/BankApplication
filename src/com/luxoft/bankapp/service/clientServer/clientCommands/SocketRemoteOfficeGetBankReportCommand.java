@@ -1,6 +1,6 @@
 package com.luxoft.bankapp.service.clientServer.clientCommands;
 
-import com.luxoft.bankapp.service.BankReportContainer;
+import com.luxoft.bankapp.model.BankReportContainer;
 
 import java.io.*;
 import java.net.Socket;
