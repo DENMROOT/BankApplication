@@ -17,6 +17,5 @@ public interface ClientService {
     public Set<Account> getClientAccounts(Client client);
     public float getClientBalance(Bank bank, Client client);
     public void saveClient(Client client) throws IOException;
-    public Client loadClient() throws ClassNotFoundException, IOException;
     public void deleteClient (Bank bank, Client client);
 }

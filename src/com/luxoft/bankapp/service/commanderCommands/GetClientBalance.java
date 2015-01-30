@@ -26,9 +26,9 @@ public class GetClientBalance implements Command {
         Client client = null;
         try {
             client = BankCommander.myClientService.findClientByName(bank, clientCommandArg[1]);
-            BankCommander.currentClient=client;
+            BankServer.currentClient=client;
             System.out.println("Активный клиент установлен: ");
-            System.out.println(BankCommander.currentClient);
+            System.out.println(BankServer.currentClient);
             outData.writeUTF(clientCommandArg[1].toString() + " overall balance : " +  BankCommander.myClientService.getClientBalance(bank,client));
         } catch (IOException e) {
             try {

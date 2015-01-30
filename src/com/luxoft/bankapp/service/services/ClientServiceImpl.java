@@ -3,6 +3,7 @@ package com.luxoft.bankapp.service.services;
 import com.luxoft.bankapp.model.Account;
 import com.luxoft.bankapp.model.Bank;
 import com.luxoft.bankapp.model.Client;
+import com.luxoft.bankapp.service.DAO.AccountDAOImpl;
 import com.luxoft.bankapp.service.DAO.ClientDAO;
 import com.luxoft.bankapp.service.DAO.ClientDAOImpl;
 import com.luxoft.bankapp.service.exceptions.DAOException;
@@ -11,6 +12,8 @@ import com.luxoft.bankapp.service.exceptions.ClientNotFoundException;
 
 import java.io.*;
 import java.sql.SQLException;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -44,32 +47,28 @@ public class ClientServiceImpl implements ClientService{
 
     @Override
     public Set<Account> getClientAccounts(Client client) {
-        return client.getAccounts();
+        AccountDAOImpl accountDAO = new AccountDAOImpl();
+        Set <Account> accountsList = new HashSet<>(accountDAO.getClientAccounts(client.getClientID()));
+        return accountsList;
     }
 
     @Override
     public float getClientBalance(Bank bank, Client client) {
-        return 0.0f;
-    }
+        AccountDAOImpl accountDAO = new AccountDAOImpl();
+        List<Account> accountsList = accountDAO.getClientAccounts(client.getClientID());
+        float balance=0.0f;
 
+        for (Account accountsIterator : accountsList) {
+            balance+=accountsIterator.getBalance();
+        }
+
+        return balance;
+    }
 
     @Override
     public void saveClient(Client client) throws IOException {
-        File dir = new File("clients");
-        dir.mkdir();
-        try (ObjectOutputStream os = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream("clients/saveClient")))) {
-            os.writeObject(client);
-            os.flush();
-        }
-    }
-
-    @Override
-    public Client loadClient() throws ClassNotFoundException, IOException {
-        Client client = null;
-        try (ObjectInputStream oi = new ObjectInputStream(new BufferedInputStream(new FileInputStream("clients/saveClient")))) {
-            client = (Client)oi.readObject();
-        }
-        return client;
+        ClientDAOImpl clientDAO = new ClientDAOImpl();
+        clientDAO.save(client);
     }
 
     @Override

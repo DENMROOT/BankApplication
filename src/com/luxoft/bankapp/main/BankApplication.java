@@ -74,51 +74,6 @@ public class BankApplication {
     }
 
     private static void modifyBank(Bank bank, BankServiceImpl myBankService){
-
-        Set<Client> bankClients = new HashSet<Client>();
-        bankClients=bank.getClients();
-        Set <Account> clientAccounts = new HashSet <Account> ();
-
-        /*
-        Тестовое списание с 1 счета 1 клиента банка
-         */
-        /*
-
-        for (Iterator<Client> it = bankClients.iterator(); it.hasNext(); ) {
-            Client f = it.next();
-            Client myTempClient = new Client(Gender.MALE);
-            myTempClient.setName("Makarov Denis");
-            if (f.equals(myTempClient))
-                try {
-                    clientAccounts = f.getAccounts();
-                    myBankService.withdrawFromAccount(f, clientAccounts.get(0), 500);  //списание со счета клиента
-                } catch (OverDraftLimitExceededException e) {
-                    System.out.println("Сумма списания превышает доступный овердрафт");
-                } catch (NotEnoughFundsException e) {
-                    System.out.println("Попытка списания недостаточных средств");
-                }
-        }
-        /*
-        Тестовое списание с 2 счета 1 клиента банка
-         */
-        /*
-
-        for (Iterator<Client> it = bankClients.iterator(); it.hasNext(); ) {
-            Client f = it.next();
-            Client myTempClient = new Client(Gender.MALE);
-            myTempClient.setName("Igor Pupkin");
-            if (f.equals(myTempClient))
-                try {
-                    clientAccounts = f.getAccounts();
-                    myBankService.withdrawFromAccount(f, clientAccounts.get(0), 250);  //списание со счета клиента
-                } catch (OverDraftLimitExceededException e) {
-                    System.out.println("Сумма списания превышает доступный овердрафт");
-                } catch (NotEnoughFundsException e) {
-                    System.out.println("Попытка списания недостаточных средств");
-                }
-        }
-       */
-
     }
 
     private static void printBankReport(Bank bank){

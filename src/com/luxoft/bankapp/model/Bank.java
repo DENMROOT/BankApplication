@@ -33,11 +33,6 @@ public class Bank implements Report {
         });
     }
 
-    public Client getClient(String clientName) {
-
-        return clientsMap.get(clientName);
-    }
-
     public long getBankID() {
         return bankID;
     }
@@ -76,10 +71,6 @@ public class Bank implements Report {
         return Collections.unmodifiableSet (clients);
     }
 
-    public void setClients(Set<Client> clients) {
-        this.clients = clients;
-    }
-
     public String getName() {
         return name;
     }
@@ -101,10 +92,6 @@ public class Bank implements Report {
         }
     }
 
-    public void deleteClient (Client client){
-        clients.remove(client);
-        clientsMap.remove(client.getName());
-    }
 
     public boolean containsClientAllready(Client client) {
         return clients.contains(client);

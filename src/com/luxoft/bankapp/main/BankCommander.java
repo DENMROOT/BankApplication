@@ -2,13 +2,10 @@ package com.luxoft.bankapp.main;
 
 import com.luxoft.bankapp.model.Bank;
 import com.luxoft.bankapp.model.Client;
-import com.luxoft.bankapp.service.services.AccountServiceImpl;
-import com.luxoft.bankapp.service.services.BankServiceImpl;
+import com.luxoft.bankapp.service.services.*;
 import com.luxoft.bankapp.service.commanderCommands.Command;
 import com.luxoft.bankapp.service.DAO.BankDAOImpl;
 import com.luxoft.bankapp.service.commanderCommands.*;
-import com.luxoft.bankapp.service.services.ClientService;
-import com.luxoft.bankapp.service.services.ClientServiceImpl;
 
 import java.io.OutputStream;
 import java.net.Socket;

@@ -164,15 +164,12 @@ public class AccountDAOImpl extends BaseDAOImpl implements AccountDAO {
 
             myConnection.commit();
 
-            int count = prepStatementFrom.getUpdateCount();
+            int count = prepStatementFrom.getUpdateCount() + prepStatementTo.getUpdateCount();
             System.out.println("Количество затронутых записей счетов:" + count);
-
-
 
         } catch(SQLException e) {
             try {
                 myConnection.rollback();
-                closeConnection();
             } catch (SQLException e1) {
                 System.out.println(e1.getErrorCode());
             }

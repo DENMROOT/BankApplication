@@ -1,9 +1,11 @@
 package com.luxoft.bankapp.service.services;
-
+import com.luxoft.bankapp.main.BankCommander;
 import com.luxoft.bankapp.model.*;
+import com.luxoft.bankapp.service.DAO.ClientDAOImpl;
 
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -13,22 +15,25 @@ public class BankServiceImpl implements BankService {
 
     @Override
     public Set<Client> getClients(Bank bank) {
-        return bank.getClients();
+        ClientDAOImpl clientDAO = new ClientDAOImpl();
+
+        Set<Client> clientsList = new HashSet <> (clientDAO.getAllClients(bank));
+
+        return clientsList;
     }
 
     @Override
     public Set<Account> getAllAccounts(Bank bank) {
-        Set <Client> bankClients = new HashSet<Client>(bank.getClients());
         Set <Account> bankAccounts = new HashSet <Account> ();
+        ClientDAOImpl clientDAO = new ClientDAOImpl();
+        Set<Client> clientsList = new HashSet <> (clientDAO.getAllClients(bank));
 
-        for (Iterator<Client> it = bankClients.iterator(); it.hasNext(); ) {
-            Client f = it.next();
-            Set <Account> clientAccounts = new HashSet <Account> (f.getAccounts());
-            for (Iterator<Account> accIterator = clientAccounts.iterator(); accIterator.hasNext(); ) {
-                Account a = accIterator.next();
-                bankAccounts.add(a);
+        for (Client clientIterator : clientsList) {
+            for (Account accountIterator : clientIterator.getAccounts()){
+                bankAccounts.add(accountIterator);
             }
         }
+
         return bankAccounts;
     }
 

@@ -18,13 +18,6 @@ public class CheckingAccount extends AbstractAccount{
         this.overdraft=overdraft;
     }
 
-    /*
-    @Override
-    public float getBalance() {
-        return balance-getTotalAccountOverdraft();
-    }
-    */
-
     public float getOverdraft() {
         return overdraft;
     }
