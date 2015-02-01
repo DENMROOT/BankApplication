@@ -17,8 +17,6 @@ import java.util.TreeMap;
  * Created by Makarov Denis on 15.01.2015.
  */
 public class BankCommander{
-
-    public static BankApplication myBankApplication = new BankApplication ();
     public static BankServiceImpl myBankService = new BankServiceImpl();
     public static ClientServiceImpl myClientService = new ClientServiceImpl();
     public static AccountServiceImpl myAccountService = new AccountServiceImpl();
@@ -64,11 +62,9 @@ public class BankCommander{
 
     public static void main(String args[]) {
         BankDAOImpl bankDao = new BankDAOImpl();
-        //currentBank.setName(bankName);
         currentBank = bankDao.getBankByName(bankName);
 
         System.out.println("Bank ID:" + currentBank.getBankID() + " Bank Name: " + currentBank.getName());
-        //myBankApplication.Initialize(currentBank,myBankService);
 
         while (true) {
             for (int i=0;i<commands.length;i++) { // show menu

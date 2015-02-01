@@ -1,5 +1,7 @@
 package com.luxoft.bankapp.model;
 
+import com.luxoft.bankapp.service.DAO.BankDAOImpl;
+import com.luxoft.bankapp.service.services.BankServiceImpl;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Ignore;
@@ -12,36 +14,16 @@ import java.util.Set;
 
 import static org.junit.Assert.*;
 
-@Ignore
 public class BankTest {
 
-    private TestingBank testBank;
-    private TestingClient testClient;
-
-    private class TestingBank extends Bank {
-
-        public TestingBank(List<ClientRegistrationListener> listeners) {
-            super(listeners);
-        }
-    }
-
-
-    private class TestingClient extends Client {
-
-        public TestingClient (Gender gender){
-            super(gender);
-        }
-    }
+    Bank testBank;
 
     @Before
     public void InitializeBank(){
-        List<ClientRegistrationListener> listeners = new ArrayList<ClientRegistrationListener>();
-        //listeners.add(new Bank.PrintClientListener());
-        //listeners.add(new Bank.EmailNotificationListener());
-        testBank = new TestingBank(listeners);
-        testBank.setName("Мой первый тестовый банк");
-        testClient = new TestingClient(Gender.MALE);
-        testClient.setName("Testing Client");
+        BankDAOImpl bankDao = new BankDAOImpl();
+        String bankName = "My Bank";
+        testBank = bankDao.getBankByName(bankName);
+        //System.out.println("Банк: " + testBank.getName() +" ID: " +testBank.getBankID());
 
     }
 
@@ -51,22 +33,25 @@ public class BankTest {
         //listeners.add(new Bank.PrintClientListener());
         //listeners.add(new Bank.EmailNotificationListener());
         testBank = null;
-        testClient = null;
 
-    }
-
-    @Test
-    public void testSetName() throws Exception {
-        assertEquals("Ошибка при выполнении Тест: testSetName",testBank.getName(),"Мой первый тестовый банк");
-        assertTrue("Ошибка при выполнении Тест: testSetName - имя банка не совпадает",testBank.getName().equals("Мой первый тестовый банк"));
     }
 
     @Test
     public void testGetName() throws Exception {
-        assertEquals("Ошибка при выполнении Тест: testGetName",testBank.getName(),"Мой первый тестовый банк");
-        assertTrue("Ошибка при выполнении Тест: testGetName - имя банка не совпадает",testBank.getName().equals("Мой первый тестовый банк"));
+        assertTrue("Ошибка при выполнении Тест: testSetName - имя банка не совпадает", testBank.getName().equals("My Bank"));
     }
 
+    @Test
+    public void getClients() throws Exception {
+        BankServiceImpl myBankService = new BankServiceImpl();
+        assertEquals("Ошибка при выполнении Тест: getClients ",myBankService.getClients(testBank).size(), 6, 0);
+    }
+
+    @Test
+    public void getAllAccounts() throws Exception {
+        BankServiceImpl myBankService = new BankServiceImpl();
+        assertEquals("Ошибка при выполнении Тест: getAllAccounts ",myBankService.getAllAccounts(testBank).size(), 8, 0);
+    }
 
     @Test
     public void testPrintReport() throws Exception {

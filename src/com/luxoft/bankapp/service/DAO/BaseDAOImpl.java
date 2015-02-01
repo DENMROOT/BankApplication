@@ -15,7 +15,7 @@ public class BaseDAOImpl implements BaseDAO {
         final String DB_NAME="BankApplication";
         try {
             Class.forName("org.h2.Driver"); // this is driver for H2
-            myConnection = DriverManager.getConnection("jdbc:h2:E:\\Denis Makarov\\IntellijIDEA\\Projects\\BankApplication\\db\\" + DB_NAME,
+            myConnection = DriverManager.getConnection("jdbc:h2:E:\\PROGRAMMING\\IntellijIDEA\\Projects\\BankApplication\\db\\" + DB_NAME,
                     "sa", // login
                     "" // password
             );

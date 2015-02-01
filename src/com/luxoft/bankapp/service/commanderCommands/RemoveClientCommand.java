@@ -3,6 +3,7 @@ package com.luxoft.bankapp.service.commanderCommands;
 import com.luxoft.bankapp.model.Bank;
 import com.luxoft.bankapp.model.Client;
 import com.luxoft.bankapp.main.BankCommander;
+import com.luxoft.bankapp.service.clientServer.BankServer;
 import com.luxoft.bankapp.service.exceptions.ClientNotFoundException;
 import com.luxoft.bankapp.service.DAO.ClientDAOImpl;
 
@@ -25,18 +26,17 @@ public class RemoveClientCommand implements Command {
         Client removeClient = BankCommander.myClientService.findClientByName(BankCommander.currentBank, clientName);
 
         if (removeClient != null) {
-            BankCommander.myClientService.deleteClient(BankCommander.currentBank,removeClient);
+            BankCommander.myClientService.deleteClient(BankCommander.currentBank, removeClient);
         }
-
 
     }
 
     @Override
     public void execute_server(OutputStream out, Socket server, Bank bank, String[] clientCommandArg) {
         DataOutputStream outData = new DataOutputStream(out);
-        Client client = BankCommander.myClientService.findClientByName(bank, clientCommandArg[1]);
+        Client client = BankServer.myClientService.findClientByName(bank, clientCommandArg[1]);
         try {
-            BankCommander.myClientService.deleteClient(bank, client);
+            BankServer.myClientService.deleteClient(bank, client);
             System.out.println("Клиент удален: " + client.getName());
             outData.writeUTF("Клиент удален : " + client.getName());
         } catch (IOException e) {

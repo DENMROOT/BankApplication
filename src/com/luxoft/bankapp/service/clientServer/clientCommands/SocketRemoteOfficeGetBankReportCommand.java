@@ -1,5 +1,6 @@
 package com.luxoft.bankapp.service.clientServer.clientCommands;
 
+import com.luxoft.bankapp.model.BankInfo;
 import com.luxoft.bankapp.model.BankReportContainer;
 
 import java.io.*;
@@ -18,21 +19,19 @@ public class SocketRemoteOfficeGetBankReportCommand implements ClientCommand{
             e.printStackTrace();
         }
         InputStream inFromServer = null;
-        BankReportContainer receivedBankReportContainer = null;
+        BankInfo receivedBankInfo = null;
         try {
             inFromServer = client.getInputStream();
             ObjectInputStream inObj = new ObjectInputStream(inFromServer);
             try {
-               receivedBankReportContainer = (BankReportContainer) inObj.readObject();
+                receivedBankInfo = (BankInfo) inObj.readObject();
             } catch (ClassNotFoundException e) {
                 e.getMessage();
             }
-            System.out.println("Server says: Отчет BankReport получен");
-            System.out.println("Количество клиентов банка: " + receivedBankReportContainer.getNumberOfClients());
-            System.out.println("Количество счетов банка: " + receivedBankReportContainer.getAccountsNumber());
-            System.out.println("Отсортированные клиенты банка: " + "\n" + receivedBankReportContainer.getClientsSorted());
-            System.out.println("Общий овердрафт по банку: " + receivedBankReportContainer.getBankCreditSum());
-            System.out.println("Клиенты банка по городам: " + "\n" + receivedBankReportContainer.getClientsByCity());
+            System.out.println("Server says: Отчет BankInfo получен");
+            System.out.println("Количество клиентов банка: " + receivedBankInfo.getNumberOfClients());
+            System.out.println("Сумма по счетам банка: " + receivedBankInfo.getTotalAccountSum());
+            System.out.println("Клиенты банка по городам: " + "\n" + receivedBankInfo.getClientsByCity());
         } catch (IOException e) {
             e.printStackTrace();
         }

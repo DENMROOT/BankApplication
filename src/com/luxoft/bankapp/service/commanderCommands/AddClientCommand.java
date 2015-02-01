@@ -2,6 +2,7 @@ package com.luxoft.bankapp.service.commanderCommands;
 
 import com.luxoft.bankapp.model.*;
 import com.luxoft.bankapp.main.BankCommander;
+import com.luxoft.bankapp.service.clientServer.BankServer;
 import com.luxoft.bankapp.service.exceptions.ClientExcistsException;
 
 import java.io.DataOutputStream;
@@ -16,6 +17,8 @@ import java.util.Scanner;
 public class AddClientCommand implements Command {
     @Override
     public void execute() {
+        Client client = null;
+
         System.out.println("Введите имя клиента");
         Scanner paramScan = new Scanner(System.in);
         String clientName=paramScan.nextLine(); // initialize command with commandString
@@ -23,7 +26,7 @@ public class AddClientCommand implements Command {
         System.out.println("Введите пол клиента (f/m)");
         paramScan = new Scanner(System.in);
         String gender=paramScan.nextLine(); // initialize command with commandString
-        Client client = null;
+
 
         System.out.println("Введите email клиента (X..X@X..X.XXX)");
         paramScan = new Scanner(System.in);
@@ -84,7 +87,7 @@ public class AddClientCommand implements Command {
             client.setEmail(clientCommandArg[4]);
             client.setPhone(clientCommandArg[5]);
             client.setInitialOverdraft(Float.valueOf(clientCommandArg[6]));
-            BankCommander.myClientService.addClient(BankCommander.currentBank, client);
+            BankServer.myClientService.addClient(BankCommander.currentBank, client);
             try {
                 outData.writeUTF("Client added" + clientCommandArg[1].toString());
             } catch (IOException e1) {

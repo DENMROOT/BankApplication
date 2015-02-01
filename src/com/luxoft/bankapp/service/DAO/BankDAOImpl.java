@@ -10,23 +10,18 @@ import java.util.*;
 /**
  * Created by Makarov Denis on 27.01.2015.
  */
-public class BankDAOImpl extends  BaseDAOImpl implements BankDAO {
-
+public class BankDAOImpl extends BaseDAOImpl implements BankDAO {
 
     @Override
     public Bank getBankByName(String name) {
         Connection myConnection = openConnection();
         Bank myBank = new Bank();
         try {
-            // 1) Create statement
-            Statement stmt = myConnection.createStatement();
-            String sql = "SELECT" +
-                    " B.ID AS ID," +
-                    " B.NAME AS NAME" +
-                    " FROM" +
-                    " BANK B;";
-            // 2) Execute query and get the ResultSet
-            ResultSet rs = stmt.executeQuery(sql);
+            PreparedStatement stmtBank = myConnection.prepareStatement("SELECT B.ID AS ID, B.NAME AS NAME FROM BANK B WHERE NAME = ?;");
+
+            stmtBank.setString(1, name);
+
+            ResultSet rs = stmtBank.executeQuery();
 
             // Iterate over results and print it
             while(rs.next()) {
@@ -34,9 +29,6 @@ public class BankDAOImpl extends  BaseDAOImpl implements BankDAO {
                 long bankID = rs.getLong("ID");
                 String bankName = rs.getString("NAME");
 
-                // Display data
-                //System.out.print("ID: " + bankID + ", ");
-                //System.out.print("NAME: " + bankName + "\n");
                 myBank.setBankID(bankID);
                 myBank.setName(bankName);
             }
@@ -44,7 +36,7 @@ public class BankDAOImpl extends  BaseDAOImpl implements BankDAO {
             return myBank;
 
         } catch(SQLException e) {
-            e.getMessage();
+            System.out.println(e.getMessage());
         }
         return null;
     }

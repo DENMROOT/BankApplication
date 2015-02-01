@@ -24,19 +24,34 @@ public class GetClientBalance implements Command {
     public void execute_server(OutputStream out, Socket server, Bank bank, String[] clientCommandArg) {
         DataOutputStream outData = new DataOutputStream(out);
         Client client = null;
-        try {
-            client = BankCommander.myClientService.findClientByName(bank, clientCommandArg[1]);
-            BankServer.currentClient=client;
-            System.out.println("Активный клиент установлен: ");
-            System.out.println(BankServer.currentClient);
-            outData.writeUTF(clientCommandArg[1].toString() + " overall balance : " +  BankCommander.myClientService.getClientBalance(bank,client));
-        } catch (IOException e) {
+
+        client = BankServer.myClientService.findClientByName(bank, clientCommandArg[1]);
+
+        if (client == null) {
             try {
-                outData.writeUTF(e.getMessage());
-            } catch (IOException e1) {
-                e1.getMessage();
+                outData.writeUTF("Клиент: " + clientCommandArg[1] + " не найден" );
+            } catch (IOException e) {
+                try {
+                    outData.writeUTF(e.getMessage());
+                } catch (IOException e1) {
+                    e1.getMessage();
+                }
+            }
+        } else {
+            try {
+                BankServer.currentClient=client;
+                System.out.println("Активный клиент установлен: ");
+                System.out.println(BankServer.currentClient);
+                outData.writeUTF(clientCommandArg[1].toString() + " overall balance : " +  BankCommander.myClientService.getClientBalance(bank,client));
+            } catch (IOException e) {
+                try {
+                    outData.writeUTF(e.getMessage());
+                } catch (IOException e1) {
+                    e1.getMessage();
+                }
             }
         }
+
     }
 
     @Override

@@ -2,6 +2,7 @@ package com.luxoft.bankapp.service.commanderCommands;
 
 import com.luxoft.bankapp.model.Account;
 import com.luxoft.bankapp.model.Bank;
+import com.luxoft.bankapp.model.Client;
 import com.luxoft.bankapp.service.exceptions.NotEnoughFundsException;
 import com.luxoft.bankapp.main.BankCommander;
 
@@ -30,16 +31,19 @@ public class TransferCommand implements Command {
 
 
         Account accountFrom = BankCommander.currentClient.getActiveAccount();
-        Account accountTo = BankCommander.myAccountService.findAccountByID(
-                BankCommander.myClientService.findClientByName(BankCommander.currentBank, recClientName), accountToID);
+        Client clientTo = BankCommander.myClientService.findClientByName(BankCommander.currentBank, recClientName);
 
-        try {
-            BankCommander.myAccountService.transferFunds(accountFrom, accountTo, transitAmount);
-            System.out.println("Новый баланс по счету: " + BankCommander.currentClient);
-            System.out.println("Новый баланс по счету: " + BankCommander.myClientService.findClientByName(
-                    BankCommander.currentBank, recClientName));
-        } catch (NotEnoughFundsException e) {
-            System.out.println("Ошибка при списании средств" + e.getMessage());
+        if (clientTo != null) {
+            Account accountTo = BankCommander.myAccountService.findAccountByID(
+                   clientTo , accountToID);
+            try {
+                BankCommander.myAccountService.transferFunds(accountFrom, accountTo, transitAmount);
+                System.out.println("Новый баланс по счету: " + BankCommander.currentClient);
+                System.out.println("Новый баланс по счету: " + BankCommander.myClientService.findClientByName(
+                        BankCommander.currentBank, recClientName));
+            } catch (NotEnoughFundsException e) {
+                System.out.println("Ошибка при списании средств" + e.getMessage());
+            }
         }
     }
 

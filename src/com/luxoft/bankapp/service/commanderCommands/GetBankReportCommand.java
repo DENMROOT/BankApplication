@@ -32,17 +32,15 @@ public class GetBankReportCommand implements Command {
     @Override
     public void execute_server(OutputStream out, Socket server, Bank bank, String[] clientCommandArg) {
 
+        System.out.println(bank.getBankID());
+
         try {
-            BankReport bankReport = new BankReport();
-            BankReportContainer bankReportContainer = new BankReportContainer();
-            bankReportContainer.setNumberOfClients(bankReport.getNumberOfClients(bank));
-            bankReportContainer.setAccountsNumber(bankReport.getAccountsNumber(bank));
-            bankReportContainer.setClientsSorted(bankReport.getClientsSorted(bank));
-            bankReportContainer.setBankCreditSum(bankReport.getBankCreditSum(bank));
-            bankReportContainer.setClientsByCity(bankReport.getClientsByCity(bank));
+            BankInfo myBankInfo = new BankInfo();
+            BankDAOImpl myBankDao = new BankDAOImpl();
+            myBankInfo = myBankDao.getBankInfo(bank);
 
             ObjectOutputStream outObj = new ObjectOutputStream(out);
-            outObj.writeObject(bankReportContainer);
+            outObj.writeObject(myBankInfo);
         } catch (IOException e) {
             e.getMessage();
         }

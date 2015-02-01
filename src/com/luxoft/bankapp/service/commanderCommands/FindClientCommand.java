@@ -24,7 +24,6 @@ public class FindClientCommand implements Command {
                 System.out.println("Клиент найден");
                 System.out.println("Текущий клиент установлен: " + "\n" + BankCommander.currentClient.toString());
             }
-            else System.out.println("Указанный клиент отсутствует");
     }
 
     @Override

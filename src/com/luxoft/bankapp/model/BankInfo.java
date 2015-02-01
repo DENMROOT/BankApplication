@@ -1,12 +1,13 @@
 package com.luxoft.bankapp.model;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 
 /**
  * Created by Makarov Denis on 28.01.2015.
  */
-public class BankInfo {
+public class BankInfo implements Serializable{
     private int numberOfClients;
     private double totalAccountSum;
     private Map<String, List<Client>> clientsByCity;

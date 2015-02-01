@@ -41,14 +41,14 @@ public class WithdrawCommand implements Command {
             System.out.println("Списание средств со счета: ");
             System.out.println(activeAccount);
             try {
-                BankCommander.myAccountService.withdrawFromAccount(BankServer.currentClient, activeAccount, Float.valueOf(clientCommandArg[1]));
+                BankServer.myAccountService.withdrawFromAccount(BankServer.currentClient, activeAccount, Float.valueOf(clientCommandArg[1]));
             } catch (NotEnoughFundsException e) {
                 System.out.println("Ошибка при списании средств: " + e.getMessage());
                 outData.writeUTF("Ошибка при списании средств: " + e.getMessage());
             }
             System.out.println("Новый баланс по счету: ");
             System.out.println(activeAccount);
-            outData.writeUTF("New overall balance : " + BankCommander.myClientService.getClientBalance(bank, BankServer.currentClient));
+            outData.writeUTF("New overall balance : " + BankServer.myClientService.getClientBalance(bank, BankServer.currentClient));
         } catch (IOException e) {
             e.printStackTrace();
         }

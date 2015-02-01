@@ -24,11 +24,16 @@ public class ClientServiceImpl implements ClientService{
     public void addClient(Bank bank, Client client) throws ClientExcistsException {
         ClientDAOImpl clientDao = new ClientDAOImpl();
         try {
-            clientDao.insert(client);
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        } catch (DAOException e) {
-            System.out.println(e.getMessage());
+            clientDao.findClientByName(bank, client.getName());
+            throw new ClientExcistsException();
+        } catch (ClientNotFoundException e) {
+            try {
+                clientDao.insert(client);
+            } catch (SQLException e1) {
+                System.out.println(e1.getMessage());
+            } catch (DAOException e1) {
+                System.out.println(e1.getMessage());
+            }
         }
     }
 
@@ -39,10 +44,9 @@ public class ClientServiceImpl implements ClientService{
             Client client = clientDAO.findClientByName(bank, clientName);
             return client;
         } catch (ClientNotFoundException e) {
-            e.getMessage();
+            System.out.println(e.getMessage());
+            return null;
         }
-
-        return null;
     }
 
     @Override

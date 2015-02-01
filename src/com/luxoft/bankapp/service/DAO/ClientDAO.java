@@ -26,7 +26,7 @@ public interface ClientDAO {
          * @param name
          * @return
          */
-        Client findClientById(int clientId) throws ClientNotFoundException;
+        Client findClientById(long clientId) throws ClientNotFoundException;
 
         /**
          * Returns the list of all clients of the Bank

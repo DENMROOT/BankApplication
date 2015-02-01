@@ -1,0 +1,4 @@
+02-01 14:46:44 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Таблица "BANK" не найдена
+Table "BANK" not found; SQL statement:
+SELECT B.ID AS ID, B.NAME AS NAME FROM BANK B; [42102-185]

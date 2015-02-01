@@ -47,7 +47,7 @@ public class ClientDAOImpl extends  BaseDAOImpl implements ClientDAO {
             ResultSet rs = prepStatement.executeQuery();
 
             // Iterate over results and print it
-            while(rs.next()) {
+            if(rs.next()) {
                 // Retrieve by column name
                 long clientID = rs.getLong("ID");
                 String clientName = rs.getString("NAME");
@@ -81,6 +81,9 @@ public class ClientDAOImpl extends  BaseDAOImpl implements ClientDAO {
                     myClient.addAccount(accountIterator);
                     myClient.setActiveAccount(accountIterator);
                 }
+            } else {
+                closeConnection();
+                throw new ClientNotFoundException();
             }
             closeConnection();
             return myClient;
@@ -92,7 +95,7 @@ public class ClientDAOImpl extends  BaseDAOImpl implements ClientDAO {
     }
 
     @Override
-    public Client findClientById(int clientId) throws ClientNotFoundException {
+    public Client findClientById(long clientId) throws ClientNotFoundException {
         Connection myConnection = openConnection();
         Client myClient = null;
         try {
@@ -121,7 +124,7 @@ public class ClientDAOImpl extends  BaseDAOImpl implements ClientDAO {
             ResultSet rs = prepStatement.executeQuery();
 
             // Iterate over results and print it
-            while(rs.next()) {
+            if (rs.next()) {
                 // Retrieve by column name
                 long clientID = rs.getLong("ID");
                 String clientName = rs.getString("NAME");
@@ -152,6 +155,9 @@ public class ClientDAOImpl extends  BaseDAOImpl implements ClientDAO {
                     myClient.addAccount(accountIterator);
                     myClient.setActiveAccount(accountIterator);
                 }
+            } else {
+                closeConnection();
+                throw new ClientNotFoundException();
             }
             closeConnection();
             return myClient;
@@ -184,7 +190,7 @@ public class ClientDAOImpl extends  BaseDAOImpl implements ClientDAO {
 
             // 2) Set PreparedStatement param
 
-            prepStatement.setLong(1, BankCommander.currentBank.getBankID());
+            prepStatement.setLong(1, bank.getBankID());
 
             // 3) Execute query and get the ResultSet
             ResultSet rs = prepStatement.executeQuery();
