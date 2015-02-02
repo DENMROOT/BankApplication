@@ -13,9 +13,10 @@ public class CheckingAccount extends AbstractAccount{
             throw new IllegalArgumentException();
         }
         setAccountId(accountId);
-        this.initialOverdraft=overdraft;
+        this.setInitialOverdraft(overdraft);
         this.balance=balance;
         this.overdraft=overdraft;
+        setAccountType("C");
     }
 
     public float getOverdraft() {

@@ -1,6 +1,7 @@
 package com.luxoft.bankapp.service.DAO;
 
 import com.luxoft.bankapp.model.Account;
+import com.luxoft.bankapp.model.Client;
 
 import java.util.List;
 
@@ -10,9 +11,15 @@ import java.util.List;
 public interface AccountDAO {
     /**
      * Save Account in database
-     * @param client
+     * @param account
      */
-    public void save(Account client);
+    public void save(Account account);
+
+    /**
+     * Insert Account in database
+     * @param account
+     */
+    public void insert(Client client, Account account);
 
     /**
      * Remove all accounts of client

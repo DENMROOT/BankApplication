@@ -243,7 +243,6 @@ public class ClientDAOImpl extends  BaseDAOImpl implements ClientDAO {
     @Override
     public void save(Client client) {
         AccountDAOImpl accountDao = new AccountDAOImpl();
-        accountDao.removeByClientId(client.getClientID());
         Connection myConnection = openConnection();
 
         try {
@@ -263,8 +262,8 @@ public class ClientDAOImpl extends  BaseDAOImpl implements ClientDAO {
 
             prepStatement.setString(1, client.getName());
             switch (client.getGender()) {
-                case MALE:prepStatement.setString(2,"m");
-                case FEMALE:prepStatement.setString(2,"f");
+                case MALE:prepStatement.setString(2,"m"); break;
+                case FEMALE:prepStatement.setString(2,"f"); break;
             }
             prepStatement.setString(3, client.getEmail());
             prepStatement.setString(4, client.getPhone());
@@ -287,22 +286,17 @@ public class ClientDAOImpl extends  BaseDAOImpl implements ClientDAO {
     }
 
     @Override
-    public void insert(Client client) throws SQLException, DAOException {
-        System.out.printf("Добавляем клиента" + client);
-
+    public void insert(Bank bank, Client client) throws SQLException, DAOException {
         final String clientSQL = "INSERT INTO CLIENTS (BANK_ID,NAME,GENDER,EMAIL,PHONE,CITY,ACTIVE_ACCOUNT_ID) VALUES (?,?,?,?,?,?,?)";
-
-        //INSERT INTO CLIENTS VALUES(1,1, 'Денис Макаров','m', 'denm2000@ukr.net','(067)1231212','Киев',Null);
-
         try (
                 Connection myConnection = openConnection();
                 final PreparedStatement clientStmt = myConnection.prepareStatement(clientSQL);
         ) {
-            clientStmt.setLong(1, BankCommander.currentBank.getBankID());
+            clientStmt.setLong(1, bank.getBankID());
             clientStmt.setString(2, client.getName());
             switch (client.getGender()) {
-                case MALE:clientStmt.setString(3,"m");
-                case FEMALE:clientStmt.setString(3,"f");
+                case MALE:clientStmt.setString(3,"m"); break;
+                case FEMALE:clientStmt.setString(3,"f"); break;
             }
             clientStmt.setString(4, client.getEmail());
             clientStmt.setString(5, client.getPhone());

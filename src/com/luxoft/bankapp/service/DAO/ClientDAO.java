@@ -49,7 +49,7 @@ public interface ClientDAO {
          * or update client in database (if id!=null)
          * @param client
          */
-        void insert(Client client) throws SQLException, DAOException;
+        void insert(Bank bank, Client client) throws SQLException, DAOException;
 
         /**
          * Method removes client from Database

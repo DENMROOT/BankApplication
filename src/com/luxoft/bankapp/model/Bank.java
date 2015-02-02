@@ -1,5 +1,6 @@
 package com.luxoft.bankapp.model;
 
+import com.luxoft.bankapp.annotations.NoDB;
 import com.luxoft.bankapp.service.exceptions.ClientExcistsException;
 
 import java.text.SimpleDateFormat;
@@ -8,11 +9,19 @@ import java.util.*;
 /**
  * Created by Makarov Denis on 14.01.2015.
  */
-public class Bank implements Report {
+public class Bank implements Report,BaseClassMarkerInterface {
+
+    @NoDB
     private long bankID;
+
     private String name;
+
     private Set<Client> clients = new HashSet<Client>();
+
+    @NoDB
     List<ClientRegistrationListener> listeners = new ArrayList<ClientRegistrationListener>();
+
+    @NoDB
     Map <String, Client> clientsMap = new HashMap<String, Client>();
 
     public Bank(List<ClientRegistrationListener> listenersList){

@@ -1,5 +1,7 @@
 package com.luxoft.bankapp.model;
 
+import com.luxoft.bankapp.annotations.NoDB;
+
 import java.io.Serializable;
 import java.util.Map;
 
@@ -7,10 +9,16 @@ import java.util.Map;
  * Created by Makarov Denis on 14.01.2015.
  */
 public abstract class AbstractAccount implements Account, Serializable{
+    @NoDB
     private long accountId;
+
     protected float balance;
-    protected float initialOverdraft;
+
+    private float initialOverdraft;
+
     protected float overdraft;
+
+    private String accountType;
 
     @Override
     public boolean equals(Object o) {
@@ -59,5 +67,21 @@ public abstract class AbstractAccount implements Account, Serializable{
     @Override
     public void setAccountId(long accountId) {
         this.accountId = accountId;
+    }
+
+    public String getAccountType() {
+        return accountType;
+    }
+
+    public void setAccountType(String accountType) {
+        this.accountType = accountType;
+    }
+
+    public float getInitialOverdraft() {
+        return initialOverdraft;
+    }
+
+    public void setInitialOverdraft(float initialOverdraft) {
+        this.initialOverdraft = initialOverdraft;
     }
 }

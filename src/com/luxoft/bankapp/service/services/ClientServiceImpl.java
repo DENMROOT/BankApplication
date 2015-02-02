@@ -28,7 +28,7 @@ public class ClientServiceImpl implements ClientService{
             throw new ClientExcistsException();
         } catch (ClientNotFoundException e) {
             try {
-                clientDao.insert(client);
+                clientDao.insert(bank, client);
             } catch (SQLException e1) {
                 System.out.println(e1.getMessage());
             } catch (DAOException e1) {

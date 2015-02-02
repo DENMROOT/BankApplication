@@ -18,4 +18,6 @@ public interface Account extends Report {
     public void parseFeed(Map<String, String> feed);
     public long getAccountId();
     public void setAccountId(long accountId);
+    public String getAccountType();
+    public float getInitialOverdraft();
 }

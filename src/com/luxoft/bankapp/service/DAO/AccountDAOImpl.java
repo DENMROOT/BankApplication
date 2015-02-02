@@ -1,6 +1,7 @@
 package com.luxoft.bankapp.service.DAO;
 
 import com.luxoft.bankapp.model.*;
+import com.luxoft.bankapp.service.exceptions.DAOException;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -41,6 +42,42 @@ public class AccountDAOImpl extends BaseDAOImpl implements AccountDAO {
 
         } catch(SQLException e) {
             e.getMessage();
+        }
+    }
+
+    @Override
+    public void insert(Client client, Account account) {
+        final String clientSQL = "INSERT INTO ACCOUNTS (CLIENT_ID,ACCOUNT_TYPE,INITIALOVERDRAFT,BALANCE,OVERDRAFT) VALUES (?,?,?,?,?)";
+        try (
+                Connection myConnection = openConnection();
+                final PreparedStatement accountStmt = myConnection.prepareStatement(clientSQL);
+        ) {
+            accountStmt.setLong(1, client.getClientID());
+            switch (account.getAccountType()) {
+                case "S":accountStmt.setString(2,"S"); break;
+                case "C":accountStmt.setString(2,"C"); break;
+            }
+            accountStmt.setFloat(3, account.getInitialOverdraft());
+            accountStmt.setFloat(4, account.getBalance());
+            accountStmt.setFloat(5, account.getOverdraft());
+
+            if (accountStmt.executeUpdate() == 0) {
+                System.out.println("Ошибка вставки клиента");
+                throw new DAOException("Impossible to save Client in DB. Transaction is rolled back.");
+            }
+            ResultSet rs = accountStmt.getGeneratedKeys();
+            if (rs == null || !rs.next()) {
+                System.out.println("Ошибка получения нового ID");
+                throw new DAOException("Impossible to save in DB. Can't get clientID.");
+            }
+            int count = accountStmt.getUpdateCount();
+            System.out.println("Затронуто записей счетов:" + count);
+            Integer accountId = rs.getInt(1);
+            account.setAccountId(accountId);
+        } catch (DAOException e) {
+            System.out.println(e.getMessage());
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
         }
     }
 

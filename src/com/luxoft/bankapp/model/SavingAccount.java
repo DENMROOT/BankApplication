@@ -13,6 +13,7 @@ public class SavingAccount extends AbstractAccount {
         }
         this.setAccountId(accountId);
         this.balance=x;
+        setAccountType("S");
     }
 
 

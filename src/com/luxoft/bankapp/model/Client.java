@@ -1,5 +1,6 @@
 package com.luxoft.bankapp.model;
 
+import com.luxoft.bankapp.annotations.NoDB;
 import com.luxoft.bankapp.service.exceptions.NotEnoughFundsException;
 import com.luxoft.bankapp.service.exceptions.OverDraftLimitExceededException;
 
@@ -11,12 +12,12 @@ import java.util.regex.Pattern;
 /**
  * Created by Makarov Denis on 14.01.2015.
  */
-public class Client implements Report, Comparable <Client>, Serializable{
-    private long clientID;
+public class Client implements Report, Comparable <Client>, Serializable, BaseClassMarkerInterface{
+    @NoDB private long clientID;
     private String name;
-    private float initialOverdraft;
+    @NoDB private float initialOverdraft;
     private Set<Account> accounts = new HashSet<Account>();
-    private Account activeAccount;
+    @NoDB private Account activeAccount;
     private Gender gender;
     private String city;
     private String email;
