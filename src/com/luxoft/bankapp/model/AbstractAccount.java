@@ -8,7 +8,7 @@ import java.util.Map;
 /**
  * Created by Makarov Denis on 14.01.2015.
  */
-public abstract class AbstractAccount implements Account, Serializable{
+public abstract class AbstractAccount implements Account, Serializable, BaseClassMarkerInterface{
     @NoDB
     private long accountId;
 

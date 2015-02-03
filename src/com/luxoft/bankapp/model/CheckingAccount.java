@@ -6,7 +6,7 @@ import com.luxoft.bankapp.service.exceptions.OverDraftLimitExceededException;
 /**
  * Created by Makarov Denis on 14.01.2015.
  */
-public class CheckingAccount extends AbstractAccount{
+public class CheckingAccount extends AbstractAccount implements BaseClassMarkerInterface{
 
     public CheckingAccount (long accountId, float balance, float overdraft) {
         if (overdraft<0) {

@@ -5,7 +5,7 @@ import com.luxoft.bankapp.service.exceptions.NotEnoughFundsException;
 /**
  * Created by Makarov Denis on 14.01.2015.
  */
-public class SavingAccount extends AbstractAccount {
+public class SavingAccount extends AbstractAccount implements BaseClassMarkerInterface {
 
     public SavingAccount(long accountId, float x) {
         if (x<0) {

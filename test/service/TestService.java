@@ -25,62 +25,106 @@ public class TestService {
      * также он должен уметь сравнивать коллекции.
      */
     public static boolean isEquals(Object o1, Object o2) {
-
-        if (o1==null || o2==null) return false;
-
         if (o1.getClass() != o2.getClass()) return false;
-        Class cls = o1.getClass();
+        Class cls1 = o1.getClass();
+        Class cls2 = o2.getClass();
 
-        for (Field fieldIterator:cls.getDeclaredFields()) {
-            fieldIterator.setAccessible(true);
-            if (!fieldIterator.isAnnotationPresent(NoDB.class)) {
+        //Рекурсивно анализируем поля суперкласса объекта если он имплементит мой маркер интерфейс BaseClassMarkerInterface
+        Class superClass1 = cls1.getSuperclass();
+        Class superClass2 = cls2.getSuperclass();
+
+        if(o1 instanceof BaseClassMarkerInterface) {
+            Field[] fieldSuper1 = superClass1.getDeclaredFields();
+            Field[] fieldSuper2 = superClass2.getDeclaredFields();
+
+            if(!fieldsIsEqual(o1, o2, fieldSuper1, fieldSuper2)) {
+                return false;
+            }
+        }
+
+        Field[] fields1 = cls1.getDeclaredFields();
+        Field[] fields2 = cls2.getDeclaredFields();
+        assert(fields1.length == fields2.length);
+
+        if(!fieldsIsEqual(o1, o2, fields1, fields2)) {
+            return false;
+        }
+
+        return true;
+    }
+
+    private static boolean fieldsIsEqual (Object o1, Object o2, Field[] fields1, Field[] fields2){
+        Class cls1 = o1.getClass();
+        Class cls2 = o2.getClass();
+        System.out.println("Class1 : " + cls1 + " Class2 : " + cls2);
+        for (Field fieldIter: fields1){
+            if (!fieldIter.isAnnotationPresent(NoDB.class)) {
+                System.out.println(fieldIter.getName());
+            }
+        }
+
+        for (int i=0; i < fields1.length; i++) {
+            Field f1 = fields1[i];
+            Field f2 = fields2[i];
+            f1.setAccessible(true);
+            f2.setAccessible(true);
+
+            if (!f1.isAnnotationPresent(NoDB.class)) {
                 try {
-                    Object value1 = fieldIterator.get(o1);
-                    Object value2 = fieldIterator.get(o2);
-                    Class fieldType = fieldIterator.getClass();
+                    Object value1 = f1.get(o1);
+                    Object value2 = f2.get(o2);
+                    Class fieldType = f1.getClass();
 
-                    //System.out.println("Field name: " + fieldIterator.getName());
-                    //System.out.println("Values: " + value1 + " -- "+ value2);
-                    //System.out.println(value1.getClass() +  " -- " + value1.getClass().getSuperclass());
+                    if(value1 == null && value2 == null) {
+                        continue;
+                    }
 
-                    if (!value1.equals(value2)) return false;
+                    if(value1 == null || value2 == null) {
+                        return false;
+                    }
+
+                    if (Collection.class.isAssignableFrom(f1.getType())){
+                        System.out.println("Field is Collection : " + f1.getName() +" type: "
+                                + fieldType +" value: " + value1.getClass());
+                        if (!collectionIsEqual(value1,value2)) return false;
+                    }
 
                     System.out.println(value1 + " -- " + value2);
 
-                    System.out.println("Field is : " + fieldIterator.getName() +" type: "
+                    System.out.println("Field is : " + f1.getName() +" type: "
                             + fieldType +" value: " + value1.getClass());
 
-                    if (isCollection(value1)){
-                        Collection col1 = (Collection) value1;
-                        Collection col2 = (Collection) value2;
-                        for (Object iterator1 : col1) {
-                            for (Object iterator2 : col2){
-                                if (!iterator1.equals(iterator2)) return false;
-                                isEquals(iterator1, iterator2);
-                            }
-                        }
+                    if (!value1.equals(value2)) {
+                        return false;
                     }
 
-
-                    /*
-                    if (isCollection(value1) ) {
-                        System.out.println("Collection!");
-
-                        ArrayList <Client> array1 = new ArrayList<Client>((Collection<? extends Client>) value1);
-                        ArrayList <Client> array2 = new ArrayList<Client>((Collection<? extends Client>) value2);
-                    }
-                    */
-                    /*
-                    if (value1.getClass().getSuperclass() != java.lang.Object.class) {
-                        isEquals(value1,value2);
-                    }
-                    */
                 } catch (IllegalAccessException e) {
                     System.out.println(e.getMessage());
                 }
             }
         }
+        return true;
+    }
 
+    private  static boolean collectionIsEqual (Object o1, Object o2){
+        Collection col1 = (Collection) o1;
+        Collection col2 = (Collection) o2;
+
+        if(col1.size() != col2.size()) {
+            return false;
+        }
+
+        System.out.println("Collection 1 contains: " + col1);
+        System.out.println("Collection 2 contains: " + col2);
+
+        Iterator iter1 = col1.iterator();
+        Iterator iter2 = col2.iterator();
+
+        while (iter1.hasNext()) {
+            Object object1 = iter1.next();
+            Object object2 = iter2.next();
+            return isEquals(object1, object2);
+        }
         return true;
     }
 

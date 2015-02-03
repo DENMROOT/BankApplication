@@ -22,17 +22,11 @@ public class TestServiceTest {
         Client client = new Client (Gender.MALE);
         client.setName("Ivan Ivanov");
         client.setCity("Kiev");
-        // add some fields from Client
-        // marked as @NoDB, with different values
-        // for client and client2
         client.addAccount(new CheckingAccount (1, 0.0f, 100.0f));
 
         Client client1 = new Client (Gender.FEMALE);
         client1.setName("Masha Petrova");
         client1.setCity("Lviv");
-        // add some fields from Client
-        // marked as @NoDB, with different values
-        // for client and client2
         client1.addAccount(new CheckingAccount (1, 40.0f, 500.0f));
         try {
             bank1.addClient(client);
@@ -52,9 +46,6 @@ public class TestServiceTest {
         Client client3 = new Client (Gender.FEMALE);
         client3.setName("Masha Petrova");
         client3.setCity("Lviv");
-        // add some fields from Client
-        // marked as @NoDB, with different values
-        // for client and client2
         client3.addAccount(new CheckingAccount (1, 40.0f, 500.0f));
         try {
             bank2.addClient(client2);
