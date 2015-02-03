@@ -2,6 +2,7 @@ package com.luxoft.bankapp.main;
 
 import com.luxoft.bankapp.model.Bank;
 import com.luxoft.bankapp.model.Client;
+import com.luxoft.bankapp.service.DAO.DaoFactory;
 import com.luxoft.bankapp.service.services.*;
 import com.luxoft.bankapp.service.commanderCommands.Command;
 import com.luxoft.bankapp.service.DAO.BankDAOImpl;
@@ -17,9 +18,9 @@ import java.util.TreeMap;
  * Created by Makarov Denis on 15.01.2015.
  */
 public class BankCommander{
-    public static BankServiceImpl myBankService = new BankServiceImpl();
-    public static ClientServiceImpl myClientService = new ClientServiceImpl();
-    public static AccountServiceImpl myAccountService = new AccountServiceImpl();
+    public static BankServiceImpl myBankService = ServiceFactory.getBankServiceImpl();
+    public static ClientServiceImpl myClientService = ServiceFactory.getClientServiceImpl();
+    public static AccountServiceImpl myAccountService = ServiceFactory.getAccountServiceImpl();
     public static String bankName = "My Bank";
     public static Bank currentBank;
     public static Client currentClient;
@@ -61,7 +62,7 @@ public class BankCommander{
     }
 
     public static void main(String args[]) {
-        BankDAOImpl bankDao = new BankDAOImpl();
+        BankDAOImpl bankDao = DaoFactory.getBankDAO();
         currentBank = bankDao.getBankByName(bankName);
 
         System.out.println("Bank ID:" + currentBank.getBankID() + " Bank Name: " + currentBank.getName());

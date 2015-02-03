@@ -13,7 +13,7 @@ import java.util.*;
  */
 public class BankApplication {
     public static void main (String [] args){
-        BankServiceImpl myBankService = new BankServiceImpl();
+        BankServiceImpl myBankService = BankServiceImpl.getInstance();
 
         List<ClientRegistrationListener> listeners = new ArrayList<ClientRegistrationListener>();
         listeners.add(new Bank.PrintClientListener());

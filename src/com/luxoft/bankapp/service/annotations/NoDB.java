@@ -1,4 +1,4 @@
-package com.luxoft.bankapp.annotations;
+package com.luxoft.bankapp.service.annotations;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;

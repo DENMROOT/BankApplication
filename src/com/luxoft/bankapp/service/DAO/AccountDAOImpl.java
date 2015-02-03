@@ -14,6 +14,19 @@ import java.util.List;
  * Created by Makarov Denis on 27.01.2015.
  */
 public class AccountDAOImpl extends BaseDAOImpl implements AccountDAO {
+
+    private static AccountDAOImpl instance;
+
+    public AccountDAOImpl() {
+    }
+
+    public static AccountDAOImpl getInstance() {
+        if (instance == null) {
+            instance = new AccountDAOImpl();
+        }
+        return instance;
+    }
+
     @Override
     public void save(Account account) {
         Connection myConnection = openConnection();

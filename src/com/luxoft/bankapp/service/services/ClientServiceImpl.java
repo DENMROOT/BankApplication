@@ -6,6 +6,7 @@ import com.luxoft.bankapp.model.Client;
 import com.luxoft.bankapp.service.DAO.AccountDAOImpl;
 import com.luxoft.bankapp.service.DAO.ClientDAO;
 import com.luxoft.bankapp.service.DAO.ClientDAOImpl;
+import com.luxoft.bankapp.service.DAO.DaoFactory;
 import com.luxoft.bankapp.service.exceptions.DAOException;
 import com.luxoft.bankapp.service.exceptions.ClientExcistsException;
 import com.luxoft.bankapp.service.exceptions.ClientNotFoundException;
@@ -20,9 +21,21 @@ import java.util.Set;
  * Created by Makarov Denis on 29.01.2015.
  */
 public class ClientServiceImpl implements ClientService{
+
+    private static ClientServiceImpl instance;
+
+    private ClientServiceImpl(){};
+
+    public static ClientServiceImpl getInstance (){
+        if (instance == null) {
+            instance = new ClientServiceImpl();
+        }
+        return instance;
+    }
+
     @Override
     public void addClient(Bank bank, Client client) throws ClientExcistsException {
-        ClientDAOImpl clientDao = new ClientDAOImpl();
+        ClientDAOImpl clientDao = DaoFactory.getClientDAO();
         try {
             clientDao.findClientByName(bank, client.getName());
             throw new ClientExcistsException();
@@ -39,7 +52,7 @@ public class ClientServiceImpl implements ClientService{
 
     @Override
     public Client findClientByName(Bank bank, String clientName) {
-        ClientDAO clientDAO = new ClientDAOImpl();
+        ClientDAO clientDAO = DaoFactory.getClientDAO();
         try {
             Client client = clientDAO.findClientByName(bank, clientName);
             return client;
@@ -51,14 +64,14 @@ public class ClientServiceImpl implements ClientService{
 
     @Override
     public Set<Account> getClientAccounts(Client client) {
-        AccountDAOImpl accountDAO = new AccountDAOImpl();
+        AccountDAOImpl accountDAO = DaoFactory.getAccountDAO();
         Set <Account> accountsList = new HashSet<>(accountDAO.getClientAccounts(client.getClientID()));
         return accountsList;
     }
 
     @Override
     public float getClientBalance(Bank bank, Client client) {
-        AccountDAOImpl accountDAO = new AccountDAOImpl();
+        AccountDAOImpl accountDAO = DaoFactory.getAccountDAO();
         List<Account> accountsList = accountDAO.getClientAccounts(client.getClientID());
         float balance=0.0f;
 
@@ -71,13 +84,13 @@ public class ClientServiceImpl implements ClientService{
 
     @Override
     public void saveClient(Client client) throws IOException {
-        ClientDAOImpl clientDAO = new ClientDAOImpl();
+        ClientDAOImpl clientDAO = DaoFactory.getClientDAO();
         clientDAO.save(client);
     }
 
     @Override
     public void deleteClient(Bank bank, Client client) {
-        ClientDAOImpl clientDAO = new ClientDAOImpl();
+        ClientDAOImpl clientDAO = DaoFactory.getClientDAO();
         clientDAO.remove(client);
     }
 }

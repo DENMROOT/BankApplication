@@ -6,10 +6,12 @@ import com.luxoft.bankapp.model.Bank;
 import com.luxoft.bankapp.model.Client;
 import com.luxoft.bankapp.model.ClientRegistrationListener;
 import com.luxoft.bankapp.service.DAO.BankDAOImpl;
+import com.luxoft.bankapp.service.DAO.DaoFactory;
 import com.luxoft.bankapp.service.commanderCommands.*;
 import com.luxoft.bankapp.service.services.AccountServiceImpl;
 import com.luxoft.bankapp.service.services.BankServiceImpl;
 import com.luxoft.bankapp.service.services.ClientServiceImpl;
+import com.luxoft.bankapp.service.services.ServiceFactory;
 
 import java.io.*;
 import java.net.ServerSocket;
@@ -24,9 +26,9 @@ import java.util.List;
 
 public class BankServer extends Thread {
 
-    public static BankServiceImpl myBankService = new BankServiceImpl();
-    public static ClientServiceImpl myClientService = new ClientServiceImpl();
-    public static AccountServiceImpl myAccountService = new AccountServiceImpl();
+    public static BankServiceImpl myBankService = ServiceFactory.getBankServiceImpl();
+    public static ClientServiceImpl myClientService = ServiceFactory.getClientServiceImpl();
+    public static AccountServiceImpl myAccountService = ServiceFactory.getAccountServiceImpl();
     public static Bank currentBank;
     public static Client currentClient;
     List<ClientRegistrationListener> listeners = new ArrayList<ClientRegistrationListener>();
@@ -50,7 +52,7 @@ public class BankServer extends Thread {
 
     public void run() {
         String bankName = "My Bank";
-        BankDAOImpl bankDao = new BankDAOImpl();
+        BankDAOImpl bankDao = DaoFactory.getBankDAO();
         //currentBank.setName(bankName);
         currentBank = bankDao.getBankByName(bankName);
 

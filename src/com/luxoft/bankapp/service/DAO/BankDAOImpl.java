@@ -12,6 +12,18 @@ import java.util.*;
  */
 public class BankDAOImpl extends BaseDAOImpl implements BankDAO {
 
+    private static BankDAOImpl instance;
+
+    private BankDAOImpl() {
+    }
+
+    public static BankDAOImpl getInstance() {
+        if (instance == null) {
+            instance = new BankDAOImpl();
+        }
+        return instance;
+    }
+
     @Override
     public Bank getBankByName(String name) {
         Connection myConnection = openConnection();

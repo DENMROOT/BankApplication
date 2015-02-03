@@ -16,6 +16,19 @@ import java.util.List;
  * Created by Makarov Denis on 27.01.2015.
  */
 public class ClientDAOImpl extends  BaseDAOImpl implements ClientDAO {
+
+    private static ClientDAOImpl instance;
+
+    public ClientDAOImpl() {
+    }
+
+    public static ClientDAOImpl getInstance() {
+        if (instance == null) {
+            instance = new ClientDAOImpl();
+        }
+        return instance;
+    }
+
     @Override
     public Client findClientByName(Bank bank, String name) throws ClientNotFoundException {
         Connection myConnection = openConnection();
@@ -221,7 +234,7 @@ public class ClientDAOImpl extends  BaseDAOImpl implements ClientDAO {
                 //myClient.setActiveAccount(activeAccountID);
 
                 //Вытягиваем все счета клиента по его ID и записываем его в Entity client
-                AccountDAOImpl accountDAO = new AccountDAOImpl();
+                AccountDAOImpl accountDAO = DaoFactory.getAccountDAO();
                 List <Account> accountsList = accountDAO.getClientAccounts(myClient.getClientID());
 
                 for (Account accountIterator : accountsList){

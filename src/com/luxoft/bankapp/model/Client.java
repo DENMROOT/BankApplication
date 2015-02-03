@@ -1,6 +1,6 @@
 package com.luxoft.bankapp.model;
 
-import com.luxoft.bankapp.annotations.NoDB;
+import com.luxoft.bankapp.service.annotations.NoDB;
 import com.luxoft.bankapp.service.exceptions.NotEnoughFundsException;
 import com.luxoft.bankapp.service.exceptions.OverDraftLimitExceededException;
 

@@ -1,6 +1,9 @@
-package com.luxoft.bankapp.model;
+package com.luxoft.bankapp.model.dao;
 
+import com.luxoft.bankapp.model.Bank;
+import com.luxoft.bankapp.model.ClientRegistrationListener;
 import com.luxoft.bankapp.service.DAO.BankDAOImpl;
+import com.luxoft.bankapp.service.DAO.DaoFactory;
 import com.luxoft.bankapp.service.services.BankServiceImpl;
 import org.junit.After;
 import org.junit.Before;
@@ -17,7 +20,7 @@ public class BankDaoTest {
 
     @Before
     public void InitializeBank(){
-        BankDAOImpl bankDao = new BankDAOImpl();
+        BankDAOImpl bankDao = DaoFactory.getBankDAO();
         String bankName = "My Bank";
         testBank = bankDao.getBankByName(bankName);
         //System.out.println("Банк: " + testBank.getName() +" ID: " +testBank.getBankID());
@@ -40,13 +43,13 @@ public class BankDaoTest {
 
     @Test
     public void getClients() throws Exception {
-        BankServiceImpl myBankService = new BankServiceImpl();
+        BankServiceImpl myBankService = BankServiceImpl.getInstance();
         assertEquals("Ошибка при выполнении Тест: getClients ",myBankService.getClients(testBank).size(), 6, 0);
     }
 
     @Test
     public void getAllAccounts() throws Exception {
-        BankServiceImpl myBankService = new BankServiceImpl();
+        BankServiceImpl myBankService = BankServiceImpl.getInstance();
         assertEquals("Ошибка при выполнении Тест: getAllAccounts ",myBankService.getAllAccounts(testBank).size(), 8, 0);
     }
 

@@ -1,6 +1,7 @@
 package com.luxoft.bankapp.model;
 
 import com.luxoft.bankapp.service.services.BankServiceImpl;
+import com.luxoft.bankapp.service.services.ServiceFactory;
 
 import java.util.*;
 
@@ -8,19 +9,19 @@ import java.util.*;
  * Created by Makarov Denis on 19.01.2015.
  */
 public class BankReport {
+
+    BankServiceImpl myBankService = ServiceFactory.getBankServiceImpl();
+
     public int getNumberOfClients(Bank bank) {
-        BankServiceImpl myBankService = new BankServiceImpl();
         return myBankService.getClients(bank).size();
     }
 
     public int getAccountsNumber(Bank bank) {
-        BankServiceImpl myBankService = new BankServiceImpl();
         return myBankService.getAllAccounts(bank).size();
     }
 
     public Set<Client> getClientsSorted(Bank bank) {
         Comparator<Client> comparator = new ClientComparator();
-        BankServiceImpl myBankService = new BankServiceImpl();
         Set<Client> sortedBankClients = new TreeSet<Client> (comparator);
         for (Client clientIterator : myBankService.getClients(bank) ) {
             sortedBankClients.add(clientIterator);
@@ -30,7 +31,6 @@ public class BankReport {
 
     public float getBankCreditSum(Bank bank) {
         float totalBankOverdraft=0.0f;
-        BankServiceImpl myBankService = new BankServiceImpl();
         Set<Account> allBankAccounts = new HashSet<Account> (myBankService.getAllAccounts(bank));
         for (Iterator<Account> accIterator = allBankAccounts.iterator(); accIterator.hasNext(); ) {
             Account account = accIterator.next();
@@ -40,7 +40,6 @@ public class BankReport {
     }
 
     public Map<String, List<Client>> getClientsByCity(Bank bank) {
-        BankServiceImpl myBankService = new BankServiceImpl();
 
         Map<String, List<Client>> resultMap = new TreeMap<String, List<Client>>();
         for(Client client:myBankService.getClients(bank)){

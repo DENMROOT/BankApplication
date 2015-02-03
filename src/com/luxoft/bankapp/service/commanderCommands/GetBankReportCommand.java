@@ -6,6 +6,7 @@ import com.luxoft.bankapp.main.BankCommander;
 import com.luxoft.bankapp.model.BankReport;
 import com.luxoft.bankapp.model.BankReportContainer;
 import com.luxoft.bankapp.service.DAO.BankDAOImpl;
+import com.luxoft.bankapp.service.DAO.DaoFactory;
 import com.luxoft.bankapp.service.clientServer.BankServer;
 
 import java.io.IOException;
@@ -20,7 +21,7 @@ public class GetBankReportCommand implements Command {
     @Override
     public void execute() {
         BankInfo myBankInfo = new BankInfo();
-        BankDAOImpl myBankDao = new BankDAOImpl();
+        BankDAOImpl myBankDao = DaoFactory.getBankDAO();
         myBankInfo = myBankDao.getBankInfo(BankCommander.currentBank);
 
         System.out.println("Количество клиентов: " + myBankInfo.getNumberOfClients());
@@ -36,7 +37,7 @@ public class GetBankReportCommand implements Command {
 
         try {
             BankInfo myBankInfo = new BankInfo();
-            BankDAOImpl myBankDao = new BankDAOImpl();
+            BankDAOImpl myBankDao = DaoFactory.getBankDAO();
             myBankInfo = myBankDao.getBankInfo(bank);
 
             ObjectOutputStream outObj = new ObjectOutputStream(out);

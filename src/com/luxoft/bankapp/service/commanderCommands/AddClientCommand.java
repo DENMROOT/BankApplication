@@ -87,7 +87,7 @@ public class AddClientCommand implements Command {
             client.setEmail(clientCommandArg[4]);
             client.setPhone(clientCommandArg[5]);
             client.setInitialOverdraft(Float.valueOf(clientCommandArg[6]));
-            BankServer.myClientService.addClient(BankCommander.currentBank, client);
+            BankServer.myClientService.addClient(bank, client);
             try {
                 outData.writeUTF("Client added" + clientCommandArg[1].toString());
             } catch (IOException e1) {

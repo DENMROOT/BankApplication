@@ -25,9 +25,9 @@ public class SelectActiveAccount implements Command {
         Scanner paramScan = new Scanner(System.in);
         Long accountID =Long.valueOf(paramScan.nextLine()); // initialize command with commandString
 
-        AccountServiceImpl accountService = new AccountServiceImpl();
+        AccountServiceImpl accountService = AccountServiceImpl.getInstance();
         Account activeAccount =
-                accountService.findAccountByID(BankCommander.currentClient, accountID);
+                accountService.getInstance().findAccountByID(BankCommander.currentClient, accountID);
 
         if (activeAccount != null) {
             BankCommander.currentClient.setActiveAccount(activeAccount);

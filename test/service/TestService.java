@@ -1,15 +1,9 @@
 package service;
 
-import com.luxoft.bankapp.annotations.NoDB;
+import com.luxoft.bankapp.service.annotations.NoDB;
 import com.luxoft.bankapp.model.BaseClassMarkerInterface;
-import com.luxoft.bankapp.model.Client;
 
-import java.beans.IntrospectionException;
-import java.beans.PropertyDescriptor;
-import java.lang.reflect.Array;
 import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Type;
 import java.util.*;
 
 /**
@@ -56,12 +50,14 @@ public class TestService {
     private static boolean fieldsIsEqual (Object o1, Object o2, Field[] fields1, Field[] fields2){
         Class cls1 = o1.getClass();
         Class cls2 = o2.getClass();
+        /*
         System.out.println("Class1 : " + cls1 + " Class2 : " + cls2);
         for (Field fieldIter: fields1){
             if (!fieldIter.isAnnotationPresent(NoDB.class)) {
                 System.out.println(fieldIter.getName());
             }
         }
+        */
 
         for (int i=0; i < fields1.length; i++) {
             Field f1 = fields1[i];
@@ -84,15 +80,8 @@ public class TestService {
                     }
 
                     if (Collection.class.isAssignableFrom(f1.getType())){
-                        System.out.println("Field is Collection : " + f1.getName() +" type: "
-                                + fieldType +" value: " + value1.getClass());
                         if (!collectionIsEqual(value1,value2)) return false;
                     }
-
-                    System.out.println(value1 + " -- " + value2);
-
-                    System.out.println("Field is : " + f1.getName() +" type: "
-                            + fieldType +" value: " + value1.getClass());
 
                     if (!value1.equals(value2)) {
                         return false;
@@ -113,9 +102,6 @@ public class TestService {
         if(col1.size() != col2.size()) {
             return false;
         }
-
-        System.out.println("Collection 1 contains: " + col1);
-        System.out.println("Collection 2 contains: " + col2);
 
         Iterator iter1 = col1.iterator();
         Iterator iter2 = col2.iterator();
