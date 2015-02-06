@@ -7,7 +7,7 @@ import com.luxoft.bankapp.model.BankReport;
 import com.luxoft.bankapp.model.BankReportContainer;
 import com.luxoft.bankapp.service.DAO.BankDAOImpl;
 import com.luxoft.bankapp.service.DAO.DaoFactory;
-import com.luxoft.bankapp.service.clientServer.BankServer;
+import com.luxoft.bankapp.service.clientServerMultithreading.ServerThread;
 
 import java.io.IOException;
 import java.io.ObjectOutputStream;
@@ -31,7 +31,7 @@ public class GetBankReportCommand implements Command {
     }
 
     @Override
-    public void execute_server(OutputStream out, Socket server, Bank bank, String[] clientCommandArg) {
+    public void execute_server(OutputStream out, Socket server, Bank bank, ServerThread.CurrentContainer currentContainer,String[] clientCommandArg) {
 
         System.out.println(bank.getBankID());
 

@@ -5,6 +5,7 @@ import com.luxoft.bankapp.model.Account;
 import com.luxoft.bankapp.model.Bank;
 import com.luxoft.bankapp.model.Client;
 import com.luxoft.bankapp.service.DAO.ClientDAOImpl;
+import com.luxoft.bankapp.service.clientServerMultithreading.ServerThread;
 import com.luxoft.bankapp.service.exceptions.ClientNotFoundException;
 import com.luxoft.bankapp.service.services.AccountServiceImpl;
 
@@ -39,7 +40,7 @@ public class SelectActiveAccount implements Command {
     }
 
     @Override
-    public void execute_server(OutputStream out, Socket server, Bank bank, String[] clientCommandArg) {
+    public void execute_server(OutputStream out, Socket server, Bank bank, ServerThread.CurrentContainer currentContainer, String[] clientCommandArg) {
 
     }
 

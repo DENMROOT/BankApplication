@@ -1,46 +1,32 @@
-/*
-Устаревший класс , в связи с переходом на многопоточность, смотри класс ServerThread
-*/
+package com.luxoft.bankapp.service.clientServerMultithreading;
 
-/**
- * Created by Makarov Denis on 21.01.2015.
- */
-
-/*
-package com.luxoft.bankapp.service.clientServer;
-
-import com.luxoft.bankapp.main.BankApplication;
-import com.luxoft.bankapp.main.BankCommander;
 import com.luxoft.bankapp.model.Bank;
 import com.luxoft.bankapp.model.Client;
-import com.luxoft.bankapp.model.ClientRegistrationListener;
 import com.luxoft.bankapp.service.DAO.BankDAOImpl;
 import com.luxoft.bankapp.service.DAO.DaoFactory;
-import com.luxoft.bankapp.service.clientServerMultithreading.ServerThread;
 import com.luxoft.bankapp.service.commanderCommands.*;
 import com.luxoft.bankapp.service.services.AccountServiceImpl;
 import com.luxoft.bankapp.service.services.BankServiceImpl;
 import com.luxoft.bankapp.service.services.ClientServiceImpl;
 import com.luxoft.bankapp.service.services.ServiceFactory;
 
-import java.io.*;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.SocketTimeoutException;
-import java.util.ArrayList;
-import java.util.List;
 
-public class BankServer extends Thread {
+/**
+ * Created by Makarov Denis on 06.02.2015.
+ */
+public class ServerThread implements Runnable {
 
     public static BankServiceImpl myBankService = ServiceFactory.getBankServiceImpl();
     public static ClientServiceImpl myClientService = ServiceFactory.getClientServiceImpl();
     public static AccountServiceImpl myAccountService = ServiceFactory.getAccountServiceImpl();
-    public static Bank currentBank;
-    public static Client currentClient;
-    List<ClientRegistrationListener> listeners = new ArrayList<ClientRegistrationListener>();
 
-
-    private ServerSocket serverSocket;
+    Socket server;
     static Command[] commands = {
             new GetClientBalance(), // 0
             new WithdrawCommand(), // 1
@@ -49,29 +35,50 @@ public class BankServer extends Thread {
             new GetBankReportCommand() //4
     };
 
-    public BankServer(int port) throws IOException
+    /*
+    Class container, contains currentBank and CurrentClient, for every ServerThread.
+     */
+
+    public class CurrentContainer {
+        private Bank currentBank;
+        private Client currentClient;
+
+        public Bank getCurrentBank() {
+            return currentBank;
+        }
+
+        public void setCurrentBank(Bank currentBank) {
+            this.currentBank = currentBank;
+        }
+
+        public Client getCurrentClient() {
+            return currentClient;
+        }
+
+        public void setCurrentClient(Client currentClient) {
+            this.currentClient = currentClient;
+        }
+    }
+
+    public ServerThread(Socket clientSocket) throws IOException
     {
-        serverSocket = new ServerSocket(port);
-        // закрытие мокета по таймауту
-        // serverSocket.setSoTimeout(10000);
+        server = clientSocket;
     }
 
     public void run() {
         String bankName = "My Bank";
         BankDAOImpl bankDao = DaoFactory.getBankDAO();
-        //currentBank.setName(bankName);
-        currentBank = bankDao.getBankByName(bankName);
-
-        System.out.println("Bank ID:" + currentBank.getBankID() + " Bank Name: " + currentBank.getName());
-        //myBankApplication.Initialize(currentBank,myBankService);
-
-        //myBankApplication.Initialize(currentBank,myBankService);
+        CurrentContainer curContainer = new CurrentContainer();
+        curContainer.setCurrentBank(bankDao.getBankByName(bankName));
+        System.out.println("Bank ID:" + curContainer.getCurrentBank().getBankID()
+                + " Bank Name: " + curContainer.getCurrentBank().getName());
 
         while (true) {
             try {
+                BankServerThreaded.setClientsCounter(BankServerThreaded.getClientsCounter()-1);
                 System.out.println("Waiting for client on port " +
-                        serverSocket.getLocalPort() + "...");
-                Socket server = serverSocket.accept();
+                        server.getLocalPort() + "...");
+
                 System.out.println("Client connection received "
                         + server.getRemoteSocketAddress());
                 DataInputStream in =
@@ -82,32 +89,31 @@ public class BankServer extends Thread {
                 while (!clientCommandArgs[0].equals("EXIT")) {
                     clientCommand = in.readUTF();
                     clientCommandArgs = clientCommand.split("&");
-                    //System.out.println(clientCommand);
 
                     switch (clientCommandArgs[0]) {
                         case "BankClient Get balance command": {
                             System.out.println("Get balance command received for client: " + clientCommandArgs[1]);
-                            commands[0].execute_server(server.getOutputStream(), server, currentBank, current,clientCommandArgs);
+                            commands[0].execute_server(server.getOutputStream(), server, curContainer.getCurrentBank(), curContainer, clientCommandArgs);
                             break;
                         }
                         case "BankClient Withdrawal command": {
                             System.out.println("Withdrawal command received for client: " + clientCommandArgs[1]);
-                            commands[1].execute_server(server.getOutputStream(), server, currentBank, clientCommandArgs);
+                            commands[1].execute_server(server.getOutputStream(), server, curContainer.getCurrentBank(), curContainer, clientCommandArgs);
                             break;
                         }
                         case "BankRemoteOffice add client command": {
                             System.out.println("Add client command received for client: " + clientCommandArgs[1]);
-                            commands[2].execute_server(server.getOutputStream(), server, currentBank, clientCommandArgs);
+                            commands[2].execute_server(server.getOutputStream(), server, curContainer.getCurrentBank(), curContainer,clientCommandArgs);
                             break;
                         }
                         case "BankRemoteOffice delete client command": {
                             System.out.println("Delete client command received for client: " + clientCommandArgs[1]);
-                            commands[3].execute_server(server.getOutputStream(), server, currentBank, clientCommandArgs);
+                            commands[3].execute_server(server.getOutputStream(), server, curContainer.getCurrentBank(), curContainer,clientCommandArgs);
                             break;
                         }
                         case "BankRemoteOffice get bank report command": {
                             System.out.println("Get Bank report command received: ");
-                            commands[4].execute_server(server.getOutputStream(), server, currentBank, clientCommandArgs);
+                            commands[4].execute_server(server.getOutputStream(), server, curContainer.getCurrentBank(), curContainer,clientCommandArgs);
                             break;
                         }
                         default : break;
@@ -119,27 +125,14 @@ public class BankServer extends Thread {
                 System.out.println("Exit command received from client ");
                 out.writeUTF("Exit command received");
                 server.close();
-                System.exit(0);
+                return;
             } catch (SocketTimeoutException s) {
                 System.out.println("Socket timed out!");
                 break;
             } catch (IOException e) {
-                e.printStackTrace();
+                System.out.println("Коннекшн прерван: " + e.getMessage());
                 break;
             }
         }
     }
-
-    public static void main(String[] args) {
-        int port = 4444;
-        try
-        {
-            Thread t = new BankServer(port);
-            t.start();
-        }catch(IOException e)
-        {
-            e.printStackTrace();
-        }
-    }
 }
-*/

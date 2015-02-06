@@ -2,6 +2,7 @@ package com.luxoft.bankapp.service.commanderCommands;
 
 import com.luxoft.bankapp.model.Bank;
 import com.luxoft.bankapp.main.BankCommander;
+import com.luxoft.bankapp.service.clientServerMultithreading.ServerThread;
 
 import java.io.OutputStream;
 import java.net.Socket;
@@ -24,7 +25,7 @@ public class DepositCommand implements Command {
     }
 
     @Override
-    public void execute_server (OutputStream out, Socket server, Bank bank, String[] clientCommandArg) {
+    public void execute_server (OutputStream out, Socket server, Bank bank, ServerThread.CurrentContainer currentContainers,String[] clientCommandArg) {
 
     }
 

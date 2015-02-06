@@ -3,6 +3,7 @@ package com.luxoft.bankapp.main;
 import com.luxoft.bankapp.model.Bank;
 import com.luxoft.bankapp.model.Client;
 import com.luxoft.bankapp.service.DAO.DaoFactory;
+import com.luxoft.bankapp.service.clientServerMultithreading.ServerThread;
 import com.luxoft.bankapp.service.services.*;
 import com.luxoft.bankapp.service.commanderCommands.Command;
 import com.luxoft.bankapp.service.DAO.BankDAOImpl;
@@ -43,7 +44,8 @@ public class BankCommander{
                 }
 
                 @Override
-                public void execute_server(OutputStream out, Socket server, Bank bank, String[] clientCommandArg) {
+                public void execute_server(OutputStream out, Socket server, Bank bank,
+                                           ServerThread.CurrentContainer currentContainer, String[] clientCommandArg) {
 
                 }
 

@@ -11,11 +11,10 @@ public class NotEnoughFundsException extends BankException {
     }
 
     public NotEnoughFundsException() {
-        this.amount=0.0f;
+        super();
     }
 
-    @Override
-    public String getMessage(){
-        return "Попытка списания недостаточных средств";
+    public NotEnoughFundsException(String string) {
+        super(string);
     }
 }

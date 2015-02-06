@@ -96,7 +96,7 @@ public class ClientDAOImpl extends  BaseDAOImpl implements ClientDAO {
                 }
             } else {
                 closeConnection();
-                throw new ClientNotFoundException();
+                throw new ClientNotFoundException("Клиент с указанным именем не найден");
             }
             closeConnection();
             return myClient;
@@ -170,7 +170,7 @@ public class ClientDAOImpl extends  BaseDAOImpl implements ClientDAO {
                 }
             } else {
                 closeConnection();
-                throw new ClientNotFoundException();
+                throw new ClientNotFoundException("Клиент с указанным именем не найден");
             }
             closeConnection();
             return myClient;

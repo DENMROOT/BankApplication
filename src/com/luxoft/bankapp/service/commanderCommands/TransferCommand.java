@@ -3,6 +3,7 @@ package com.luxoft.bankapp.service.commanderCommands;
 import com.luxoft.bankapp.model.Account;
 import com.luxoft.bankapp.model.Bank;
 import com.luxoft.bankapp.model.Client;
+import com.luxoft.bankapp.service.clientServerMultithreading.ServerThread;
 import com.luxoft.bankapp.service.exceptions.NotEnoughFundsException;
 import com.luxoft.bankapp.main.BankCommander;
 
@@ -48,7 +49,7 @@ public class TransferCommand implements Command {
     }
 
     @Override
-    public void execute_server(OutputStream out, Socket server, Bank bank, String[] clientCommandArg) {
+    public void execute_server(OutputStream out, Socket server, Bank bank, ServerThread.CurrentContainer currentContainer, String[] clientCommandArg) {
 
     }
 

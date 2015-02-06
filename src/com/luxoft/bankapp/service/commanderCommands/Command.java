@@ -1,6 +1,7 @@
 package com.luxoft.bankapp.service.commanderCommands;
 
 import com.luxoft.bankapp.model.Bank;
+import com.luxoft.bankapp.service.clientServerMultithreading.ServerThread;
 
 import java.io.DataOutputStream;
 import java.io.OutputStream;
@@ -11,6 +12,6 @@ import java.net.Socket;
  */
 public interface Command {
     void execute();
-    void execute_server(OutputStream out, Socket server, Bank bank, String[] clientCommandArg);
+    void execute_server(OutputStream out, Socket server, Bank bank, ServerThread.CurrentContainer curContainer, String[] clientCommandArg);
     void printCommandInfo();
 }

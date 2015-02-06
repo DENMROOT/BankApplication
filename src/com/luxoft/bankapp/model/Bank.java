@@ -91,7 +91,7 @@ public class Bank implements Report,BaseClassMarkerInterface {
     public void addClient(Client client) throws ClientExcistsException {
 
         if (containsClientAllready(client)) {
-            throw new ClientExcistsException();
+            throw new ClientExcistsException("Клиент с указанным именем уже существует");
         }
 
         clients.add(client);

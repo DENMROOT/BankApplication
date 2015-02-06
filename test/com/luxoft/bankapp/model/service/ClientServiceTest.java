@@ -101,6 +101,7 @@ public class ClientServiceTest {
         client.setCity("Мурманск");
         clientService.saveClient(client);
 
+        client = clientService.findClientByName(testBank, "Евгений Мунтян");
         assertEquals(client.getName(), "Евгений Мунтян");
         assertEquals(client.getEmail(), "evgen@ukr.net");
         assertEquals(client.getPhone(), "(098)3332211");

@@ -38,7 +38,7 @@ public class ClientServiceImpl implements ClientService{
         ClientDAOImpl clientDao = DaoFactory.getClientDAO();
         try {
             clientDao.findClientByName(bank, client.getName());
-            throw new ClientExcistsException();
+            throw new ClientExcistsException("Клиент с указанным именем уже существует");
         } catch (ClientNotFoundException e) {
             try {
                 clientDao.insert(bank, client);

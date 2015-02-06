@@ -3,10 +3,10 @@ package com.luxoft.bankapp.service.commanderCommands;
 import com.luxoft.bankapp.model.Account;
 import com.luxoft.bankapp.model.Bank;
 import com.luxoft.bankapp.model.Client;
+import com.luxoft.bankapp.service.clientServerMultithreading.ServerThread;
 import com.luxoft.bankapp.service.exceptions.NotEnoughFundsException;
 import com.luxoft.bankapp.main.BankCommander;
 import com.luxoft.bankapp.service.services.BankServiceImpl;
-import com.luxoft.bankapp.service.clientServer.BankServer;
 
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -34,21 +34,21 @@ public class WithdrawCommand implements Command {
     }
 
     @Override
-    public void execute_server(OutputStream out, Socket server, Bank bank, String[] clientCommandArg) {
+    public void execute_server(OutputStream out, Socket server, Bank bank, ServerThread.CurrentContainer currentContainer, String[] clientCommandArg) {
         DataOutputStream outData = new DataOutputStream(out);
         try {
-            Account activeAccount = BankServer.currentClient.getActiveAccount();
+            Account activeAccount = currentContainer.getCurrentClient().getActiveAccount();
             System.out.println("Списание средств со счета: ");
             System.out.println(activeAccount);
             try {
-                BankServer.myAccountService.withdrawFromAccount(BankServer.currentClient, activeAccount, Float.valueOf(clientCommandArg[1]));
+                ServerThread.myAccountService.withdrawFromAccount(currentContainer.getCurrentClient(), activeAccount, Float.valueOf(clientCommandArg[1]));
             } catch (NotEnoughFundsException e) {
                 System.out.println("Ошибка при списании средств: " + e.getMessage());
                 outData.writeUTF("Ошибка при списании средств: " + e.getMessage());
             }
             System.out.println("Новый баланс по счету: ");
             System.out.println(activeAccount);
-            outData.writeUTF("New overall balance : " + BankServer.myClientService.getClientBalance(bank, BankServer.currentClient));
+            outData.writeUTF("New overall balance : " + ServerThread.myClientService.getClientBalance(bank, currentContainer.getCurrentClient()));
         } catch (IOException e) {
             e.printStackTrace();
         }

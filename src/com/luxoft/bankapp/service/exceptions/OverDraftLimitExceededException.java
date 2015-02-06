@@ -9,10 +9,14 @@ public class OverDraftLimitExceededException extends NotEnoughFundsException {
     private Account exceptionAccount;
     private Float availableMoney=0.0f;
 
+    public OverDraftLimitExceededException(String string){
+        super(string);
+    }
+
     public OverDraftLimitExceededException(Account account,Float availableMoney){
+        super();
         this.exceptionAccount=account;
         this.availableMoney=availableMoney;
-
     }
 
     public Float getAvailableMoney() {
@@ -22,10 +26,4 @@ public class OverDraftLimitExceededException extends NotEnoughFundsException {
     public Account getExceptionAccount() {
         return exceptionAccount;
     }
-
-    @Override
-    public String getMessage(){
-        return "Сумма списания превышает доступный овердрафт";
-    }
-
 }

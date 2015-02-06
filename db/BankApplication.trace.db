@@ -5990,3 +5990,373 @@ Caused by: java.lang.IllegalStateException: The file is locked: nio:E:/Denis Mak
 	at org.h2.mvstore.FileStore.open(FileStore.java:170)
 	at org.h2.mvstore.MVStore.<init>(MVStore.java:346)
 	... 48 more
+02-06 18:41:02 jdbc[6]: exception
+org.h2.jdbc.JdbcSQLException: The object is already closed [90007-185]
+02-06 18:41:02 jdbc[9]: exception
+org.h2.jdbc.JdbcSQLException: The object is already closed [90007-185]
+02-06 18:41:02 jdbc[43]: exception
+org.h2.jdbc.JdbcSQLException: The object is already closed [90007-185]
+02-06 18:43:06 jdbc[11]: exception
+org.h2.jdbc.JdbcSQLException: The object is already closed [90007-185]
+02-06 18:43:06 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLException: The object is already closed [90007-185]
+02-06 18:43:06 jdbc[22]: exception
+org.h2.jdbc.JdbcSQLException: General error: "java.lang.NullPointerException" [50000-185]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	at org.h2.message.DbException.get(DbException.java:168)
+	at org.h2.message.DbException.convert(DbException.java:295)
+	at org.h2.message.DbException.toSQLException(DbException.java:268)
+	at org.h2.message.TraceObject.logAndConvert(TraceObject.java:352)
+	at org.h2.jdbc.JdbcResultSet.getLong(JdbcResultSet.java:670)
+	at com.luxoft.bankapp.service.DAO.AccountDAOImpl.getClientAccounts(AccountDAOImpl.java:154)
+	at com.luxoft.bankapp.service.services.ClientServiceImpl.getClientBalance(ClientServiceImpl.java:75)
+	at com.luxoft.bankapp.service.commanderCommands.GetClientBalance.execute_server(GetClientBalance.java:46)
+	at com.luxoft.bankapp.service.clientServerMultithreading.ServerThread.run(ServerThread.java:96)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:722)
+Caused by: java.lang.NullPointerException
+	at org.h2.jdbc.JdbcStatement.checkClosed(JdbcStatement.java:989)
+	at org.h2.jdbc.JdbcPreparedStatement.checkClosed(JdbcPreparedStatement.java:1620)
+	at org.h2.jdbc.JdbcStatement.checkClosed(JdbcStatement.java:959)
+	at org.h2.jdbc.JdbcResultSet.checkClosed(JdbcResultSet.java:3177)
+	at org.h2.jdbc.JdbcResultSet.checkColumnIndex(JdbcResultSet.java:3161)
+	at org.h2.jdbc.JdbcResultSet.get(JdbcResultSet.java:3191)
+	at org.h2.jdbc.JdbcResultSet.get(JdbcResultSet.java:3209)
+	at org.h2.jdbc.JdbcResultSet.getLong(JdbcResultSet.java:668)
+	... 7 more
+02-06 18:43:06 jdbc[32]: exception
+org.h2.jdbc.JdbcSQLException: The object is already closed [90007-185]
+02-06 18:43:06 jdbc[35]: null
+org.h2.message.DbException: The connection was not closed by the application and is garbage collected [90018-185]
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.message.DbException.get(DbException.java:144)
+	at org.h2.jdbc.JdbcConnection.closeOld(JdbcConnection.java:174)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:119)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:92)
+	at org.h2.Driver.connect(Driver.java:72)
+	at java.sql.DriverManager.getConnection(DriverManager.java:579)
+	at java.sql.DriverManager.getConnection(DriverManager.java:221)
+	at com.luxoft.bankapp.service.DAO.BaseDAOImpl.openConnection(BaseDAOImpl.java:18)
+	at com.luxoft.bankapp.service.DAO.BankDAOImpl.getBankByName(BankDAOImpl.java:29)
+	at com.luxoft.bankapp.service.clientServerMultithreading.ServerThread.run(ServerThread.java:72)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:722)
+Caused by: org.h2.jdbc.JdbcSQLException: The connection was not closed by the application and is garbage collected [90018-185]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	... 15 more
+02-06 18:43:06 jdbc[35]: null
+org.h2.message.DbException: The connection was not closed by the application and is garbage collected [90018-185]
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.message.DbException.get(DbException.java:144)
+	at org.h2.jdbc.JdbcConnection.closeOld(JdbcConnection.java:174)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:119)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:92)
+	at org.h2.Driver.connect(Driver.java:72)
+	at java.sql.DriverManager.getConnection(DriverManager.java:579)
+	at java.sql.DriverManager.getConnection(DriverManager.java:221)
+	at com.luxoft.bankapp.service.DAO.BaseDAOImpl.openConnection(BaseDAOImpl.java:18)
+	at com.luxoft.bankapp.service.DAO.BankDAOImpl.getBankByName(BankDAOImpl.java:29)
+	at com.luxoft.bankapp.service.clientServerMultithreading.ServerThread.run(ServerThread.java:72)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:722)
+Caused by: org.h2.jdbc.JdbcSQLException: The connection was not closed by the application and is garbage collected [90018-185]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	... 15 more
+02-06 18:43:06 jdbc[35]: null
+org.h2.message.DbException: The connection was not closed by the application and is garbage collected [90018-185]
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.message.DbException.get(DbException.java:144)
+	at org.h2.jdbc.JdbcConnection.closeOld(JdbcConnection.java:174)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:119)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:92)
+	at org.h2.Driver.connect(Driver.java:72)
+	at java.sql.DriverManager.getConnection(DriverManager.java:579)
+	at java.sql.DriverManager.getConnection(DriverManager.java:221)
+	at com.luxoft.bankapp.service.DAO.BaseDAOImpl.openConnection(BaseDAOImpl.java:18)
+	at com.luxoft.bankapp.service.DAO.BankDAOImpl.getBankByName(BankDAOImpl.java:29)
+	at com.luxoft.bankapp.service.clientServerMultithreading.ServerThread.run(ServerThread.java:72)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:722)
+Caused by: org.h2.jdbc.JdbcSQLException: The connection was not closed by the application and is garbage collected [90018-185]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	... 15 more
+02-06 18:43:06 jdbc[35]: null
+org.h2.message.DbException: The connection was not closed by the application and is garbage collected [90018-185]
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.message.DbException.get(DbException.java:144)
+	at org.h2.jdbc.JdbcConnection.closeOld(JdbcConnection.java:174)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:119)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:92)
+	at org.h2.Driver.connect(Driver.java:72)
+	at java.sql.DriverManager.getConnection(DriverManager.java:579)
+	at java.sql.DriverManager.getConnection(DriverManager.java:221)
+	at com.luxoft.bankapp.service.DAO.BaseDAOImpl.openConnection(BaseDAOImpl.java:18)
+	at com.luxoft.bankapp.service.DAO.BankDAOImpl.getBankByName(BankDAOImpl.java:29)
+	at com.luxoft.bankapp.service.clientServerMultithreading.ServerThread.run(ServerThread.java:72)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:722)
+Caused by: org.h2.jdbc.JdbcSQLException: The connection was not closed by the application and is garbage collected [90018-185]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	... 15 more
+02-06 18:43:06 jdbc[35]: null
+org.h2.message.DbException: The connection was not closed by the application and is garbage collected [90018-185]
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.message.DbException.get(DbException.java:144)
+	at org.h2.jdbc.JdbcConnection.closeOld(JdbcConnection.java:174)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:119)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:92)
+	at org.h2.Driver.connect(Driver.java:72)
+	at java.sql.DriverManager.getConnection(DriverManager.java:579)
+	at java.sql.DriverManager.getConnection(DriverManager.java:221)
+	at com.luxoft.bankapp.service.DAO.BaseDAOImpl.openConnection(BaseDAOImpl.java:18)
+	at com.luxoft.bankapp.service.DAO.BankDAOImpl.getBankByName(BankDAOImpl.java:29)
+	at com.luxoft.bankapp.service.clientServerMultithreading.ServerThread.run(ServerThread.java:72)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:722)
+Caused by: org.h2.jdbc.JdbcSQLException: The connection was not closed by the application and is garbage collected [90018-185]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	... 15 more
+02-06 18:43:06 jdbc[35]: null
+org.h2.message.DbException: The connection was not closed by the application and is garbage collected [90018-185]
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.message.DbException.get(DbException.java:144)
+	at org.h2.jdbc.JdbcConnection.closeOld(JdbcConnection.java:174)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:119)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:92)
+	at org.h2.Driver.connect(Driver.java:72)
+	at java.sql.DriverManager.getConnection(DriverManager.java:579)
+	at java.sql.DriverManager.getConnection(DriverManager.java:221)
+	at com.luxoft.bankapp.service.DAO.BaseDAOImpl.openConnection(BaseDAOImpl.java:18)
+	at com.luxoft.bankapp.service.DAO.BankDAOImpl.getBankByName(BankDAOImpl.java:29)
+	at com.luxoft.bankapp.service.clientServerMultithreading.ServerThread.run(ServerThread.java:72)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:722)
+Caused by: org.h2.jdbc.JdbcSQLException: The connection was not closed by the application and is garbage collected [90018-185]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	... 15 more
+02-06 18:43:06 jdbc[35]: null
+org.h2.message.DbException: The connection was not closed by the application and is garbage collected [90018-185]
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.message.DbException.get(DbException.java:144)
+	at org.h2.jdbc.JdbcConnection.closeOld(JdbcConnection.java:174)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:119)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:92)
+	at org.h2.Driver.connect(Driver.java:72)
+	at java.sql.DriverManager.getConnection(DriverManager.java:579)
+	at java.sql.DriverManager.getConnection(DriverManager.java:221)
+	at com.luxoft.bankapp.service.DAO.BaseDAOImpl.openConnection(BaseDAOImpl.java:18)
+	at com.luxoft.bankapp.service.DAO.BankDAOImpl.getBankByName(BankDAOImpl.java:29)
+	at com.luxoft.bankapp.service.clientServerMultithreading.ServerThread.run(ServerThread.java:72)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:722)
+Caused by: org.h2.jdbc.JdbcSQLException: The connection was not closed by the application and is garbage collected [90018-185]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	... 15 more
+02-06 18:43:06 jdbc[35]: null
+org.h2.message.DbException: The connection was not closed by the application and is garbage collected [90018-185]
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.message.DbException.get(DbException.java:144)
+	at org.h2.jdbc.JdbcConnection.closeOld(JdbcConnection.java:174)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:119)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:92)
+	at org.h2.Driver.connect(Driver.java:72)
+	at java.sql.DriverManager.getConnection(DriverManager.java:579)
+	at java.sql.DriverManager.getConnection(DriverManager.java:221)
+	at com.luxoft.bankapp.service.DAO.BaseDAOImpl.openConnection(BaseDAOImpl.java:18)
+	at com.luxoft.bankapp.service.DAO.BankDAOImpl.getBankByName(BankDAOImpl.java:29)
+	at com.luxoft.bankapp.service.clientServerMultithreading.ServerThread.run(ServerThread.java:72)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:722)
+Caused by: org.h2.jdbc.JdbcSQLException: The connection was not closed by the application and is garbage collected [90018-185]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	... 15 more
+02-06 18:43:06 jdbc[35]: null
+org.h2.message.DbException: The connection was not closed by the application and is garbage collected [90018-185]
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.message.DbException.get(DbException.java:144)
+	at org.h2.jdbc.JdbcConnection.closeOld(JdbcConnection.java:174)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:119)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:92)
+	at org.h2.Driver.connect(Driver.java:72)
+	at java.sql.DriverManager.getConnection(DriverManager.java:579)
+	at java.sql.DriverManager.getConnection(DriverManager.java:221)
+	at com.luxoft.bankapp.service.DAO.BaseDAOImpl.openConnection(BaseDAOImpl.java:18)
+	at com.luxoft.bankapp.service.DAO.BankDAOImpl.getBankByName(BankDAOImpl.java:29)
+	at com.luxoft.bankapp.service.clientServerMultithreading.ServerThread.run(ServerThread.java:72)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:722)
+Caused by: org.h2.jdbc.JdbcSQLException: The connection was not closed by the application and is garbage collected [90018-185]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	... 15 more
+02-06 18:56:02 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLException: The object is already closed [90007-185]
+02-06 18:56:02 jdbc[30]: exception
+org.h2.jdbc.JdbcSQLException: Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-185]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.message.DbException.get(DbException.java:144)
+	at org.h2.jdbc.JdbcConnection.checkClosed(JdbcConnection.java:1469)
+	at org.h2.jdbc.JdbcConnection.checkClosed(JdbcConnection.java:1444)
+	at org.h2.jdbc.JdbcResultSet.checkClosed(JdbcResultSet.java:3180)
+	at org.h2.jdbc.JdbcResultSet.getColumnIndex(JdbcResultSet.java:3087)
+	at org.h2.jdbc.JdbcResultSet.get(JdbcResultSet.java:3208)
+	at org.h2.jdbc.JdbcResultSet.getFloat(JdbcResultSet.java:704)
+	at com.luxoft.bankapp.service.DAO.AccountDAOImpl.getClientAccounts(AccountDAOImpl.java:158)
+	at com.luxoft.bankapp.service.services.ClientServiceImpl.getClientBalance(ClientServiceImpl.java:75)
+	at com.luxoft.bankapp.service.commanderCommands.GetClientBalance.execute_server(GetClientBalance.java:46)
+	at com.luxoft.bankapp.service.clientServerMultithreading.ServerThread.run(ServerThread.java:96)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:722)
+02-06 18:56:02 jdbc[47]: null
+org.h2.message.DbException: The connection was not closed by the application and is garbage collected [90018-185]
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.message.DbException.get(DbException.java:144)
+	at org.h2.jdbc.JdbcConnection.closeOld(JdbcConnection.java:174)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:119)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:92)
+	at org.h2.Driver.connect(Driver.java:72)
+	at java.sql.DriverManager.getConnection(DriverManager.java:579)
+	at java.sql.DriverManager.getConnection(DriverManager.java:221)
+	at com.luxoft.bankapp.service.DAO.BaseDAOImpl.openConnection(BaseDAOImpl.java:18)
+	at com.luxoft.bankapp.service.DAO.AccountDAOImpl.save(AccountDAOImpl.java:32)
+	at com.luxoft.bankapp.service.services.AccountServiceImpl.withdrawFromAccount(AccountServiceImpl.java:41)
+	at com.luxoft.bankapp.service.commanderCommands.WithdrawCommand.execute_server(WithdrawCommand.java:44)
+	at com.luxoft.bankapp.service.clientServerMultithreading.ServerThread.run(ServerThread.java:101)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:722)
+Caused by: org.h2.jdbc.JdbcSQLException: The connection was not closed by the application and is garbage collected [90018-185]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	... 17 more
+02-06 18:56:02 jdbc[47]: null
+org.h2.message.DbException: The connection was not closed by the application and is garbage collected [90018-185]
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.message.DbException.get(DbException.java:144)
+	at org.h2.jdbc.JdbcConnection.closeOld(JdbcConnection.java:174)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:119)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:92)
+	at org.h2.Driver.connect(Driver.java:72)
+	at java.sql.DriverManager.getConnection(DriverManager.java:579)
+	at java.sql.DriverManager.getConnection(DriverManager.java:221)
+	at com.luxoft.bankapp.service.DAO.BaseDAOImpl.openConnection(BaseDAOImpl.java:18)
+	at com.luxoft.bankapp.service.DAO.AccountDAOImpl.save(AccountDAOImpl.java:32)
+	at com.luxoft.bankapp.service.services.AccountServiceImpl.withdrawFromAccount(AccountServiceImpl.java:41)
+	at com.luxoft.bankapp.service.commanderCommands.WithdrawCommand.execute_server(WithdrawCommand.java:44)
+	at com.luxoft.bankapp.service.clientServerMultithreading.ServerThread.run(ServerThread.java:101)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:722)
+Caused by: org.h2.jdbc.JdbcSQLException: The connection was not closed by the application and is garbage collected [90018-185]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	... 17 more
+02-06 18:56:02 jdbc[47]: null
+org.h2.message.DbException: The connection was not closed by the application and is garbage collected [90018-185]
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.message.DbException.get(DbException.java:144)
+	at org.h2.jdbc.JdbcConnection.closeOld(JdbcConnection.java:174)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:119)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:92)
+	at org.h2.Driver.connect(Driver.java:72)
+	at java.sql.DriverManager.getConnection(DriverManager.java:579)
+	at java.sql.DriverManager.getConnection(DriverManager.java:221)
+	at com.luxoft.bankapp.service.DAO.BaseDAOImpl.openConnection(BaseDAOImpl.java:18)
+	at com.luxoft.bankapp.service.DAO.AccountDAOImpl.save(AccountDAOImpl.java:32)
+	at com.luxoft.bankapp.service.services.AccountServiceImpl.withdrawFromAccount(AccountServiceImpl.java:41)
+	at com.luxoft.bankapp.service.commanderCommands.WithdrawCommand.execute_server(WithdrawCommand.java:44)
+	at com.luxoft.bankapp.service.clientServerMultithreading.ServerThread.run(ServerThread.java:101)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:722)
+Caused by: org.h2.jdbc.JdbcSQLException: The connection was not closed by the application and is garbage collected [90018-185]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	... 17 more
+02-06 18:56:02 jdbc[47]: null
+org.h2.message.DbException: The connection was not closed by the application and is garbage collected [90018-185]
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.message.DbException.get(DbException.java:144)
+	at org.h2.jdbc.JdbcConnection.closeOld(JdbcConnection.java:174)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:119)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:92)
+	at org.h2.Driver.connect(Driver.java:72)
+	at java.sql.DriverManager.getConnection(DriverManager.java:579)
+	at java.sql.DriverManager.getConnection(DriverManager.java:221)
+	at com.luxoft.bankapp.service.DAO.BaseDAOImpl.openConnection(BaseDAOImpl.java:18)
+	at com.luxoft.bankapp.service.DAO.AccountDAOImpl.save(AccountDAOImpl.java:32)
+	at com.luxoft.bankapp.service.services.AccountServiceImpl.withdrawFromAccount(AccountServiceImpl.java:41)
+	at com.luxoft.bankapp.service.commanderCommands.WithdrawCommand.execute_server(WithdrawCommand.java:44)
+	at com.luxoft.bankapp.service.clientServerMultithreading.ServerThread.run(ServerThread.java:101)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:722)
+Caused by: org.h2.jdbc.JdbcSQLException: The connection was not closed by the application and is garbage collected [90018-185]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	... 17 more
+02-06 18:56:02 jdbc[47]: null
+org.h2.message.DbException: The connection was not closed by the application and is garbage collected [90018-185]
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.message.DbException.get(DbException.java:144)
+	at org.h2.jdbc.JdbcConnection.closeOld(JdbcConnection.java:174)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:119)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:92)
+	at org.h2.Driver.connect(Driver.java:72)
+	at java.sql.DriverManager.getConnection(DriverManager.java:579)
+	at java.sql.DriverManager.getConnection(DriverManager.java:221)
+	at com.luxoft.bankapp.service.DAO.BaseDAOImpl.openConnection(BaseDAOImpl.java:18)
+	at com.luxoft.bankapp.service.DAO.AccountDAOImpl.save(AccountDAOImpl.java:32)
+	at com.luxoft.bankapp.service.services.AccountServiceImpl.withdrawFromAccount(AccountServiceImpl.java:41)
+	at com.luxoft.bankapp.service.commanderCommands.WithdrawCommand.execute_server(WithdrawCommand.java:44)
+	at com.luxoft.bankapp.service.clientServerMultithreading.ServerThread.run(ServerThread.java:101)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:722)
+Caused by: org.h2.jdbc.JdbcSQLException: The connection was not closed by the application and is garbage collected [90018-185]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	... 17 more
+02-06 18:56:02 jdbc[47]: null
+org.h2.message.DbException: The connection was not closed by the application and is garbage collected [90018-185]
+	at org.h2.message.DbException.get(DbException.java:179)
+	at org.h2.message.DbException.get(DbException.java:155)
+	at org.h2.message.DbException.get(DbException.java:144)
+	at org.h2.jdbc.JdbcConnection.closeOld(JdbcConnection.java:174)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:119)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:92)
+	at org.h2.Driver.connect(Driver.java:72)
+	at java.sql.DriverManager.getConnection(DriverManager.java:579)
+	at java.sql.DriverManager.getConnection(DriverManager.java:221)
+	at com.luxoft.bankapp.service.DAO.BaseDAOImpl.openConnection(BaseDAOImpl.java:18)
+	at com.luxoft.bankapp.service.DAO.AccountDAOImpl.save(AccountDAOImpl.java:32)
+	at com.luxoft.bankapp.service.services.AccountServiceImpl.withdrawFromAccount(AccountServiceImpl.java:41)
+	at com.luxoft.bankapp.service.commanderCommands.WithdrawCommand.execute_server(WithdrawCommand.java:44)
+	at com.luxoft.bankapp.service.clientServerMultithreading.ServerThread.run(ServerThread.java:101)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:722)
+Caused by: org.h2.jdbc.JdbcSQLException: The connection was not closed by the application and is garbage collected [90018-185]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:345)
+	... 17 more
