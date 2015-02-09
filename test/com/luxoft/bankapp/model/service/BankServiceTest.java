@@ -1,8 +1,10 @@
 package com.luxoft.bankapp.model.service;
 
 import com.luxoft.bankapp.model.Bank;
+import com.luxoft.bankapp.service.DAO.BankDAO;
 import com.luxoft.bankapp.service.DAO.BankDAOImpl;
 import com.luxoft.bankapp.service.DAO.DaoFactory;
+import com.luxoft.bankapp.service.services.BankService;
 import com.luxoft.bankapp.service.services.BankServiceImpl;
 import com.luxoft.bankapp.service.services.ServiceFactory;
 import org.junit.After;
@@ -16,8 +18,8 @@ import static org.junit.Assert.assertEquals;
  */
 public class BankServiceTest {
     Bank testBank = new Bank();
-    BankServiceImpl bankService;
-    BankDAOImpl bankDao;
+    BankService bankService;
+    BankDAO bankDao;
 
     @Before
     public void InitializeBank(){

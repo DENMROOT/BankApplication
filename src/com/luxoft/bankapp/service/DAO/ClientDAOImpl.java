@@ -22,7 +22,7 @@ public class ClientDAOImpl extends  BaseDAOImpl implements ClientDAO {
     private static ClientDAOImpl instance;
     Lock lock = new ReentrantLock();
 
-    public ClientDAOImpl() {
+    private ClientDAOImpl() {
     }
 
     public static ClientDAOImpl getInstance() {
@@ -33,7 +33,7 @@ public class ClientDAOImpl extends  BaseDAOImpl implements ClientDAO {
     }
 
     @Override
-    public Client findClientByName(Bank bank, String name) throws ClientNotFoundException {
+    public synchronized Client findClientByName(Bank bank, String name) throws ClientNotFoundException {
         Connection myConnection = openConnection();
         Client myClient = null;
         //lock.lock();
@@ -91,7 +91,7 @@ public class ClientDAOImpl extends  BaseDAOImpl implements ClientDAO {
                     myClient.setCity(clientCity);
                     //myClient.setActiveAccount(activeAccountID);
 
-                    AccountDAOImpl accountDAO = new AccountDAOImpl();
+                    AccountDAOImpl accountDAO = DaoFactory.getAccountDAO();
                     List <Account> accountsList = accountDAO.getClientAccounts(myClient.getClientID());
 
                     for (Account accountIterator : accountsList){
@@ -116,7 +116,7 @@ public class ClientDAOImpl extends  BaseDAOImpl implements ClientDAO {
     }
 
     @Override
-    public Client findClientById(long clientId) throws ClientNotFoundException {
+    public synchronized Client findClientById(long clientId) throws ClientNotFoundException {
         Connection myConnection = openConnection();
         Client myClient = null;
         try {
@@ -169,7 +169,7 @@ public class ClientDAOImpl extends  BaseDAOImpl implements ClientDAO {
                 myClient.setCity(clientCity);
                 //myClient.setActiveAccount(activeAccountID);
 
-                AccountDAOImpl accountDAO = new AccountDAOImpl();
+                AccountDAOImpl accountDAO = DaoFactory.getAccountDAO();
                 List <Account> accountsList = accountDAO.getClientAccounts(myClient.getClientID());
 
                 for (Account accountIterator : accountsList){
@@ -190,7 +190,7 @@ public class ClientDAOImpl extends  BaseDAOImpl implements ClientDAO {
     }
 
     @Override
-    public List<Client> getAllClients(Bank bank) {
+    public synchronized List<Client> getAllClients(Bank bank) {
         Connection myConnection = openConnection();
         Client myClient = null;
         List <Client> clientsList= new ArrayList<>();
@@ -262,8 +262,7 @@ public class ClientDAOImpl extends  BaseDAOImpl implements ClientDAO {
     }
 
     @Override
-    public void save(Client client) {
-        AccountDAOImpl accountDao = new AccountDAOImpl();
+    public synchronized void save(Client client) {
         Connection myConnection = openConnection();
 
         try {
@@ -307,7 +306,7 @@ public class ClientDAOImpl extends  BaseDAOImpl implements ClientDAO {
     }
 
     @Override
-    public void insert(Bank bank, Client client) throws SQLException, DAOException {
+    public synchronized void insert(Bank bank, Client client) throws SQLException, DAOException {
         final String clientSQL = "INSERT INTO CLIENTS (BANK_ID,NAME,GENDER,EMAIL,PHONE,CITY,ACTIVE_ACCOUNT_ID) VALUES (?,?,?,?,?,?,?)";
         try (
                 Connection myConnection = openConnection();
@@ -347,9 +346,9 @@ public class ClientDAOImpl extends  BaseDAOImpl implements ClientDAO {
 
 
     @Override
-    public void remove(Client client) {
+    public synchronized void remove(Client client) {
 
-        AccountDAOImpl accountDao = new AccountDAOImpl();
+        AccountDAOImpl accountDao = DaoFactory.getAccountDAO();
         accountDao.removeByClientId(client.getClientID());
         Connection myConnection = openConnection();
 

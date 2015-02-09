@@ -3,13 +3,11 @@ package com.luxoft.bankapp.model.service;
 import com.luxoft.bankapp.model.Account;
 import com.luxoft.bankapp.model.Bank;
 import com.luxoft.bankapp.model.Client;
+import com.luxoft.bankapp.service.DAO.BankDAO;
 import com.luxoft.bankapp.service.DAO.BankDAOImpl;
 import com.luxoft.bankapp.service.DAO.DaoFactory;
 import com.luxoft.bankapp.service.exceptions.NotEnoughFundsException;
-import com.luxoft.bankapp.service.services.AccountServiceImpl;
-import com.luxoft.bankapp.service.services.BankServiceImpl;
-import com.luxoft.bankapp.service.services.ClientServiceImpl;
-import com.luxoft.bankapp.service.services.ServiceFactory;
+import com.luxoft.bankapp.service.services.*;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -22,9 +20,9 @@ import static org.junit.Assert.assertEquals;
 public class AccountServiceTest {
     Bank testBank = new Bank();
     BankServiceImpl bankService;
-    AccountServiceImpl accountService;
-    ClientServiceImpl clientService;
-    BankDAOImpl bankDao;
+    AccountService accountService;
+    ClientService clientService;
+    BankDAO bankDao;
 
     @Before
     public void InitializeBank(){

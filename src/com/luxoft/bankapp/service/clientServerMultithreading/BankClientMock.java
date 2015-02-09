@@ -19,34 +19,32 @@ public class BankClientMock implements Callable {
     public Object call() throws Exception {
         String serverName = "localhost";
         int port = 4444;
-        try
-        {
-            long start = new Date().getTime();
-            Socket client = new Socket(serverName, port);
-            OutputStream outToServer = client.getOutputStream();
-            DataOutputStream out =
-                    new DataOutputStream(outToServer);
+        long start = new Date().getTime();
+            try
+            {
+                Socket client = new Socket(serverName, port);
+                OutputStream outToServer = client.getOutputStream();
+                DataOutputStream out =
+                        new DataOutputStream(outToServer);
 
-            out.writeUTF("BankClient Get balance command" + "&" + "Денис Макаров");
-            InputStream inFromServer = null;
-            inFromServer = client.getInputStream();
-            DataInputStream in = new DataInputStream(inFromServer);
-            in.readUTF();
-            out.writeUTF("BankClient Withdrawal command" + "&" + "1");
-            in.readUTF();
-            out.writeUTF("EXIT" + "&" + "null");
-            in.readUTF();
-            long time = new Date().getTime()-start;
-            in.close();
-            out.close();
-            client.close();
-            return time;
+                out.writeUTF("BankClient Get balance command" + "&" + "Денис Макаров");
+                InputStream inFromServer = null;
+                inFromServer = client.getInputStream();
+                DataInputStream in = new DataInputStream(inFromServer);
+                in.readUTF();
+                out.writeUTF("BankClient Withdrawal command" + "&" + "1");
+                in.readUTF();
+                out.writeUTF("EXIT" + "&" + "null");
+                in.readUTF();
+                client.close();
 
-        }catch(IOException e)
-        {
-            System.out.println("Соединение с сервером не установлено: " + e.getMessage());
-            return 0;
-        }
+            }catch(IOException e)
+            {
+                System.out.println("Соединение с сервером не установлено: " + e.getMessage());
+            }
+
+        long time = new Date().getTime()-start;
+        return time;
     }
 }
 

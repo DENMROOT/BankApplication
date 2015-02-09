@@ -35,8 +35,6 @@ public class Client implements Report, Comparable <Client>, Serializable, BaseCl
     public boolean equals(Object obj) {
 
         Client equalsClient = (Client) obj;
-        //System.out.println("изначальный объект" + this.getName());
-        //System.out.println("сравниваемый объект" + equalsClient.getName());
 
         if (this == obj) {
             return true;
@@ -48,7 +46,22 @@ public class Client implements Report, Comparable <Client>, Serializable, BaseCl
             return false;
         }
 
-        if (this.getName().equals(equalsClient.getName()) && this.getGender() == equalsClient.getGender()) {
+        if ((this.name == null) && equalsClient.name != null) {
+            if ("".equals(equalsClient.name)) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+
+        if ((this.name == null) && equalsClient.name == null) {
+            if (this.gender == equalsClient.gender) {
+                return true;
+            } else return false;
+        }
+
+        if (this.name.equals(equalsClient.name) && this.gender == equalsClient.gender) {
             return true;
         }
 
@@ -70,8 +83,8 @@ public class Client implements Report, Comparable <Client>, Serializable, BaseCl
 
     @Override
     public int hashCode() {
-        int result = name.hashCode();
-        result = 31 * result + getGender().hashCode();
+        int result = name != null ? name.hashCode() : 0;
+        result = 31 * result + (gender != null ? gender.hashCode() : 0);
         return result;
     }
 
@@ -213,13 +226,6 @@ public class Client implements Report, Comparable <Client>, Serializable, BaseCl
     }
 
     public Gender getGender() {
-        /*
-        switch (gender){
-            case MALE: return "m";
-            case FEMALE: return "f";
-            default : return "Пол не задан";
-        }
-        */
         return gender;
     }
 

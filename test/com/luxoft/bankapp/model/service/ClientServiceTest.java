@@ -6,11 +6,9 @@ import com.luxoft.bankapp.model.Gender;
 import com.luxoft.bankapp.service.DAO.BankDAOImpl;
 import com.luxoft.bankapp.service.DAO.DaoFactory;
 import com.luxoft.bankapp.service.exceptions.ClientExcistsException;
+import com.luxoft.bankapp.service.exceptions.ClientNotFoundException;
 import com.luxoft.bankapp.service.exceptions.NotEnoughFundsException;
-import com.luxoft.bankapp.service.services.AccountServiceImpl;
-import com.luxoft.bankapp.service.services.BankServiceImpl;
-import com.luxoft.bankapp.service.services.ClientServiceImpl;
-import com.luxoft.bankapp.service.services.ServiceFactory;
+import com.luxoft.bankapp.service.services.*;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -18,15 +16,17 @@ import org.junit.Test;
 import java.io.IOException;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Created by Makarov Denis on 03.02.2015.
  */
 public class ClientServiceTest {
     Bank testBank = new Bank();
-    BankServiceImpl bankService;
-    ClientServiceImpl clientService;
-    AccountServiceImpl accountService;
+    BankService bankService;
+    ClientService clientService;
+    AccountService accountService;
     BankDAOImpl bankDao;
 
     @Before
@@ -37,8 +37,6 @@ public class ClientServiceTest {
         bankDao = DaoFactory.getBankDAO();
         String bankName = "My Bank";
         testBank = bankDao.getBankByName(bankName);
-        //System.out.println("Банк: " + testBank.getName() +" ID: " +testBank.getBankID());
-
     }
 
     @After
@@ -59,6 +57,17 @@ public class ClientServiceTest {
     }
 
     @Test
+    public void testClientEquals (){
+        Client client1 = new Client(Gender.MALE);
+        Client client2 = new Client(Gender.MALE);
+
+        client2.setName("Зоя Космодемьянская");
+        assertFalse("Ошибка сравнения клиентов", client1.equals(client2));
+        client1.setName("Зоя Космодемьянская");
+        assertTrue("Ошибка сравнения клиентов", client1.equals(client2));
+    }
+
+    @Test
     public void testAddClient () throws ClientExcistsException {
         Client client = new Client(Gender.MALE);
         client.setName("Юрий Спосокукоцкий");
@@ -74,7 +83,7 @@ public class ClientServiceTest {
     }
 
     @Test (expected = ClientExcistsException.class)
-    public void testAddClientException () throws ClientExcistsException {
+    public void testAddClientException () throws ClientExcistsException, ClientNotFoundException {
         Client client = clientService.findClientByName(testBank, "Денис Макаров");
         clientService.addClient(testBank, client);
         clientService.deleteClient(testBank, client);
@@ -89,7 +98,7 @@ public class ClientServiceTest {
     @Test
     public void testGetClientBalance (){
         Client client = clientService.findClientByName(testBank, "Денис Макаров");
-        assertEquals(clientService.getClientBalance(testBank,client),500.0,0);
+        assertEquals(clientService.getClientBalance(testBank,client),400.0,0);
     }
 
     @Test

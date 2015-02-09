@@ -14,7 +14,7 @@ public class CheckingAccount extends AbstractAccount implements BaseClassMarkerI
         }
         setAccountId(accountId);
         this.setInitialOverdraft(overdraft);
-        this.balance=balance;
+        this.setBalance(balance);
         this.overdraft=overdraft;
         setAccountType("C");
     }
@@ -25,13 +25,13 @@ public class CheckingAccount extends AbstractAccount implements BaseClassMarkerI
 
     @Override
     public void deposit(float x) {
-        balance+=x;
+        setBalance(getBalance() + x);
     }
 
     @Override
     public void withdraw(float x) throws NotEnoughFundsException {
-        if (balance + overdraft >= x) {
-            balance -= x;
+        if (getBalance() + overdraft >= x) {
+            setBalance(getBalance() - x);
         } else {
             throw new OverDraftLimitExceededException(this, getAvailableMoney());
         }
@@ -39,18 +39,18 @@ public class CheckingAccount extends AbstractAccount implements BaseClassMarkerI
 
     @Override
     public float getTotalAccountOverdraft() {
-        return balance>0?0:balance;
+        return getBalance()>0?0:getBalance();
     }
 
     private float getAvailableMoney() {
-        return balance+overdraft;
+        return getBalance()+overdraft;
     }
 
     @Override
     public void printReport() {
         System.out.println("Checking Account{" +
                 "Account ID=" + getAccountId() +
-                ",balance=" + balance +
+                ",balance=" + getBalance() +
                 ", overdraft=" + overdraft +
                 '}');
     }
@@ -59,7 +59,7 @@ public class CheckingAccount extends AbstractAccount implements BaseClassMarkerI
     public String toString() {
         return "Checking Account{" +
                 "Account ID=" + getAccountId() +
-                ",balance=" + balance +
+                ",balance=" + getBalance() +
                 ", overdraft=" + overdraft +
                 '}';
     }

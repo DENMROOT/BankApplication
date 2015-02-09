@@ -20,4 +20,5 @@ public interface Account extends Report {
     public void setAccountId(long accountId);
     public String getAccountType();
     public float getInitialOverdraft();
+    void setBalance(float balance);
 }

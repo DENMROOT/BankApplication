@@ -13,11 +13,15 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.net.Socket;
 import java.util.Scanner;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * Created by Makarov Denis on 15.01.2015.
  */
 public class WithdrawCommand implements Command {
+    Lock lock = new ReentrantLock();
+
     @Override
     public void execute() {
         System.out.println("Введите сумму списания");
@@ -36,22 +40,22 @@ public class WithdrawCommand implements Command {
     @Override
     public void execute_server(OutputStream out, Socket server, Bank bank, ServerThread.CurrentContainer currentContainer, String[] clientCommandArg) {
         DataOutputStream outData = new DataOutputStream(out);
-        try {
-            Account activeAccount = currentContainer.getCurrentClient().getActiveAccount();
-            System.out.println("Списание средств со счета: ");
-            System.out.println(activeAccount);
             try {
-                ServerThread.myAccountService.withdrawFromAccount(currentContainer.getCurrentClient(), activeAccount, Float.valueOf(clientCommandArg[1]));
-            } catch (NotEnoughFundsException e) {
-                System.out.println("Ошибка при списании средств: " + e.getMessage());
-                outData.writeUTF("Ошибка при списании средств: " + e.getMessage());
+                Account activeAccount = currentContainer.getCurrentClient().getActiveAccount();
+                System.out.println("Списание средств со счета: ");
+                System.out.println(activeAccount);
+                try {
+                    ServerThread.myAccountService.withdrawFromAccount(currentContainer.getCurrentClient(), activeAccount, Float.valueOf(clientCommandArg[1]));
+                } catch (NotEnoughFundsException e) {
+                    System.out.println("Ошибка при списании средств: " + e.getMessage());
+                    outData.writeUTF("Ошибка при списании средств: " + e.getMessage());
+                }
+                System.out.println("Новый баланс по счету: ");
+                System.out.println(activeAccount);
+                outData.writeUTF("New overall balance : " + ServerThread.myClientService.getClientBalance(bank, currentContainer.getCurrentClient()));
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-            System.out.println("Новый баланс по счету: ");
-            System.out.println(activeAccount);
-            outData.writeUTF("New overall balance : " + ServerThread.myClientService.getClientBalance(bank, currentContainer.getCurrentClient()));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
     @Override

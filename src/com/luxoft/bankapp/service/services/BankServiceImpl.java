@@ -1,6 +1,7 @@
 package com.luxoft.bankapp.service.services;
 import com.luxoft.bankapp.main.BankCommander;
 import com.luxoft.bankapp.model.*;
+import com.luxoft.bankapp.service.DAO.ClientDAO;
 import com.luxoft.bankapp.service.DAO.ClientDAOImpl;
 import com.luxoft.bankapp.service.DAO.DaoFactory;
 
@@ -26,8 +27,8 @@ public class BankServiceImpl implements BankService {
     }
 
     @Override
-    public Set<Client> getClients(Bank bank) {
-        ClientDAOImpl clientDAO = DaoFactory.getClientDAO();
+    public synchronized Set<Client> getClients(Bank bank) {
+        ClientDAO clientDAO = DaoFactory.getClientDAO();
 
         Set<Client> clientsList = new HashSet <> (clientDAO.getAllClients(bank));
 
@@ -35,9 +36,9 @@ public class BankServiceImpl implements BankService {
     }
 
     @Override
-    public Set<Account> getAllAccounts(Bank bank) {
+    public synchronized Set<Account> getAllAccounts(Bank bank) {
         Set <Account> bankAccounts = new HashSet <Account> ();
-        ClientDAOImpl clientDAO = DaoFactory.getClientDAO();
+        ClientDAO clientDAO = DaoFactory.getClientDAO();
         Set<Client> clientsList = new HashSet <> (clientDAO.getAllClients(bank));
 
         for (Client clientIterator : clientsList) {

@@ -34,9 +34,16 @@ public interface AccountDAO {
     public List<Account> getClientAccounts(long id);
 
     /**
+     * Get account of the client
+     * @param id Id of the client
+     * @param accountID Id of the account
+     */
+    public float getClientAccountBalance(long accountID);
+
+    /**
      * Get all accounts of the client
-     * @param idFrom Id of account FROM transaction
-     * @param idTo Id of account TO transaction
+     * @param accountFrom Id of account FROM transaction
+     * @param accountTo Id of account TO transaction
      * @param amount Id amount of funds to transfer
      */
     public void transferFunds(Account accountFrom, Account accountTo, float amount);

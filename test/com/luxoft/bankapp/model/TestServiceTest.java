@@ -27,7 +27,7 @@ public class TestServiceTest {
         Client client1 = new Client (Gender.FEMALE);
         client1.setName("Masha Petrova");
         client1.setCity("Lviv");
-        client1.addAccount(new CheckingAccount (1, 40.0f, 500.0f));
+        client1.addAccount(new CheckingAccount (2, 40.0f, 500.0f));
         try {
             bank1.addClient(client);
             bank1.addClient(client1);
@@ -46,7 +46,7 @@ public class TestServiceTest {
         Client client3 = new Client (Gender.FEMALE);
         client3.setName("Masha Petrova");
         client3.setCity("Lviv");
-        client3.addAccount(new CheckingAccount (1, 40.0f, 500.0f));
+        client3.addAccount(new CheckingAccount (2, 40.0f, 500.0f));
         try {
             bank2.addClient(client2);
             bank2.addClient(client3);

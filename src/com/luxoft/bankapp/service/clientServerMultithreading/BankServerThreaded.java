@@ -6,18 +6,22 @@ import java.net.Socket;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * Created by Makarov Denis on 06.02.2015.
  */
 public class BankServerThreaded {
-    public static final int POOL_SIZE = 2;
+    public static final int POOL_SIZE = 10;
     public static final int PORT = 4444 ;
-    private static AtomicInteger clientsCounter = new AtomicInteger(0);
+    public static AtomicInteger clientsCounter = new AtomicInteger(0);
+    Lock lock = new ReentrantLock();
 
     public static void main(String[] args) {
     ExecutorService pool = Executors.newFixedThreadPool(POOL_SIZE);
     ServerSocket serverSocket = null;
+
         BankServerMonitor bankServerMonitor = new BankServerMonitor();
         Thread monitor = new Thread(bankServerMonitor);
         monitor.setDaemon(true);
@@ -40,11 +44,4 @@ public class BankServerThreaded {
         }
     }
 
-    public static int getClientsCounter() {
-        return clientsCounter.get();
-    }
-
-    public static void setClientsCounter(int counter) {
-        clientsCounter.set(counter);
-    }
 }

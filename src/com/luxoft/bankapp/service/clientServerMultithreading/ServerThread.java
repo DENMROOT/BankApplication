@@ -5,10 +5,7 @@ import com.luxoft.bankapp.model.Client;
 import com.luxoft.bankapp.service.DAO.BankDAOImpl;
 import com.luxoft.bankapp.service.DAO.DaoFactory;
 import com.luxoft.bankapp.service.commanderCommands.*;
-import com.luxoft.bankapp.service.services.AccountServiceImpl;
-import com.luxoft.bankapp.service.services.BankServiceImpl;
-import com.luxoft.bankapp.service.services.ClientServiceImpl;
-import com.luxoft.bankapp.service.services.ServiceFactory;
+import com.luxoft.bankapp.service.services.*;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -23,10 +20,10 @@ import java.util.concurrent.locks.ReentrantLock;
  */
 public class ServerThread implements Runnable {
 
-    public static BankServiceImpl myBankService = ServiceFactory.getBankServiceImpl();
-    public static ClientServiceImpl myClientService = ServiceFactory.getClientServiceImpl();
-    public static AccountServiceImpl myAccountService = ServiceFactory.getAccountServiceImpl();
-    Lock lock = new ReentrantLock();
+    public static BankService myBankService = ServiceFactory.getBankServiceImpl();
+    public static ClientService myClientService = ServiceFactory.getClientServiceImpl();
+    public static AccountService myAccountService = ServiceFactory.getAccountServiceImpl();
+
 
     Socket server;
     static Command[] commands = {
@@ -44,6 +41,7 @@ public class ServerThread implements Runnable {
     public class CurrentContainer {
         private Bank currentBank;
         private Client currentClient;
+        private Lock lock;
 
         public Bank getCurrentBank() {
             return currentBank;
@@ -60,88 +58,95 @@ public class ServerThread implements Runnable {
         public void setCurrentClient(Client currentClient) {
             this.currentClient = currentClient;
         }
+
+        public Lock getLock() {
+            return lock;
+        }
+
+        public void setLock(Lock lock) {
+            this.lock = lock;
+        }
     }
 
     public ServerThread(Socket clientSocket) throws IOException
     {
         server = clientSocket;
+
     }
 
     public void run() {
-        lock.lock();
-        try {
-            String bankName = "My Bank";
-            BankDAOImpl bankDao = DaoFactory.getBankDAO();
-            CurrentContainer curContainer = new CurrentContainer();
-            curContainer.setCurrentBank(bankDao.getBankByName(bankName));
-            System.out.println("Bank ID:" + curContainer.getCurrentBank().getBankID()
-                    + " Bank Name: " + curContainer.getCurrentBank().getName());
+        String bankName = "My Bank";
+        BankDAOImpl bankDao = DaoFactory.getBankDAO();
+        CurrentContainer curContainer = new CurrentContainer();
+        curContainer.setCurrentBank(bankDao.getBankByName(bankName));
+        System.out.println("Bank ID:" + curContainer.getCurrentBank().getBankID()
+                + " Bank Name: " + curContainer.getCurrentBank().getName());
 
-            while (true) {
-                try {
-                    BankServerThreaded.setClientsCounter(BankServerThreaded.getClientsCounter()-1);
-                    System.out.println("Waiting for client on port " +
-                            server.getLocalPort() + "...");
+        while (true) {
+            try {
+                BankServerThreaded.clientsCounter.decrementAndGet();
+                System.out.println("Waiting for client on port " +
+                        server.getLocalPort() + "...");
 
-                    System.out.println("Client connection received "
-                            + server.getRemoteSocketAddress());
-                    DataInputStream in =
-                            new DataInputStream(server.getInputStream());
-                    String clientCommand="";
-                    String [] clientCommandArgs={"","",};
+                System.out.println("Client connection received "
+                        + server.getRemoteSocketAddress());
+                DataInputStream in =
+                        new DataInputStream(server.getInputStream());
+                String clientCommand="";
+                String [] clientCommandArgs={"","",};
 
-                    while (!clientCommandArgs[0].equals("EXIT")) {
-                        clientCommand = in.readUTF();
-                        clientCommandArgs = clientCommand.split("&");
+                while (!clientCommandArgs[0].equals("EXIT")) {
+                    clientCommand = in.readUTF();
+                    clientCommandArgs = clientCommand.split("&");
 
-                        switch (clientCommandArgs[0]) {
-                            case "BankClient Get balance command": {
-                                System.out.println("Get balance command received for client: " + clientCommandArgs[1]);
-                                commands[0].execute_server(server.getOutputStream(), server, curContainer.getCurrentBank(), curContainer, clientCommandArgs);
-                                break;
-                            }
-                            case "BankClient Withdrawal command": {
-                                System.out.println("Withdrawal command received for client: " + clientCommandArgs[1]);
-                                commands[1].execute_server(server.getOutputStream(), server, curContainer.getCurrentBank(), curContainer, clientCommandArgs);
-                                break;
-                            }
-                            case "BankRemoteOffice add client command": {
-                                System.out.println("Add client command received for client: " + clientCommandArgs[1]);
-                                commands[2].execute_server(server.getOutputStream(), server, curContainer.getCurrentBank(), curContainer,clientCommandArgs);
-                                break;
-                            }
-                            case "BankRemoteOffice delete client command": {
-                                System.out.println("Delete client command received for client: " + clientCommandArgs[1]);
-                                commands[3].execute_server(server.getOutputStream(), server, curContainer.getCurrentBank(), curContainer,clientCommandArgs);
-                                break;
-                            }
-                            case "BankRemoteOffice get bank report command": {
-                                System.out.println("Get Bank report command received: ");
-                                commands[4].execute_server(server.getOutputStream(), server, curContainer.getCurrentBank(), curContainer,clientCommandArgs);
-                                break;
-                            }
-                            default : break;
+                    switch (clientCommandArgs[0]) {
+                        case "BankClient Get balance command": {
+                            System.out.println("Get balance command received for client: " + clientCommandArgs[1]);
+                            commands[0].execute_server(server.getOutputStream(), server, curContainer.getCurrentBank(), curContainer, clientCommandArgs);
+                            break;
                         }
+                        case "BankClient Withdrawal command": {
+                            System.out.println("Withdrawal command received for client: " + clientCommandArgs[1]);
+                            commands[1].execute_server(server.getOutputStream(), server, curContainer.getCurrentBank(), curContainer, clientCommandArgs);
+                            break;
+                        }
+                        case "BankRemoteOffice add client command": {
+                            System.out.println("Add client command received for client: " + clientCommandArgs[1]);
+                            commands[2].execute_server(server.getOutputStream(), server, curContainer.getCurrentBank(), curContainer,clientCommandArgs);
+                            break;
+                        }
+                        case "BankRemoteOffice delete client command": {
+                            System.out.println("Delete client command received for client: " + clientCommandArgs[1]);
+                            commands[3].execute_server(server.getOutputStream(), server, curContainer.getCurrentBank(), curContainer,clientCommandArgs);
+                            break;
+                        }
+                        case "BankRemoteOffice get bank report command": {
+                            System.out.println("Get Bank report command received: ");
+                            commands[4].execute_server(server.getOutputStream(), server, curContainer.getCurrentBank(), curContainer,clientCommandArgs);
+                            break;
+                        }
+                        default : break;
                     }
+                }
 
-                    DataOutputStream out =
-                            new DataOutputStream(server.getOutputStream());
-                    System.out.println("Exit command received from client ");
-                    out.writeUTF("Exit command received");
-                    out.close();
+                DataOutputStream out =
+                        new DataOutputStream(server.getOutputStream());
+                System.out.println("Exit command received from client ");
+                out.writeUTF("Exit command received");
+                return;
+            } catch (SocketTimeoutException s) {
+                System.out.println("Socket timed out!");
+                break;
+            } catch (IOException e) {
+                System.out.println("Коннекшн прерван в потоке Serverthread: " + e.getMessage());
+                break;
+            } finally {
+                try {
                     server.close();
-                    return;
-                } catch (SocketTimeoutException s) {
-                    System.out.println("Socket timed out!");
-                    break;
                 } catch (IOException e) {
-                    System.out.println("Коннекшн прерван: " + e.getMessage());
-                    break;
+                    System.out.println(e.getMessage());
                 }
             }
-        } finally {
-            lock.unlock();
         }
-
     }
 }

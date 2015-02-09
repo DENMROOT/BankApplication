@@ -13,7 +13,7 @@ import java.util.Set;
  * Created by Makarov Denis on 29.01.2015.
  */
 public interface ClientService {
-    public void addClient(Bank bank,Client client) throws ClientExcistsException, ClientNotFoundException;
+    public void addClient(Bank bank,Client client) throws ClientExcistsException;
     public Client findClientByName(Bank bank, String clientName);
     public Set<Account> getClientAccounts(Client client);
     public float getClientBalance(Bank bank, Client client);

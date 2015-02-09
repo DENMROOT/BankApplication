@@ -12,7 +12,7 @@ public abstract class AbstractAccount implements Account, Serializable, BaseClas
     @NoDB
     private long accountId;
 
-    protected float balance;
+    private float balance;
 
     private float initialOverdraft;
 
@@ -31,7 +31,7 @@ public abstract class AbstractAccount implements Account, Serializable, BaseClas
 
         AbstractAccount that = (AbstractAccount) o;
 
-        if (Float.compare(that.accountId, accountId) != 0) {
+        if (Float.compare(this.accountId, accountId) != 0) {
             return false;
         }
 
@@ -48,6 +48,8 @@ public abstract class AbstractAccount implements Account, Serializable, BaseClas
     public float getBalance() {
         return balance;
     }
+
+
 
     @Override
     public void parseFeed(Map<String, String> feed) {
@@ -83,5 +85,9 @@ public abstract class AbstractAccount implements Account, Serializable, BaseClas
 
     public void setInitialOverdraft(float initialOverdraft) {
         this.initialOverdraft = initialOverdraft;
+    }
+
+    public void setBalance(float balance) {
+        this.balance = balance;
     }
 }

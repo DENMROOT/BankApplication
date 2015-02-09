@@ -20,7 +20,7 @@ public class AccountDAOImpl extends BaseDAOImpl implements AccountDAO {
     private static AccountDAOImpl instance;
     Lock lock = new ReentrantLock();
 
-    public AccountDAOImpl() {
+    private AccountDAOImpl() {
     }
 
     public static AccountDAOImpl getInstance() {
@@ -31,7 +31,7 @@ public class AccountDAOImpl extends BaseDAOImpl implements AccountDAO {
     }
 
     @Override
-    public void save(Account account) {
+    public synchronized void save(Account account) {
         Connection myConnection = openConnection();
         //lock.lock();
         //try {
@@ -66,7 +66,7 @@ public class AccountDAOImpl extends BaseDAOImpl implements AccountDAO {
     }
 
     @Override
-    public void insert(Client client, Account account) {
+    public synchronized void insert(Client client, Account account) {
         final String clientSQL = "INSERT INTO ACCOUNTS (CLIENT_ID,ACCOUNT_TYPE,INITIALOVERDRAFT,BALANCE,OVERDRAFT) VALUES (?,?,?,?,?)";
         try (
                 Connection myConnection = openConnection();
@@ -102,7 +102,7 @@ public class AccountDAOImpl extends BaseDAOImpl implements AccountDAO {
     }
 
     @Override
-    public void removeByClientId(long id) {
+    public synchronized void removeByClientId(long id) {
         Connection myConnection = openConnection();
 
         try {
@@ -130,7 +130,7 @@ public class AccountDAOImpl extends BaseDAOImpl implements AccountDAO {
     }
 
     @Override
-    public List<Account> getClientAccounts(long id) {
+    public synchronized List<Account> getClientAccounts(long id) {
         Connection myConnection = openConnection();
         Client myClient = null;
         Account myAccount = null;
@@ -191,7 +191,64 @@ public class AccountDAOImpl extends BaseDAOImpl implements AccountDAO {
     }
 
     @Override
-    public void transferFunds(Account accountFrom, Account accountTo, float amount) {
+    public synchronized float getClientAccountBalance (long accountID) {
+        Connection myConnection = openConnection();
+        Client myClient = null;
+        Account myAccount = null;
+        List <Account> accountsList = new ArrayList<>();
+        float accountBalance = 0;
+        //lock.lock();
+        //try {
+        try {
+            // 1) Create Preparedstatement
+            PreparedStatement prepStatement = myConnection.prepareStatement("SELECT \n" +
+                    "    A.ID AS ID,\n" +
+                    "    A.CLIENT_ID AS CLIENTID,\n" +
+                    "    A.ACCOUNT_TYPE AS ACCOUNTTYPE,\n" +
+                    "    A.INITIALOVERDRAFT AS INITIALOVERDRAFT,\n" +
+                    "    A.BALANCE AS BALANCE,\n" +
+                    "    A.OVERDRAFT AS OVERDRAFT\n" +
+                    "FROM ACCOUNTS A\n" +
+                    "WHERE A.ID = ?");
+
+            // 2) Set PreparedStatement param
+
+            prepStatement.setLong(1, accountID);
+
+            // 3) Execute query and get the ResultSet
+            ResultSet rs = prepStatement.executeQuery();
+
+            // Iterate over results and print it
+            while(rs.next()) {
+                // Retrieve by column name
+                long accID = rs.getLong("ID");
+                String accountType = rs.getString("ACCOUNTTYPE");
+                accountBalance = rs.getFloat("BALANCE");
+                float accountOverdraft = rs.getFloat("OVERDRAFT");
+
+                switch (accountType){
+                    case "S" : myAccount = new SavingAccount(accID, accountBalance); break;
+                    case "C" : myAccount = new CheckingAccount(accID, accountBalance, accountOverdraft); break;
+                    default :
+                        System.out.println("Тип счета задан неверно");
+                }
+            }
+            closeConnection();
+            return accountBalance;
+
+        } catch(SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return 0;
+        //} finally {
+        //    lock.unlock();
+        //}
+
+
+    }
+
+    @Override
+    public synchronized void transferFunds(Account accountFrom, Account accountTo, float amount) {
         Connection myConnection = openConnection();
 
         try {

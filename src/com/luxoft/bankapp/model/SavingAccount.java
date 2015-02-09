@@ -12,7 +12,7 @@ public class SavingAccount extends AbstractAccount implements BaseClassMarkerInt
             throw new IllegalArgumentException();
         }
         this.setAccountId(accountId);
-        this.balance=x;
+        this.setBalance(x);
         setAccountType("S");
     }
 
@@ -23,15 +23,15 @@ public class SavingAccount extends AbstractAccount implements BaseClassMarkerInt
 
     @Override
     public void deposit(float x) {
-        balance+=x;
+        setBalance(getBalance() + x);
     }
 
     @Override
     public void withdraw(float x) throws NotEnoughFundsException {
-        if (balance >= x) {
-            balance -= x;
+        if (getBalance() >= x) {
+            setBalance(getBalance() - x);
         } else {
-            throw new NotEnoughFundsException(balance);
+            throw new NotEnoughFundsException(getBalance());
         }
     }
 
@@ -44,7 +44,7 @@ public class SavingAccount extends AbstractAccount implements BaseClassMarkerInt
     public void printReport() {
         System.out.println("Saving Account{" +
             "Account ID=" + getAccountId() +
-            ",balance=" + balance +
+            ",balance=" + getBalance() +
             ", overdraft=" + overdraft +
             '}');
     }
@@ -53,7 +53,7 @@ public class SavingAccount extends AbstractAccount implements BaseClassMarkerInt
     public String toString() {
         return "Saving Account{" +
                 "Account ID=" + getAccountId() +
-                ",balance=" + balance +
+                ",balance=" + getBalance() +
                 ", overdraft=" + overdraft +
                 '}';
     }

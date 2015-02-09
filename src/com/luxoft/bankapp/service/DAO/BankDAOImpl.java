@@ -25,7 +25,7 @@ public class BankDAOImpl extends BaseDAOImpl implements BankDAO {
     }
 
     @Override
-    public Bank getBankByName(String name) {
+    public synchronized Bank getBankByName(String name) {
         Connection myConnection = openConnection();
         Bank myBank = new Bank();
         try {
@@ -54,7 +54,7 @@ public class BankDAOImpl extends BaseDAOImpl implements BankDAO {
     }
 
     @Override
-    public BankInfo getBankInfo(Bank bank) {
+    public synchronized BankInfo getBankInfo(Bank bank) {
         BankInfo myBankInfo = new BankInfo();
         Connection myConnection = openConnection();
         Map<String, List<Client>> clientsByCity = new TreeMap<>();
@@ -93,7 +93,7 @@ public class BankDAOImpl extends BaseDAOImpl implements BankDAO {
             }
 
             // Ищем клиентов по городам
-            ClientDAOImpl clientDao = new ClientDAOImpl();
+            ClientDAOImpl clientDao = DaoFactory.getClientDAO();
             clientsList = clientDao.getAllClients(bank);
 
             for(Client client: clientsList){

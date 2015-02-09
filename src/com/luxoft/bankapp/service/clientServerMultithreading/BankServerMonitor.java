@@ -7,7 +7,7 @@ public class BankServerMonitor implements Runnable{
     @Override
     public void run() {
         while (true) {
-            System.out.println("Количество клиентов в очереди: " + BankServerThreaded.getClientsCounter());
+            System.out.println("Количество клиентов в очереди: " + BankServerThreaded.clientsCounter.get());
             try {
                 Thread.sleep(10000);
             } catch (InterruptedException e) {

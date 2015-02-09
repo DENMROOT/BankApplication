@@ -9,11 +9,14 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.net.Socket;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * Created by Makarov Denis on 21.01.2015.
  */
 public class GetClientBalance implements Command {
+    Lock lock = new ReentrantLock();
 
     @Override
     public void execute() {
@@ -24,34 +27,32 @@ public class GetClientBalance implements Command {
     public void execute_server(OutputStream out, Socket server, Bank bank, ServerThread.CurrentContainer curContainer, String[] clientCommandArg) {
         DataOutputStream outData = new DataOutputStream(out);
         Client client = null;
+            client = ServerThread.myClientService.findClientByName(bank, clientCommandArg[1]);
 
-        client = ServerThread.myClientService.findClientByName(bank, clientCommandArg[1]);
-
-        if (client == null) {
-            try {
-                outData.writeUTF("Клиент: " + clientCommandArg[1] + " не найден" );
-            } catch (IOException e) {
+            if (client == null) {
                 try {
-                    outData.writeUTF(e.getMessage());
-                } catch (IOException e1) {
-                    e1.getMessage();
+                    outData.writeUTF("Клиент: " + clientCommandArg[1] + " не найден" );
+                } catch (IOException e) {
+                    try {
+                        outData.writeUTF(e.getMessage());
+                    } catch (IOException e1) {
+                        e1.getMessage();
+                    }
+                }
+            } else {
+                try {
+                    curContainer.setCurrentClient(client);
+                    System.out.println("Активный клиент установлен: ");
+                    System.out.println(curContainer.getCurrentClient());
+                    outData.writeUTF(clientCommandArg[1].toString() + " overall balance : " +  BankCommander.myClientService.getClientBalance(bank,client));
+                } catch (IOException e) {
+                    try {
+                        outData.writeUTF(e.getMessage());
+                    } catch (IOException e1) {
+                        e1.getMessage();
+                    }
                 }
             }
-        } else {
-            try {
-                curContainer.setCurrentClient(client);
-                System.out.println("Активный клиент установлен: ");
-                System.out.println(curContainer.getCurrentClient());
-                outData.writeUTF(clientCommandArg[1].toString() + " overall balance : " +  BankCommander.myClientService.getClientBalance(bank,client));
-            } catch (IOException e) {
-                try {
-                    outData.writeUTF(e.getMessage());
-                } catch (IOException e1) {
-                    e1.getMessage();
-                }
-            }
-        }
-
     }
 
     @Override

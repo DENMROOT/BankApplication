@@ -1,10 +1,7 @@
 package com.luxoft.bankapp.model;
 
 import com.luxoft.bankapp.main.BankCommander;
-import com.luxoft.bankapp.service.DAO.AccountDAOImpl;
-import com.luxoft.bankapp.service.DAO.BankDAOImpl;
-import com.luxoft.bankapp.service.DAO.ClientDAOImpl;
-import com.luxoft.bankapp.service.DAO.DaoFactory;
+import com.luxoft.bankapp.service.DAO.*;
 import com.luxoft.bankapp.service.exceptions.ClientExcistsException;
 import com.luxoft.bankapp.service.exceptions.ClientNotFoundException;
 import com.luxoft.bankapp.service.exceptions.DAOException;
@@ -27,9 +24,9 @@ public class ClientDaoTest {
     private Client client1;
     private Client client2;
     private Client client3;
-    private BankDAOImpl myBankDao;
-    private ClientDAOImpl myClientDao;
-    private AccountDAOImpl myAccountDao;
+    private BankDAO myBankDao;
+    private ClientDAO myClientDao;
+    private AccountDAO myAccountDao;
 
     @Before
     public void InitializeClient(){

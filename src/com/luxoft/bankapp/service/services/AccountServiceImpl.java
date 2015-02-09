@@ -2,6 +2,7 @@ package com.luxoft.bankapp.service.services;
 
 import com.luxoft.bankapp.model.Account;
 import com.luxoft.bankapp.model.Client;
+import com.luxoft.bankapp.service.DAO.AccountDAO;
 import com.luxoft.bankapp.service.DAO.AccountDAOImpl;
 import com.luxoft.bankapp.service.DAO.DaoFactory;
 import com.luxoft.bankapp.service.exceptions.NotEnoughFundsException;
@@ -28,68 +29,51 @@ public class AccountServiceImpl implements AccountService{
     }
 
     @Override
-    public void addAccount(Client client, Account account) {
+    public synchronized void  addAccount(Client client, Account account) {
         client.addAccount(account);
     }
 
     @Override
-    public void setActiveAccount(Client client, Account account) {
+    public synchronized void setActiveAccount(Client client, Account account) {
         client.setActiveAccount(account);
     }
 
     @Override
-    public void withdrawFromAccount(Client client, Account account, float withdrawalSum) throws NotEnoughFundsException {
-        //accountLock.lock();
-        //try {
-            client.withdrawFromAccount(account, withdrawalSum);
-            AccountDAOImpl accountDAO = DaoFactory.getAccountDAO();
-            accountDAO.save(account);
-        //} finally {
-        //    accountLock.unlock();
-        //}
+    public synchronized void withdrawFromAccount(Client client, Account account, float withdrawalSum) throws NotEnoughFundsException {
+        AccountDAO accountDAO = DaoFactory.getAccountDAO();
+        account.setBalance(accountDAO.getClientAccountBalance(account.getAccountId()));
+        client.withdrawFromAccount(account, withdrawalSum);
+        accountDAO.save(account);
+
     }
 
     @Override
-    public void transferFunds(Account accountFrom, Account accountTo, float amount) throws NotEnoughFundsException {
-        //accountLock.lock();
-        //try {
-            accountFrom.withdraw(amount);
-            accountTo.deposit(amount);
-            AccountDAOImpl accountDAO = DaoFactory.getAccountDAO();
-            accountDAO.transferFunds(accountFrom, accountTo , amount);
-        //} finally {
-        //    accountLock.unlock();
-        //}
+    public synchronized void transferFunds(Account accountFrom, Account accountTo, float amount) throws NotEnoughFundsException {
+        accountFrom.withdraw(amount);
+        accountTo.deposit(amount);
+        AccountDAO accountDAO = DaoFactory.getAccountDAO();
+        accountDAO.transferFunds(accountFrom, accountTo , amount);
+
     }
 
     @Override
-    public void depositToAccount(Client client, Account account, float depositSum) {
-        //accountLock.lock();
-        //try {
-            client.depositToAccount(account, depositSum);
-            AccountDAOImpl accountDAO = DaoFactory.getAccountDAO();
-            accountDAO.save(account);
-        //} finally {
-        //    accountLock.unlock();
-        //}
+    public synchronized void depositToAccount(Client client, Account account, float depositSum) {
+        client.depositToAccount(account, depositSum);
+        AccountDAO accountDAO = DaoFactory.getAccountDAO();
+        accountDAO.save(account);
     }
 
     @Override
-    public Account findAccountByID(Client client, Long accountID) {
-        //accountLock.lock();
-        //try {
-            AccountDAOImpl accountDAO = DaoFactory.getAccountDAO();
-            List<Account> accountsList = accountDAO.getClientAccounts(client.getClientID());
+    public synchronized Account findAccountByID(Client client, Long accountID) {
+        AccountDAO accountDAO = DaoFactory.getAccountDAO();
+        List<Account> accountsList = accountDAO.getClientAccounts(client.getClientID());
 
-            for (Account accountIterator : accountsList) {
-                if (accountIterator.getAccountId() == accountID) {
-                    return accountIterator;
-                }
+        for (Account accountIterator : accountsList) {
+            if (accountIterator.getAccountId() == accountID) {
+                return accountIterator;
             }
+        }
 
-            return null;
-        //} finally {
-        //    accountLock.unlock();
-        //}
+        return null;
     }
 }
