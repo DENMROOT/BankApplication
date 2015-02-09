@@ -44,6 +44,6 @@ public class BankServerThreadedTest {
             }
         }
 
-        System.out.println("Среднее время выполнения для " + resultCounter + " потоков: " +avgDate/resultCounter);
+        System.out.println("Среднее время выполнения для " + resultCounter + " потоков: " + ((resultCounter == 0)?0:avgDate/resultCounter));
     }
 }

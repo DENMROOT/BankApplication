@@ -7,6 +7,8 @@ import com.luxoft.bankapp.service.DAO.DaoFactory;
 import com.luxoft.bankapp.service.exceptions.NotEnoughFundsException;
 
 import java.util.List;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * Created by Makarov Denis on 29.01.2015.
@@ -14,6 +16,7 @@ import java.util.List;
 public class AccountServiceImpl implements AccountService{
 
     private static AccountServiceImpl instance;
+    Lock accountLock = new ReentrantLock();
 
     private AccountServiceImpl (){};
 
@@ -36,37 +39,57 @@ public class AccountServiceImpl implements AccountService{
 
     @Override
     public void withdrawFromAccount(Client client, Account account, float withdrawalSum) throws NotEnoughFundsException {
-        client.withdrawFromAccount(account, withdrawalSum);
-        AccountDAOImpl accountDAO = DaoFactory.getAccountDAO();
-        accountDAO.save(account);
+        //accountLock.lock();
+        //try {
+            client.withdrawFromAccount(account, withdrawalSum);
+            AccountDAOImpl accountDAO = DaoFactory.getAccountDAO();
+            accountDAO.save(account);
+        //} finally {
+        //    accountLock.unlock();
+        //}
     }
 
     @Override
     public void transferFunds(Account accountFrom, Account accountTo, float amount) throws NotEnoughFundsException {
-        accountFrom.withdraw(amount);
-        accountTo.deposit(amount);
-        AccountDAOImpl accountDAO = DaoFactory.getAccountDAO();
-        accountDAO.transferFunds(accountFrom, accountTo , amount);
+        //accountLock.lock();
+        //try {
+            accountFrom.withdraw(amount);
+            accountTo.deposit(amount);
+            AccountDAOImpl accountDAO = DaoFactory.getAccountDAO();
+            accountDAO.transferFunds(accountFrom, accountTo , amount);
+        //} finally {
+        //    accountLock.unlock();
+        //}
     }
 
     @Override
     public void depositToAccount(Client client, Account account, float depositSum) {
-        client.depositToAccount(account, depositSum);
-        AccountDAOImpl accountDAO = DaoFactory.getAccountDAO();
-        accountDAO.save(account);
+        //accountLock.lock();
+        //try {
+            client.depositToAccount(account, depositSum);
+            AccountDAOImpl accountDAO = DaoFactory.getAccountDAO();
+            accountDAO.save(account);
+        //} finally {
+        //    accountLock.unlock();
+        //}
     }
 
     @Override
     public Account findAccountByID(Client client, Long accountID) {
-        AccountDAOImpl accountDAO = DaoFactory.getAccountDAO();
-        List<Account> accountsList = accountDAO.getClientAccounts(client.getClientID());
+        //accountLock.lock();
+        //try {
+            AccountDAOImpl accountDAO = DaoFactory.getAccountDAO();
+            List<Account> accountsList = accountDAO.getClientAccounts(client.getClientID());
 
-        for (Account accountIterator : accountsList) {
-            if (accountIterator.getAccountId() == accountID) {
-                return accountIterator;
+            for (Account accountIterator : accountsList) {
+                if (accountIterator.getAccountId() == accountID) {
+                    return accountIterator;
+                }
             }
-        }
 
-        return null;
+            return null;
+        //} finally {
+        //    accountLock.unlock();
+        //}
     }
 }

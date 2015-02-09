@@ -9,6 +9,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * Created by Makarov Denis on 27.01.2015.
@@ -16,6 +18,7 @@ import java.util.List;
 public class AccountDAOImpl extends BaseDAOImpl implements AccountDAO {
 
     private static AccountDAOImpl instance;
+    Lock lock = new ReentrantLock();
 
     public AccountDAOImpl() {
     }
@@ -30,32 +33,36 @@ public class AccountDAOImpl extends BaseDAOImpl implements AccountDAO {
     @Override
     public void save(Account account) {
         Connection myConnection = openConnection();
+        //lock.lock();
+        //try {
+            try {
+                // 1) Create Preparedstatement
+                PreparedStatement prepStatement = myConnection.prepareStatement("UPDATE \n" +
+                        "    ACCOUNTS \n" +
+                        "SET \n" +
+                        "    BALANCE=?,\n" +
+                        "    OVERDRAFT=?\n" +
+                        "WHERE ID=?;\n");
 
-        try {
-            // 1) Create Preparedstatement
-            PreparedStatement prepStatement = myConnection.prepareStatement("UPDATE \n" +
-                    "    ACCOUNTS \n" +
-                    "SET \n" +
-                    "    BALANCE=?,\n" +
-                    "    OVERDRAFT=?\n" +
-                    "WHERE ID=?;\n");
+                // 2) Set PreparedStatement param
 
-            // 2) Set PreparedStatement param
+                prepStatement.setFloat(1, account.getBalance());
+                prepStatement.setFloat(2, account.getOverdraft());
+                prepStatement.setLong(3, account.getAccountId());
+                // 3) Execute query and get the ResultSet
+                prepStatement.executeUpdate();
 
-            prepStatement.setFloat(1, account.getBalance());
-            prepStatement.setFloat(2, account.getOverdraft());
-            prepStatement.setLong(3, account.getAccountId());
-            // 3) Execute query and get the ResultSet
-            prepStatement.executeUpdate();
+                int count = prepStatement.getUpdateCount();
+                System.out.println("Количество затронутых записей счетов:" + count);
 
-            int count = prepStatement.getUpdateCount();
-            System.out.println("Количество затронутых записей счетов:" + count);
+                closeConnection();
 
-            closeConnection();
-
-        } catch(SQLException e) {
-            e.getMessage();
-        }
+            } catch(SQLException e) {
+                e.getMessage();
+            }
+        //} finally {
+        //    lock.unlock();
+        //}
     }
 
     @Override
@@ -128,53 +135,59 @@ public class AccountDAOImpl extends BaseDAOImpl implements AccountDAO {
         Client myClient = null;
         Account myAccount = null;
         List <Account> accountsList = new ArrayList<>();
+        //lock.lock();
+        //try {
+            try {
+                // 1) Create Preparedstatement
+                PreparedStatement prepStatement = myConnection.prepareStatement("SELECT \n" +
+                        "    A.ID AS ID,\n" +
+                        "    A.CLIENT_ID AS CLIENTID,\n" +
+                        "    A.ACCOUNT_TYPE AS ACCOUNTTYPE,\n" +
+                        "    A.INITIALOVERDRAFT AS INITIALOVERDRAFT,\n" +
+                        "    A.BALANCE AS BALANCE,\n" +
+                        "    A.OVERDRAFT AS OVERDRAFT\n" +
+                        "FROM ACCOUNTS A\n" +
+                        "WHERE A.CLIENT_ID = ?");
 
-        try {
-            // 1) Create Preparedstatement
-            PreparedStatement prepStatement = myConnection.prepareStatement("SELECT \n" +
-                    "    A.ID AS ID,\n" +
-                    "    A.CLIENT_ID AS CLIENTID,\n" +
-                    "    A.ACCOUNT_TYPE AS ACCOUNTTYPE,\n" +
-                    "    A.INITIALOVERDRAFT AS INITIALOVERDRAFT,\n" +
-                    "    A.BALANCE AS BALANCE,\n" +
-                    "    A.OVERDRAFT AS OVERDRAFT\n" +
-                    "FROM ACCOUNTS A\n" +
-                    "WHERE A.CLIENT_ID = ?");
+                // 2) Set PreparedStatement param
 
-            // 2) Set PreparedStatement param
+                prepStatement.setLong(1, id);
 
-            prepStatement.setLong(1, id);
+                // 3) Execute query and get the ResultSet
+                ResultSet rs = prepStatement.executeQuery();
 
-            // 3) Execute query and get the ResultSet
-            ResultSet rs = prepStatement.executeQuery();
+                // Iterate over results and print it
+                while(rs.next()) {
+                    // Retrieve by column name
+                    long accountID = rs.getLong("ID");
+                    long clientID = rs.getLong("CLIENTID");
+                    String accountType = rs.getString("ACCOUNTTYPE");
+                    float initialOverdraft = rs.getFloat("INITIALOVERDRAFT");
+                    float accountBalance = rs.getFloat("BALANCE");
+                    float accountOverdraft = rs.getFloat("OVERDRAFT");
 
-            // Iterate over results and print it
-            while(rs.next()) {
-                // Retrieve by column name
-                long accountID = rs.getLong("ID");
-                long clientID = rs.getLong("CLIENTID");
-                String accountType = rs.getString("ACCOUNTTYPE");
-                float initialOverdraft = rs.getFloat("INITIALOVERDRAFT");
-                float accountBalance = rs.getFloat("BALANCE");
-                float accountOverdraft = rs.getFloat("OVERDRAFT");
+                    switch (accountType){
+                        case "S" : myAccount = new SavingAccount(accountID, accountBalance); break;
+                        case "C" : myAccount = new CheckingAccount(accountID, accountBalance, accountOverdraft); break;
+                        default :
+                            System.out.println("Тип счета задан неверно");
+                    }
 
-                switch (accountType){
-                    case "S" : myAccount = new SavingAccount(accountID, accountBalance); break;
-                    case "C" : myAccount = new CheckingAccount(accountID, accountBalance, accountOverdraft); break;
-                    default :
-                        System.out.println("Тип счета задан неверно");
+                    accountsList.add(myAccount);
+                    //myClient.setActiveAccount(activeAccountID);
                 }
+                closeConnection();
+                return accountsList;
 
-                accountsList.add(myAccount);
-                //myClient.setActiveAccount(activeAccountID);
+            } catch(SQLException e) {
+                e.getMessage();
             }
-            closeConnection();
-            return accountsList;
+            return null;
+        //} finally {
+        //    lock.unlock();
+        //}
 
-        } catch(SQLException e) {
-            e.getMessage();
-        }
-        return null;
+
     }
 
     @Override

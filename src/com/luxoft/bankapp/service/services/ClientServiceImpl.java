@@ -16,6 +16,8 @@ import java.sql.SQLException;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * Created by Makarov Denis on 29.01.2015.
@@ -23,6 +25,7 @@ import java.util.Set;
 public class ClientServiceImpl implements ClientService{
 
     private static ClientServiceImpl instance;
+    Lock clientLock = new ReentrantLock();
 
     private ClientServiceImpl(){};
 
@@ -52,34 +55,49 @@ public class ClientServiceImpl implements ClientService{
 
     @Override
     public Client findClientByName(Bank bank, String clientName) {
-        ClientDAO clientDAO = DaoFactory.getClientDAO();
-        try {
-            Client client = clientDAO.findClientByName(bank, clientName);
-            return client;
-        } catch (ClientNotFoundException e) {
-            System.out.println(e.getMessage());
-            return null;
-        }
+        //clientLock.lock();
+        //try {
+            ClientDAO clientDAO = DaoFactory.getClientDAO();
+            try {
+                Client client = clientDAO.findClientByName(bank, clientName);
+                return client;
+            } catch (ClientNotFoundException e) {
+                System.out.println(e.getMessage());
+                return null;
+            }
+        //} finally {
+        //    clientLock.unlock();
+        //}
     }
 
     @Override
     public Set<Account> getClientAccounts(Client client) {
-        AccountDAOImpl accountDAO = DaoFactory.getAccountDAO();
-        Set <Account> accountsList = new HashSet<>(accountDAO.getClientAccounts(client.getClientID()));
-        return accountsList;
+        //clientLock.lock();
+        //try {
+            AccountDAOImpl accountDAO = DaoFactory.getAccountDAO();
+            Set <Account> accountsList = new HashSet<>(accountDAO.getClientAccounts(client.getClientID()));
+            return accountsList;
+        //} finally {
+        //    clientLock.unlock();
+        //}
     }
 
     @Override
     public float getClientBalance(Bank bank, Client client) {
-        AccountDAOImpl accountDAO = DaoFactory.getAccountDAO();
-        List<Account> accountsList = accountDAO.getClientAccounts(client.getClientID());
-        float balance=0.0f;
+        //clientLock.lock();
+        //try {
+            Set<Account> accountsList = getClientAccounts(client);
+            float balance=0.0f;
 
-        for (Account accountsIterator : accountsList) {
-            balance+=accountsIterator.getBalance();
-        }
+            for (Account accountsIterator : accountsList) {
+                balance+=accountsIterator.getBalance();
+            }
 
-        return balance;
+            return balance;
+        //} finally {
+        //    clientLock.unlock();
+        //}
+
     }
 
     @Override

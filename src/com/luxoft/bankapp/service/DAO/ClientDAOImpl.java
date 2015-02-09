@@ -11,6 +11,8 @@ import com.luxoft.bankapp.service.exceptions.DAOException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * Created by Makarov Denis on 27.01.2015.
@@ -18,6 +20,7 @@ import java.util.List;
 public class ClientDAOImpl extends  BaseDAOImpl implements ClientDAO {
 
     private static ClientDAOImpl instance;
+    Lock lock = new ReentrantLock();
 
     public ClientDAOImpl() {
     }
@@ -33,78 +36,83 @@ public class ClientDAOImpl extends  BaseDAOImpl implements ClientDAO {
     public Client findClientByName(Bank bank, String name) throws ClientNotFoundException {
         Connection myConnection = openConnection();
         Client myClient = null;
+        //lock.lock();
+        //try {
+            try {
+                // 1) Create Preparedstatement
+                PreparedStatement prepStatement = myConnection.prepareStatement("SELECT \n" +
+                        "    C.ID AS ID,\n" +
+                        "    C.NAME AS NAME,\n" +
+                        "    C.GENDER AS GENDER,\n" +
+                        "    C.EMAIL AS EMAIL,\n" +
+                        "    C.PHONE AS PHONE,\n" +
+                        "    C.CITY AS CITY,\n" +
+                        "    C.ACTIVE_ACCOUNT_ID AS ACTIVEACCOUNTID\n" +
+                        "FROM\n" +
+                        "    CLIENTS C\n" +
+                        "WHERE \n" +
+                        "    BANK_ID = ?\n" +
+                        "AND \n" +
+                        "    NAME = ?");
 
-        try {
-            // 1) Create Preparedstatement
-            PreparedStatement prepStatement = myConnection.prepareStatement("SELECT \n" +
-                    "    C.ID AS ID,\n" +
-                    "    C.NAME AS NAME,\n" +
-                    "    C.GENDER AS GENDER,\n" +
-                    "    C.EMAIL AS EMAIL,\n" +
-                    "    C.PHONE AS PHONE,\n" +
-                    "    C.CITY AS CITY,\n" +
-                    "    C.ACTIVE_ACCOUNT_ID AS ACTIVEACCOUNTID\n" +
-                    "FROM\n" +
-                    "    CLIENTS C\n" +
-                    "WHERE \n" +
-                    "    BANK_ID = ?\n" +
-                    "AND \n" +
-                    "    NAME = ?");
+                // 2) Set PreparedStatement param
 
-            // 2) Set PreparedStatement param
+                prepStatement.setLong(1, bank.getBankID());
+                prepStatement.setString(2, name);
 
-            prepStatement.setLong(1, bank.getBankID());
-            prepStatement.setString(2, name);
+                // 3) Execute query and get the ResultSet
+                ResultSet rs = prepStatement.executeQuery();
 
-            // 3) Execute query and get the ResultSet
-            ResultSet rs = prepStatement.executeQuery();
+                // Iterate over results and print it
+                if(rs.next()) {
+                    // Retrieve by column name
+                    long clientID = rs.getLong("ID");
+                    String clientName = rs.getString("NAME");
+                    String clientGender = rs.getString("GENDER");
+                    String clientEmail = rs.getString("EMAIL");
+                    String clientPhone = rs.getString("PHONE");
+                    String clientCity = rs.getString("CITY");
+                    long activeAccountID = rs.getLong("ACTIVEACCOUNTID");
 
-            // Iterate over results and print it
-            if(rs.next()) {
-                // Retrieve by column name
-                long clientID = rs.getLong("ID");
-                String clientName = rs.getString("NAME");
-                String clientGender = rs.getString("GENDER");
-                String clientEmail = rs.getString("EMAIL");
-                String clientPhone = rs.getString("PHONE");
-                String clientCity = rs.getString("CITY");
-                long activeAccountID = rs.getLong("ACTIVEACCOUNTID");
+                    // Display data
+                    //System.out.print("ID: " + clientID + ", ");
+                    //System.out.print("NAME: " + clientName + "\n");
+                    switch (clientGender){
+                        case "m" : myClient = new Client(Gender.MALE); break;
+                        case "f" : myClient = new Client(Gender.FEMALE); break;
+                        default :
+                            System.out.println("Пол клиента задан неверно");
+                    }
 
-                // Display data
-                //System.out.print("ID: " + clientID + ", ");
-                //System.out.print("NAME: " + clientName + "\n");
-                switch (clientGender){
-                    case "m" : myClient = new Client(Gender.MALE); break;
-                    case "f" : myClient = new Client(Gender.FEMALE); break;
-                    default :
-                        System.out.println("Пол клиента задан неверно");
+                    myClient.setClientID(clientID);
+                    myClient.setName(clientName);
+                    myClient.setEmail(clientEmail);
+                    myClient.setPhone(clientPhone);
+                    myClient.setCity(clientCity);
+                    //myClient.setActiveAccount(activeAccountID);
+
+                    AccountDAOImpl accountDAO = new AccountDAOImpl();
+                    List <Account> accountsList = accountDAO.getClientAccounts(myClient.getClientID());
+
+                    for (Account accountIterator : accountsList){
+                        myClient.addAccount(accountIterator);
+                        myClient.setActiveAccount(accountIterator);
+                    }
+                } else {
+                    closeConnection();
+                    throw new ClientNotFoundException("Клиент с указанным именем не найден");
                 }
-
-                myClient.setClientID(clientID);
-                myClient.setName(clientName);
-                myClient.setEmail(clientEmail);
-                myClient.setPhone(clientPhone);
-                myClient.setCity(clientCity);
-                //myClient.setActiveAccount(activeAccountID);
-
-                AccountDAOImpl accountDAO = new AccountDAOImpl();
-                List <Account> accountsList = accountDAO.getClientAccounts(myClient.getClientID());
-
-                for (Account accountIterator : accountsList){
-                    myClient.addAccount(accountIterator);
-                    myClient.setActiveAccount(accountIterator);
-                }
-            } else {
                 closeConnection();
-                throw new ClientNotFoundException("Клиент с указанным именем не найден");
-            }
-            closeConnection();
-            return myClient;
+                return myClient;
 
-        } catch(SQLException e) {
-            e.getMessage();
-        }
-        return null;
+            } catch(SQLException e) {
+                e.getMessage();
+            }
+            return null;
+        //} finally {
+        //    lock.unlock();
+        //}
+
     }
 
     @Override

@@ -39,7 +39,6 @@ public class GetClientBalance implements Command {
             }
         } else {
             try {
-                //BankServer.currentClient=client;
                 curContainer.setCurrentClient(client);
                 System.out.println("Активный клиент установлен: ");
                 System.out.println(curContainer.getCurrentClient());

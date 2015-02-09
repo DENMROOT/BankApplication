@@ -37,6 +37,9 @@ public class BankClientMock implements Callable {
             out.writeUTF("EXIT" + "&" + "null");
             in.readUTF();
             long time = new Date().getTime()-start;
+            in.close();
+            out.close();
+            client.close();
             return time;
 
         }catch(IOException e)
