@@ -11,12 +11,14 @@ import java.io.OutputStream;
 import java.net.Socket;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
+import java.util.logging.Logger;
 
 /**
  * Created by Makarov Denis on 21.01.2015.
  */
 public class GetClientBalance implements Command {
-    Lock lock = new ReentrantLock();
+
+    Logger getClientBalanceCommangLog = Logger.getLogger("GetClientBalance");
 
     @Override
     public void execute() {
@@ -33,10 +35,12 @@ public class GetClientBalance implements Command {
                 try {
                     outData.writeUTF("Клиент: " + clientCommandArg[1] + " не найден" );
                 } catch (IOException e) {
+                    getClientBalanceCommangLog.severe("Exception: " + e.getMessage());
                     try {
                         outData.writeUTF(e.getMessage());
                     } catch (IOException e1) {
-                        e1.getMessage();
+                        System.out.println(e1.getMessage());
+                        getClientBalanceCommangLog.severe("Exception: " + e1.getMessage());
                     }
                 }
             } else {
@@ -46,10 +50,12 @@ public class GetClientBalance implements Command {
                     System.out.println(curContainer.getCurrentClient());
                     outData.writeUTF(clientCommandArg[1].toString() + " overall balance : " +  BankCommander.myClientService.getClientBalance(bank,client));
                 } catch (IOException e) {
+                    getClientBalanceCommangLog.severe("Exception: " + e.getMessage());
                     try {
                         outData.writeUTF(e.getMessage());
                     } catch (IOException e1) {
-                        e1.getMessage();
+                        System.out.println(e1.getMessage());
+                        getClientBalanceCommangLog.severe("Exception: " + e1.getMessage());
                     }
                 }
             }

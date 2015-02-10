@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
+import java.util.logging.Logger;
 
 /**
  * Created by Makarov Denis on 27.01.2015.
@@ -20,7 +21,7 @@ import java.util.concurrent.locks.ReentrantLock;
 public class ClientDAOImpl extends  BaseDAOImpl implements ClientDAO {
 
     private static ClientDAOImpl instance;
-    Lock lock = new ReentrantLock();
+    Logger clientDAOLog = Logger.getLogger("ClientDAOImpl");
 
     private ClientDAOImpl() {
     }
@@ -36,8 +37,6 @@ public class ClientDAOImpl extends  BaseDAOImpl implements ClientDAO {
     public synchronized Client findClientByName(Bank bank, String name) throws ClientNotFoundException {
         Connection myConnection = openConnection();
         Client myClient = null;
-        //lock.lock();
-        //try {
             try {
                 // 1) Create Preparedstatement
                 PreparedStatement prepStatement = myConnection.prepareStatement("SELECT \n" +
@@ -98,6 +97,8 @@ public class ClientDAOImpl extends  BaseDAOImpl implements ClientDAO {
                         myClient.addAccount(accountIterator);
                         myClient.setActiveAccount(accountIterator);
                     }
+
+                    clientDAOLog.fine("Найден клиент: " + myClient.getName());
                 } else {
                     closeConnection();
                     throw new ClientNotFoundException("Клиент с указанным именем не найден");
@@ -106,13 +107,10 @@ public class ClientDAOImpl extends  BaseDAOImpl implements ClientDAO {
                 return myClient;
 
             } catch(SQLException e) {
-                e.getMessage();
+                System.out.println(e.getMessage());
+                clientDAOLog.severe("SQLException" + e.getMessage());
             }
             return null;
-        //} finally {
-        //    lock.unlock();
-        //}
-
     }
 
     @Override
@@ -176,6 +174,7 @@ public class ClientDAOImpl extends  BaseDAOImpl implements ClientDAO {
                     myClient.addAccount(accountIterator);
                     myClient.setActiveAccount(accountIterator);
                 }
+                clientDAOLog.fine("Найден клиент по ID: " + myClient.getName());
             } else {
                 closeConnection();
                 throw new ClientNotFoundException("Клиент с указанным именем не найден");
@@ -184,7 +183,8 @@ public class ClientDAOImpl extends  BaseDAOImpl implements ClientDAO {
             return myClient;
 
         } catch(SQLException e) {
-            e.getMessage();
+            System.out.println(e.getMessage());
+            clientDAOLog.severe("SQLException" + e.getMessage());
         }
         return null;
     }
@@ -253,10 +253,12 @@ public class ClientDAOImpl extends  BaseDAOImpl implements ClientDAO {
                 clientsList.add(myClient);
             }
             closeConnection();
+            clientDAOLog.fine("Выгружены клиенты банка: " + bank.getName());
             return clientsList;
 
         } catch(SQLException e) {
-            e.getMessage();
+            System.out.println(e.getMessage());
+            clientDAOLog.severe("SQLException" + e.getMessage());
         }
         return null;
     }
@@ -298,9 +300,11 @@ public class ClientDAOImpl extends  BaseDAOImpl implements ClientDAO {
             System.out.println("Количество затронутых записей клиентов:" + count);
 
             closeConnection();
+            clientDAOLog.fine("Сохранен клиент: " + client.getName());
 
         } catch(SQLException e) {
-            e.getMessage();
+            System.out.println(e.getMessage());
+            clientDAOLog.severe("SQLException" + e.getMessage());
         }
 
     }
@@ -336,10 +340,11 @@ public class ClientDAOImpl extends  BaseDAOImpl implements ClientDAO {
             System.out.println("Затронуто записей клиентов:" + count);
             Integer clientId = rs.getInt(1);
             client.setClientID(clientId);
-        } catch (DAOException e) {
-            e.getMessage();
-        } catch (SQLException e) {
-            e.getMessage();
+            clientDAOLog.fine("добавлен клиент: " + client.getName());
+
+        } catch (DAOException | SQLException e) {
+            System.out.println(e.getMessage());
+            clientDAOLog.severe("Exception" + e.getMessage());
         }
 
     }
@@ -371,9 +376,11 @@ public class ClientDAOImpl extends  BaseDAOImpl implements ClientDAO {
             System.out.println("Количество затронутых записей клиентов:" + count);
 
             closeConnection();
+            clientDAOLog.fine("Удален клиент: " + client.getName());
 
         } catch(SQLException e) {
-            e.getMessage();
+            System.out.println(e.getMessage());
+            clientDAOLog.severe("SQLException" + e.getMessage());
         }
     }
 }

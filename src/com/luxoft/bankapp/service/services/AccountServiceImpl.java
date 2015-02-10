@@ -17,7 +17,6 @@ import java.util.concurrent.locks.ReentrantLock;
 public class AccountServiceImpl implements AccountService{
 
     private static AccountServiceImpl instance;
-    Lock accountLock = new ReentrantLock();
 
     private AccountServiceImpl (){};
 

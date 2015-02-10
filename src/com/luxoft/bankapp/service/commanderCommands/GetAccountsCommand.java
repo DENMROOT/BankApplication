@@ -9,11 +9,14 @@ import java.io.OutputStream;
 import java.net.Socket;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.logging.Logger;
 
 /**
  * Created by Makarov Denis on 15.01.2015.
  */
 public class GetAccountsCommand implements Command {
+    Logger getAccountsCommangLog = Logger.getLogger("GetAccountsCommand");
+
     @Override
     public void execute() {
         Set<Account> clientAccounts = new HashSet<Account>();

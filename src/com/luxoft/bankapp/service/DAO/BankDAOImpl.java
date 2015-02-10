@@ -6,6 +6,7 @@ import com.luxoft.bankapp.model.Client;
 
 import java.sql.*;
 import java.util.*;
+import java.util.logging.Logger;
 
 /**
  * Created by Makarov Denis on 27.01.2015.
@@ -13,6 +14,7 @@ import java.util.*;
 public class BankDAOImpl extends BaseDAOImpl implements BankDAO {
 
     private static BankDAOImpl instance;
+    Logger bankDAOLog = Logger.getLogger("BankDAOImpl");
 
     private BankDAOImpl() {
     }
@@ -45,10 +47,12 @@ public class BankDAOImpl extends BaseDAOImpl implements BankDAO {
                 myBank.setName(bankName);
             }
             closeConnection();
+            bankDAOLog.fine("Запрошена информация по банку" + name);
             return myBank;
 
         } catch(SQLException e) {
             System.out.println(e.getMessage());
+            bankDAOLog.severe("SQLException" + e.getMessage());
         }
         return null;
     }
@@ -112,8 +116,10 @@ public class BankDAOImpl extends BaseDAOImpl implements BankDAO {
             //System.out.print("NAME: " + bankName + "\n");
 
             closeConnection();
+            bankDAOLog.fine("Запрошен отчет по банку" + bank.getName());
         } catch(SQLException e) {
-            e.getMessage();
+            System.out.println(e.getMessage());
+            bankDAOLog.severe("SQLException" + e.getMessage());
         }
         return myBankInfo;
     }

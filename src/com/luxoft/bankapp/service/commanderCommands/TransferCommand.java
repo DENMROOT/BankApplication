@@ -10,11 +10,15 @@ import com.luxoft.bankapp.main.BankCommander;
 import java.io.OutputStream;
 import java.net.Socket;
 import java.util.Scanner;
+import java.util.logging.Logger;
 
 /**
  * Created by Makarov Denis on 15.01.2015.
  */
 public class TransferCommand implements Command {
+
+    Logger transferCommangLog = Logger.getLogger("TransferCommand");
+
     @Override
     public void execute() {
         System.out.println("Введите имя клиента получателя");
@@ -44,6 +48,7 @@ public class TransferCommand implements Command {
                         BankCommander.currentBank, recClientName));
             } catch (NotEnoughFundsException e) {
                 System.out.println("Ошибка при списании средств" + e.getMessage());
+                transferCommangLog.severe("Exception: " + e.getMessage());
             }
         }
     }

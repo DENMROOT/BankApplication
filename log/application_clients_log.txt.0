@@ -1,0 +1,4 @@
+фев 10, 2015 4:36:12 PM com.luxoft.bankapp.service.clientServerMultithreading.ServerThread run
+INFO: Tue Feb 10 16:36:12 FET 2015 Пользователь подключился: Socket[addr=/127.0.0.1,port=50213,localport=4444]
+фев 10, 2015 4:36:14 PM com.luxoft.bankapp.service.clientServerMultithreading.ServerThread run
+INFO: Tue Feb 10 16:36:14 FET 2015 Пользователь отключился: Socket[addr=/127.0.0.1,port=50213,localport=4444] Время работы: 1978

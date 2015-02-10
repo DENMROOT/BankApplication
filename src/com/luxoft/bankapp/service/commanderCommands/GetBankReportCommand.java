@@ -13,14 +13,18 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.io.OutputStream;
 import java.net.Socket;
+import java.util.logging.Logger;
 
 /**
  * Created by Денис on 25.01.2015.
  */
 public class GetBankReportCommand implements Command {
+
+    Logger getBankReportCommangLog = Logger.getLogger("GetBankReportCommand");
+
     @Override
     public void execute() {
-        BankInfo myBankInfo = new BankInfo();
+        BankInfo myBankInfo;
         BankDAOImpl myBankDao = DaoFactory.getBankDAO();
         myBankInfo = myBankDao.getBankInfo(BankCommander.currentBank);
 
@@ -36,14 +40,15 @@ public class GetBankReportCommand implements Command {
         System.out.println(bank.getBankID());
 
         try {
-            BankInfo myBankInfo = new BankInfo();
+            BankInfo myBankInfo;
             BankDAOImpl myBankDao = DaoFactory.getBankDAO();
             myBankInfo = myBankDao.getBankInfo(bank);
 
             ObjectOutputStream outObj = new ObjectOutputStream(out);
             outObj.writeObject(myBankInfo);
         } catch (IOException e) {
-            e.getMessage();
+            System.out.println(e.getMessage());
+            getBankReportCommangLog.severe("Exception: " + e.getMessage());
         }
 
     }

@@ -10,11 +10,15 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.net.Socket;
 import java.util.Scanner;
+import java.util.logging.Logger;
 
 /**
  * Created by Makarov Denis on 15.01.2015.
  */
 public class AddClientCommand implements Command {
+
+    Logger addClientCommangLog = Logger.getLogger("AddClientCommand");
+
     @Override
     public void execute() {
         Client client = null;
@@ -53,6 +57,7 @@ public class AddClientCommand implements Command {
                 break;
             default:
                 System.out.println("Некорректно задан пол клиента");
+                addClientCommangLog.severe("Некорректно задан пол клиента");
         }
         client.setName(clientName);
         client.setEmail(email);
@@ -63,6 +68,7 @@ public class AddClientCommand implements Command {
             BankCommander.myClientService.addClient(BankCommander.currentBank, client);
         } catch (ClientExcistsException e) {
             System.out.println(e.getMessage());
+            addClientCommangLog.severe("Exception: " + e.getMessage());
         }
     }
 
@@ -90,23 +96,24 @@ public class AddClientCommand implements Command {
             ServerThread.myClientService.addClient(bank, client);
             try {
                 outData.writeUTF("Client added" + clientCommandArg[1].toString());
-            } catch (IOException e1) {
+            } catch (IOException e) {
+                addClientCommangLog.severe("Exception: " + e.getMessage());
                 try {
-                    outData.writeUTF(e1.getMessage());
-                } catch (IOException e2) {
-                    System.out.println(e2.getMessage());
+                    outData.writeUTF(e.getMessage());
+                } catch (IOException e1) {
+                    System.out.println(e1.getMessage());
+                    addClientCommangLog.severe("Exception: " + e1.getMessage());
                 }
             }
         } catch (ClientExcistsException e) {
             System.out.println(e.getMessage());
+            addClientCommangLog.severe("Exception: " + e.getMessage());
             try {
                 outData.writeUTF(e.getMessage());
             } catch (IOException e1) {
-                e1.getMessage();
+                System.out.println(e1.getMessage());
+                addClientCommangLog.severe("Exception: " + e.getMessage());
             }
-
-
-
         }
     }
 

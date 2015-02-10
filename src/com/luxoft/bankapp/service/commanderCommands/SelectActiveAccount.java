@@ -12,11 +12,15 @@ import com.luxoft.bankapp.service.services.AccountServiceImpl;
 import java.io.OutputStream;
 import java.net.Socket;
 import java.util.Scanner;
+import java.util.logging.Logger;
 
 /**
  * Created by Makarov Denis on 29.01.2015.
  */
 public class SelectActiveAccount implements Command {
+
+    Logger selectActiveAccountCommangLog = Logger.getLogger("SelectActiveAccount");
+
     @Override
     public void execute() {
         System.out.println("Список счетов клиента");
@@ -35,6 +39,7 @@ public class SelectActiveAccount implements Command {
             System.out.println("Текущим счетом выбран: " + activeAccount);
         } else {
             System.out.println("Номер счета выбран неверно");
+            selectActiveAccountCommangLog.severe("Номер счета выбран неверно");
         };
 
     }

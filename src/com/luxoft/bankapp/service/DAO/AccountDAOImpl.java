@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
+import java.util.logging.Logger;
 
 /**
  * Created by Makarov Denis on 27.01.2015.
@@ -18,7 +19,7 @@ import java.util.concurrent.locks.ReentrantLock;
 public class AccountDAOImpl extends BaseDAOImpl implements AccountDAO {
 
     private static AccountDAOImpl instance;
-    Lock lock = new ReentrantLock();
+    Logger accountDAOLog = Logger.getLogger("AccountDAOImpl");
 
     private AccountDAOImpl() {
     }
@@ -33,8 +34,6 @@ public class AccountDAOImpl extends BaseDAOImpl implements AccountDAO {
     @Override
     public synchronized void save(Account account) {
         Connection myConnection = openConnection();
-        //lock.lock();
-        //try {
             try {
                 // 1) Create Preparedstatement
                 PreparedStatement prepStatement = myConnection.prepareStatement("UPDATE \n" +
@@ -54,22 +53,20 @@ public class AccountDAOImpl extends BaseDAOImpl implements AccountDAO {
 
                 int count = prepStatement.getUpdateCount();
                 System.out.println("Количество затронутых записей счетов:" + count);
+                accountDAOLog.fine("Количество сохраненных записей счетов:" + count);
 
                 closeConnection();
 
             } catch(SQLException e) {
-                e.getMessage();
+                System.out.println(e.getMessage());
+                accountDAOLog.severe("SQLException" + e.getMessage());
             }
-        //} finally {
-        //    lock.unlock();
-        //}
     }
 
     @Override
     public synchronized void insert(Client client, Account account) {
         final String clientSQL = "INSERT INTO ACCOUNTS (CLIENT_ID,ACCOUNT_TYPE,INITIALOVERDRAFT,BALANCE,OVERDRAFT) VALUES (?,?,?,?,?)";
-        try (
-                Connection myConnection = openConnection();
+        try (   Connection myConnection = openConnection();
                 final PreparedStatement accountStmt = myConnection.prepareStatement(clientSQL);
         ) {
             accountStmt.setLong(1, client.getClientID());
@@ -92,12 +89,15 @@ public class AccountDAOImpl extends BaseDAOImpl implements AccountDAO {
             }
             int count = accountStmt.getUpdateCount();
             System.out.println("Затронуто записей счетов:" + count);
+            accountDAOLog.fine("Количество вставленных записей счетов:" + count);
             Integer accountId = rs.getInt(1);
             account.setAccountId(accountId);
         } catch (DAOException e) {
             System.out.println(e.getMessage());
+            accountDAOLog.severe("DAOException" + e.getMessage());
         } catch (SQLException e) {
             System.out.println(e.getMessage());
+            accountDAOLog.severe("SQLException" + e.getMessage());
         }
     }
 
@@ -121,11 +121,13 @@ public class AccountDAOImpl extends BaseDAOImpl implements AccountDAO {
 
             int count = prepStatement.getUpdateCount();
             System.out.println("Количество затронутых записей счетов:" + count);
+            accountDAOLog.fine("Количество удаленных записей счетов:" + count);
 
             closeConnection();
 
         } catch(SQLException e) {
-            e.getMessage();
+            System.out.println(e.getMessage());
+            accountDAOLog.severe("SQLException" + e.getMessage());
         }
     }
 
@@ -135,8 +137,6 @@ public class AccountDAOImpl extends BaseDAOImpl implements AccountDAO {
         Client myClient = null;
         Account myAccount = null;
         List <Account> accountsList = new ArrayList<>();
-        //lock.lock();
-        //try {
             try {
                 // 1) Create Preparedstatement
                 PreparedStatement prepStatement = myConnection.prepareStatement("SELECT \n" +
@@ -177,17 +177,14 @@ public class AccountDAOImpl extends BaseDAOImpl implements AccountDAO {
                     //myClient.setActiveAccount(activeAccountID);
                 }
                 closeConnection();
+                accountDAOLog.fine("Запрошены счета клиента ID: " + id);
                 return accountsList;
 
             } catch(SQLException e) {
-                e.getMessage();
+                System.out.println(e.getMessage());
+                accountDAOLog.severe("SQLException" + e.getMessage());
             }
             return null;
-        //} finally {
-        //    lock.unlock();
-        //}
-
-
     }
 
     @Override
@@ -197,8 +194,6 @@ public class AccountDAOImpl extends BaseDAOImpl implements AccountDAO {
         Account myAccount = null;
         List <Account> accountsList = new ArrayList<>();
         float accountBalance = 0;
-        //lock.lock();
-        //try {
         try {
             // 1) Create Preparedstatement
             PreparedStatement prepStatement = myConnection.prepareStatement("SELECT \n" +
@@ -234,17 +229,14 @@ public class AccountDAOImpl extends BaseDAOImpl implements AccountDAO {
                 }
             }
             closeConnection();
+            accountDAOLog.fine("Запрошен баланс по счету ID: " + accountID);
             return accountBalance;
 
         } catch(SQLException e) {
             System.out.println(e.getMessage());
+            accountDAOLog.severe("SQLException" + e.getMessage());
         }
         return 0;
-        //} finally {
-        //    lock.unlock();
-        //}
-
-
     }
 
     @Override
@@ -286,20 +278,24 @@ public class AccountDAOImpl extends BaseDAOImpl implements AccountDAO {
 
             int count = prepStatementFrom.getUpdateCount() + prepStatementTo.getUpdateCount();
             System.out.println("Количество затронутых записей счетов:" + count);
+            accountDAOLog.info("Перевод средств, количество затронутых записей счетов: " + count);
 
         } catch(SQLException e) {
             try {
                 myConnection.rollback();
             } catch (SQLException e1) {
                 System.out.println(e1.getErrorCode());
+                accountDAOLog.severe("SQLException" + e1.getMessage());
             }
             System.out.println(e.getErrorCode());
+            accountDAOLog.severe("SQLException" + e.getErrorCode());
         } finally {
             try {
                 myConnection.setAutoCommit(true);
                 closeConnection();
             } catch (SQLException e) {
                 System.out.println(e.getErrorCode());
+                accountDAOLog.severe("SQLException" + e.getErrorCode());
             }
         }
     }

@@ -12,11 +12,15 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.net.Socket;
 import java.util.Scanner;
+import java.util.logging.Logger;
 
 /**
  * Created by Makarov Denis on 27.01.2015.
  */
 public class RemoveClientCommand implements Command {
+
+    Logger removeClientCommangLog = Logger.getLogger("RemoveClientCommand");
+
     @Override
     public void execute() {
         System.out.println("Введите имя клиента");
@@ -27,6 +31,9 @@ public class RemoveClientCommand implements Command {
 
         if (removeClient != null) {
             BankCommander.myClientService.deleteClient(BankCommander.currentBank, removeClient);
+        } else {
+            System.out.println("Указанный клиент не найден");
+            removeClientCommangLog.severe("Указанный клиент не найден");
         }
 
     }
@@ -40,10 +47,12 @@ public class RemoveClientCommand implements Command {
             System.out.println("Клиент удален: " + client.getName());
             outData.writeUTF("Клиент удален : " + client.getName());
         } catch (IOException e) {
+            removeClientCommangLog.severe("Exception: " + e.getMessage());
             try {
                 outData.writeUTF(e.getMessage());
             } catch (IOException e1) {
-                e1.getMessage();
+                System.out.println(e1.getMessage());
+                removeClientCommangLog.severe("Exception: " + e.getMessage());
             }
         }
 

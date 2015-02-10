@@ -15,12 +15,14 @@ import java.net.Socket;
 import java.util.Scanner;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
+import java.util.logging.Logger;
 
 /**
  * Created by Makarov Denis on 15.01.2015.
  */
 public class WithdrawCommand implements Command {
-    Lock lock = new ReentrantLock();
+
+    Logger withdrawCommangLog = Logger.getLogger("WithdrawCommand");
 
     @Override
     public void execute() {
@@ -34,6 +36,7 @@ public class WithdrawCommand implements Command {
             System.out.println("Новый баланс по счету" + BankCommander.currentClient.getActiveAccount());
         } catch (NotEnoughFundsException e) {
             System.out.println("Ошибка при списании средств" + e.getMessage());
+            withdrawCommangLog.severe("Exception: " + e.getMessage());
         }
     }
 
@@ -48,13 +51,15 @@ public class WithdrawCommand implements Command {
                     ServerThread.myAccountService.withdrawFromAccount(currentContainer.getCurrentClient(), activeAccount, Float.valueOf(clientCommandArg[1]));
                 } catch (NotEnoughFundsException e) {
                     System.out.println("Ошибка при списании средств: " + e.getMessage());
+                    withdrawCommangLog.severe("Exception: " + e.getMessage());
                     outData.writeUTF("Ошибка при списании средств: " + e.getMessage());
                 }
                 System.out.println("Новый баланс по счету: ");
                 System.out.println(activeAccount);
                 outData.writeUTF("New overall balance : " + ServerThread.myClientService.getClientBalance(bank, currentContainer.getCurrentClient()));
             } catch (IOException e) {
-                e.printStackTrace();
+                System.out.println("IO Exception: " + e.getMessage());
+                withdrawCommangLog.severe("Exception: " + e.getMessage());
             }
     }
 

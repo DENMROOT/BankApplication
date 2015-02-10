@@ -3,12 +3,14 @@ package com.luxoft.bankapp.service.DAO;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.logging.Logger;
 
 /**
  * Created by Makarov Denis on 27.01.2015.
  */
 public class BaseDAOImpl implements BaseDAO {
     Connection myConnection;
+    Logger baseDAOLog = Logger.getLogger("BaseDAOImpl");
 
     @Override
     public Connection openConnection() {
@@ -21,7 +23,8 @@ public class BaseDAOImpl implements BaseDAO {
             );
             return myConnection;
         } catch(ClassNotFoundException | SQLException e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
+            baseDAOLog.severe("Exception" + e.getMessage());
         }
         return null;
     }
@@ -31,7 +34,8 @@ public class BaseDAOImpl implements BaseDAO {
         try {
             myConnection.close();
         } catch(SQLException e) {
-            e.printStackTrace();
+            System.out.println(e.getMessage());
+            baseDAOLog.severe("SQLException" + e.getMessage());
         }
     }
 }

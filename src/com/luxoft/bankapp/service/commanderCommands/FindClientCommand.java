@@ -7,11 +7,14 @@ import com.luxoft.bankapp.service.clientServerMultithreading.ServerThread;
 import java.io.OutputStream;
 import java.net.Socket;
 import java.util.Scanner;
+import java.util.logging.Logger;
 
 /**
  * Created by Makarov Denis on 15.01.2015.
  */
 public class FindClientCommand implements Command {
+    Logger findClientCommangLog = Logger.getLogger("FindClientCommand");
+
     @Override
     public void execute() {
 
@@ -24,6 +27,8 @@ public class FindClientCommand implements Command {
             if (BankCommander.currentClient!=null) {
                 System.out.println("Клиент найден");
                 System.out.println("Текущий клиент установлен: " + "\n" + BankCommander.currentClient.toString());
+            } else {
+                findClientCommangLog.severe("Указанный клиент не найден");
             }
     }
 

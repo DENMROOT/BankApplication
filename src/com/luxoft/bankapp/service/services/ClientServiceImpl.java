@@ -15,6 +15,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
+import java.util.logging.Logger;
 
 /**
  * Created by Makarov Denis on 29.01.2015.
@@ -22,7 +23,7 @@ import java.util.concurrent.locks.ReentrantLock;
 public class ClientServiceImpl implements ClientService{
 
     private static ClientServiceImpl instance;
-    Lock clientLock = new ReentrantLock();
+    Logger clientServiceLog = Logger.getLogger("ClientServiceImpl");
 
     private ClientServiceImpl(){};
 
@@ -42,10 +43,9 @@ public class ClientServiceImpl implements ClientService{
         } catch (ClientNotFoundException e) {
             try {
                 clientDao.insert(bank, client);
-            } catch (SQLException e1) {
+            } catch (SQLException | DAOException e1 ) {
                 System.out.println(e1.getMessage());
-            } catch (DAOException e1) {
-                System.out.println(e1.getMessage());
+                clientServiceLog.severe("Exception: " + e1.getMessage());
             }
         }
     }
@@ -58,6 +58,7 @@ public class ClientServiceImpl implements ClientService{
             return client;
         } catch (ClientNotFoundException e) {
             System.out.println(e.getMessage());
+            clientServiceLog.severe("Exception: " + e.getMessage());
             return null;
         }
     }

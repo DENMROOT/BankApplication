@@ -12,8 +12,10 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
 import java.net.SocketTimeoutException;
+import java.util.Date;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
+import java.util.logging.Logger;
 
 /**
  * Created by Makarov Denis on 06.02.2015.
@@ -41,7 +43,6 @@ public class ServerThread implements Runnable {
     public class CurrentContainer {
         private Bank currentBank;
         private Client currentClient;
-        private Lock lock;
 
         public Bank getCurrentBank() {
             return currentBank;
@@ -58,14 +59,6 @@ public class ServerThread implements Runnable {
         public void setCurrentClient(Client currentClient) {
             this.currentClient = currentClient;
         }
-
-        public Lock getLock() {
-            return lock;
-        }
-
-        public void setLock(Lock lock) {
-            this.lock = lock;
-        }
     }
 
     public ServerThread(Socket clientSocket) throws IOException
@@ -75,12 +68,17 @@ public class ServerThread implements Runnable {
     }
 
     public void run() {
+        long start = new Date().getTime();
         String bankName = "My Bank";
         BankDAOImpl bankDao = DaoFactory.getBankDAO();
         CurrentContainer curContainer = new CurrentContainer();
+        Logger serverThreadLog = Logger.getLogger("ServerThread");
+        serverThreadLog.info(new Date() + " Пользователь подключился: " + server.toString());
+
         curContainer.setCurrentBank(bankDao.getBankByName(bankName));
         System.out.println("Bank ID:" + curContainer.getCurrentBank().getBankID()
                 + " Bank Name: " + curContainer.getCurrentBank().getName());
+
 
         while (true) {
             try {
@@ -142,6 +140,8 @@ public class ServerThread implements Runnable {
                 break;
             } finally {
                 try {
+                    long time = new Date().getTime()-start;
+                    serverThreadLog.info(new Date() + " Пользователь отключился: " + server.toString() + " Время работы: " + time);
                     server.close();
                 } catch (IOException e) {
                     System.out.println(e.getMessage());
