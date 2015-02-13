@@ -14,6 +14,7 @@ public class LoginServlet extends HttpServlet {
     Logger logger = Logger.getLogger("LoginServlet");
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
         final String clientName = request.getParameter("clientName");
         if (clientName == null) {
             logger.warning("Client not found!!!");

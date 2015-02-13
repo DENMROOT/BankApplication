@@ -7,6 +7,9 @@
         <filter-name>CheckLoggedFilter</filter-name>
         <filter-class>com.luxoft.bankapp.filters.CheckLoggedFilter</filter-class>
     </filter>
+    <listener>
+        <listener-class>com.luxoft.bankapp.listeners.SessionListener</listener-class>
+    </listener>
     <servlet>
         <servlet-name>WelcomeServlet</servlet-name>
         <servlet-class>com.luxoft.bankapp.servlets.WelcomeServlet</servlet-class>
@@ -14,6 +17,22 @@
     <servlet>
         <servlet-name>LoginServlet</servlet-name>
         <servlet-class>com.luxoft.bankapp.servlets.LoginServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SessionsAmountServlet</servlet-name>
+        <servlet-class>com.luxoft.bankapp.servlets.SessionsAmountServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>BalanceServlet</servlet-name>
+        <servlet-class>com.luxoft.bankapp.servlets.BalanceServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>WithdrawServlet</servlet-name>
+        <servlet-class>com.luxoft.bankapp.servlets.WithdrawServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>LogoutServlet</servlet-name>
+        <servlet-class>com.luxoft.bankapp.servlets.LogoutServlet</servlet-class>
     </servlet>
 
     <welcome-file-list>
@@ -28,6 +47,26 @@
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/login</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>SessionsAmountServlet</servlet-name>
+        <url-pattern>/sessions</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>BalanceServlet</servlet-name>
+        <url-pattern>/balance</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>WithdrawServlet</servlet-name>
+        <url-pattern>/withdraw</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>LogoutServlet</servlet-name>
+        <url-pattern>/logout</url-pattern>
     </servlet-mapping>
 
     <filter-mapping>
