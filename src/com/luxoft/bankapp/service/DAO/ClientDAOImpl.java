@@ -114,7 +114,7 @@ public class ClientDAOImpl extends  BaseDAOImpl implements ClientDAO {
     }
 
     @Override
-    public synchronized Client findClientById(long clientId) throws ClientNotFoundException {
+    public synchronized Client findClientById(Bank bank, long clientId) throws ClientNotFoundException {
         Connection myConnection = openConnection();
         Client myClient = null;
         try {
@@ -136,7 +136,7 @@ public class ClientDAOImpl extends  BaseDAOImpl implements ClientDAO {
 
             // 2) Set PreparedStatement param
 
-            prepStatement.setLong(1, BankCommander.currentBank.getBankID());
+            prepStatement.setLong(1, bank.getBankID());
             prepStatement.setLong(2, clientId);
 
             // 3) Execute query and get the ResultSet
@@ -267,6 +267,8 @@ public class ClientDAOImpl extends  BaseDAOImpl implements ClientDAO {
     public synchronized void save(Client client) {
         Connection myConnection = openConnection();
 
+
+
         try {
             // 1) Create PreparedStatement
             PreparedStatement prepStatement = myConnection.prepareStatement("UPDATE \n" +
@@ -283,6 +285,7 @@ public class ClientDAOImpl extends  BaseDAOImpl implements ClientDAO {
             // 2) Set PreparedStatement param
 
             prepStatement.setString(1, client.getName());
+
             switch (client.getGender()) {
                 case MALE:prepStatement.setString(2,"m"); break;
                 case FEMALE:prepStatement.setString(2,"f"); break;

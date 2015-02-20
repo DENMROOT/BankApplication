@@ -5,10 +5,7 @@ import com.luxoft.bankapp.service.DAO.ClientDAO;
 import com.luxoft.bankapp.service.DAO.ClientDAOImpl;
 import com.luxoft.bankapp.service.DAO.DaoFactory;
 
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Created by Makarov Denis on 14.01.2015.
@@ -48,6 +45,35 @@ public class BankServiceImpl implements BankService {
         }
 
         return bankAccounts;
+    }
+
+    @Override
+    public List<Client> findClientsByCityName(Bank bank, String city, String clientName) {
+        ClientDAO clientDAO = DaoFactory.getClientDAO();
+
+        List <Client> clientsList = new ArrayList<>(clientDAO.getAllClients(bank));
+        List <Client> processedClientsList = new ArrayList<> ();
+        for (Client clientIterator: clientsList) {
+            if (!clientName.equals("") && (!city.equals(""))) {
+                if (clientIterator.getName().equals(clientName) && clientIterator.getCity().equals(city)) {
+                    processedClientsList.add(clientIterator);
+                }
+            } else
+                if (clientName.equals("") && (!city.equals(""))) {
+                    if (clientIterator.getCity().equals(city)) {
+                        processedClientsList.add(clientIterator);
+                    }
+                } else
+                    if (!clientName.equals("") && (city.equals(""))) {
+                        if (clientIterator.getName().equals(clientName)) {
+                            processedClientsList.add(clientIterator);
+                        }
+                    } else {
+                        return clientsList;
+                    }
+        }
+
+        return processedClientsList;
     }
 
 }

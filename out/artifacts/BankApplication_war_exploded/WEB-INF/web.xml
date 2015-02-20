@@ -35,6 +35,20 @@
         <servlet-class>com.luxoft.bankapp.servlets.LogoutServlet</servlet-class>
     </servlet>
 
+    <servlet>
+        <servlet-name>FindClientsServlet</servlet-name>
+        <servlet-class>com.luxoft.bankapp.servlets.FindClientsServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>GetClientsServlet</servlet-name>
+        <servlet-class>com.luxoft.bankapp.servlets.GetClientsServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SaveClientServlet</servlet-name>
+        <servlet-class>com.luxoft.bankapp.servlets.SaveClientServlet</servlet-class>
+    </servlet>
+
     <welcome-file-list>
         <welcome-file>welcome</welcome-file>
     </welcome-file-list>
@@ -68,6 +82,24 @@
         <servlet-name>LogoutServlet</servlet-name>
         <url-pattern>/logout</url-pattern>
     </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>FindClientsServlet</servlet-name>
+        <url-pattern>/clients</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>GetClientsServlet</servlet-name>
+        <url-pattern>/client</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet-mapping>
+        <servlet-name>SaveClientServlet</servlet-name>
+        <url-pattern>/saveClient</url-pattern>
+    </servlet-mapping>
+
+
 
     <filter-mapping>
         <filter-name>CheckLoggedFilter</filter-name>

@@ -64,6 +64,19 @@ public class ClientServiceImpl implements ClientService{
     }
 
     @Override
+    public Client findClientById(Bank bank, long clientId) {
+        ClientDAO clientDAO = DaoFactory.getClientDAO();
+        try {
+            Client client = clientDAO.findClientById(bank, clientId);
+            return client;
+        } catch (ClientNotFoundException e) {
+            System.out.println(e.getMessage());
+            clientServiceLog.severe("Exception: " + e.getMessage());
+            return null;
+        }
+    }
+
+    @Override
     public synchronized Set<Account> getClientAccounts(Client client) {
         AccountDAO accountDAO = DaoFactory.getAccountDAO();
         Set <Account> accountsList = new HashSet<>(accountDAO.getClientAccounts(client.getClientID()));

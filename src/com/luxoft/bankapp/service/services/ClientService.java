@@ -15,6 +15,7 @@ import java.util.Set;
 public interface ClientService {
     public void addClient(Bank bank,Client client) throws ClientExcistsException;
     public Client findClientByName(Bank bank, String clientName);
+    public Client findClientById(Bank bank, long clientId);
     public Set<Account> getClientAccounts(Client client);
     public float getClientBalance(Bank bank, Client client);
     public void saveClient(Client client) throws IOException;

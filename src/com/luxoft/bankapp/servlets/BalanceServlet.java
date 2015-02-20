@@ -46,10 +46,16 @@ public class BalanceServlet extends HttpServlet {
         float balance = clientService.getClientBalance(bank, client);
         logger.info("Balance command for " + clientName + " : " + balance);
 
+
+        /*
         ServletOutputStream out = response.getOutputStream();
         response.setContentType("text/html; charset=UTF-8");
         out.write(clientName.getBytes("UTF-8"));
         out.println("<h2>Current client balance: " + balance + "</h2>");
+        */
+
+        request.setAttribute("balance", balance);
+        request.getRequestDispatcher("/balance.jsp").forward(request, response);
 
     }
 }

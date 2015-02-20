@@ -232,4 +232,12 @@ public class Client implements Report, Comparable <Client>, Serializable, BaseCl
     public void setGender(Gender gender) {
         this.gender = gender;
     }
+
+    public float getBalance () {
+        float currentBalance = 0;
+        for (Account accountIterator : accounts){
+            currentBalance += accountIterator.getBalance();
+        }
+        return currentBalance;
+    }
 }
