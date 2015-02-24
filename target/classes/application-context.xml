@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+       <!-- define DAOs -->
+       <bean id="bankDao" class="com.luxoft.bankapp.service.DAO.BankDAOImpl">
+       </bean>
+       <bean id="clientDao" class="com.luxoft.bankapp.service.DAO.ClientDAOImpl">
+       </bean>
+       <bean id="accountDao" class="com.luxoft.bankapp.service.DAO.AccountDAOImpl">
+       </bean>
+
+       <bean id="bankService" class="com.luxoft.bankapp.service.services.BankServiceImpl" autowire="byType">
+              <!-- bankDao, clientDao and accountDao will be injected here -->
+       </bean>
+
+       <bean id="clientService" class="com.luxoft.bankapp.service.services.ClientServiceImpl" autowire="byType">
+              <!-- bankDao, clientDao and accountDao will be injected here -->
+       </bean>
+
+       <bean id="accountService" class="com.luxoft.bankapp.service.services.AccountServiceImpl" autowire="byType">
+              <!-- bankDao, clientDao and accountDao will be injected here -->
+       </bean>
+
+       <bean id="bankCommander" class="com.luxoft.bankapp.main.BankCommander">
+              <property name="commandsMap">
+                     <map>
+                            <entry key="1">
+                                   <bean class="com.luxoft.bankapp.service.commanderCommands.FindClientCommand" autowire="byType" />
+                            </entry>
+                            <entry key="2">
+                                   <bean class="com.luxoft.bankapp.service.commanderCommands.GetAccountsCommand" autowire="byType" />
+                            </entry>
+                            <entry key="3">
+                                   <bean class="com.luxoft.bankapp.service.commanderCommands.SelectActiveAccount" autowire="byType" />
+                                   <!-- bankService will be injected here -->
+                            </entry>
+                            <entry key="4">
+                                   <bean class="com.luxoft.bankapp.service.commanderCommands.WithdrawCommand" autowire="byType" />
+                                   <!-- bankService will be injected here -->
+                            </entry>
+                            <entry key="5">
+                                   <bean class="com.luxoft.bankapp.service.commanderCommands.DepositCommand" autowire="byType" />
+                                   <!-- bankService will be injected here -->
+                            </entry>
+                            <entry key="6">
+                                   <bean class="com.luxoft.bankapp.service.commanderCommands.TransferCommand" autowire="byType" />
+                                   <!-- bankService will be injected here -->
+                            </entry>
+                            <entry key="7">
+                                   <bean class="com.luxoft.bankapp.service.commanderCommands.AddClientCommand" autowire="byType" />
+                                   <!-- bankService will be injected here -->
+                            </entry>
+                            <entry key="8">
+                                   <bean class="com.luxoft.bankapp.service.commanderCommands.RemoveClientCommand" autowire="byType" />
+                                   <!-- bankService will be injected here -->
+                            </entry>
+                            <entry key="9">
+                                   <bean class="com.luxoft.bankapp.service.commanderCommands.ShowHelpCommand" autowire="byType" />
+                                   <!-- bankService will be injected here -->
+                            </entry>
+                            <entry key="10">
+                                   <bean class="com.luxoft.bankapp.service.commanderCommands.GetBankReportCommand" autowire="byType" />
+                                   <!-- bankService will be injected here -->
+                            </entry>
+                            <entry key="11">
+                                   <bean class="com.luxoft.bankapp.service.commanderCommands.ExitCommand" autowire="byType" />
+                                   <!-- bankService will be injected here -->
+                            </entry>
+                     </map>
+              </property>
+       </bean>
+</beans>

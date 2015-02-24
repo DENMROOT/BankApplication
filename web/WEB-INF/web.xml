@@ -7,9 +7,15 @@
         <filter-name>CheckLoggedFilter</filter-name>
         <filter-class>com.luxoft.bankapp.filters.CheckLoggedFilter</filter-class>
     </filter>
+
     <listener>
         <listener-class>com.luxoft.bankapp.listeners.SessionListener</listener-class>
     </listener>
+
+    <listener>
+        <listener-class>com.luxoft.bankapp.listeners.ContextListener</listener-class>
+    </listener>
+
     <servlet>
         <servlet-name>WelcomeServlet</servlet-name>
         <servlet-class>com.luxoft.bankapp.servlets.WelcomeServlet</servlet-class>
