@@ -13,7 +13,7 @@ import java.util.logging.Logger;
  * Created by Makarov Denis on 15.01.2015.
  */
 public class FindClientCommand implements Command {
-    Logger findClientCommangLog = Logger.getLogger("FindClientCommand");
+    public final static Logger findClientCommangLog = Logger.getLogger(FindClientCommand.class.getName());
 
     @Override
     public void execute() {

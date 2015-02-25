@@ -14,7 +14,7 @@ import java.util.logging.Logger;
 public class BankDAOImpl extends BaseDAOImpl implements BankDAO {
 
     private static BankDAOImpl instance;
-    Logger bankDAOLog = Logger.getLogger("BankDAOImpl");
+    public final static Logger bankDAOLog = Logger.getLogger(BankDAOImpl.class.getName());
 
     private BankDAOImpl() {
     }

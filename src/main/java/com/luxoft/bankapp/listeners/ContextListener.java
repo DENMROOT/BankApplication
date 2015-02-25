@@ -2,8 +2,7 @@ package com.luxoft.bankapp.listeners; /**
  * Created by Denis Makarov on 13.02.2015.
  */
 
-import com.luxoft.bankapp.service.services.BankService;
-import com.luxoft.bankapp.service.services.BankServiceImpl;
+import com.luxoft.bankapp.service.services.*;
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
 
@@ -41,11 +40,12 @@ public class ContextListener implements ServletContextListener,
 
 
         synchronized (ContextListener.class) {
-
-
-        BankService myBankService = springContext.getBean(BankServiceImpl.class);
-
+            BankService myBankService = springContext.getBean(BankServiceImpl.class);
+            ClientService myClientService = springContext.getBean(ClientServiceImpl.class);
+            AccountService myAccountService = springContext.getBean(AccountServiceImpl.class);
             context.setAttribute("bankService", myBankService);
+            context.setAttribute("clientService", myClientService);
+            context.setAttribute("accountService", myAccountService);
         }
 
     }

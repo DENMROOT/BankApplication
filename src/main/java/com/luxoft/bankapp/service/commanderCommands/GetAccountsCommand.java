@@ -15,7 +15,7 @@ import java.util.logging.Logger;
  * Created by Makarov Denis on 15.01.2015.
  */
 public class GetAccountsCommand implements Command {
-    Logger getAccountsCommangLog = Logger.getLogger("GetAccountsCommand");
+    public final static Logger getAccountsCommangLog = Logger.getLogger(GetAccountsCommand.class.getName());
 
     @Override
     public void execute() {

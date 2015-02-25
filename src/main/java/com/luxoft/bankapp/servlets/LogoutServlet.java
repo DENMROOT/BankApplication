@@ -12,7 +12,7 @@ import java.util.logging.Logger;
  * Created by Denis Makarov on 13.02.2015.
  */
 public class LogoutServlet extends HttpServlet {
-    Logger logger = Logger.getLogger("LogoutServlet");
+    public final static  Logger logger = Logger.getLogger(LogoutServlet.class.getName());
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }

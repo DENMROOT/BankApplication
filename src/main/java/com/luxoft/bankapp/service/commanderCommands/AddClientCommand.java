@@ -17,7 +17,7 @@ import java.util.logging.Logger;
  */
 public class AddClientCommand implements Command {
 
-    Logger addClientCommangLog = Logger.getLogger("AddClientCommand");
+    public final static Logger addClientCommangLog = Logger.getLogger(AddClientCommand.class.getName());
 
     @Override
     public void execute() {

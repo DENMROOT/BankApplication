@@ -16,10 +16,11 @@ public class BankServerThreaded {
     public static final int PORT = 4444 ;
     public static AtomicInteger clientsCounter = new AtomicInteger(0);
 
+    public final static Logger bankServerThreadedLog = Logger.getLogger(BankServerThreaded.class.getName());
+
     public static void main(String[] args) {
     ExecutorService pool = Executors.newFixedThreadPool(POOL_SIZE);
     ServerSocket serverSocket = null;
-    Logger bankServerThreadedLog = Logger.getLogger("BankServerThreaded");
 
     /* 2 Вариант подключения настроек логирования, без аргументов JVM
     try {

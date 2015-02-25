@@ -11,7 +11,7 @@ import java.util.logging.Logger;
  * Created by Denis Makarov on 12.02.2015.
  */
 public class LoginServlet extends HttpServlet {
-    Logger logger = Logger.getLogger("LoginServlet");
+    public final static  Logger logger = Logger.getLogger(LoginServlet.class.getName());
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");

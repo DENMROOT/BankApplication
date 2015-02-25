@@ -19,7 +19,7 @@ import java.util.logging.Logger;
  */
 public class RemoveClientCommand implements Command {
 
-    Logger removeClientCommangLog = Logger.getLogger("RemoveClientCommand");
+    public final static Logger removeClientCommangLog = Logger.getLogger(RemoveClientCommand.class.getName());
 
     @Override
     public void execute() {

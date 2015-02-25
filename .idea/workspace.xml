@@ -2,233 +2,91 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f1d08356-7cce-4f4b-84a1-f3e98ad106cc" name="Default" comment="so">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/listeners/ContextListener.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/service/commanderCommands/ExitCommand.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__aopalliance_aopalliance_1_0.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_h2database_h2_1_4_185.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_logging_commons_logging_1_2.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_servlet_javax_servlet_api_2_5.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_servlet_javax_servlet_api_2_5_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_servlet_jstl_1_1_2.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_servlet_servlet_api_2_5.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__junit_junit_4_12.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__log4j_log4j_1_2_16.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_all_1_3.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_core_1_3.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_aop_4_1_5_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_beans_4_1_5_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_context_4_1_5_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_core_4_1_5_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_expression_4_1_5_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__taglibs_standard_1_1_2.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/application-context.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/log4j.properties" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\libs\h2-1.4.185.jar" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\libs\hamcrest-all-1.3.jar" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\libs\junit-4.12-javadoc.jar" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\libs\junit-4.12-sources.jar" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\libs\junit-4.12.jar" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\out\artifacts\BankApplication_war_exploded\WEB-INF\classes\com\luxoft\bankapp\main\BankCommander$1.class" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\out\artifacts\BankApplication_war_exploded\WEB-INF\lib\servlet-api-2.5.jar" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\out\production\BankApplication\com\luxoft\bankapp\filters\CheckLoggedFilter.class" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\out\production\BankApplication\com\luxoft\bankapp\listeners\SessionListener.class" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\out\production\BankApplication\com\luxoft\bankapp\main\BankApplication.class" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\out\production\BankApplication\com\luxoft\bankapp\main\BankCommander$1.class" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\out\production\BankApplication\com\luxoft\bankapp\main\BankCommander.class" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\out\production\BankApplication\com\luxoft\bankapp\model\AbstractAccount.class" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\out\production\BankApplication\com\luxoft\bankapp\model\Account.class" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\out\production\BankApplication\com\luxoft\bankapp\model\Bank$1.class" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\out\production\BankApplication\com\luxoft\bankapp\model\Bank$EmailNotificationListener.class" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\out\production\BankApplication\com\luxoft\bankapp\model\Bank$PrintClientListener.class" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\out\production\BankApplication\com\luxoft\bankapp\model\Bank.class" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\out\production\BankApplication\com\luxoft\bankapp\model\BankInfo.class" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\out\production\BankApplication\com\luxoft\bankapp\model\BankReport.class" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\out\production\BankApplication\com\luxoft\bankapp\model\BankReportContainer.class" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\out\production\BankApplication\com\luxoft\bankapp\model\BaseClassMarkerInterface.class" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\out\production\BankApplication\com\luxoft\bankapp\model\CheckingAccount.class" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\out\production\BankApplication\com\luxoft\bankapp\model\Client.class" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\out\production\BankApplication\com\luxoft\bankapp\model\ClientComparator.class" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\out\production\BankApplication\com\luxoft\bankapp\model\ClientRegistrationListener.class" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\out\production\BankApplication\com\luxoft\bankapp\model\Gender.class" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\out\production\BankApplication\com\luxoft\bankapp\model\Report.class" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\out\production\BankApplication\com\luxoft\bankapp\model\SavingAccount.class" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\out\production\BankApplication\com\luxoft\bankapp\service\DAO\AccountDAO.class" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\out\production\BankApplication\com\luxoft\bankapp\service\DAO\AccountDAOImpl.class" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\out\production\BankApplication\com\luxoft\bankapp\service\DAO\BankDAO.class" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\out\production\BankApplication\com\luxoft\bankapp\service\DAO\BankDAOImpl.class" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\out\production\BankApplication\com\luxoft\bankapp\service\DAO\BaseDAO.class" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\out\production\BankApplication\com\luxoft\bankapp\service\DAO\BaseDAOImpl.class" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\out\production\BankApplication\com\luxoft\bankapp\service\DAO\ClientDAO.class" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\out\production\BankApplication\com\luxoft\bankapp\service\DAO\ClientDAOImpl$1.class" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\out\production\BankApplication\com\luxoft\bankapp\service\DAO\ClientDAOImpl.class" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\out\production\BankApplication\com\luxoft\bankapp\service\DAO\DaoFactory.class" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\out\production\BankApplication\com\luxoft\bankapp\service\annotations\NoDB.class" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\out\production\BankApplication\com\luxoft\bankapp\service\bankFeeder\BankFeedService.class" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\out\production\BankApplication\com\luxoft\bankapp\service\bankFeeder\IBankFeedService.class" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\out\production\BankApplication\com\luxoft\bankapp\service\clientServerMultithreading\BankClientMock.class" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\out\production\BankApplication\com\luxoft\bankapp\service\clientServerMultithreading\BankServerMonitor.class" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\out\production\BankApplication\com\luxoft\bankapp\service\clientServerMultithreading\BankServerThreaded.class" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\out\production\BankApplication\com\luxoft\bankapp\service\clientServerMultithreading\ServerThread$CurrentContainer.class" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\out\production\BankApplication\com\luxoft\bankapp\service\clientServerMultithreading\ServerThread.class" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\out\production\BankApplication\com\luxoft\bankapp\service\clientServer\BankClient$1.class" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\out\production\BankApplication\com\luxoft\bankapp\service\clientServer\BankClient.class" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\out\production\BankApplication\com\luxoft\bankapp\service\clientServer\BankRemoteOffice$1.class" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\out\production\BankApplication\com\luxoft\bankapp\service\clientServer\BankRemoteOffice.class" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\out\production\BankApplication\com\luxoft\bankapp\service\clientServer\clientCommands\ClientCommand.class" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\out\production\BankApplication\com\luxoft\bankapp\service\clientServer\clientCommands\SocketClientGetClientBalance.class" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\out\production\BankApplication\com\luxoft\bankapp\service\clientServer\clientCommands\SocketRemoteOfficeAddClientCommand.class" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\out\production\BankApplication\com\luxoft\bankapp\service\clientServer\clientCommands\SocketRemoteOfficeDeleteClientCommand.class" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\out\production\BankApplication\com\luxoft\bankapp\service\clientServer\clientCommands\SocketRemoteOfficeGetBankReportCommand.class" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\out\production\BankApplication\com\luxoft\bankapp\service\clientServer\clientCommands\SosketClientWithdrawBalance.class" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\out\production\BankApplication\com\luxoft\bankapp\service\commanderCommands\AddClientCommand.class" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\out\production\BankApplication\com\luxoft\bankapp\service\commanderCommands\Command.class" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\out\production\BankApplication\com\luxoft\bankapp\service\commanderCommands\DepositCommand.class" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\out\production\BankApplication\com\luxoft\bankapp\service\commanderCommands\FindClientCommand.class" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\out\production\BankApplication\com\luxoft\bankapp\service\commanderCommands\GetAccountsCommand.class" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\out\production\BankApplication\com\luxoft\bankapp\service\commanderCommands\GetBankReportCommand.class" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\out\production\BankApplication\com\luxoft\bankapp\service\commanderCommands\GetClientBalance.class" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\out\production\BankApplication\com\luxoft\bankapp\service\commanderCommands\RemoveClientCommand.class" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\out\production\BankApplication\com\luxoft\bankapp\service\commanderCommands\SelectActiveAccount.class" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\out\production\BankApplication\com\luxoft\bankapp\service\commanderCommands\ShowHelpCommand.class" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\out\production\BankApplication\com\luxoft\bankapp\service\commanderCommands\TransferCommand.class" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\out\production\BankApplication\com\luxoft\bankapp\service\commanderCommands\WithdrawCommand.class" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\out\production\BankApplication\com\luxoft\bankapp\service\exceptions\BankException.class" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\out\production\BankApplication\com\luxoft\bankapp\service\exceptions\ClientExcistsException.class" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\out\production\BankApplication\com\luxoft\bankapp\service\exceptions\ClientNotFoundException.class" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\out\production\BankApplication\com\luxoft\bankapp\service\exceptions\DAOException.class" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\out\production\BankApplication\com\luxoft\bankapp\service\exceptions\NotEnoughFundsException.class" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\out\production\BankApplication\com\luxoft\bankapp\service\exceptions\OverDraftLimitExceededException.class" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\out\production\BankApplication\com\luxoft\bankapp\service\services\AccountService.class" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\out\production\BankApplication\com\luxoft\bankapp\service\services\AccountServiceImpl.class" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\out\production\BankApplication\com\luxoft\bankapp\service\services\BankService.class" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\out\production\BankApplication\com\luxoft\bankapp\service\services\BankServiceImpl.class" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\out\production\BankApplication\com\luxoft\bankapp\service\services\ClientService.class" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\out\production\BankApplication\com\luxoft\bankapp\service\services\ClientServiceImpl.class" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\out\production\BankApplication\com\luxoft\bankapp\service\services\ServiceFactory.class" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\out\production\BankApplication\com\luxoft\bankapp\servlets\BalanceServlet.class" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\out\production\BankApplication\com\luxoft\bankapp\servlets\FindClientsServlet.class" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\out\production\BankApplication\com\luxoft\bankapp\servlets\GetClientsServlet.class" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\out\production\BankApplication\com\luxoft\bankapp\servlets\LoginServlet.class" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\out\production\BankApplication\com\luxoft\bankapp\servlets\LogoutServlet.class" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\out\production\BankApplication\com\luxoft\bankapp\servlets\SaveClientServlet.class" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\out\production\BankApplication\com\luxoft\bankapp\servlets\SessionsAmountServlet.class" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\out\production\BankApplication\com\luxoft\bankapp\servlets\WelcomeServlet.class" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\out\production\BankApplication\com\luxoft\bankapp\servlets\WithdrawServlet.class" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\out\test\BankApplication\com\luxoft\bankapp\model\ClientDaoTest.class" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\out\test\BankApplication\com\luxoft\bankapp\model\TestServiceTest.class" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\out\test\BankApplication\com\luxoft\bankapp\model\clientServer\BankServerThreadedTest.class" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\out\test\BankApplication\com\luxoft\bankapp\model\dao\BankDaoTest.class" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\out\test\BankApplication\com\luxoft\bankapp\model\service\AccountServiceTest.class" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\out\test\BankApplication\com\luxoft\bankapp\model\service\BankServiceTest.class" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\out\test\BankApplication\com\luxoft\bankapp\model\service\ClientServiceTest.class" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\out\test\BankApplication\service\TestService.class" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\src\com\luxoft\bankapp\filters\CheckLoggedFilter.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\src\com\luxoft\bankapp\listeners\SessionListener.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\src\com\luxoft\bankapp\main\BankApplication.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\src\com\luxoft\bankapp\main\BankCommander.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\src\com\luxoft\bankapp\model\AbstractAccount.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\src\com\luxoft\bankapp\model\Account.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\src\com\luxoft\bankapp\model\Bank.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\src\com\luxoft\bankapp\model\BankInfo.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\src\com\luxoft\bankapp\model\BankReport.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\src\com\luxoft\bankapp\model\BankReportContainer.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\src\com\luxoft\bankapp\model\BaseClassMarkerInterface.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\src\com\luxoft\bankapp\model\CheckingAccount.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\src\com\luxoft\bankapp\model\Client.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\src\com\luxoft\bankapp\model\ClientComparator.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\src\com\luxoft\bankapp\model\ClientRegistrationListener.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\src\com\luxoft\bankapp\model\Gender.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\src\com\luxoft\bankapp\model\Report.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\src\com\luxoft\bankapp\model\SavingAccount.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\src\com\luxoft\bankapp\service\DAO\AccountDAOImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\src\com\luxoft\bankapp\service\DAO\AccountDao.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\src\com\luxoft\bankapp\service\DAO\BankDAO.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\src\com\luxoft\bankapp\service\DAO\BankDAOImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\src\com\luxoft\bankapp\service\DAO\BaseDAO.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\src\com\luxoft\bankapp\service\DAO\BaseDAOImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\src\com\luxoft\bankapp\service\DAO\ClientDAO.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\src\com\luxoft\bankapp\service\DAO\ClientDAOImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\src\com\luxoft\bankapp\service\DAO\DaoFactory.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\src\com\luxoft\bankapp\service\annotations\NoDB.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\src\com\luxoft\bankapp\service\bankFeeder\BankFeedService.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\src\com\luxoft\bankapp\service\bankFeeder\IBankFeedService.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\src\com\luxoft\bankapp\service\clientServerMultithreading\BankClientMock.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\src\com\luxoft\bankapp\service\clientServerMultithreading\BankServerMonitor.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\src\com\luxoft\bankapp\service\clientServerMultithreading\BankServerThreaded.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\src\com\luxoft\bankapp\service\clientServerMultithreading\ServerThread.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\src\com\luxoft\bankapp\service\clientServer\BankClient.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\src\com\luxoft\bankapp\service\clientServer\BankRemoteOffice.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\src\com\luxoft\bankapp\service\clientServer\BankServer.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\src\com\luxoft\bankapp\service\clientServer\clientCommands\ClientCommand.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\src\com\luxoft\bankapp\service\clientServer\clientCommands\SocketClientGetClientBalance.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\src\com\luxoft\bankapp\service\clientServer\clientCommands\SocketRemoteOfficeAddClientCommand.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\src\com\luxoft\bankapp\service\clientServer\clientCommands\SocketRemoteOfficeDeleteClientCommand.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\src\com\luxoft\bankapp\service\clientServer\clientCommands\SocketRemoteOfficeGetBankReportCommand.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\src\com\luxoft\bankapp\service\clientServer\clientCommands\SosketClientWithdrawBalance.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\src\com\luxoft\bankapp\service\commanderCommands\AddClientCommand.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\src\com\luxoft\bankapp\service\commanderCommands\Command.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\src\com\luxoft\bankapp\service\commanderCommands\DepositCommand.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\src\com\luxoft\bankapp\service\commanderCommands\FindClientCommand.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\src\com\luxoft\bankapp\service\commanderCommands\GetAccountsCommand.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\src\com\luxoft\bankapp\service\commanderCommands\GetBankReportCommand.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\src\com\luxoft\bankapp\service\commanderCommands\GetClientBalance.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\src\com\luxoft\bankapp\service\commanderCommands\RemoveClientCommand.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\src\com\luxoft\bankapp\service\commanderCommands\SelectActiveAccount.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\src\com\luxoft\bankapp\service\commanderCommands\ShowHelpCommand.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\src\com\luxoft\bankapp\service\commanderCommands\TransferCommand.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\src\com\luxoft\bankapp\service\commanderCommands\WithdrawCommand.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\src\com\luxoft\bankapp\service\exceptions\BankException.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\src\com\luxoft\bankapp\service\exceptions\ClientExcistsException.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\src\com\luxoft\bankapp\service\exceptions\ClientNotFoundException.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\src\com\luxoft\bankapp\service\exceptions\DAOException.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\src\com\luxoft\bankapp\service\exceptions\NotEnoughFundsException.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\src\com\luxoft\bankapp\service\exceptions\OverDraftLimitExceededException.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\src\com\luxoft\bankapp\service\services\AccountService.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\src\com\luxoft\bankapp\service\services\AccountServiceImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\src\com\luxoft\bankapp\service\services\BankService.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\src\com\luxoft\bankapp\service\services\BankServiceImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\src\com\luxoft\bankapp\service\services\ClientService.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\src\com\luxoft\bankapp\service\services\ClientServiceImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\src\com\luxoft\bankapp\service\services\ServiceFactory.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\src\com\luxoft\bankapp\servlets\BalanceServlet.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\src\com\luxoft\bankapp\servlets\FindClientsServlet.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\src\com\luxoft\bankapp\servlets\GetClientsServlet.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\src\com\luxoft\bankapp\servlets\LoginServlet.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\src\com\luxoft\bankapp\servlets\LogoutServlet.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\src\com\luxoft\bankapp\servlets\SaveClientServlet.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\src\com\luxoft\bankapp\servlets\SessionsAmountServlet.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\src\com\luxoft\bankapp\servlets\WelcomeServlet.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\src\com\luxoft\bankapp\servlets\WithdrawServlet.java" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\web\WEB-INF\lib\h2-1.4.185.jar" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\web\WEB-INF\lib\jstl-1.1.2.jar" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\web\WEB-INF\lib\log4j-1.2.16.jar" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\web\WEB-INF\lib\servlet-api-2.5.jar" afterPath="" />
-      <change type="DELETED" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\web\WEB-INF\lib\standard-1.1.2.jar" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/BankApplication_war_exploded/WEB-INF/classes/com/luxoft/bankapp/service/services/AccountServiceImpl.class" afterPath="$PROJECT_DIR$/out/artifacts/BankApplication_war_exploded/WEB-INF/classes/com/luxoft/bankapp/service/services/AccountServiceImpl.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/BankApplication_war_exploded/WEB-INF/classes/com/luxoft/bankapp/service/DAO/AccountDAOImpl.class" afterPath="$PROJECT_DIR$/out/artifacts/BankApplication_war_exploded/WEB-INF/classes/com/luxoft/bankapp/service/DAO/AccountDAOImpl.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/luxoft/bankapp/service/DAO/AccountDAOImpl.class" afterPath="$PROJECT_DIR$/target/classes/com/luxoft/bankapp/service/DAO/AccountDAOImpl.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/BankApplication_war_exploded/WEB-INF/classes/com/luxoft/bankapp/service/commanderCommands/AddClientCommand.class" afterPath="$PROJECT_DIR$/out/artifacts/BankApplication_war_exploded/WEB-INF/classes/com/luxoft/bankapp/service/commanderCommands/AddClientCommand.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/luxoft/bankapp/service/commanderCommands/AddClientCommand.class" afterPath="$PROJECT_DIR$/target/classes/com/luxoft/bankapp/service/commanderCommands/AddClientCommand.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/BankApplication_war_exploded/WEB-INF/classes/com/luxoft/bankapp/servlets/BalanceServlet.class" afterPath="$PROJECT_DIR$/out/artifacts/BankApplication_war_exploded/WEB-INF/classes/com/luxoft/bankapp/servlets/BalanceServlet.class" />
+      <change type="MODIFICATION" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\target\classes\com\luxoft\bankapp\servlets\BalanceServlet.class" afterPath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\target\classes\com\luxoft\bankapp\servlets\BalanceServlet.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/BankApplication.mv.db" afterPath="$PROJECT_DIR$/db/BankApplication.mv.db" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/BankApplication_war_exploded/WEB-INF/classes/com/luxoft/bankapp/main/BankCommander.class" afterPath="$PROJECT_DIR$/out/artifacts/BankApplication_war_exploded/WEB-INF/classes/com/luxoft/bankapp/main/BankCommander.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/BankApplication_war_exploded/WEB-INF/classes/com/luxoft/bankapp/service/DAO/BankDAOImpl.class" afterPath="$PROJECT_DIR$/out/artifacts/BankApplication_war_exploded/WEB-INF/classes/com/luxoft/bankapp/service/DAO/BankDAOImpl.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/luxoft/bankapp/service/DAO/BankDAOImpl.class" afterPath="$PROJECT_DIR$/target/classes/com/luxoft/bankapp/service/DAO/BankDAOImpl.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/BankApplication_war_exploded/WEB-INF/classes/com/luxoft/bankapp/service/clientServerMultithreading/BankServerThreaded.class" afterPath="$PROJECT_DIR$/out/artifacts/BankApplication_war_exploded/WEB-INF/classes/com/luxoft/bankapp/service/clientServerMultithreading/BankServerThreaded.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/luxoft/bankapp/service/clientServerMultithreading/BankServerThreaded.class" afterPath="$PROJECT_DIR$/target/classes/com/luxoft/bankapp/service/clientServerMultithreading/BankServerThreaded.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/BankApplication_war_exploded/WEB-INF/classes/com/luxoft/bankapp/service/services/BankServiceImpl.class" afterPath="$PROJECT_DIR$/out/artifacts/BankApplication_war_exploded/WEB-INF/classes/com/luxoft/bankapp/service/services/BankServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/BankApplication_war_exploded/WEB-INF/classes/com/luxoft/bankapp/service/DAO/ClientDAOImpl$1.class" afterPath="$PROJECT_DIR$/out/artifacts/BankApplication_war_exploded/WEB-INF/classes/com/luxoft/bankapp/service/DAO/ClientDAOImpl$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/luxoft/bankapp/service/services/BankServiceImpl.class" afterPath="$PROJECT_DIR$/target/classes/com/luxoft/bankapp/service/services/BankServiceImpl.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/BankApplication_war_exploded/WEB-INF/classes/com/luxoft/bankapp/service/DAO/BaseDAOImpl.class" afterPath="$PROJECT_DIR$/out/artifacts/BankApplication_war_exploded/WEB-INF/classes/com/luxoft/bankapp/service/DAO/BaseDAOImpl.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/luxoft/bankapp/service/DAO/BaseDAOImpl.class" afterPath="$PROJECT_DIR$/target/classes/com/luxoft/bankapp/service/DAO/BaseDAOImpl.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/BankApplication_war_exploded/WEB-INF/classes/com/luxoft/bankapp/filters/CheckLoggedFilter.class" afterPath="$PROJECT_DIR$/out/artifacts/BankApplication_war_exploded/WEB-INF/classes/com/luxoft/bankapp/filters/CheckLoggedFilter.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/luxoft/bankapp/filters/CheckLoggedFilter.class" afterPath="$PROJECT_DIR$/target/classes/com/luxoft/bankapp/filters/CheckLoggedFilter.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/BankApplication_war_exploded/WEB-INF/classes/com/luxoft/bankapp/service/DAO/ClientDAOImpl.class" afterPath="$PROJECT_DIR$/out/artifacts/BankApplication_war_exploded/WEB-INF/classes/com/luxoft/bankapp/service/DAO/ClientDAOImpl.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/luxoft/bankapp/service/DAO/ClientDAOImpl.class" afterPath="$PROJECT_DIR$/target/classes/com/luxoft/bankapp/service/DAO/ClientDAOImpl.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/BankApplication_war_exploded/WEB-INF/classes/com/luxoft/bankapp/service/services/ClientServiceImpl.class" afterPath="$PROJECT_DIR$/out/artifacts/BankApplication_war_exploded/WEB-INF/classes/com/luxoft/bankapp/service/services/ClientServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/BankApplication_war_exploded/WEB-INF/classes/com/luxoft/bankapp/service/commanderCommands/DepositCommand.class" afterPath="$PROJECT_DIR$/out/artifacts/BankApplication_war_exploded/WEB-INF/classes/com/luxoft/bankapp/service/commanderCommands/DepositCommand.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/luxoft/bankapp/service/services/ClientServiceImpl.class" afterPath="$PROJECT_DIR$/target/classes/com/luxoft/bankapp/service/services/ClientServiceImpl.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/BankApplication_war_exploded/WEB-INF/classes/com/luxoft/bankapp/listeners/ContextListener.class" afterPath="$PROJECT_DIR$/out/artifacts/BankApplication_war_exploded/WEB-INF/classes/com/luxoft/bankapp/listeners/ContextListener.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/luxoft/bankapp/listeners/ContextListener.class" afterPath="$PROJECT_DIR$/target/classes/com/luxoft/bankapp/listeners/ContextListener.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/BankApplication_war_exploded/WEB-INF/classes/com/luxoft/bankapp/service/commanderCommands/FindClientCommand.class" afterPath="$PROJECT_DIR$/out/artifacts/BankApplication_war_exploded/WEB-INF/classes/com/luxoft/bankapp/service/commanderCommands/FindClientCommand.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/luxoft/bankapp/service/commanderCommands/FindClientCommand.class" afterPath="$PROJECT_DIR$/target/classes/com/luxoft/bankapp/service/commanderCommands/FindClientCommand.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/BankApplication_war_exploded/WEB-INF/classes/com/luxoft/bankapp/servlets/FindClientsServlet.class" afterPath="$PROJECT_DIR$/out/artifacts/BankApplication_war_exploded/WEB-INF/classes/com/luxoft/bankapp/servlets/FindClientsServlet.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/luxoft/bankapp/servlets/FindClientsServlet.class" afterPath="$PROJECT_DIR$/target/classes/com/luxoft/bankapp/servlets/FindClientsServlet.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/BankApplication_war_exploded/WEB-INF/classes/com/luxoft/bankapp/service/commanderCommands/GetAccountsCommand.class" afterPath="$PROJECT_DIR$/out/artifacts/BankApplication_war_exploded/WEB-INF/classes/com/luxoft/bankapp/service/commanderCommands/GetAccountsCommand.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/luxoft/bankapp/service/commanderCommands/GetAccountsCommand.class" afterPath="$PROJECT_DIR$/target/classes/com/luxoft/bankapp/service/commanderCommands/GetAccountsCommand.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/BankApplication_war_exploded/WEB-INF/classes/com/luxoft/bankapp/service/commanderCommands/GetBankReportCommand.class" afterPath="$PROJECT_DIR$/out/artifacts/BankApplication_war_exploded/WEB-INF/classes/com/luxoft/bankapp/service/commanderCommands/GetBankReportCommand.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/luxoft/bankapp/service/commanderCommands/GetBankReportCommand.class" afterPath="$PROJECT_DIR$/target/classes/com/luxoft/bankapp/service/commanderCommands/GetBankReportCommand.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/BankApplication_war_exploded/WEB-INF/classes/com/luxoft/bankapp/service/commanderCommands/GetClientBalance.class" afterPath="$PROJECT_DIR$/out/artifacts/BankApplication_war_exploded/WEB-INF/classes/com/luxoft/bankapp/service/commanderCommands/GetClientBalance.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/luxoft/bankapp/service/commanderCommands/GetClientBalance.class" afterPath="$PROJECT_DIR$/target/classes/com/luxoft/bankapp/service/commanderCommands/GetClientBalance.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/BankApplication_war_exploded/WEB-INF/classes/com/luxoft/bankapp/servlets/GetClientsServlet.class" afterPath="$PROJECT_DIR$/out/artifacts/BankApplication_war_exploded/WEB-INF/classes/com/luxoft/bankapp/servlets/GetClientsServlet.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/luxoft/bankapp/servlets/GetClientsServlet.class" afterPath="$PROJECT_DIR$/target/classes/com/luxoft/bankapp/servlets/GetClientsServlet.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/BankApplication_war_exploded/WEB-INF/classes/com/luxoft/bankapp/servlets/LoginServlet.class" afterPath="$PROJECT_DIR$/out/artifacts/BankApplication_war_exploded/WEB-INF/classes/com/luxoft/bankapp/servlets/LoginServlet.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/luxoft/bankapp/servlets/LoginServlet.class" afterPath="$PROJECT_DIR$/target/classes/com/luxoft/bankapp/servlets/LoginServlet.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/BankApplication_war_exploded/WEB-INF/classes/com/luxoft/bankapp/servlets/LogoutServlet.class" afterPath="$PROJECT_DIR$/out/artifacts/BankApplication_war_exploded/WEB-INF/classes/com/luxoft/bankapp/servlets/LogoutServlet.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/luxoft/bankapp/servlets/LogoutServlet.class" afterPath="$PROJECT_DIR$/target/classes/com/luxoft/bankapp/servlets/LogoutServlet.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/BankApplication_war_exploded/WEB-INF/classes/com/luxoft/bankapp/service/commanderCommands/RemoveClientCommand.class" afterPath="$PROJECT_DIR$/out/artifacts/BankApplication_war_exploded/WEB-INF/classes/com/luxoft/bankapp/service/commanderCommands/RemoveClientCommand.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/luxoft/bankapp/service/commanderCommands/RemoveClientCommand.class" afterPath="$PROJECT_DIR$/target/classes/com/luxoft/bankapp/service/commanderCommands/RemoveClientCommand.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/BankApplication_war_exploded/WEB-INF/classes/com/luxoft/bankapp/servlets/SaveClientServlet.class" afterPath="$PROJECT_DIR$/out/artifacts/BankApplication_war_exploded/WEB-INF/classes/com/luxoft/bankapp/servlets/SaveClientServlet.class" />
+      <change type="MODIFICATION" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\target\classes\com\luxoft\bankapp\servlets\SaveClientServlet.class" afterPath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\target\classes\com\luxoft\bankapp\servlets\SaveClientServlet.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/BankApplication_war_exploded/WEB-INF/classes/com/luxoft/bankapp/service/commanderCommands/SelectActiveAccount.class" afterPath="$PROJECT_DIR$/out/artifacts/BankApplication_war_exploded/WEB-INF/classes/com/luxoft/bankapp/service/commanderCommands/SelectActiveAccount.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/BankApplication_war_exploded/WEB-INF/classes/com/luxoft/bankapp/listeners/SessionListener.class" afterPath="$PROJECT_DIR$/out/artifacts/BankApplication_war_exploded/WEB-INF/classes/com/luxoft/bankapp/listeners/SessionListener.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/luxoft/bankapp/service/commanderCommands/SelectActiveAccount.class" afterPath="$PROJECT_DIR$/target/classes/com/luxoft/bankapp/service/commanderCommands/SelectActiveAccount.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/BankApplication_war_exploded/WEB-INF/classes/com/luxoft/bankapp/service/clientServerMultithreading/ServerThread.class" afterPath="$PROJECT_DIR$/out/artifacts/BankApplication_war_exploded/WEB-INF/classes/com/luxoft/bankapp/service/clientServerMultithreading/ServerThread.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/luxoft/bankapp/service/clientServerMultithreading/ServerThread.class" afterPath="$PROJECT_DIR$/target/classes/com/luxoft/bankapp/service/clientServerMultithreading/ServerThread.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/BankApplication_war_exploded/WEB-INF/classes/com/luxoft/bankapp/servlets/SessionsAmountServlet.class" afterPath="$PROJECT_DIR$/out/artifacts/BankApplication_war_exploded/WEB-INF/classes/com/luxoft/bankapp/servlets/SessionsAmountServlet.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/luxoft/bankapp/servlets/SessionsAmountServlet.class" afterPath="$PROJECT_DIR$/target/classes/com/luxoft/bankapp/servlets/SessionsAmountServlet.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/BankApplication_war_exploded/WEB-INF/classes/com/luxoft/bankapp/service/commanderCommands/TransferCommand.class" afterPath="$PROJECT_DIR$/out/artifacts/BankApplication_war_exploded/WEB-INF/classes/com/luxoft/bankapp/service/commanderCommands/TransferCommand.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/luxoft/bankapp/service/commanderCommands/TransferCommand.class" afterPath="$PROJECT_DIR$/target/classes/com/luxoft/bankapp/service/commanderCommands/TransferCommand.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/BankApplication_war_exploded/WEB-INF/classes/com/luxoft/bankapp/service/commanderCommands/WithdrawCommand.class" afterPath="$PROJECT_DIR$/out/artifacts/BankApplication_war_exploded/WEB-INF/classes/com/luxoft/bankapp/service/commanderCommands/WithdrawCommand.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/luxoft/bankapp/service/commanderCommands/WithdrawCommand.class" afterPath="$PROJECT_DIR$/target/classes/com/luxoft/bankapp/service/commanderCommands/WithdrawCommand.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/BankApplication_war_exploded/WEB-INF/classes/com/luxoft/bankapp/servlets/WithdrawServlet.class" afterPath="$PROJECT_DIR$/out/artifacts/BankApplication_war_exploded/WEB-INF/classes/com/luxoft/bankapp/servlets/WithdrawServlet.class" />
+      <change type="MODIFICATION" beforePath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\target\classes\com\luxoft\bankapp\servlets\WithdrawServlet.class" afterPath="E:\Denis Makarov\IntellijIDEA\Projects\BankApplication\target\classes\com\luxoft\bankapp\servlets\WithdrawServlet.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/service/DAO/AccountDAOImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/service/DAO/AccountDAOImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/service/commanderCommands/AddClientCommand.java" afterPath="$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/service/commanderCommands/AddClientCommand.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/servlets/BalanceServlet.java" afterPath="$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/servlets/BalanceServlet.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BankApplication.iml" afterPath="$PROJECT_DIR$/BankApplication.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/artifacts/BankApplication_war_exploded.xml" afterPath="$PROJECT_DIR$/.idea/artifacts/BankApplication_war_exploded.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/main/BankCommander.java" afterPath="$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/main/BankCommander.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/service/DAO/BankDAOImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/service/DAO/BankDAOImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/service/clientServerMultithreading/BankServerThreaded.java" afterPath="$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/service/clientServerMultithreading/BankServerThreaded.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/service/services/BankServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/service/services/BankServiceImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/service/DAO/BaseDAOImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/service/DAO/BaseDAOImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/filters/CheckLoggedFilter.java" afterPath="$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/filters/CheckLoggedFilter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/service/DAO/ClientDAOImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/service/DAO/ClientDAOImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/service/services/ClientServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/service/services/ClientServiceImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/listeners/ContextListener.java" afterPath="$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/listeners/ContextListener.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/service/commanderCommands/FindClientCommand.java" afterPath="$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/service/commanderCommands/FindClientCommand.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/servlets/FindClientsServlet.java" afterPath="$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/servlets/FindClientsServlet.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/service/commanderCommands/GetAccountsCommand.java" afterPath="$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/service/commanderCommands/GetAccountsCommand.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/service/commanderCommands/GetBankReportCommand.java" afterPath="$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/service/commanderCommands/GetBankReportCommand.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/service/commanderCommands/GetClientBalance.java" afterPath="$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/service/commanderCommands/GetClientBalance.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/servlets/GetClientsServlet.java" afterPath="$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/servlets/GetClientsServlet.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/servlets/LoginServlet.java" afterPath="$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/servlets/LoginServlet.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/servlets/LogoutServlet.java" afterPath="$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/servlets/LogoutServlet.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/service/commanderCommands/RemoveClientCommand.java" afterPath="$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/service/commanderCommands/RemoveClientCommand.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/servlets/SaveClientServlet.java" afterPath="$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/servlets/SaveClientServlet.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/service/commanderCommands/SelectActiveAccount.java" afterPath="$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/service/commanderCommands/SelectActiveAccount.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/service/clientServerMultithreading/ServerThread.java" afterPath="$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/service/clientServerMultithreading/ServerThread.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/servlets/SessionsAmountServlet.java" afterPath="$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/servlets/SessionsAmountServlet.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/service/commanderCommands/TransferCommand.java" afterPath="$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/service/commanderCommands/TransferCommand.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/service/commanderCommands/WithdrawCommand.java" afterPath="$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/service/commanderCommands/WithdrawCommand.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/servlets/WithdrawServlet.java" afterPath="$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/servlets/WithdrawServlet.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/BankApplication_war_exploded/WEB-INF/web.xml" afterPath="$PROJECT_DIR$/out/artifacts/BankApplication_war_exploded/WEB-INF/web.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/WEB-INF/web.xml" afterPath="$PROJECT_DIR$/web/WEB-INF/web.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="BankApplication.iws" />
@@ -264,31 +122,9 @@
       <file leaf-file-name="application-context.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/application-context.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1343">
+            <state vertical-scroll-proportion="0.0" vertical-offset="51" max-vertical-offset="1343">
               <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="web.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web/WEB-INF/web.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="65" max-vertical-offset="2057">
-              <caret line="10" column="14" selection-start-line="10" selection-start-column="14" selection-end-line="10" selection-end-column="14" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SessionListener.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/listeners/SessionListener.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="354" max-vertical-offset="1683">
-              <caret line="32" column="0" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -296,28 +132,88 @@
       <file leaf-file-name="ContextListener.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/listeners/ContextListener.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="327" max-vertical-offset="1445">
-              <caret line="36" column="0" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="429" max-vertical-offset="1462">
+              <caret line="49" column="0" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BankServiceImpl.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/service/services/BankServiceImpl.java">
+      <file leaf-file-name="GetClientsServlet.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/servlets/GetClientsServlet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="322" max-vertical-offset="1445">
-              <caret line="56" column="0" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="221" max-vertical-offset="901">
+              <caret line="36" column="8" selection-start-line="36" selection-start-column="8" selection-end-line="38" selection-end-column="92" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FindClientsServlet.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/servlets/FindClientsServlet.java">
+      <file leaf-file-name="BalanceServlet.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/servlets/BalanceServlet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.3310811" vertical-offset="344" max-vertical-offset="782">
-              <caret line="41" column="0" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="374" max-vertical-offset="867">
+              <caret line="42" column="50" selection-start-line="42" selection-start-column="50" selection-end-line="42" selection-end-column="50" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LoginServlet.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/servlets/LoginServlet.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="119" max-vertical-offset="561">
+              <caret line="13" column="86" selection-start-line="13" selection-start-column="86" selection-end-line="13" selection-end-column="86" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SaveClientServlet.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/servlets/SaveClientServlet.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="374" max-vertical-offset="935">
+              <caret line="40" column="92" selection-start-line="40" selection-start-column="92" selection-end-line="40" selection-end-column="92" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SessionsAmountServlet.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/servlets/SessionsAmountServlet.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="119" max-vertical-offset="510">
+              <caret line="19" column="94" selection-start-line="19" selection-start-column="94" selection-end-line="19" selection-end-column="94" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="WelcomeServlet.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/servlets/WelcomeServlet.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="425">
+              <caret line="17" column="29" selection-start-line="17" selection-start-column="29" selection-end-line="17" selection-end-column="29" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="WithdrawServlet.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/servlets/WithdrawServlet.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="257" max-vertical-offset="748">
+              <caret line="38" column="67" selection-start-line="38" selection-start-column="67" selection-end-line="38" selection-end-column="67" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BankCommander.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/main/BankCommander.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.56666666" vertical-offset="510" max-vertical-offset="901">
+              <caret line="59" column="74" selection-start-line="59" selection-start-column="74" selection-end-line="59" selection-end-column="74" />
               <folding />
             </state>
           </provider>
@@ -331,26 +227,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/com/luxoft/bankapp/service/clientServerMultithreading/BankServerThreaded.java" />
-        <option value="$PROJECT_DIR$/src/com/luxoft/bankapp/servlets/WelcomeServlet.java" />
-        <option value="$PROJECT_DIR$/src/com/luxoft/bankapp/CheckLoggedFilter.java" />
-        <option value="$PROJECT_DIR$/web/addclient.html" />
-        <option value="$PROJECT_DIR$/web/balance.html" />
-        <option value="$PROJECT_DIR$/web/bankstat.html" />
-        <option value="$PROJECT_DIR$/web/deposit.html" />
-        <option value="$PROJECT_DIR$/src/com/luxoft/bankapp/filters/CheckLoggedFilter.java" />
-        <option value="$PROJECT_DIR$/src/com/luxoft/bankapp/servlets/SessionsAmountServlet.java" />
-        <option value="$PROJECT_DIR$/web/login.html" />
-        <option value="$PROJECT_DIR$/src/com/luxoft/bankapp/servlets/LoginServlet.java" />
-        <option value="$PROJECT_DIR$/src/com/luxoft/bankapp/servlets/WithdrawServlet.java" />
-        <option value="$PROJECT_DIR$/web/withdraw.html" />
-        <option value="$PROJECT_DIR$/web/menu.html" />
-        <option value="$PROJECT_DIR$/src/com/luxoft/bankapp/servlets/LogoutServlet.java" />
-        <option value="$PROJECT_DIR$/src/com/luxoft/bankapp/listeners/SessionListener.java" />
-        <option value="$PROJECT_DIR$/src/com/luxoft/bankapp/servlets/BalanceServlet.java" />
-        <option value="$PROJECT_DIR$/web/balance.jsp" />
-        <option value="$PROJECT_DIR$/src/com/luxoft/bankapp/service/services/BankService.java" />
-        <option value="$PROJECT_DIR$/src/com/luxoft/bankapp/model/Client.java" />
         <option value="$PROJECT_DIR$/web/clients.jsp" />
         <option value="$PROJECT_DIR$/src/com/luxoft/bankapp/service/services/ClientService.java" />
         <option value="$PROJECT_DIR$/src/com/luxoft/bankapp/servlets/SaveClientServlet.java" />
@@ -364,24 +240,44 @@
         <option value="$PROJECT_DIR$/web/client.jsp" />
         <option value="$PROJECT_DIR$/web/stylesheets/findclient.css" />
         <option value="$PROJECT_DIR$/src/com/luxoft/bankapp/service/services/BankServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/service/services/BankServiceImpl.java" />
         <option value="$PROJECT_DIR$/resources/application-context.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/service/commanderCommands/ExitCommand.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/service/DAO/ClientDAOImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/service/services/ClientServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/service/services/AccountServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/main/BankCommander.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/service/commanderCommands/SelectActiveAccount.java" />
         <option value="$PROJECT_DIR$/src/main/resources/application-context.xml" />
         <option value="$PROJECT_DIR$/src/main/resources/log4j.properties" />
         <option value="$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/servlets/ServletContextListener.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/servlets/SessionsAmountServlet.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/servlets/FindClientsServlet.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/listeners/BankAddListener.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/listeners/SessionListener.java" />
         <option value="$PROJECT_DIR$/web/WEB-INF/web.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/service/services/BankServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/servlets/FindClientsServlet.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/servlets/LoginServlet.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/servlets/LogoutServlet.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/servlets/SessionsAmountServlet.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/service/services/ClientServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/service/DAO/AccountDAOImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/service/DAO/BankDAOImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/service/DAO/BaseDAOImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/service/DAO/ClientDAOImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/service/commanderCommands/AddClientCommand.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/service/commanderCommands/FindClientCommand.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/service/commanderCommands/GetAccountsCommand.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/service/commanderCommands/GetBankReportCommand.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/service/commanderCommands/GetClientBalance.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/service/commanderCommands/RemoveClientCommand.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/service/commanderCommands/SelectActiveAccount.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/service/commanderCommands/TransferCommand.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/service/commanderCommands/WithdrawCommand.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/service/clientServerMultithreading/BankServerThreaded.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/service/clientServerMultithreading/ServerThread.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/filters/CheckLoggedFilter.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/listeners/ContextListener.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/servlets/GetClientsServlet.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/servlets/BalanceServlet.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/servlets/SaveClientServlet.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/servlets/WithdrawServlet.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/main/BankCommander.java" />
       </list>
     </option>
   </component>
@@ -476,6 +372,7 @@
     </navigator>
     <panes>
       <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -587,130 +484,9 @@
               <option name="myItemId" value="bankapp" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="servlets" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="BankApplication" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="BankApplication" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bankapp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="service" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="BankApplication" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="BankApplication" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bankapp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="BankApplication" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="BankApplication" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bankapp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="BankApplication" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="BankApplication" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bankapp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="listeners" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -728,7 +504,7 @@
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="FullScreen" value="false" />
-    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.36133486" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -1305,11 +1081,12 @@
       <workItem from="1424689147555" duration="92000" />
       <workItem from="1424775998549" duration="841000" />
       <workItem from="1424776907709" duration="14482000" />
+      <workItem from="1424858207767" duration="3562000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="58915000" />
+    <option name="totallyTimeSpent" value="62477000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -1353,10 +1130,10 @@
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.44122657" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.44122657" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32879046" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3110774" sideWeight="0.8506098" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3110774" sideWeight="0.8506098" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3110119" sideWeight="0.14939025" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
@@ -1385,27 +1162,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/service/services/ClientServiceImpl.java</url>
-          <line>59</line>
-          <properties />
-          <option name="timeStamp" value="57" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/listeners/ContextListener.java</url>
-          <line>36</line>
-          <properties />
-          <option name="timeStamp" value="62" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/servlets/FindClientsServlet.java</url>
-          <line>39</line>
-          <properties />
-          <option name="timeStamp" value="63" />
-        </line-breakpoint>
-      </breakpoints>
-      <option name="time" value="64" />
+      <option name="time" value="68" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="JUnit">
@@ -1422,111 +1179,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/service/DAO/BankDAOImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="302" max-vertical-offset="2142">
-          <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/service/DAO/BaseDAOImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="166" max-vertical-offset="748">
-          <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/filters/CheckLoggedFilter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6585366" vertical-offset="219" max-vertical-offset="765">
-          <caret line="31" column="17" selection-start-line="31" selection-start-column="17" selection-end-line="31" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/servlets/WithdrawServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="121" max-vertical-offset="714">
-          <caret line="47" column="0" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/withdraw.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.18613139" vertical-offset="102" max-vertical-offset="493">
-          <caret line="9" column="38" selection-start-line="9" selection-start-column="38" selection-end-line="9" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/servlets/LogoutServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.0418118" vertical-offset="7" max-vertical-offset="476">
-          <caret line="24" column="49" selection-start-line="24" selection-start-column="49" selection-end-line="24" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/menu.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.538462" vertical-offset="49" max-vertical-offset="493">
-          <caret line="19" column="62" selection-start-line="19" selection-start-column="62" selection-end-line="19" selection-end-column="62" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/service/services/BankService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="23" max-vertical-offset="323">
-          <caret line="17" column="17" selection-start-line="17" selection-start-column="17" selection-end-line="17" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/login.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.65384614" vertical-offset="136" max-vertical-offset="493">
-          <caret line="9" column="58" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="58" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/balance.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.769231" vertical-offset="0" max-vertical-offset="408">
-          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/model/Client.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1649">
-          <caret line="19" column="39" selection-start-line="19" selection-start-column="26" selection-end-line="19" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/service/services/ClientService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="53" max-vertical-offset="374">
-          <caret line="16" column="18" selection-start-line="16" selection-start-column="18" selection-end-line="16" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/service/DAO/ClientDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="138" max-vertical-offset="1003">
-          <caret line="20" column="15" selection-start-line="20" selection-start-column="15" selection-end-line="20" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/clients.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.6153846" vertical-offset="51" max-vertical-offset="493">
-          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="65" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/model/AbstractAccount.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="19" max-vertical-offset="1292">
-          <caret line="10" column="22" selection-start-line="10" selection-start-column="22" selection-end-line="10" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/stylesheets/findclient.css">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.22666667" vertical-offset="0" max-vertical-offset="300">
@@ -1553,7 +1205,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="209" max-vertical-offset="1173">
           <caret line="63" column="0" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1561,48 +1212,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="325" max-vertical-offset="1190">
           <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/service/clientServerMultithreading/BankServerThreaded.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="631" max-vertical-offset="1071">
-          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/service/clientServerMultithreading/ServerThread.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="5.508711" vertical-offset="204" max-vertical-offset="2295">
-          <caret line="128" column="0" selection-start-line="128" selection-start-column="0" selection-end-line="128" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/service/commanderCommands/ExitCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.79333335" vertical-offset="102" max-vertical-offset="476">
-          <caret line="22" column="16" selection-start-line="22" selection-start-column="16" selection-end-line="22" selection-end-column="34" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/service/services/ServiceFactory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="391">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-          <folding>
-            <element signature="e#189#190#0" expanded="false" />
-            <element signature="e#244#245#0" expanded="false" />
-            <element signature="e#302#303#0" expanded="false" />
-            <element signature="e#354#355#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1633,99 +1242,13 @@
           </nodes>
           <notes />
           <edges />
-          <settings layout="Hierarchic Group" zoom="0.7024903154399557" x="636.2722546084765" y="200.3087285331653" />
+          <settings layout="Hierarchic Group" zoom="0.7024903154399557" x="636.0" y="200.0" />
           <SelectedNodes />
           <Categories>
             <Category>Local context</Category>
             <Category>Properties</Category>
           </Categories>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/service/services/AccountServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33101046" vertical-offset="789" max-vertical-offset="1241">
-          <caret line="65" column="0" selection-start-line="65" selection-start-column="0" selection-end-line="65" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/service/commanderCommands/SelectActiveAccount.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5679442" vertical-offset="160" max-vertical-offset="850">
-          <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/service/commanderCommands/FindClientCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.533101" vertical-offset="153" max-vertical-offset="697">
-          <caret line="25" column="19" selection-start-line="25" selection-start-column="19" selection-end-line="25" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/service/DAO/ClientDAOImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5923345" vertical-offset="51" max-vertical-offset="6511">
-          <caret line="26" column="5" selection-start-line="26" selection-start-column="5" selection-end-line="26" selection-end-column="5" />
-          <folding>
-            <marker date="1424784813129" expanded="true" signature="-1:-1" placeholder="SELECT \n C...CLIENTS..." />
-            <marker date="1424784813129" expanded="true" signature="-1:-1" placeholder="SELECT \n C...CLIENTS..." />
-            <marker date="1424784813129" expanded="true" signature="-1:-1" placeholder="SELECT \n C...CLIENTS..." />
-            <marker date="1424784813129" expanded="true" signature="-1:-1" placeholder="UPDATE \n CL..." />
-            <marker date="1424784813129" expanded="true" signature="-1:-1" placeholder="INSERT INTO ..." />
-            <marker date="1424784813129" expanded="true" signature="-1:-1" placeholder="DELETE \nFRO..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/service/services/ClientServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.34146342" vertical-offset="310" max-vertical-offset="1054">
-          <caret line="59" column="0" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
-          <folding>
-            <element signature="docComment;class#ClientServiceImpl#0" expanded="false" />
-            <element signature="method#getInstance#0;class#ClientServiceImpl#0" expanded="false" />
-            <element signature="method#addClient#0;class#ClientServiceImpl#0" expanded="false" />
-            <element signature="method#findClientById#0;class#ClientServiceImpl#0" expanded="false" />
-            <element signature="method#getClientAccounts#0;class#ClientServiceImpl#0" expanded="false" />
-            <element signature="method#getClientBalance#0;class#ClientServiceImpl#0" expanded="false" />
-            <element signature="method#saveClient#0;class#ClientServiceImpl#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.43333334" vertical-offset="1009" max-vertical-offset="1309">
-          <caret line="67" column="21" selection-start-line="67" selection-start-column="21" selection-end-line="67" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/service/commanderCommands/WithdrawCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="177" max-vertical-offset="1003">
-          <caret line="22" column="13" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/service/commanderCommands/DepositCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="126" max-vertical-offset="578">
-          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/service/commanderCommands/TransferCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="510" max-vertical-offset="1003">
-          <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
-          <folding />
+          <SCOPE>All</SCOPE>
         </state>
       </provider>
     </entry>
@@ -1756,20 +1279,13 @@
           </nodes>
           <notes />
           <edges />
-          <settings layout="Hierarchic Group" zoom="0.8024903154399556" x="811.193710778567" y="229.4681746086477" />
+          <settings layout="Hierarchic Group" zoom="0.8024903154399556" x="811.0" y="229.0" />
           <SelectedNodes />
           <Categories>
             <Category>Local context</Category>
             <Category>Properties</Category>
           </Categories>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/service/commanderCommands/AddClientCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1668" max-vertical-offset="2006">
-          <caret line="115" column="13" selection-start-line="115" selection-start-column="13" selection-end-line="115" selection-end-column="13" />
-          <folding />
+          <SCOPE>All</SCOPE>
         </state>
       </provider>
     </entry>
@@ -1777,7 +1293,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.3625954" vertical-offset="4716" max-vertical-offset="17714">
           <caret line="370" column="0" selection-start-line="370" selection-start-column="0" selection-end-line="370" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1785,71 +1300,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="221">
           <caret line="3" column="40" selection-start-line="3" selection-start-column="40" selection-end-line="3" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/servlets/WelcomeServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3554007" vertical-offset="102" max-vertical-offset="425">
-          <caret line="17" column="29" selection-start-line="17" selection-start-column="29" selection-end-line="17" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/main/BankCommander.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="561" max-vertical-offset="1258">
-          <caret line="60" column="8" selection-start-line="60" selection-start-column="8" selection-end-line="62" selection-end-column="81" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/servlets/BalanceServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="202" max-vertical-offset="799">
-          <caret line="39" column="0" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/servlets/SessionsAmountServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="510">
-          <caret line="26" column="8" selection-start-line="26" selection-start-column="8" selection-end-line="27" selection-end-column="86" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/servlets/GetClientsServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="228" max-vertical-offset="850">
-          <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/servlets/LoginServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="561">
-          <caret line="23" column="8" selection-start-line="23" selection-start-column="8" selection-end-line="23" selection-end-column="66" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/servlets/SaveClientServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.5400697" vertical-offset="153" max-vertical-offset="901">
-          <caret line="49" column="28" selection-start-line="49" selection-start-column="28" selection-end-line="49" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/application-context.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1343">
-          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1871,26 +1321,352 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/listeners/ContextListener.java">
+    <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="327" max-vertical-offset="1445">
-          <caret line="36" column="0" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1309">
+          <caret line="67" column="21" selection-start-line="67" selection-start-column="21" selection-end-line="67" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/servlets/LogoutServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="7" max-vertical-offset="476">
+          <caret line="14" column="87" selection-start-line="14" selection-start-column="87" selection-end-line="14" selection-end-column="87" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/service/services/AccountServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="27" max-vertical-offset="1241">
+          <caret line="65" column="0" selection-start-line="65" selection-start-column="0" selection-end-line="65" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/service/DAO/AccountDAOImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="21" max-vertical-offset="5066">
+          <caret line="21" column="94" selection-start-line="21" selection-start-column="94" selection-end-line="21" selection-end-column="94" />
+          <folding>
+            <marker date="1424859728445" expanded="true" signature="-1:-1" placeholder="UPDATE \n AC..." />
+            <marker date="1424859728445" expanded="true" signature="-1:-1" placeholder="INSERT INTO ..." />
+            <marker date="1424859728445" expanded="true" signature="-1:-1" placeholder="DELETE \nFRO..." />
+            <marker date="1424859728445" expanded="true" signature="-1:-1" placeholder="SELECT \n A...ACCOUNTS..." />
+            <marker date="1424859728445" expanded="true" signature="-1:-1" placeholder="SELECT \n A...ACCOUNTS..." />
+            <marker date="1424859728445" expanded="true" signature="-1:-1" placeholder="UPDATE \n AC..." />
+            <marker date="1424859728445" expanded="true" signature="-1:-1" placeholder="UPDATE \n AC..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/service/DAO/BankDAOImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="21" max-vertical-offset="2142">
+          <caret line="16" column="88" selection-start-line="16" selection-start-column="88" selection-end-line="16" selection-end-column="88" />
+          <folding>
+            <marker date="1424859728400" expanded="true" signature="-1:-1" placeholder="SELECT B.ID ..BANK..." />
+            <marker date="1424859728400" expanded="true" signature="-1:-1" placeholder="SELECT COUNT..." />
+            <marker date="1424859728400" expanded="true" signature="-1:-1" placeholder="SELECT SUM(B..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/service/DAO/BaseDAOImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="748">
+          <caret line="12" column="88" selection-start-line="12" selection-start-column="88" selection-end-line="12" selection-end-column="88" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/service/DAO/ClientDAOImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="51" max-vertical-offset="6511">
+          <caret line="23" column="92" selection-start-line="23" selection-start-column="92" selection-end-line="23" selection-end-column="92" />
+          <folding>
+            <marker date="1424859728377" expanded="true" signature="-1:-1" placeholder="SELECT \n C...CLIENTS..." />
+            <marker date="1424859728377" expanded="true" signature="-1:-1" placeholder="SELECT \n C...CLIENTS..." />
+            <marker date="1424859728377" expanded="true" signature="-1:-1" placeholder="SELECT \n C...CLIENTS..." />
+            <marker date="1424859728377" expanded="true" signature="-1:-1" placeholder="UPDATE \n CL..." />
+            <marker date="1424859728377" expanded="true" signature="-1:-1" placeholder="INSERT INTO ..." />
+            <marker date="1424859728377" expanded="true" signature="-1:-1" placeholder="DELETE \nFRO..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/service/DAO/DaoFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="306">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/service/commanderCommands/AddClientCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2006">
+          <caret line="19" column="102" selection-start-line="19" selection-start-column="102" selection-end-line="19" selection-end-column="102" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/service/commanderCommands/DepositCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="126" max-vertical-offset="578">
+          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/service/commanderCommands/ExitCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="128" max-vertical-offset="442">
+          <caret line="22" column="16" selection-start-line="22" selection-start-column="16" selection-end-line="22" selection-end-column="34" />
+          <folding>
+            <element signature="e#618#619#0" expanded="true" />
+            <element signature="e#660#661#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/service/commanderCommands/FindClientCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="697">
+          <caret line="15" column="104" selection-start-line="15" selection-start-column="104" selection-end-line="15" selection-end-column="104" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/service/commanderCommands/GetAccountsCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="21" max-vertical-offset="595">
+          <caret line="17" column="106" selection-start-line="17" selection-start-column="106" selection-end-line="17" selection-end-column="106" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/service/commanderCommands/GetBankReportCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="21" max-vertical-offset="867">
+          <caret line="22" column="110" selection-start-line="22" selection-start-column="110" selection-end-line="22" selection-end-column="110" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/service/commanderCommands/GetClientBalance.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="21" max-vertical-offset="1037">
+          <caret line="20" column="109" selection-start-line="20" selection-start-column="109" selection-end-line="20" selection-end-column="109" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/service/commanderCommands/RemoveClientCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="21" max-vertical-offset="969">
+          <caret line="21" column="108" selection-start-line="21" selection-start-column="108" selection-end-line="21" selection-end-column="108" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/service/commanderCommands/SelectActiveAccount.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="850">
+          <caret line="21" column="115" selection-start-line="21" selection-start-column="115" selection-end-line="21" selection-end-column="115" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/service/commanderCommands/ShowHelpCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="350" max-vertical-offset="646">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/service/commanderCommands/TransferCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1003">
+          <caret line="19" column="100" selection-start-line="19" selection-start-column="100" selection-end-line="19" selection-end-column="100" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/service/commanderCommands/WithdrawCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="1003">
+          <caret line="22" column="20" selection-start-line="22" selection-start-column="20" selection-end-line="22" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/service/clientServerMultithreading/BankServerThreaded.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="969">
+          <caret line="18" column="106" selection-start-line="18" selection-start-column="106" selection-end-line="18" selection-end-column="106" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/service/clientServerMultithreading/ServerThread.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="187" max-vertical-offset="2278">
+          <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/service/clientServerMultithreading/BankServerMonitor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="99" max-vertical-offset="408">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/service/clientServerMultithreading/BankClientMock.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="833">
+          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/filters/CheckLoggedFilter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="21" max-vertical-offset="765">
+          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/service/services/ServiceFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.28333333" vertical-offset="0" max-vertical-offset="323">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/service/services/ClientService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="53" max-vertical-offset="374">
+          <caret line="16" column="18" selection-start-line="16" selection-start-column="18" selection-end-line="16" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/service/services/ClientServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.5172415" vertical-offset="306" max-vertical-offset="1054">
+          <caret line="59" column="37" selection-start-line="59" selection-start-column="37" selection-end-line="59" selection-end-column="37" />
+          <folding>
+            <element signature="docComment;class#ClientServiceImpl#0" expanded="false" />
+            <element signature="method#getInstance#0;class#ClientServiceImpl#0" expanded="false" />
+            <element signature="method#addClient#0;class#ClientServiceImpl#0" expanded="false" />
+            <element signature="method#findClientById#0;class#ClientServiceImpl#0" expanded="false" />
+            <element signature="method#getClientAccounts#0;class#ClientServiceImpl#0" expanded="false" />
+            <element signature="method#getClientBalance#0;class#ClientServiceImpl#0" expanded="false" />
+            <element signature="method#saveClient#0;class#ClientServiceImpl#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/servlets/FindClientsServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="272" max-vertical-offset="799">
+          <caret line="39" column="8" selection-start-line="39" selection-start-column="8" selection-end-line="40" selection-end-column="84" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/service/services/BankServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="322" max-vertical-offset="1445">
-          <caret line="56" column="0" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="718" max-vertical-offset="1496">
+          <caret line="57" column="0" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/servlets/FindClientsServlet.java">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/application-context.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3310811" vertical-offset="344" max-vertical-offset="782">
-          <caret line="41" column="0" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1343">
+          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/listeners/ContextListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="429" max-vertical-offset="1462">
+          <caret line="49" column="0" selection-start-line="49" selection-start-column="0" selection-end-line="49" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/servlets/GetClientsServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="221" max-vertical-offset="901">
+          <caret line="36" column="8" selection-start-line="36" selection-start-column="8" selection-end-line="38" selection-end-column="92" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/servlets/BalanceServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="374" max-vertical-offset="867">
+          <caret line="42" column="50" selection-start-line="42" selection-start-column="50" selection-end-line="42" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/servlets/LoginServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="561">
+          <caret line="13" column="86" selection-start-line="13" selection-start-column="86" selection-end-line="13" selection-end-column="86" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/servlets/SaveClientServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="374" max-vertical-offset="935">
+          <caret line="40" column="92" selection-start-line="40" selection-start-column="92" selection-end-line="40" selection-end-column="92" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/servlets/SessionsAmountServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="510">
+          <caret line="19" column="94" selection-start-line="19" selection-start-column="94" selection-end-line="19" selection-end-column="94" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/servlets/WelcomeServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="425">
+          <caret line="17" column="29" selection-start-line="17" selection-start-column="29" selection-end-line="17" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/servlets/WithdrawServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="257" max-vertical-offset="748">
+          <caret line="38" column="67" selection-start-line="38" selection-start-column="67" selection-end-line="38" selection-end-column="67" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/luxoft/bankapp/main/BankCommander.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.56666666" vertical-offset="510" max-vertical-offset="901">
+          <caret line="59" column="74" selection-start-line="59" selection-start-column="74" selection-end-line="59" selection-end-column="74" />
           <folding />
         </state>
       </provider>
@@ -1949,7 +1725,7 @@
       </state>
       <state key="ModuleStructureConfigurable.UI">
         <settings>
-          <last-edited>BankApplication</last-edited>
+          <last-edited>Spring|BankApplication</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -1973,7 +1749,7 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
-          <last-edited>Maven: taglibs:standard:1.1.2</last-edited>
+          <last-edited>Maven: aopalliance:aopalliance:1.0</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

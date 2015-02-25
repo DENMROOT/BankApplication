@@ -17,7 +17,7 @@ import java.util.logging.Logger;
  * Created by Denis Makarov on 13.02.2015.
  */
 public class SessionsAmountServlet extends HttpServlet {
-    Logger logger = Logger.getLogger("SessionsAmountServlet");
+    public final static Logger logger = Logger.getLogger(SessionsAmountServlet.class.getName());
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 

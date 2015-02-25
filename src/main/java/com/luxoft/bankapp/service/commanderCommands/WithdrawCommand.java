@@ -22,7 +22,7 @@ import java.util.logging.Logger;
  */
 public class WithdrawCommand implements Command {
 
-    Logger withdrawCommangLog = Logger.getLogger("WithdrawCommand");
+    public final static Logger withdrawCommangLog = Logger.getLogger(WithdrawCommand.class.getName());
 
     @Override
     public void execute() {

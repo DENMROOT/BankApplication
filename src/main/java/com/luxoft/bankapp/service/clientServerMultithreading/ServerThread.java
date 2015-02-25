@@ -25,7 +25,7 @@ public class ServerThread implements Runnable {
     public static BankService myBankService = ServiceFactory.getBankServiceImpl();
     public static ClientService myClientService = ServiceFactory.getClientServiceImpl();
     public static AccountService myAccountService = ServiceFactory.getAccountServiceImpl();
-
+    public final static Logger serverThreadLog = Logger.getLogger(ServerThread.class.getName());
 
     Socket server;
     static Command[] commands = {
@@ -72,7 +72,6 @@ public class ServerThread implements Runnable {
         String bankName = "My Bank";
         BankDAOImpl bankDao = DaoFactory.getBankDAO();
         CurrentContainer curContainer = new CurrentContainer();
-        Logger serverThreadLog = Logger.getLogger("ServerThread");
         serverThreadLog.info(new Date() + " Пользователь подключился: " + server.toString());
 
         curContainer.setCurrentBank(bankDao.getBankByName(bankName));

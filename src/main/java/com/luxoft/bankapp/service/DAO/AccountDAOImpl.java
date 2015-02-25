@@ -19,7 +19,7 @@ import java.util.logging.Logger;
 public class AccountDAOImpl extends BaseDAOImpl implements AccountDAO {
 
     private static AccountDAOImpl instance;
-    Logger accountDAOLog = Logger.getLogger("AccountDAOImpl");
+    public final static Logger accountDAOLog = Logger.getLogger(AccountDAOImpl.class.getName());
 
     private AccountDAOImpl() {
     }

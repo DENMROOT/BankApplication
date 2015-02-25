@@ -21,7 +21,7 @@ import java.util.logging.Logger;
 public class ClientDAOImpl extends  BaseDAOImpl implements ClientDAO {
 
     private static ClientDAOImpl instance;
-    Logger clientDAOLog = Logger.getLogger("ClientDAOImpl");
+    public final static Logger clientDAOLog = Logger.getLogger(ClientDAOImpl.class.getName());
 
     private ClientDAOImpl() {
     }

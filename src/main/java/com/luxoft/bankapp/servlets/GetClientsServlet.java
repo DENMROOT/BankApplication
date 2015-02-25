@@ -8,6 +8,7 @@ import com.luxoft.bankapp.service.services.BankService;
 import com.luxoft.bankapp.service.services.ClientService;
 import com.luxoft.bankapp.service.services.ServiceFactory;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -19,7 +20,7 @@ import java.util.logging.Logger;
  * Created by Denis Makarov on 20.02.2015.
  */
 public class GetClientsServlet extends HttpServlet {
-    Logger logger = Logger.getLogger("GetClientsServlet");
+    public final static  Logger logger = Logger.getLogger(GetClientsServlet.class.getName());
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
@@ -32,7 +33,10 @@ public class GetClientsServlet extends HttpServlet {
 
         BankDAO bankDao = DaoFactory.getBankDAO();
         Bank bank = bankDao.getBankByName("My Bank");
-        ClientService clientService = ServiceFactory.getClientServiceImpl();
+
+        final ServletContext context = getServletContext();
+        BankService bankService = (BankService) context.getAttribute("bankService");
+        ClientService clientService = (ClientService) context.getAttribute("clientService");
 
         Client client = clientService.findClientByName(bank, clientName);
         logger.info("Client Detailed info for Client: " + client);

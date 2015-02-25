@@ -18,7 +18,7 @@ import java.util.logging.Logger;
  */
 public class GetClientBalance implements Command {
 
-    Logger getClientBalanceCommangLog = Logger.getLogger("GetClientBalance");
+    public final static Logger getClientBalanceCommangLog = Logger.getLogger(GetClientBalance.class.getName());
 
     @Override
     public void execute() {

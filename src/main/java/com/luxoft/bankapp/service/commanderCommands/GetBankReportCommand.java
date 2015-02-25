@@ -20,7 +20,7 @@ import java.util.logging.Logger;
  */
 public class GetBankReportCommand implements Command {
 
-    Logger getBankReportCommangLog = Logger.getLogger("GetBankReportCommand");
+    public final static Logger getBankReportCommangLog = Logger.getLogger(GetBankReportCommand.class.getName());
 
     @Override
     public void execute() {

@@ -7,9 +7,11 @@ import com.luxoft.bankapp.service.DAO.BankDAO;
 import com.luxoft.bankapp.service.DAO.DaoFactory;
 import com.luxoft.bankapp.service.exceptions.NotEnoughFundsException;
 import com.luxoft.bankapp.service.services.AccountService;
+import com.luxoft.bankapp.service.services.BankService;
 import com.luxoft.bankapp.service.services.ClientService;
 import com.luxoft.bankapp.service.services.ServiceFactory;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServlet;
@@ -25,7 +27,7 @@ import java.util.logging.Logger;
  * Created by Denis Makarov on 13.02.2015.
  */
 public class WithdrawServlet extends HttpServlet {
-    Logger logger = Logger.getLogger("WithdrawServlet");
+    public final static Logger logger = Logger.getLogger(WithdrawServlet.class.getName());
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
@@ -36,8 +38,10 @@ public class WithdrawServlet extends HttpServlet {
 
         logger.info("Withdraw command received for " + clientName);
         BankDAO bankDao = DaoFactory.getBankDAO();
-        ClientService clientService = ServiceFactory.getClientServiceImpl();
-        AccountService accountService = ServiceFactory.getAccountServiceImpl();
+        final ServletContext context = getServletContext();
+        BankService bankService = (BankService) context.getAttribute("bankService");
+        ClientService clientService = (ClientService) context.getAttribute("clientService");
+        AccountService accountService = (AccountService) context.getAttribute("accountService");
         Bank bank = bankDao.getBankByName("My Bank");
         Client client = clientService.findClientByName(bank, clientName);
         try {

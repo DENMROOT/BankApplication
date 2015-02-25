@@ -31,23 +31,6 @@ public class BankCommander{
     private static AbstractApplicationContext context;
     private static Map <String, Command> commandsMap;
 
-    //public static Map<String, Command> commandsMap = new TreeMap<String, Command>();
-    /*
-    static Command[] commands = {
-            new FindClientCommand(), // 0
-            new GetAccountsCommand(), // 1
-            new SelectActiveAccount(), //2
-            new WithdrawCommand(), // 3
-            new DepositCommand(), // 4
-            new TransferCommand(), // 5
-            new AddClientCommand(), // 6
-            new RemoveClientCommand(), // 7
-            new ShowHelpCommand(), // 8
-            new GetBankReportCommand(), // 9
-            new ExitCommand()
-    };
-    */
-
     public void setCommandsMap(Map commandsMap) {
         this.commandsMap = commandsMap;
     }
@@ -74,11 +57,7 @@ public class BankCommander{
 
             Scanner sc = new Scanner(System.in);
             String command=sc.nextLine(); // initialize command with commandString
-            for(Map.Entry<String, Command> e : commandsMap.entrySet()) {
-                if (e.getKey().equals(command)) {
-                    e.getValue().execute();
-                }
-            }
+            commandsMap.get(command).execute(); //execute selected command
 
         }
     }

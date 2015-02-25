@@ -19,7 +19,7 @@ import java.util.logging.Logger;
  */
 public class SelectActiveAccount implements Command {
 
-    Logger selectActiveAccountCommangLog = Logger.getLogger("SelectActiveAccount");
+    public final static Logger selectActiveAccountCommangLog = Logger.getLogger(SelectActiveAccount.class.getName());
 
     @Override
     public void execute() {

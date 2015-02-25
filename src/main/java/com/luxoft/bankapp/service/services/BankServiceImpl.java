@@ -53,6 +53,9 @@ public class BankServiceImpl implements BankService {
 
         List <Client> clientsList = new ArrayList<>(clientDAO.getAllClients(bank));
         List <Client> processedClientsList = new ArrayList<> ();
+        clientName = (clientName == null) ? "" : clientName;
+        city = (city == null) ? "" : city;
+
         for (Client clientIterator: clientsList) {
             if (!clientName.equals("") && (!city.equals(""))) {
                 if (clientIterator.getName().equals(clientName) && clientIterator.getCity().equals(city)) {

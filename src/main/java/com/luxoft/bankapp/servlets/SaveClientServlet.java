@@ -5,9 +5,11 @@ import com.luxoft.bankapp.model.Client;
 import com.luxoft.bankapp.model.Gender;
 import com.luxoft.bankapp.service.DAO.BankDAO;
 import com.luxoft.bankapp.service.DAO.DaoFactory;
+import com.luxoft.bankapp.service.services.BankService;
 import com.luxoft.bankapp.service.services.ClientService;
 import com.luxoft.bankapp.service.services.ServiceFactory;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -20,7 +22,7 @@ import java.util.logging.Logger;
  * Created by Denis Makarov on 20.02.2015.
  */
 public class SaveClientServlet extends HttpServlet {
-    Logger logger = Logger.getLogger("SaveClientServlet");
+    public final static  Logger logger = Logger.getLogger(SaveClientServlet.class.getName());
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
@@ -34,7 +36,9 @@ public class SaveClientServlet extends HttpServlet {
         logger.info("Client Detailed info for Client: " + clientId + name + city + gender +  email);
 
         BankDAO bankDao = DaoFactory.getBankDAO();
-        ClientService clientService = ServiceFactory.getClientServiceImpl();
+        final ServletContext context = getServletContext();
+        BankService bankService = (BankService) context.getAttribute("bankService");
+        ClientService clientService = (ClientService) context.getAttribute("clientService");
         Bank bank = bankDao.getBankByName("My Bank");
         Client client = clientService.findClientById(bank, clientId);
 

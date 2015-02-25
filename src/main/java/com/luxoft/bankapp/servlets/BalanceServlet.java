@@ -7,6 +7,7 @@ import com.luxoft.bankapp.service.DAO.BankDAO;
 import com.luxoft.bankapp.service.DAO.ClientDAO;
 import com.luxoft.bankapp.service.DAO.DaoFactory;
 import com.luxoft.bankapp.service.exceptions.ClientNotFoundException;
+import com.luxoft.bankapp.service.services.BankService;
 import com.luxoft.bankapp.service.services.ClientService;
 import com.luxoft.bankapp.service.services.ServiceFactory;
 
@@ -26,7 +27,7 @@ import java.util.logging.Logger;
  * Created by Denis Makarov on 13.02.2015.
  */
 public class BalanceServlet extends HttpServlet {
-    Logger logger = Logger.getLogger("BalanceServlet");
+    public final static  Logger logger = Logger.getLogger(BalanceServlet.class.getName());
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
@@ -40,8 +41,12 @@ public class BalanceServlet extends HttpServlet {
 
         logger.info("Balance command received for " + clientName);
         BankDAO bankDao = DaoFactory.getBankDAO();
-        ClientService clientService = ServiceFactory.getClientServiceImpl();
         Bank bank = bankDao.getBankByName("My Bank");
+
+        final ServletContext context = getServletContext();
+        BankService bankService = (BankService) context.getAttribute("bankService");
+        ClientService clientService = (ClientService) context.getAttribute("clientService");
+
         Client client = clientService.findClientByName(bank, clientName);
         float balance = clientService.getClientBalance(bank, client);
         logger.info("Balance command for " + clientName + " : " + balance);

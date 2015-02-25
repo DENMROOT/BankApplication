@@ -10,7 +10,7 @@ import java.util.logging.Logger;
  */
 public class BaseDAOImpl implements BaseDAO {
     Connection myConnection;
-    Logger baseDAOLog = Logger.getLogger("BaseDAOImpl");
+    public final static Logger baseDAOLog = Logger.getLogger(BaseDAOImpl.class.getName());
 
     @Override
     public Connection openConnection() {

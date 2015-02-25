@@ -21,7 +21,8 @@ import java.util.logging.Logger;
  * Created by Denis Makarov on 20.02.2015.
  */
 public class FindClientsServlet extends HttpServlet {
-    Logger logger = Logger.getLogger("FindClientsServlet");
+    public final static Logger logger = Logger.getLogger(FindClientsServlet.class.getName());
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }

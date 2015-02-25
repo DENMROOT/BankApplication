@@ -13,7 +13,7 @@ import java.util.logging.Logger;
  * Created by Denis Makarov on 12.02.2015.
  */
 public class CheckLoggedFilter implements Filter {
-    Logger logger = Logger.getLogger("CheckLoggedFilter");
+    public final static Logger logger = Logger.getLogger(CheckLoggedFilter.class.getName());
 
     public void destroy() {
     }

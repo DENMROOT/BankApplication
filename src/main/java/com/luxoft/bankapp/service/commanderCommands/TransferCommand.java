@@ -17,7 +17,7 @@ import java.util.logging.Logger;
  */
 public class TransferCommand implements Command {
 
-    Logger transferCommangLog = Logger.getLogger("TransferCommand");
+    public final static Logger transferCommangLog = Logger.getLogger(TransferCommand.class.getName());
 
     @Override
     public void execute() {
